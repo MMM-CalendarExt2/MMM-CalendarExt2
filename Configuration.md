@@ -107,3 +107,7 @@ views: [
 |dateTimeFormat|Object | {...} | {...} | See `details about event time`.
 |relativeFormat|Object | {...} | {...} | See `details about event time`.
 |useEventTimeRelative |Boolean |true |false | If true, relativeFormat will be used instead time/date/dateTimeFormat. See `details about event time`|
+
+#### 2-2. `view:daily`
+|field |value type |value example |default value |memo |
+|---|---|---|---|---|
