@@ -81,8 +81,8 @@ views: [
 ],
 
 ```
-#### 2-1. common values
-- These fields are common global fields and values of every view modes. You can use these fields in any view.
+#### 2-1. common values of all views
+- These fields are common fields of every view modes. You can use these fields in any view.
 - You can also describe these fields in `defaultSet.view`.
 
 |field |value type |value example |default value |memo |
