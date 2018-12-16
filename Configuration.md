@@ -97,4 +97,10 @@ views: [
 |fromNow |Integer | -1 | 0 | When this view calendar will be start. <br> By example; in `view:monthly`, `-1` will be last month, `0` will be this month, `1` will be next month.<br/><br/>In view of `upcoming`, `current`, this value will be ignored.
 |slotCount |Integer |4 | 3 | How many periodic calendar slot will be shown. <br> By example; in `view:monthly`, `3` will show 3 `monthly` view slot. <br><br/>`mode:daily`, `fromNow:-1`, `slotCount:3` will be show *3 daily calendar slots from yesterday to tomorrow* <br/>Only in `daily`, `weekly`, `monthly`, this field will be valid. In other view modes, this will be ignored.
 |hideOverflow |Boolean |false | true | If events in slot are too many, you can hide some of events by this. Use with `slotMaxHeight`
-
+|slotMaxHeight |String | "200px" | "150px" | Set your slot height to display events. It is affected when you set `hideOverflow`.
+|slotTitle | String | "My Upcoming Schedule" | - | Set slot title with static text. This is prior than `slotTitleFormat`. If you want to display dynamic slot title by date, leave this to null or empty(`""`). <br/>**RECOMMENDED** only to `view:current` and `view:upcoming`.
+|slotTitleFormat | String Or Object | "MM/DD" | - | Set slot title by date. formatter of `.format()` of `moment.js` or object of `.calendar()` of `moment.js`   
+|slotSubTitle | String | "" | - | subtitle of slot. See `slotTitle` also.
+|slotSubTitleFormat | String Or Object | "" | - | subtitle format of slot. See `slotTitleFormat` also.
+|filterPassedEvent |Boolean | true | false | If event is passed, filter it.
+|maxItems |Integer | 100 | How many items will be targeted for this view.
