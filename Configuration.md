@@ -104,3 +104,8 @@ views: [
 |slotSubTitleFormat | String Or Object | "" | - | subtitle format of slot. See `slotTitleFormat` also.
 |filterPassedEvent |Boolean | true | false | If event is passed, filter it.
 |maxItems |Integer | 30 | 100 | How many items will be targeted for this view.
+|dateFormat|Object | {...} | {...} | See `details about event time`.
+|timeFormat|Object | {...} | {...} | See `details about event time`.
+|dateTimeFormat|Object | {...} | {...} | See `details about event time`.
+|relativeFormat|Object | {...} | {...} | See `details about event time`.
+|useEventTimeRelative |Boolean |true |false | If true, relativeFormat will be used instead time/date/dateTimeFormat. See `details about event time`|
