@@ -1,6 +1,4 @@
-# Configuration
-
-## Simple Example & Basic Concept
+# Simple Example & Basic Concept
 ```javascript
 {
   module: 'MMM-CalendarExt2',
@@ -29,7 +27,7 @@ There should be AT LEAST one **scene**, one **view** and one **calendar**.
 
 
 > In below guides, all fields except **REQUIRED** could be omitted. When omitted, `default value` will be used.
-### 1. SCENE
+## 1. SCENE
 **Scene** is a set of Calendar **View**s. You can define several scenes for your purpose. MM will display one scene at a time. You can rotate scenes by time or notification.
 - Scenes Example : `My Calendar`, `Wife's Calendar`, `Tom's Calendar`
 - Another Scenes Example : `Last Month`, `This Month`, `Next Month`, ...
@@ -58,7 +56,7 @@ scenes: [ // `scenes` could have several scenes as elements of array
 |views|Array of `view name`|["Holidays", "Business Meeting"] |[] |To specify views in this scene. If set as `[]`, all views will be included in this scene. |
 |className |String |"myScene1" |"" | If you want to assign specific CSS class to this scene, use this. |
 
-### 2. VIEW
+## 2. VIEW
 - **View** is a specific look and definition to display events. Each view could have several calendars which is defined in `calendars` section. And each view instance can be reusable in multi-scenes.
 - There are several view mode; `upcoming`, `current`, `daily`, `weekly`, `monthly`, `week`, `month`. 
 
@@ -81,7 +79,7 @@ views: [
 ],
 
 ```
-#### 2-1. common values of all views
+### 2-1. common values of all views
 - These fields are common fields of every view modes. You can use these fields in any view.
 - You can also describe these fields in `defaultSet.view`.
 
