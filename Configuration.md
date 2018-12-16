@@ -103,4 +103,4 @@ views: [
 |slotSubTitle | String | "" | - | subtitle of slot. See `slotTitle` also.
 |slotSubTitleFormat | String Or Object | "" | - | subtitle format of slot. See `slotTitleFormat` also.
 |filterPassedEvent |Boolean | true | false | If event is passed, filter it.
-|maxItems |Integer | 100 | How many items will be targeted for this view.
+|maxItems |Integer | 30 | 100 | How many items will be targeted for this view.
