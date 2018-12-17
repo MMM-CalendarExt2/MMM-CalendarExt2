@@ -17,6 +17,11 @@ scenes: [ // `scenes` could have several scenes as elements of array
   },
 ],
 ```
+In above example, we have 2 scenes - **My Soccer** and **All**.
+**My Soccer** has 2 views - "Upcoming Hotspurs Games", "Monthly Champion's League Schedule".
+**All** has all views([] means all. whichever they are.)
+
+These 2 Scenes will be displayed in turn by time, or be changed by notification.
 
 **SCENE**
 
