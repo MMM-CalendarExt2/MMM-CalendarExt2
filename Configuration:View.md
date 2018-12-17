@@ -10,7 +10,6 @@ views: [
     mode: "upcoming",
     position: "top_right",
     calendars: ["Hotspurs calendar"],
-    ...
   },
   {
     name: "My family affairs",
