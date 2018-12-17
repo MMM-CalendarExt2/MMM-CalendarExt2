@@ -5,19 +5,19 @@
 ```
 
 views: [
-  { //default values
-    name: "", 
-    mode: "daily",
-    className: "",
-    position: "top_left",
-    ...
-  },
   { // view example
     name: "Upcoming Hotspurs",
     mode: "upcoming",
     position: "top_right",
+    calendars: ["Hotspurs calendar"],
     ...
-  }
+  },
+  {
+    name: "My family affairs",
+    mode: "month",
+    position: "bottom_bar",
+    calendars: ["holidays", "scheduleofwife", "KID SCHOOL PLAN"],
+  },
 ],
 
 ```
