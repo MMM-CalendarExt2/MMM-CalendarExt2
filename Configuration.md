@@ -27,6 +27,7 @@ There should be AT LEAST one **scene**, one **view** and one **calendar**.
 
 **Concept**
 ![Concept](/eouia/MMM-CalendarExt2/blob/master/screenshot/scene-view-calendar.png)
+![Concept](/eouia/MMM-CalendarExt2/blob/master/screenshot/scene-view.png)
 - You should have at least ONE Scene for display your events.
 - Each Scene could have at least ONE View. You can assume each scene as a profile or page.
 - Each View decide how to show events. It can could have at least ONE calendar or more. You can choose to show which calendar events and how to be displayed and more by configuration.
