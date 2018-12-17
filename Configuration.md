@@ -29,40 +29,15 @@ There should be AT LEAST one **scene**, one **view** and one **calendar**.
 ![Concept](/eouia/MMM-CalendarExt2/blob/master/screenshot/scene-view-calendar.png)
 - You should have at least ONE Scene for display your events.
 - Each Scene could have at least ONE View. You can assume each scene as a profile or page.
-- Each View is how to show your events. It can could have at least ONE calendar or more. You can choose to show which calendar events, how to show and more.
-- Calendar is your .ics file or URL. You can filter events by configuration.
+- Each View decide how to show events. It can could have at least ONE calendar or more. You can choose to show which calendar events, how to show and more.
+- A Calendar is your .ics file or URL. You can filter events by configuration.
+- To point specific Scene/View/Calendar, It could have `name`. and almost everything will be configurable.
 
 > In below guides, all fields except **REQUIRED** could be omitted. When omitted, `default value` will be used.
-## 1. SCENE
-**Scene** is a set of Calendar **View**s. You can define several scenes for your purpose. MM will display one scene at a time. You can rotate scenes by time or notification.
-- Scenes Example : `My Calendar`, `Wife's Calendar`, `Tom's Calendar`
-- Another Scenes Example : `Last Month`, `This Month`, `Next Month`, ...
+
+1. [[Configuration:Scene]]
 
 
-Here is default and detailed `scenes` fields 
-```javascript
-scenes: [ // `scenes` could have several scenes as elements of array
-  { // default values
-    name: "",
-    views: [],
-    className: "",
-  },
-  { // scene example
-    name: "My Soccer",
-    views: ["Upcoming Hotspurs Games", "Monthly Champion's League Schedule"],
-  },
-],
-```
-
-
-
-**SCENE**
-
-|field |value type |value example |default value |memo |
-|---|---|---|---|---|
-|name |String |"DEFAULT" |- |**REQUIRED**<br/>Scene name, this value will be used to distinguish specific scene. If not set, auto-generated `uid` will be used instead, but to assign name is recommended. <br/> At least one of scene should have name "DEFAULT", unless you set different name as `defaultScene`|
-|views|Array of `view name`|["Holidays", "Business Meeting"] |[] |To specify views in this scene. If set as `[]`, all views will be included in this scene. |
-|className |String |"myScene1" |"" | If you want to assign specific CSS class to this scene, use this. |
 
 ## 2. VIEW
 - **View** is a specific look and definition to display events. Each view could have several calendars which is defined in `calendars` section. And each view instance can be reusable in multi-scenes.
