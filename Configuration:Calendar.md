@@ -5,7 +5,6 @@
 calendars : [
   {
     name: "US holiday",
-    className: "holiday",
     icon: "noto-beach-with-umbrella",
     className: "holiday",
     url: "http://www.calendarlabs.com/templates/ical/US-Holidays.ics",
