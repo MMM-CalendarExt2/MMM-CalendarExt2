@@ -29,8 +29,8 @@ There should be AT LEAST one **scene**, one **view** and one **calendar**.
 ![Concept](/eouia/MMM-CalendarExt2/blob/master/screenshot/scene-view-calendar.png)
 - You should have at least ONE Scene for display your events.
 - Each Scene could have at least ONE View. You can assume each scene as a profile or page.
-- Each View decide how to show events. It can could have at least ONE calendar or more. You can choose to show which calendar events, how to show and more.
-- A Calendar is your .ics file or URL. You can filter events by configuration.
+- Each View decide how to show events. It can could have at least ONE calendar or more. You can choose to show which calendar events and how to be displayed and more by configuration.
+- A Calendar is your .ics file or URL. You can manipulate events by configuration.
 - To point specific Scene/View/Calendar, It could have `name`. and almost everything will be configurable.
 
 > In below guides, all fields except **REQUIRED** could be omitted. When omitted, `default value` will be used.
