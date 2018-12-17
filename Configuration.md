@@ -108,6 +108,39 @@ views: [
 |relativeFormat|Object | {...} | {...} | See `details about event time`.
 |useEventTimeRelative |Boolean |true |false | If true, relativeFormat will be used instead time/date/dateTimeFormat. See `details about event time`|
 
-#### 2-2. `view:daily`
+### 2-2. `view:daily`, `view:weekly`, `view:monthly`
 |field |value type |value example |default value |memo |
 |---|---|---|---|---|
+|type |String |"row" |"column" | You can arrange event slots by row or column. This field will be ignored in other views. In `bar` or `fullscreen` region, `"row"` could look nicer.
+
+#### 2-2-1. `view:daily`
+|field |value type |value example |default value |memo |
+|---|---|---|---|---|
+|slotSubTitleFormat |String |"" |"MMMM Do" |pre-defined extra information of slots of this daily view.
+|slotTitleFormat |String Or Object |"" | {...} |pre-defined slot title.
+- You can use calendar-type humanized format for slot Title in this daily view. (In other views, this will be meaningless). Default values are below;
+```
+slotTitleFormat: {
+  sameDay: '[Today]',
+  nextDay: '[Tomorrow]',
+  nextWeek: 'dddd',
+  lastDay: '[Yesterday]',
+  lastWeek: '[Last] ddd',
+  sameElse: 'ddd, M/D'
+},
+```
+
+#### 2-2-2. `view:weekly`
+|field |value type |value example |default value |memo |
+|---|---|---|---|---|
+|slotSubTitleFormat |String |"" |"[Week: ]wo" |pre-defined extra information of slots of this weekly view.
+|slotTitleFormat |String Or Object |"" | "YYYY" |pre-defined slot title.
+
+#### 2-2-3. `view:monthly`
+|field |value type |value example |default value |memo |
+|---|---|---|---|---|
+|slotSubTitleFormat |String |"" |"MMMM" |pre-defined extra information of slots of this weekly view.
+|slotTitleFormat |String Or Object |"" | "YYYY" |pre-defined slot title.
+
+### 2-3. `view:upcoming`
+
