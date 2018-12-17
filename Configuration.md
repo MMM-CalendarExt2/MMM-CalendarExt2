@@ -25,6 +25,12 @@ This is the simplest configuration. I'll explain step by step.
 
 There should be AT LEAST one **scene**, one **view** and one **calendar**.
 
+**Concept**
+![Concept](/eouia/MMM-CalendarExt2/blob/master/screenshot/scene-view-calendar.png)
+- You should have at least ONE Scene for display your events.
+- Each Scene could have at least ONE View. You can assume each scene as a profile or page.
+- Each View is how to show your events. It can could have at least ONE calendar or more. You can choose to show which calendar events, how to show and more.
+- Calendar is your .ics file or URL. You can filter events by configuration.
 
 > In below guides, all fields except **REQUIRED** could be omitted. When omitted, `default value` will be used.
 ## 1. SCENE
@@ -47,6 +53,8 @@ scenes: [ // `scenes` could have several scenes as elements of array
   },
 ],
 ```
+
+
 
 **SCENE**
 
