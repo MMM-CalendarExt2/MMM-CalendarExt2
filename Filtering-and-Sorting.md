@@ -10,7 +10,7 @@ filter: (event) => {
 ```
 
 By Example
-```
+```js
 filter: (event) => {
   if (event.isFullday == true) {
     return true
@@ -49,4 +49,4 @@ sort: (a, b) => {
   }
 }
 ```
-This means ** Sort by calendar Sequence first. when sequence of two events are same, compare startDate and earlier is prior.)
+This means ** Sort by calendar Sequence first. when sequence of two events are same, compare startDate and earlier is prior**.
