@@ -47,4 +47,4 @@ This will be displayed like these;
 Of course you can redefine the format with your wish or locale.
 
 # 3. Exception
-In `view:week` and `view:month`, Only `timeForamt` and `dateFormat` will be valid and others will be ignored, because there might be not enough space to display event time.
+In `view:week` and `view:month`, Only `timeForamt` and `dateFormat` will be valid and others will be ignored, because there might be not enough space to display event time. (But anyway, you can modify it with CSS by force)
