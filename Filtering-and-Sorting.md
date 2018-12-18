@@ -22,7 +22,7 @@ filter: (event) => {
 This code says **If this event is fullday event, use it. But if not so, drop it from event list**. When you need only `fullday` events, this could be useful.
 
 ## Sorting
-You can also use sorting in `view`. (`calendar` doesn't support sorting, because displaying sort depends on view.)
+You can also use sorting in `view`. (`calendar` doesn't support sorting, because to display sorted events depends on each view.)
 Concept is similar.
 ```js
 sort: (eventA, eventB) => {
