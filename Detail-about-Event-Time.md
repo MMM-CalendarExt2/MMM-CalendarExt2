@@ -16,7 +16,7 @@ You can define how to show the event time. `timeFormat`, `dateFormat` and `dateT
   - This format will be used for all other event.
   - e.g) `dateFormat:"HH:mm M/D",` will be displayed as `01:23 1/3`.
 
-- Or You can us more complex calendar-style formatter object to define more humanized time.
+- Or You can use more complex calendar-style formatter object to define more humanized time.
   - e.g) for `dateTimeFormat`, below format will be displayed as `Yesterday 12:34` or `Last Sat 02:00`.
 ```
 dateTimeFormat: {
