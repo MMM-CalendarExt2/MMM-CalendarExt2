@@ -19,3 +19,18 @@ title:"Team T.B.A. - Tottenham Hotspur"
 uid:"1:1546631100:1546638300:op54vk5s1r0ivl8i165ampip88@google.com"
 ```
 You can use these properties for filtering, sorting, or external usage by notification.
+
+Additionally, in `sort` callback function of each view configuration, you can use this also.
+```
+calendarSeq: 1
+```
+`calendarSeq` is the order of calendar in your view configuration. 
+By example;
+```js
+{ //example view
+  name: "MYVIEW1",
+  mode: "daily",
+  calendars: ["Holiday", "Office Schedule", "Wife"],
+}
+```
+In this example, `Holiday` will have `calendarSeq:0`, then, `Office Schdule` will have `calendarSeq:1`, ...
