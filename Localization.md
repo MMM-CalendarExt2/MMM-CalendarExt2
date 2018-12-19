@@ -21,19 +21,20 @@ views: [
 ```
 
 ## change date and dateTime Format
-```
+```js
 views: [
   ...
   {
     name: "MY German Schedule View",
     locale: "de-DE",
     dateFormat: "MM/Do",
+    ...
   },
 ],
 ```
 
 ## change date and dateTime Format to relative humanized.
-```
+```js
 views: [
   ...
   {
@@ -47,6 +48,23 @@ views: [
       lastWeek: "[Letzen] ddd HH:mm",
       sameElse: "MM/Do HH:mm"
     },
+    ...
+  },
+],
+```
+## change relativeFormat.
+```js
+views: [
+  ...
+  {
+    name: "MY German Schedule View",
+    locale: "de-DE",
+    relativeFormat: {
+      passed: "Es endete %ENDFROMNOW%",
+      current: "Es endet %ENDFROMNOW%",
+      future: "Es beginnt %STARTFROMNOW% (%DURATION%)"
+    },
+    ...
   },
 ],
 ```
