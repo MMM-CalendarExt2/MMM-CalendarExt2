@@ -2,7 +2,7 @@
 Whole new build-up for MMM-CalendarExt
 
 ## Screenshot
-
+![sample](https://raw.githubusercontent.com/eouia/MMM-CalendarExt2/master/screenshot/screenshot.png)
 
 ## Install & Configuration
 See the [wiki](https://github.com/eouia/MMM-CalendarExt2/wiki)
