@@ -13,7 +13,7 @@
 
 .CX2 { /* default values which are used frequently or dependently */
   --row-min-width: 100px;
-  --row-max-width: 300px;
+  --row-max-width: 1000px;
   --column-min-width: 300px;
   --column-max-width: 400px;
   --font-size: 16px;
