@@ -1,0 +1,437 @@
+@keyframes fadeInOpacity {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeOutOpacity {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+
+
+.CX2 { /* default values which are used frequently or dependently */
+  --row-min-width: 100px;
+  --row-max-width: 300px;
+  --column-min-width: 300px;
+  --column-max-width: 400px;
+  --font-size: 16px;
+}
+
+.CX2 .module-content { /* fake module body */
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  color:#EEE;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.CX2.hidden {
+  opacity:0;
+  animation-name: fadeOutOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+}
+
+.CX2.shown {
+  display:block;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+}
+
+.fullscreen .CX2 { /* when the view is located on `fullscreen_below` or `fullscreen_above` */
+  position:fixed;
+  bottom: 10px;
+  margin: 20px;
+  width:calc(100vw - 40px);
+}
+
+
+.CX2 .view { /* normal view */
+  width:100%;
+  display:flex;
+  min-width:300px;
+}
+
+.CX2 .slot{ /* normal slot */
+  min-width: var(--row-min-width);
+  width:100%;
+}
+
+.CX2 .slot > .slotContent{
+  position:relative;
+  width:100%;
+  background-image:linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+.CX2 .weekSlot > .slotContent{
+  background-image:none;
+}
+
+.CX2 .slot.eventCount_0 { /* slot which has no event */
+/* display:none; */
+}
+
+
+/* row and column */
+.CX2 .view.row { /* type: row view */
+  display:flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: space-around;
+}
+
+.CX2 .view.column { /* type: column view */
+  flex-direction: column;
+  min-width: var(--column-min-width);
+}
+
+.CX2 .row .slot{ /* row type slot */
+  min-width: var(--row-min-width);
+}
+
+
+.CX2 .slot * {
+  font-size: var(--font-size);
+  line-height:var(--font-size);
+}
+
+.CX2 .hiddenCount { /* how many overflowed */
+  text-align:right;
+  font-weight:bold;
+  padding:4px;
+}
+
+
+.CX2 .slotHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.CX2 .slot .slotHeader {
+  background-color:rgba(64,64,64,0.8);
+  height:calc(var(--font-size) + 6px);
+  padding:6px 6px 0;
+  font-weight:bold;
+}
+
+.CX2 .slot .slotFooter {
+  height:calc(var(--font-size) + 6px);
+  text-align:right;
+  font-weight:bold;
+  padding-right:5px;
+}
+
+.CX2 .today .slotHeader { /* today slot */
+  background-color:rgba(255,255,255,0.8);
+  color:#000;
+}
+
+.CX2 .today .slotHeader * {
+  color:#000;
+}
+
+
+/*  weekSlot header adjust */
+.CX2 .weekSlot {
+  position:relative;
+}
+
+.CX2 .weeksmark {
+  position:absolute;
+  bottom:2px;
+  left:2px;
+  padding:3px;
+  border-radius:4px;
+  background-color:#69C;
+  color:#FFF;
+}
+
+
+.CX2 .weekSlot .timeline {
+  position:absolute;
+  left:0;
+  width:100%;
+}
+
+.CX2 .cellSlot .slotHeader {
+  flex-direction:row-reverse;
+}
+
+.CX2 .weekSlot > .slotFooter,
+.CX2 .weekSlot > .slotHeader {
+  display:none;
+}
+
+.CX2 .weekSlot > .slotContent {
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+}
+
+.CX2 .weekSlot.showWeekends .cellSlot {
+  width:14.2%;
+}
+.CX2 .weekSlot.hideWeekends .cellSlot {
+  width:19.9%;
+}
+
+.CX2 .weekSlot .timelineSleeve {
+  position:relative;
+  height:calc(var(--font-size) + 16px);
+  width:100%;
+}
+
+.CX2 .cellSlot .slotSubTitle,
+.CX2 .cellSlot .slotAltTitle {
+  display:none;
+}
+
+
+.CX2 .weekSlot.seq_0 .cellSlot .slotSubTitle {
+  display:block;
+}
+
+.CX2 .cellSlot .slotTitle {
+  display:block;
+}
+
+
+.CX2 .cellSlot.firstCell  .slotTitle,
+.CX2 .cellSlot.day_1  .slotTitle,
+.CX2 .cellSlot.daySeq_0  .slotTitle {
+  display:none;
+}
+
+.CX2 .cellSlot.firstCell  .slotAltTitle,
+.CX2 .cellSlot.day_1  .slotAltTitle,
+.CX2 .cellSlot.daySeq_0  .slotAltTitle {
+  display:block;
+}
+
+.CX2 .cellSlot .slotSubTitle {
+  color:#999;
+}
+
+.CX2 .cellSlot.weekday_6 .slotSubTitle {
+  color:#66F;
+}
+
+.CX2 .cellSlot.weekday_7 .slotSubTitle {
+  color:#F66;
+}
+
+/* Only for agenda slot */
+.CX2 .agenda .eventSub {
+  display:block;
+}
+
+
+/* Event */
+
+.CX2 .event {
+  padding:5px;
+  margin:2px 0;
+  background-color:rgba(64,64,64,0.6);
+  position:relative;
+  text-align:left;
+}
+
+.CX2 .event.fullday {
+  border-radius:5px;
+  background-color:#FFF;
+  color:#000;
+}
+.CX2 .event.hiddenEvent {
+  display:none;
+}
+
+.CX2 .event:after {
+  content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+.CX2 .eventSub {
+  display:none;
+  text-align:right;
+}
+
+.CX2 .eventTitle {
+  font-weight:bold;
+}
+
+.CX2 .eventTime * {
+  display:none;
+  padding-left: 5px;
+}
+
+.CX2 .eventTime .end::before {
+  content:"\00a0-\00a0";
+}
+
+.CX2 .event.passed::before { /* If you don't want to passed pattern, overwrite this */
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:
+  repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(0,0,0,0.2) 10px,
+    rgba(0,0,0,0.2) 20px
+  ),
+  linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.2),
+    rgba(0,0,0,0)
+  );
+}
+
+.CX2 .row .event {
+  max-width:var(--row-max-width);
+}
+
+.CX2 .column .event {
+  max-width:var(--column-max-width);
+}
+
+.CX2 .column .timelineSleeve .event {
+  max-width:none;
+}
+
+
+/* period type event */
+
+.CX2 .period .eventIcon {
+  min-width: calc(var(--font-size) * 2);
+  min-height: calc(var(--font-size) * 2);
+  margin-right:5px;
+  float:left;
+}
+
+.CX2 .period .eventTitle {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+
+/* celltype event */
+.CX2 .weekSlot .event {
+  position:absolute;
+}
+
+.CX2 .weekSlot .eventMain {
+  height: var(--font-size);
+  padding:2px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  text-align:left;
+}
+
+.CX2 .weekSlot .eventIcon {
+  min-width: var(--font-size);
+  min-height: var(--font-size);
+  margin-right:3px;
+  display:block;
+  padding-bottom:3px;
+}
+
+.CX2 .weekSlot .eventTitle {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  display:block;
+}
+
+.CX2 .weekSlot .eventMain {
+  display:flex;
+  flex-direction:row;
+}
+
+.CX2 .weekSlot .eventMain .eventIcon {
+  order:1;
+}
+.CX2 .weekSlot .eventMain .eventTitle {
+  order:3;
+}
+
+.CX2 .weekSlot .eventMain .eventTime {
+  order:2;
+  margin-right:5px;
+}
+
+
+
+
+/* eventTime, for normal Period */
+.CX2 .period .eventTime .relative {
+  display:inline;
+}
+.CX2 .period .eventTime {
+  text-align:right;
+}
+.CX2 .period:not(.daily) .event.overday:not(.fullday) .dateTime {
+  display:inline;
+}
+
+.CX2 .period:not(.daily) .event.oneday:not(.fullday) .startDateTime,
+.CX2 .period:not(.daily) .event.oneday:not(.fullday) .endTime {
+  display:inline;
+}
+
+
+.CX2 .period:not(.daily) .event.oneday.fullday .startDate {
+  display:inline;
+}
+
+.CX2 .period:not(.daily) .event.fullday:not(.oneday) .date {
+  display:inline;
+}
+
+/* eventTime, for daily Period */
+.CX2 .period.daily .event.oneday:not(.fullday) .time {
+  display:inline;
+}
+
+.CX2 .period.daily .event.overday:not(.fullday) .dateTime {
+  display:inline;
+}
+
+.CX2 .period.daily .event.fullday:not(.oneday) .date {
+  display:inline;
+}
+
+.CX2 .period.daily .event.fullday.oneday .startDate {
+  display:inline;
+}
+
+
+/* eventTime, for Cell */
+.CX2 .weekSlot .event:not(.fullday) .startTime {
+  display:inline;
+}
+
+.CX2 .weekSlot .event.overday.starthere .startDate {
+  display:none;
+}
+
+
+.CX2 .weekSlot .event.overday .startDate {
+  display:inline;
+}
