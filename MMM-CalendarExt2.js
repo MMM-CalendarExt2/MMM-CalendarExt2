@@ -97,6 +97,7 @@ Module.register("MMM-CalendarExt2", {
       replaceTitle:[],
       icon: "",
       className: "",
+      auth:{},
       filter: (event)=>{return true} // you can make a filter to include/exclude specific events per calendar
     },
     scene: {

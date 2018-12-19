@@ -48,7 +48,39 @@ module.exports = NodeHelper.create({
 
   scanCalendar: function(calendar, cb) {
     console.log(`[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`)
-    request(calendar.url, calendar.opts, (e, r, data)=>{
+
+    var opts = null
+
+  	var nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/)[1])
+  	opts = {
+  		"headers" : {
+  			"User-Agent":
+  				"Mozilla/5.0 (Node.js "
+  				+ nodeVersion + ") MagicMirror/"
+  				+ global.version
+  				+ " (https://github.com/MichMich/MagicMirror/)"
+  		}
+  	}
+  	if (this.config.auth) {
+  		if(this.config.auth.method === "bearer"){
+  			opts.auth = {
+  				bearer: this.config.auth.pass
+  			}
+  		} else {
+  			opts.auth = {
+  				user: this.config.auth.user,
+  				pass: this.config.auth.pass
+  			}
+  			if(this.config.auth.method === "digest"){
+  				opts.auth.sendImmediately = 0
+  			}else{
+  				opts.auth.sendImmediately = 1
+  			}
+  		}
+  	}
+
+
+    request(calendar.url, opts, (e, r, data)=>{
       if (e) {
         cb(calendar, null, e)
       } else {

@@ -309,6 +309,12 @@
   max-width:var(--column-max-width);
 }
 
+.CX2 .agenda .event {
+  max-width:var(--column-max-width);
+}
+
+
+
 .CX2 .column .timelineSleeve .event {
   max-width:none;
 }
