@@ -1,0 +1,52 @@
+#Localization
+
+## default locale
+```js
+config: {
+  locale: "de-DE",
+  ...
+}
+```
+
+## change locale in specific view
+```js
+views: [
+  ...
+  {
+    name: "MY German Schedule View",
+    locale: "de-DE",
+    ...
+  },
+],
+```
+
+## change date and dateTime Format
+```
+views: [
+  ...
+  {
+    name: "MY German Schedule View",
+    locale: "de-DE",
+    dateFormat: "MM/Do",
+  },
+],
+```
+
+## change date and dateTime Format to relative humanized.
+```
+views: [
+  ...
+  {
+    name: "MY German Schedule View",
+    locale: "de-DE",
+    dateTimeFormat: {
+      sameDay: "[Heute] HH:mm",
+      nextDay: "[Morgen] HH:mm",
+      nextWeek: "dddd HH:mm",
+      lastDay: "[Gestern] HH:mm",
+      lastWeek: "[Letzen] ddd HH:mm",
+      sameElse: "MM/Do HH:mm"
+    },
+  },
+],
+```
