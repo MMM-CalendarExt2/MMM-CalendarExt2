@@ -24,5 +24,5 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 - dynamic scene changeable.
 
 ## MEMO
-- I should release this before my winter holidays. So this is not tested fully. I cannot answer or patch during the season.
-- Bug reports, PR, any other suggestions are always welcome!
+### Bug with MMM-Carousel.
+- When you are using it with `MMM-Carousel`, `MMM-CalendarExt2` should be in main page or all pages.

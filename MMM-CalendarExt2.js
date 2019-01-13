@@ -227,12 +227,16 @@ Module.register("MMM-CalendarExt2", {
 
   suspend: function() {
     this.showing = false
-    this.currentScene.clearViews()
+    if (this.currentScene) {
+      this.currentScene.clearViews()
+    }
   },
 
   resume: function() {
     this.showing = true
-    this.work(this.currentScene.uid)
+    if (this.currentScene) {
+      this.work(this.currentScene.uid)
+    }
   },
 
   initConfig: function() {
