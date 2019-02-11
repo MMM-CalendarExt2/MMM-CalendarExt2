@@ -11,8 +11,7 @@ class View {
     this.containerDom = null
     this.calendars = config.calendars
     this.createDom()
-    this.calendars =
-    this.assignEvents([].concat(events))
+    this.calendars = this.assignEvents([].concat(events))
   }
 
   static makeByName(config, events) {
@@ -37,7 +36,18 @@ class View {
   }
 
   assignEvents(events) {
-    this.events = this.filterEvents(events).slice(0, this.config.maxItems)
+    this.events = this.filterEvents(this.transformEvents(events)).slice(0, this.config.maxItems)
+  }
+
+  transformEvents(events) {
+    if (typeof this.config.transform == "function") {
+      return events.map((e)=>{
+        var event = Object.assign({}, e)
+        return this.config.transform(event)
+      })
+    }
+
+    return [].concat(events)
   }
 
   draw() {

@@ -98,7 +98,7 @@ Module.register("MMM-CalendarExt2", {
       icon: "",
       className: "",
       auth:{},
-      filter: (event)=>{return true} // you can make a filter to include/exclude specific events per calendar
+      filter: (event)=>{return true}, // you can make a filter to include/exclude specific events per calendar
     },
     scene: {
       name: "",
@@ -114,6 +114,7 @@ Module.register("MMM-CalendarExt2", {
       calendars: [],
       filter: (event) => {return true},
       sort: (a,b) => {return a.startDate - b.startDate},
+      transform: (event) => {return event},
       locale: "",
       fromNow: 0,
       slotCount: 3,
