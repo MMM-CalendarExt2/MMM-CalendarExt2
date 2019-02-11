@@ -50,3 +50,27 @@ sort: (a, b) => {
 }
 ```
 This means **Sort by calendar Sequence first. when sequence of two events are same, compare startDate and earlier is prior**.
+
+
+## Transforming
+You can also use transforming in `view`. (`calendar` doesn't support transforming, because to display transformed events depends on each view.)
+
+Concept;
+```js
+transform: (event)=>{
+  IF THIS event NEED some property TO BE CHANGED,
+  CHANGE THAT property
+  THEN, return event
+}
+
+```
+
+By Example;
+```js
+transform: (event)=>{
+  if (event.title.search("Birthday") > -1) { // If the event might include "Birthday" in its title,
+    event.icon = "fxemoji-birthdaycake" // Set icon of that event to "fxemoji-birthdaycake"
+  }
+  return event // Return that event.
+}
+```
