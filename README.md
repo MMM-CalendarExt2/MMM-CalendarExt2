@@ -7,6 +7,10 @@ Whole new build-up for MMM-CalendarExt
 ## Install & Configuration
 See the [wiki](https://github.com/eouia/MMM-CalendarExt2/wiki)
 
+## New Updates
+**[1.0.1]**
+- `view:transform()` is added, now you can modify event value as your wish.
+
 ## Major feature
 - Multiple views at same time in a scene
 - Scenes could be rotated by time or notification or other trigger (e.g: Scene per `PAGE`)
