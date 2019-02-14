@@ -1,6 +1,6 @@
 {
   "name": "MMM-CalendarExt2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Alternative calndear module of MagicMirror.",
   "main": "MMM-CalendarExt2.js",
   "scripts": {

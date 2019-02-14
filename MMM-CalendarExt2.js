@@ -1,6 +1,14 @@
 Module.register("MMM-CalendarExt2", {
   predefined: {
     notifications: {
+      "CALEXT2_SHOW_CALENDAR": {
+        exec: "showCalendar",
+        payload:null,
+      },
+      "CALEXT2_HIDE_CALENDAR": {
+        exec: "hideCalendar",
+        payload:null,
+      },
       "CALEXT2_SECENE_NEXT": {
         exec: "sceneNext",
         payload: null,
@@ -221,7 +229,10 @@ Module.register("MMM-CalendarExt2", {
     this.events = []
     this.showing = true
     this.initConfig()
-    this.executable = ["sceneNext", "scenePrevious", "changeSceneById", "changeSceneByName", "eventQuery"]
+    this.executable = [
+      "sceneNext", "scenePrevious", "changeSceneById", "changeSceneByName",
+      "eventQuery", "showCalendar", "hideCalendar"
+    ]
 
     this.first = true
   },
@@ -237,6 +248,8 @@ Module.register("MMM-CalendarExt2", {
     this.showing = true
     if (this.currentScene) {
       this.work(this.currentScene.uid)
+    } else {
+      this.work()
     }
   },
 
@@ -407,5 +420,15 @@ Module.register("MMM-CalendarExt2", {
       return null
     }
     return events
+  },
+
+  showCalendar: function() {
+    this.resume()
+    return true
+  },
+
+  hideCalendar: function() {
+    this.suspend()
+    return true
   }
 })

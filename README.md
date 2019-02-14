@@ -8,8 +8,8 @@ Whole new build-up for MMM-CalendarExt
 See the [wiki](https://github.com/eouia/MMM-CalendarExt2/wiki)
 
 ## New Updates
-**[1.0.1]**
-- `view:transform()` is added, now you can modify event value as your wish.
+**[1.0.2]**
+- FIXED: not visible in second or followed pages of MMM-pages.
 
 ## Major feature
 - Multiple views at same time in a scene
@@ -26,6 +26,11 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 - `profile` is deprecated. `scene` is more than that.
 - Beautiful timeline view (month/week)
 - dynamic scene changeable.
+
+## Updates
+**[1.0.1]**
+- `view:transform()` is added, now you can modify event value as your wish.
+
 
 ## MEMO
 ### Bug with MMM-Carousel.
