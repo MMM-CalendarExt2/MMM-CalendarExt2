@@ -354,9 +354,9 @@ Module.register("MMM-CalendarExt2", {
     var reply, changed = null
     var args = (handler.args) ? handler.args : null
     if (args == "n") {
-      changed = this.nextScene()
+      changed = this.sceneNext()
     } else if (args == "p") {
-      changed = this.previousScene()
+      changed = this.scenePrevious()
     } else if (Number(args) !== "NaN") {
       changed = this.changeSceneById(args)
     } else if (typeof args == "string") {
@@ -378,13 +378,13 @@ Module.register("MMM-CalendarExt2", {
     }
   },
 
-  nextScene: function() {
+  sceneNext: function() {
     var nextUid = this.currentScene.nextUid
     this.work(nextUid)
     return true
   },
 
-  previousScene: function() {
+  scenePrevious: function() {
     var prevUid = this.currentScene.previousUid
     this.work(prevUid)
     return true
