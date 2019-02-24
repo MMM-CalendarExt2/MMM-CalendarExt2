@@ -9,7 +9,7 @@ Module.register("MMM-CalendarExt2", {
         exec: "hideCalendar",
         payload:null,
       },
-      "CALEXT2_SECENE_NEXT": {
+      "CALEXT2_SCENE_NEXT": {
         exec: "sceneNext",
         payload: null,
       },
