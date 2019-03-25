@@ -8,8 +8,8 @@ Whole new build-up for MMM-CalendarExt
 See the [wiki](https://github.com/eouia/MMM-CalendarExt2/wiki)
 
 ## New Updates
-**[1.0.2]**
-- FIXED: not visible in second or followed pages of MMM-pages.
+**[1.0.3]**
+- FIXED: calendar filter is implemented (Sorry, I've totally forgotten it).
 
 ## Major feature
 - Multiple views at same time in a scene
@@ -28,6 +28,9 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 - dynamic scene changeable.
 
 ## Updates
+**[1.0.2]**
+- FIXED: not visible in second or followed pages of MMM-pages.
+
 **[1.0.1]**
 - `view:transform()` is added, now you can modify event value as your wish.
 

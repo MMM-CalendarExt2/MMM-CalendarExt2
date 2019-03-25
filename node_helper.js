@@ -178,7 +178,18 @@ module.exports = NodeHelper.create({
         ? calendar.uid + ":" + ev.startDate + ":" + ev.endDate + ":" + ri.uid
         : calendar.uid + ":" + ev.startDate + ":" + ev.endDate + ":" + ev.title
       ev.calendarName = calendar.name
-      eventPool.push(ev)
+      if (calendar.filter) {
+        var f = JSON.parse(calendar.filter).filter
+        var filter = Function("return " + f.toString())
+        var r = filter(ev)
+        if (r(ev)) {
+          eventPool.push(ev)
+        } else {
+          // do nothing
+        }
+      } else {
+        eventPool.push(ev)
+      }
     }
     eventPool.slice(calendar.maxItems)
     console.log(`[CALEXT2] calendar:${calendar.name} >> Scanned: ${wholeEvents.length}, Selected: ${eventPool.length}`)
