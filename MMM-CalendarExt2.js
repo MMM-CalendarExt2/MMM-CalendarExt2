@@ -214,7 +214,9 @@ Module.register("MMM-CalendarExt2", {
   },
 
   getScripts: function() {
-    return ["moment.js", "CALEXT2_Scene.js", "CALEXT2_View.js", "CALEXT2_Event.js", "CALEXT2_Slot.js"]
+    var r = ["moment.js", "CALEXT2_Scene.js", "CALEXT2_View.js", "CALEXT2_Event.js", "CALEXT2_Slot.js"]
+    if (this.config.iconify) r.push(this.config.iconify)
+    return r
   },
 
   getStyles: function() {
@@ -301,7 +303,6 @@ Module.register("MMM-CalendarExt2", {
 
   notificationReceived: function(noti, payload, sender) {
     if (noti == "DOM_OBJECTS_CREATED") {
-      this.loadExternalScript(this.config.iconify)
       this.sendSocketNotification("START", this.config)
       return
     }
@@ -319,15 +320,6 @@ Module.register("MMM-CalendarExt2", {
       }
     }
 
-  },
-
-  loadExternalScript:function(url) {
-    if (url) {
-      var tag = document.createElement("script")
-      tag.src = url
-      var firstScriptTag = document.getElementsByTagName("script")[0]
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
-    }
   },
 
   work: function(sceneUid = null) {
