@@ -174,6 +174,12 @@ module.exports = NodeHelper.create({
       ev.isFullday = isFullday
       if (isFullday) {
       }
+
+      // import the Microsoft property X-MICROSOFT-CDO-BUSYSTATUS, fall back to "BUSY" in case none was found
+      // possible values are 'FREE'|'TENTATIVE'|'BUSY'|'OOF' acording to
+      // https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcical/cd68eae7-ed65-4dd3-8ea7-ad585c76c736
+      ev.ms_busystatus = ri.component.getFirstPropertyValue('x-microsoft-cdo-busystatus') || 'BUSY'
+
       ev.uid = (ri.uid)
         ? calendar.uid + ":" + ev.startDate + ":" + ev.endDate + ":" + ri.uid
         : calendar.uid + ":" + ev.startDate + ":" + ev.endDate + ":" + ev.title
