@@ -1,7 +1,7 @@
 {
   "name": "MMM-CalendarExt2",
   "version": "1.0.3",
-  "description": "Alternative calndear module of MagicMirror.",
+  "description": "Alternative calendar module of MagicMirror.",
   "main": "MMM-CalendarExt2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
