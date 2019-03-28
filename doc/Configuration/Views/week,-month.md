@@ -35,7 +35,7 @@ If you set these view positions as `fullscreen_below` or `fullscreen_above`, the
   title: "My Schedule",
 },
 ```
-![view7](https://github.com/eouia/MMM-CalendarExt2/blob/master/screenshot/view7.png)
+![view7](view7.png)
 - modification Sample.
 ```js
 {
@@ -49,7 +49,7 @@ If you set these view positions as `fullscreen_below` or `fullscreen_above`, the
   showWeekends: false,
 },
 ```
-![view8](https://github.com/eouia/MMM-CalendarExt2/blob/master/screenshot/view8.png)
+![view8](view8.png)
 
 - another sample.
 ```js
@@ -62,5 +62,5 @@ If you set these view positions as `fullscreen_below` or `fullscreen_above`, the
   dateFormat: "M/D",
 },
 ```
-![view9](https://github.com/eouia/MMM-CalendarExt2/blob/master/screenshot/view9.png)
+![view9](view9.png)
 - In this example, I changed screen resolution from wide:1920 to wide:1080.(vertical layout). You can see view:month is too narrow in `bottom_bar`. Put it into `fullscreen`.

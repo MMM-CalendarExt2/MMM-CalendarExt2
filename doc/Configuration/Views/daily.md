@@ -28,7 +28,7 @@ slotTitleFormat: {
   position: "top_left",
 },
 ```
-![view1](https://github.com/eouia/MMM-CalendarExt2/blob/master/screenshot/view1.png)
+![view1](view1.png)
 - modification Sample.
 ```js
 {
@@ -42,4 +42,4 @@ slotTitleFormat: {
   useEventTimeRelative: true,
 },
 ```
-![view2](https://github.com/eouia/MMM-CalendarExt2/blob/master/screenshot/view2.png)
+![view2](view2.png)

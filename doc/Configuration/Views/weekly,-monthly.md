@@ -25,7 +25,7 @@ You can use all of common fields of [View](../View.md) in these views also.
   position: "top_left",
 },
 ```
-![view3](https://github.com/eouia/MMM-CalendarExt2/blob/master/screenshot/view3.png)
+![view3](view3.png)
 - modification Sample.
 ```js
 {
@@ -41,4 +41,4 @@ You can use all of common fields of [View](../View.md) in these views also.
   dateTimeFormat: "MMM Do HH:mm"
 },
 ```
-![view4](https://github.com/eouia/MMM-CalendarExt2/blob/master/screenshot/view4.png)
+![view4](view4.png)

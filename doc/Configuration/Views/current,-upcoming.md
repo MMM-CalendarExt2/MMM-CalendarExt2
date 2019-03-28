@@ -25,7 +25,7 @@ You can use all of common fields of [View](../View.md) in these views also.
   slotTitle: "MY CURRENT"
 },
 ```
-![view5](https://github.com/eouia/MMM-CalendarExt2/blob/master/screenshot/view5.png)
+![view5](view5.png)
 - modification Sample.
 ```js
 {
@@ -39,4 +39,4 @@ You can use all of common fields of [View](../View.md) in these views also.
   hideOverflow:true,
 },
 ```
-![view6](https://github.com/eouia/MMM-CalendarExt2/blob/master/screenshot/view6.png)
+![view6](view6.png)
