@@ -8,7 +8,7 @@ Whole new build-up for MMM-CalendarExt
 
 ```
 cd ~/MagicMirror/modules
-git clone https://github.com/eouia/MMM-CalendarExt2
+git clone --depth=1 https://github.com/eouia/MMM-CalendarExt2
 cd MMM-CalendarExt2
 npm install
 ```
@@ -18,6 +18,7 @@ If you like adjust [to your language](doc/Localization.md) or [adapt the styling
 
 Finally if you like a shortcut browse through [the examples of other peoples config](doc/examples).
 
+Note: If you want to start developing and miss the entire history run `git fetch --unshallow`.
 
 ## New Updates
 **[1.0.4]**
