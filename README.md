@@ -5,7 +5,19 @@ Whole new build-up for MMM-CalendarExt
 ![sample](https://raw.githubusercontent.com/eouia/MMM-CalendarExt2/master/screenshot/screenshot.png)
 
 ## Install & Configuration
-See the [wiki](https://github.com/eouia/MMM-CalendarExt2/wiki)
+
+```
+cd ~/MagicMirror/modules
+git clone https://github.com/eouia/MMM-CalendarExt2
+cd MMM-CalendarExt2
+npm install
+```
+
+Afterwards read how to configure everything in [the configuration documentation](doc/Configuration.md).
+If you like adjust [to your language](doc/Localization.md) or [adapt the styling](doc/Styling.md).
+
+Finally if you like a shortcut browse through [the examples of other peoples config](doc/examples).
+
 
 ## New Updates
 **[1.0.4]**
