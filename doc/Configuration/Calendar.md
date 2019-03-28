@@ -99,4 +99,4 @@ filter: (event) => {
   if (event.title == "WORK") return true
 }
 ```
-Available Event properties, See [[Event Object]].
+Available Event properties, See [Event Object](../Event-Object.md).

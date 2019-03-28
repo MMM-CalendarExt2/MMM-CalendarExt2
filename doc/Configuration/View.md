@@ -21,7 +21,7 @@ views: [
 ```
 This example shows 2 views. 
 - **Upcoming Hotspurs** is `upcoming` view and will be displayed in `top_right` with "Hotspurs calendar".
-- **My family affairs** is `month` view and will be displayed in `bottom_bar` with 3 calendars. (calendars should be already defined in calendars section([[2b. Configuration:Calendar]]) of configuration)
+- **My family affairs** is `month` view and will be displayed in `bottom_bar` with 3 calendars. (calendars should be already defined in [calendars section](Calendar.md) of configuration)
 
 Your Scene could have those as its views.
 
@@ -50,11 +50,11 @@ These fields could be used in all views. (But some fields might work differently
 |slotSubTitleFormat | String Or Object | "" | - | subtitle format of slot. See `slotTitleFormat` also.
 |filterPassedEvent |Boolean | true | false | If event is passed, filter it.
 |maxItems |Integer | 30 | 100 | How many items will be targeted for this view.
-|dateFormat|Object | {...} | {...} | See [[Event Time]].
-|timeFormat|Object | {...} | {...} | See [[Event Time]].
-|dateTimeFormat|Object | {...} | {...} | See [[Event Time]].
-|relativeFormat|Object | {...} | {...} | See [[Event Time]].
-|useEventTimeRelative |Boolean |true |false | If true, relativeFormat will be used instead time/date/dateTimeFormat. See [[Event Time]]|
-|filter|Function | (e)=>{} | (e)=>{...} | See [[Filtering and Sorting]]
-|sort|Function | (a,b)=>{} | (a,b)=>{...} | See [[Filtering and Sorting]]
-|transform|Function| (e)=>{} | (e)=>{...} | See [[Filtering and Sorting]]
+|dateFormat|Object | {...} | {...} | See [Event Time](../Event-Time.md).
+|timeFormat|Object | {...} | {...} | See [Event Time](../Event-Time.md).
+|dateTimeFormat|Object | {...} | {...} | See [Event Time](../Event-Time.md).
+|relativeFormat|Object | {...} | {...} | See [Event Time](../Event-Time.md).
+|useEventTimeRelative |Boolean |true |false | If true, relativeFormat will be used instead time/date/dateTimeFormat. See [Event Time](../Event-Time.md)|
+|filter|Function | (e)=>{} | (e)=>{...} | See [Filtering and Sorting](../Filtering-and-Sorting.md)
+|sort|Function | (a,b)=>{} | (a,b)=>{...} | See [Filtering and Sorting](../Filtering-and-Sorting.md)
+|transform|Function| (e)=>{} | (e)=>{...} | See [Filtering and Sorting](../Filtering-and-Sorting.md)

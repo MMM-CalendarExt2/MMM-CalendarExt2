@@ -1,4 +1,4 @@
-You can use all of common fields of [[2c. Configuration:View]] in this view also.
+You can use all of common fields of [View](../View.md) in these views also.
 
 `view:week` and `view:month` could be too wide and tall for small screen. Use it carefully.
 

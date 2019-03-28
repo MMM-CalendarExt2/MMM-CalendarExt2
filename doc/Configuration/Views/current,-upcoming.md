@@ -1,4 +1,4 @@
-You can use all of common fields of [[2c. Configuration:View]] in this view also.
+You can use all of common fields of [View](../View.md) in these views also.
 
 # View:current
 |field |value type |value example |default value |memo |
