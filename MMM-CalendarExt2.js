@@ -172,6 +172,7 @@ Module.register("MMM-CalendarExt2", {
 
     rotateInterval: 0, //when 0, autoRotate will be disabled.
     updateInterval: 1000 * 60, //If not rotated, this interval will be used for update content
+    deduplicateEventsOn: [],
     defaultSet: {
       calendar:{},
       scene:{},
