@@ -211,6 +211,62 @@ module.exports = NodeHelper.create({
         events = events.concat(cal)
       }
     }
+
+    // only run sorting and deduplication is the user actually wants it
+    if(Array.isArray(this.config.deduplicateEventsOn) && this.config.deduplicateEventsOn.length > 0){
+
+      // copied from https://stackoverflow.com/a/34853778
+      var spaceship = (val1, val2) => {
+        if ((val1 === null || val2 === null) || (typeof val1 != typeof val2)) {
+          return null;
+        }
+        if (typeof val1 === 'string') {
+          return (val1).localeCompare(val2);
+        }
+        else {
+          if (val1 > val2) { return 1 }
+          else if (val1 < val2) { return -1 }
+          return 0;
+        }
+      };
+
+      var compare_them = (a,b) => {
+        for (let property of this.config.deduplicateEventsOn) {
+          var comparison_result = spaceship(
+            a[property], b[property]
+          );
+          // if the comparison has found an order change
+          // immediately return to not waste more cycles
+          if( comparison_result !== null && comparison_result !== 0 ){
+            return comparison_result;
+          }
+        }
+        // if the order hasn't been changed, these two events must be identical
+        return 0;
+      };
+
+      // first sort all events by the properties they should be deduplicated on
+      events.sort(compare_them);
+
+      // now do the actual deduplication
+      events = events.filter((event,eventIndex) => {
+        if( eventIndex === 0 ){
+          return true;
+        }
+        // use the comparison again, but now events where the immediate
+        // predecessor is identical will be removed
+        var old_event = events[eventIndex-1];
+        if( compare_them(old_event, event) === 0 ){
+          // as most typically the duplicate event comes from another calendar merge the two calendarNames
+          old_event.calendarName += '|'+event.calendarName;
+          // now we can exclude this event
+          return false;
+        }
+        // finally keep all other events
+        return true;
+      });
+    }
+
     if (events.length > 0) {
       this.sendSocketNotification("EVENTS_REFRESHED", events)
     }
