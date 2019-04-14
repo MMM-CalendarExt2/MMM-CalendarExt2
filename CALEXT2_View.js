@@ -558,7 +558,7 @@ class ViewUpcoming extends ViewAgenda {
   }
 
   filterEvents(events) {
-    var until = moment().add(this.config.maxDays, "day")
+    var until = moment().add(this.config.maxDays, "day").endOf('day')
     var filtered = super.filterEvents(events)
     filtered = filtered.filter((e)=>{
       if (moment.unix(e.startDate).isBetween(moment(), until)) return true
