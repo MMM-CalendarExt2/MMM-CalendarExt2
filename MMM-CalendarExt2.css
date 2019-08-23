@@ -160,6 +160,12 @@
   width:100%;
 }
 
+.CX2 .monthViewTitle {
+  font-weight:bold;
+  font-size: calc(var(--font-size) * 2);
+  text-align:right;
+}
+
 .CX2 .cellSlot .slotHeader {
   flex-direction:row-reverse;
 }

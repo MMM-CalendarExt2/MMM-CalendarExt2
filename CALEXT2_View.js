@@ -593,4 +593,16 @@ class ViewMonth extends ViewCell {
     var now = moment().locale(this.locale)
     return now.add(fromNow, "month").endOf("month").startOf("week")
   }
+  makeSlots() {
+    super.makeSlots()
+    if (this.config.monthFormat) {
+      var fromNow = this.config.fromNow
+      var now = moment().locale(this.locale)
+      now.add(fromNow, "month").startOf("month")
+      var mt = document.createElement("div")
+      mt.innerHTML = now.format(this.config.monthFormat)
+      mt.classList.add("monthViewTitle")
+      this.contentDom.prepend(mt)
+    }
+  }
 }

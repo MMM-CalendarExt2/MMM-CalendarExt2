@@ -81,7 +81,8 @@ Module.register("MMM-CalendarExt2", {
         slotAltTitleFormat: "M/D",
         showWeekends: true,
         slotMaxHeight:"150px",
-        weeksFormat: "wo"
+        weeksFormat: "wo",
+        monthFormat: "MMMM"
       },
       upcoming: {
         slotTitle: "upcoming",

@@ -21,8 +21,8 @@ Finally if you like a shortcut browse through [the examples of other peoples con
 Note: If you want to start developing and miss the entire history run `git fetch --unshallow`.
 
 ## New Updates
-**[1.0.4]**
-- ADDED: event property `ms_busystatus' is added. (Thanks to @klaernie for the PR)
+**[1.0.5]**
+- ADDED: can display name of Month (e.g: August) in `month` view (`monthFormat:"MMMM"`)
 
 
 
@@ -43,6 +43,9 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 - dynamic scene changeable.
 
 ## Updates
+**[1.0.4]**
+- ADDED: event property `ms_busystatus` is added. (Thanks to @klaernie for the PR)
+
 **[1.0.3]**
 - FIXED: calendar filter is implemented (Sorry, I've totally forgotten it).
 
