@@ -1,4 +1,4 @@
-#Localization
+# Localization
 
 ## default locale
 ```js
