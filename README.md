@@ -42,6 +42,11 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 - Beautiful timeline view (month/week)
 - dynamic scene changeable.
 
+
+## Plugins
+- [MMM-CalendarExtTimeline](https://github.com/eouia/MMM-CalendarExtTimeline)
+- [MMM-CalendarExtMinimonth](https://github.com/eouia/MMM-CalendarExtMinimonth)
+
 ## Updates
 **[1.0.4]**
 - ADDED: event property `ms_busystatus` is added. (Thanks to @klaernie for the PR)

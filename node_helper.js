@@ -1,18 +1,9 @@
-const fs = require("fs")
-const path = require("path")
-const validUrl = require("valid-url")
-const request = require("request")
-const moment = require("moment-timezone")
-const ICAL = require("ical.js")
-const IcalExpander = require('ical-expander')
+const CalendarProcessor= require("./calendarProcessor");
 
 var NodeHelper = require('node_helper')
 
 module.exports = NodeHelper.create({
   start: function() {
-    this.config = {}
-    this.calendars = {}
-    this.calendarEvents = {}
   },
 
   stop: function() {
@@ -27,6 +18,7 @@ module.exports = NodeHelper.create({
   },
 
   work: function(config) {
+<<<<<<< HEAD
     this.config = config
     this.calendars = this.config.calendars
     if (this.config.locale) {
@@ -269,7 +261,11 @@ module.exports = NodeHelper.create({
     }
 
     if (events.length > 0) {
+=======
+    this.calendarProcessor= new CalendarProcessor(config, (events) => {
+>>>>>>> 7201ba997761cb2b25a22869436a44057b2cd7bf
       this.sendSocketNotification("EVENTS_REFRESHED", events)
-    }
+    });
+    this.calendarProcessor.startScanCalendars()
   }
 })
