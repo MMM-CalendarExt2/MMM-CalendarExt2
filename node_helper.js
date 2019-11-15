@@ -1,9 +1,18 @@
-const CalendarProcessor= require("./calendarProcessor");
+const fs = require("fs")
+const path = require("path")
+const validUrl = require("valid-url")
+const request = require("request")
+const moment = require("moment-timezone")
+const ICAL = require("ical.js")
+const IcalExpander = require('ical-expander')
 
 var NodeHelper = require('node_helper')
 
 module.exports = NodeHelper.create({
   start: function() {
+    this.config = {}
+    this.calendars = {}
+    this.calendarEvents = {}
   },
 
   stop: function() {
@@ -41,35 +50,34 @@ module.exports = NodeHelper.create({
     console.log(`[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`)
 
     var opts = null
+    var nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/)[1])
+    opts = {
+      "headers" : {
+        "User-Agent":
+          "Mozilla/5.0 (Node.js "
+          + nodeVersion + ") MagicMirror/"
+          + global.version
+          + " (https://github.com/MichMich/MagicMirror/)",
+      }
+    }
 
-  	var nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/)[1])
-  	opts = {
-  		"headers" : {
-  			"User-Agent":
-  				"Mozilla/5.0 (Node.js "
-  				+ nodeVersion + ") MagicMirror/"
-  				+ global.version
-  				+ " (https://github.com/MichMich/MagicMirror/)",
-  		}
-  	}
-
-  	if (calendar.auth) {
-  		if(calendar.auth.method === "bearer"){
-  			opts.auth = {
-  				bearer: calendar.auth.pass
-  			}
-  		} else {
-  			opts.auth = {
-  				user: calendar.auth.user,
-  				pass: calendar.auth.pass
-  			}
-  			if(calendar.auth.method === "digest"){
-  				opts.auth.sendImmediately = 0
-  			}else{
-  				opts.auth.sendImmediately = 1
-  			}
-  		}
-  	}
+    if (calendar.auth) {
+      if(calendar.auth.method === "bearer"){
+        opts.auth = {
+          bearer: calendar.auth.pass
+        }
+      } else {
+        opts.auth = {
+          user: calendar.auth.user,
+          pass: calendar.auth.pass
+        }
+        if(calendar.auth.method === "digest"){
+          opts.auth.sendImmediately = 0
+        }else{
+          opts.auth.sendImmediately = 1
+        }
+      }
+    }
 
 
     request(calendar.url, opts, (e, r, data)=>{
@@ -213,55 +221,54 @@ module.exports = NodeHelper.create({
           return null;
         }
         if (typeof val1 === 'string') {
-          return (val1).localeCompare(val2);
+          return (val1).localeCompare(val2)
         }
         else {
           if (val1 > val2) { return 1 }
           else if (val1 < val2) { return -1 }
-          return 0;
+          return 0
         }
-      };
+      }
 
       var compare_them = (a,b) => {
         for (let property of this.config.deduplicateEventsOn) {
           var comparison_result = spaceship(
             a[property], b[property]
-          );
+          )
           // if the comparison has found an order change
           // immediately return to not waste more cycles
           if( comparison_result !== null && comparison_result !== 0 ){
-            return comparison_result;
+            return comparison_result
           }
         }
         // if the order hasn't been changed, these two events must be identical
-        return 0;
-      };
+        return 0
+      }
 
       // first sort all events by the properties they should be deduplicated on
-      events.sort(compare_them);
+      events.sort(compare_them)
 
       // now do the actual deduplication
       events = events.filter((event,eventIndex) => {
         if( eventIndex === 0 ){
-          return true;
+          return true
         }
         // use the comparison again, but now events where the immediate
         // predecessor is identical will be removed
-        var old_event = events[eventIndex-1];
+        var old_event = events[eventIndex-1]
         if( compare_them(old_event, event) === 0 ){
           // as most typically the duplicate event comes from another calendar merge the two calendarNames
-          old_event.calendarName += '|'+event.calendarName;
+          old_event.calendarName += '|'+event.calendarName
           // now we can exclude this event
-          return false;
+          return false
         }
         // finally keep all other events
-        return true;
-      });
+        return true
+      })
     }
 
     if (events.length > 0) {
       this.sendSocketNotification("EVENTS_REFRESHED", events)
-    });
-    this.calendarProcessor.startScanCalendars()
+    }
   }
 })

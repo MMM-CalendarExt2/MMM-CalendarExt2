@@ -263,7 +263,6 @@ Module.register("MMM-CalendarExt2", {
     this.initBasicObjects(this.config.calendars, "calendar")
     this.initBasicObjects(this.config.views, "view", this.predefined.views)
     this.initBasicObjects(this.config.scenes, "scene")
-    console.log(this.config.calendars)
   },
 
   initBasicObjects: function(arrs, type, predefinedMode = null) {
