@@ -58,20 +58,21 @@ module.exports = NodeHelper.create({
   				"Mozilla/5.0 (Node.js "
   				+ nodeVersion + ") MagicMirror/"
   				+ global.version
-  				+ " (https://github.com/MichMich/MagicMirror/)"
+  				+ " (https://github.com/MichMich/MagicMirror/)",
   		}
   	}
-  	if (this.config.auth) {
-  		if(this.config.auth.method === "bearer"){
+
+  	if (calendar.auth) {
+  		if(calendar.auth.method === "bearer"){
   			opts.auth = {
-  				bearer: this.config.auth.pass
+  				bearer: calendar.auth.pass
   			}
   		} else {
   			opts.auth = {
-  				user: this.config.auth.user,
-  				pass: this.config.auth.pass
+  				user: calendar.auth.user,
+  				pass: calendar.auth.pass
   			}
-  			if(this.config.auth.method === "digest"){
+  			if(calendar.auth.method === "digest"){
   				opts.auth.sendImmediately = 0
   			}else{
   				opts.auth.sendImmediately = 1
