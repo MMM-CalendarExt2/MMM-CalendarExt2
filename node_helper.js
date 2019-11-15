@@ -18,7 +18,6 @@ module.exports = NodeHelper.create({
   },
 
   work: function(config) {
-<<<<<<< HEAD
     this.config = config
     this.calendars = this.config.calendars
     if (this.config.locale) {
