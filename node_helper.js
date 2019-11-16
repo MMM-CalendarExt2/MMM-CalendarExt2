@@ -61,7 +61,7 @@ module.exports = NodeHelper.create({
       }
     }
 
-    if (calendar.auth) {
+    if (calendar.auth && Object.keys(calendar.auth).length > 0) {
       if(calendar.auth.method === "bearer"){
         opts.auth = {
           bearer: calendar.auth.pass
