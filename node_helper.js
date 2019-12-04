@@ -261,7 +261,11 @@ module.exports = NodeHelper.create({
         var old_event = events[eventIndex-1]
         if( compare_them(old_event, event) === 0 ){
           // as most typically the duplicate event comes from another calendar merge the two calendarNames
-          old_event.calendarName += '|'+event.calendarName
+          if( ! old_event.hasOwnProperty('calendarNames') ){
+            old_event.calendarNames = new Set([old_event.calendarName]);
+          }
+          old_event.calendarNames.add( event.calendarName );
+          old_event.calendarName = [...old_event.calendarNames].sort().join('|');
           // now we can exclude this event
           return false
         }
