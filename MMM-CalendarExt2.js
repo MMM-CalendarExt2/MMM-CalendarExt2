@@ -242,6 +242,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   suspend: function() {
+    console.log("suspended")
     this.showing = false
     if (this.currentScene) {
       this.currentScene.clearViews()
@@ -249,6 +250,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   resume: function() {
+    console.log("resumed")
     this.showing = true
     if (this.currentScene) {
       this.work(this.currentScene.uid)

@@ -58,7 +58,8 @@ module.exports = NodeHelper.create({
           + nodeVersion + ") MagicMirror/"
           + global.version
           + " (https://github.com/MichMich/MagicMirror/)",
-      }
+      },
+      "gzip": true
     }
 
     if (calendar.auth && Object.keys(calendar.auth).length > 0) {
