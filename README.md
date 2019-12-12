@@ -21,8 +21,19 @@ Finally if you like a shortcut browse through [the examples of other peoples con
 Note: If you want to start developing and miss the entire history run `git fetch --unshallow`.
 
 ## New Updates
-**[1.0.5]**
-- ADDED: can display name of Month (e.g: August) in `month` view (`monthFormat:"MMMM"`)
+**[1.0.6]**
+- ADDED: `title` of view can have callback function as a value. Now you can make view title contextually
+```js
+title: "My Weekly",
+
+or
+
+title: (mObj) => { // moment object for first slot of view.
+  return mObj.format("[My Weekly:] Wo")
+},
+// This will show "My Weekly: 49TH" as module title.
+```
+
 
 
 
@@ -48,6 +59,9 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 - [MMM-CalendarExtMinimonth](https://github.com/eouia/MMM-CalendarExtMinimonth)
 
 ## Updates
+**[1.0.5]**
+- ADDED: can display name of Month (e.g: August) in `month` view (`monthFormat:"MMMM"`)
+
 **[1.0.4]**
 - ADDED: event property `ms_busystatus` is added. (Thanks to @klaernie for the PR)
 

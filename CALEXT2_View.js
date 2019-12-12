@@ -7,7 +7,6 @@ class View {
     this.slots = []
     this.contentDom = null
     this.moduleDom = null
-    this.contentDom = null
     this.containerDom = null
     this.calendars = config.calendars
     this.createDom()
@@ -128,7 +127,6 @@ class View {
     if (this.config.title) {
       var header = document.createElement("header")
       header.classList.add("module-header")
-      header.innerHTML = this.config.title
       module.appendChild(header)
     }
     var content = document.createElement("div")
@@ -143,6 +141,8 @@ class View {
     module.classList.add("hidden")
     this.contentDom = viewDom
     this.moduleDom = module
+
+
   }
 
   hide() {
@@ -175,6 +175,21 @@ class View {
       this.adjustSlotWidth(slot.dom, this.slots.length)
       this.appendSlot(slot)
     }
+    this.makeModuleTitle()
+  }
+
+  makeModuleTitle() {
+    if (!this.config.title) return
+    var headerTitle = this.moduleDom.getElementsByClassName("module-header")
+    var slotStart = Object.assign({}, this.slots[0].start)
+    var title
+    if (typeof this.config.title == "function") {
+      title = this.config.title(moment(slotStart))
+    } else {
+      title = this.config.title
+    }
+
+    headerTitle[0].innerHTML = title
   }
 
   appendSlot(slot) {
@@ -329,6 +344,7 @@ class ViewCell extends View {
       var slot = this.slots[i]
       this.appendSlot(slot)
     }
+    this.makeModuleTitle()
   }
 
   getSlotPeriods() {
