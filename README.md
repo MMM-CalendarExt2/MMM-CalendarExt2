@@ -57,6 +57,7 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 ## Plugins
 - [MMM-CalendarExtTimeline](https://github.com/eouia/MMM-CalendarExtTimeline)
 - [MMM-CalendarExtMinimonth](https://github.com/eouia/MMM-CalendarExtMinimonth)
+- [MMM-CalendarExtPlan](https://github.com/eouia/MMM-CalendarExtPlan)
 
 ## Updates
 **[1.0.5]**
