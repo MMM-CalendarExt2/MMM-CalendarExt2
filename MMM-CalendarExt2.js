@@ -97,7 +97,7 @@ Module.register("MMM-CalendarExt2", {
       }
     },
     calendar: {
-      maxItems: 100,
+      maxItems: 1000,
       scanInterval: 1000*60*30,
       beforeDays: 60,
       afterDays: 365,
@@ -134,7 +134,7 @@ Module.register("MMM-CalendarExt2", {
       slotTitle: "",
       slotSubTitle: "",
       filterPassedEvent: false,
-      maxItems:100,
+      maxItems:1000,
       dateFormat: {
         sameDay: "[Today]", // Or "MM/DD" format available
         nextDay: "[Tomorrow]",

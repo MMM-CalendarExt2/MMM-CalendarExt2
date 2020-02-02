@@ -80,8 +80,9 @@ module.exports = NodeHelper.create({
       }
     }
 
-
-    request(calendar.url, opts, (e, r, data)=>{
+    var url = calendar.url
+    url = url.replace("webcal://", "http://")
+    request(url, opts, (e, r, data)=>{
       if (e) {
         cb(calendar, null, e)
       } else {
