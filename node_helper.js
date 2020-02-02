@@ -87,10 +87,10 @@ module.exports = NodeHelper.create({
         cb(calendar, null, e)
       } else {
         cb(calendar, data, e)
-        setTimeout(()=>{
-          this.scanCalendar(calendar, cb)
-        }, calendar.scanInterval)
       }
+      setTimeout(()=>{
+        this.scanCalendar(calendar, cb)
+      }, calendar.scanInterval)
     })
   },
 
