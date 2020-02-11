@@ -10,6 +10,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 
+.module.MMM-CalendarExt2:not(.fake_module) {
+  display:none;
+}
+
 
 .CX2 { /* default values which are used frequently or dependently */
   --row-min-width: 100px;
