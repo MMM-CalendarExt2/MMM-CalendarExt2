@@ -90,6 +90,9 @@ class Event {
     } else {
       eventDom.classList.add("overday")
     }
+    if (event.isRecurring) {
+      eventDom.classList.add("recurred")
+    }
     if (event.startHere) eventDom.classList.add("starthere")
     if (event.endHere) eventDom.classList.add("endhere")
     if (event.className) eventDom.classList.add(event.className)

@@ -133,6 +133,7 @@ module.exports = NodeHelper.create({
       ev.location = ri.location
       ev.description = ri.description
       ev.title = ri.summary
+      ev.isRecurring = ri.isRecurring()
       if (Array.isArray(calendar.replaceTitle) && calendar.replaceTitle.length > 0) {
         for (let j = 0; j < calendar.replaceTitle.length; j++) {
           var rt = calendar.replaceTitle[j]
