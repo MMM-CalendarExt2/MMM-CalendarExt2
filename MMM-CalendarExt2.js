@@ -119,6 +119,7 @@ Module.register("MMM-CalendarExt2", {
       mode: "daily",
       className: "",
       position: "top_left",
+      positionOrder: -1,
       title: "", //???
       calendars: [],
       filter: (event) => {return true},

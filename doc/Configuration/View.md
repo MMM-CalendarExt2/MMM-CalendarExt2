@@ -1,6 +1,6 @@
 # VIEW
 - **View** is a specific look and definition to display events. Each view could have several calendars which are defined in `calendars` section. And each view instance can be reusable in multi-scenes.
-- There are several view modes; `upcoming`, `current`, `daily`, `weekly`, `monthly`, `week`, `month`. 
+- There are several view modes; `upcoming`, `current`, `daily`, `weekly`, `monthly`, `week`, `month`.
 - `views:[]` should have at least one or more `view` as its items.
 
 ```js
@@ -19,7 +19,7 @@ views: [
   },
 ],
 ```
-This example shows 2 views. 
+This example shows 2 views.
 - **Upcoming Hotspurs** is `upcoming` view and will be displayed in `top_right` with "Hotspurs calendar".
 - **My family affairs** is `month` view and will be displayed in `bottom_bar` with 3 calendars. (calendars should be already defined in [calendars section](Calendar.md) of configuration)
 
@@ -37,11 +37,12 @@ These fields could be used in all views. (But some fields might work differently
 |mode | String |"month" |"daily" | `"upcoming"`, `"current"`, `"daily"`, `"weekly"`, `"monthly"`, `"week"`, `"month"` are available.
 |className |String | "myViewClass" | "" | You can adjust CSS class to this view.
 |position |String | "bottom_bar" | "top_left" | Where to display this view.
+|positionOrder |Integer |2 | -1 | view order in position region. `-1`: last of region, `0`: first of region, Any positive integer like `2`: `n`th in region
 |calendars |Array of calendar names | ["My Football calendar", "US Holidays"] | [] | Which calendar events will be shown in this view. For all calendars, just set to `[]`
 |title |String | "SCHEDULE" | "" | It will be used as module header title.
 |locale |String | "de-DE" | default locale | You can apply specific locale to only this view instead default locale.
 |fromNow |Integer | -1 | 0 | When this view calendar will be start. <br> By example; in `view:monthly`, `-1` will be last month, `0` will be this month, `1` will be next month.<br/><br/>In view of `upcoming`, `current`, this value will be ignored.
-|slotCount |Integer |4 | 3 | How many periodic calendar slot will be shown. <br> By example; in `view:monthly`, `3` will show 3 `monthly` view slot. <br><br/>`mode:daily`, `fromNow:-1`, `slotCount:3` will be show *3 daily calendar slots from yesterday to tomorrow* <br/>Only in `daily`, `weekly`, `monthly`, this field will be valid. In other view modes, this will be ignored.
+|slotCount |Integer |4 | 3 | How many periodic calendar slot will be shown. <br> By example; in `view:monthly`, `3` will show 3 `monthly` view slot. <br><br/>`mode:daily`, `fromNow:-1`, `slotCount:3` will be show *3 daily calendar slots from yesterday to tomorrow* 
 |hideOverflow |Boolean |false | true | If events in slot are too many, you can hide some of events by this. Use with `slotMaxHeight`
 |slotMaxHeight |String | "200px" | "150px" | Set your slot height to display events. It is affected when you set `hideOverflow`.
 |slotTitle | String | "My Upcoming Schedule" | - | Set slot title with static text. This is prior than `slotTitleFormat`. If you want to display dynamic slot title by date, leave this to null or empty(`""`). <br/>**RECOMMENDED** only to `view:current` and `view:upcoming`.

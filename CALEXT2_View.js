@@ -112,7 +112,18 @@ class View {
 
   drawDom() {
     var container = this.getRegionDom(this.config.position)
-    container.appendChild(this.moduleDom)
+    var children = container.children
+    var order = this.config.positionOrder
+    if (order == -1) {
+      container.appendChild(this.moduleDom)
+    } else if (order >= 0 && order < children.length) {
+      container.insertBefore(this.moduleDom, children[order])
+    } else {
+      container.appendChild(this.moduleDom)
+    }
+
+
+
     if (container.style.display == "none") {
       container.style.display = "block"
     }
