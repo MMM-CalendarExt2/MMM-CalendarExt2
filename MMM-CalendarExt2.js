@@ -329,10 +329,11 @@ Module.register("MMM-CalendarExt2", {
     clearTimeout(this.rotateTimer)
     rotateTimer = null
 
-    var uid = (sceneUid) ? sceneUid : this.currentSceneUid
+    var uid = (sceneUid !== null) ? sceneUid : this.currentSceneUid
     if (this.currentScene) this.currentScene.clearViews()
+    this.currentSceneUid = uid;
+    this.currentScene = new Scene(uid, this.config)
     setTimeout(()=>{
-      this.currentScene = new Scene(uid, this.config)
       this.currentScene.draw(this.events)
     }, 500)
 
