@@ -252,7 +252,7 @@ Module.register("MMM-CalendarExt2", {
   resume: function() {
     this.showing = true
     if (this.currentScene) {
-      this.work(this.currentScene.uid)
+      this.work(this.currentSceneUid)
     } else {
       this.work()
     }
@@ -325,14 +325,18 @@ Module.register("MMM-CalendarExt2", {
   },
 
   work: function(sceneUid = null) {
-    if (!this.showing) return false
-    clearTimeout(this.rotateTimer)
-    rotateTimer = null
+    var uid = (sceneUid !== null) ? sceneUid : this.currentSceneUid
+    this.currentSceneUid = uid;
+    if (!this.showing){
+      return false
+    }
 
-    var uid = (sceneUid) ? sceneUid : this.currentSceneUid
+    clearTimeout(this.rotateTimer)
+    this.rotateTimer = null
+
     if (this.currentScene) this.currentScene.clearViews()
+    this.currentScene = new Scene(uid, this.config)
     setTimeout(()=>{
-      this.currentScene = new Scene(uid, this.config)
       this.currentScene.draw(this.events)
     }, 500)
 
@@ -342,7 +346,7 @@ Module.register("MMM-CalendarExt2", {
       }, this.config.rotateInterval)
     } else {
       this.rotateTimer = setTimeout(()=> {
-        this.work(this.currentScene.uid)
+        this.work(uid)
       }, this.config.updateInterval)
     }
   },
