@@ -13,10 +13,10 @@ cd MMM-CalendarExt2
 npm install
 ```
 
-Afterwards read how to configure everything in [the configuration documentation](doc/Configuration.md).
-If you like adjust [to your language](doc/Localization.md) or [adapt the styling](doc/Styling.md).
+Afterwards read how to configure everything in [the configuration documentation](docs/Configuration.md).
+If you like adjust [to your language](docs/Localization.md) or [adapt the styling](docs/Styling.md).
 
-Finally if you like a shortcut browse through [the examples of other peoples config](doc/examples).
+Finally if you like a shortcut browse through [the examples of other peoples config](docs/examples).
 
 Note: If you want to start developing and miss the entire history run `git fetch --unshallow`.
 
