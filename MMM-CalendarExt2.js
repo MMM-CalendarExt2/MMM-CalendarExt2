@@ -261,6 +261,19 @@ Module.register("MMM-CalendarExt2", {
   initConfig: function() {
     this.config.defaultSet = Object.assign({}, this.predefined.defaultSet, this.config.defaultSet)
     this.config.notifications = Object.assign({}, this.predefined.notifications, this.config.notifications)
+
+    if( typeof(this.config.firstDrawingDelay) == "string"){
+      this.config.firstDrawingDelay = eval(this.config.firstDrawingDelay)
+    }
+
+    if( typeof(this.config.updateInterval) == "string"){
+      this.config.updateInterval = eval(this.config.updateInterval)
+    }
+
+    if( typeof(this.config.rotateInterval) == "string"){
+      this.config.rotateInterval = eval(this.config.rotateInterval)
+    }
+
     this.initBasicObjects(this.config.calendars, "calendar")
     this.initBasicObjects(this.config.views, "view", this.predefined.views)
     this.initBasicObjects(this.config.scenes, "scene")
@@ -286,6 +299,9 @@ Module.register("MMM-CalendarExt2", {
       if (!arrs[i].locale && type == "view") arrs[i].locale = this.config.locale
       if (arrs[i].filter && type == "calendar") {
         arrs[i].filter = JSON.stringify({"filter": arrs[i].filter.toString()})
+      }
+      if( typeof(arrs[i].scanInterval) == "string" ){
+        arrs[i].scanInterval = eval(arrs[i].scanInterval)
       }
     }
   },
