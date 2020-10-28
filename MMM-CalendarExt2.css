@@ -284,7 +284,7 @@
 }
 
 .CX2 .eventTime .end::before {
-  content:"\00a0-\00a0";
+  content:"-\00a0";
 }
 
 .CX2 .event.passed::before { /* If you don't want to passed pattern, overwrite this */
