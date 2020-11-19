@@ -9,24 +9,24 @@ const IcalExpander = require('ical-expander')
 var NodeHelper = require('node_helper')
 
 module.exports = NodeHelper.create({
-  start: function() {
+  start: function () {
     this.config = {}
     this.calendars = {}
     this.calendarEvents = {}
   },
 
-  stop: function() {
+  stop: function () {
   },
 
   socketNotificationReceived: function (noti, payload) {
-    switch(noti) {
+    switch (noti) {
       case "START":
         this.work(payload)
         break
     }
   },
 
-  work: function(config) {
+  work: function (config) {
     this.config = config
     this.calendars = this.config.calendars
     if (this.config.locale) {
@@ -35,24 +35,24 @@ module.exports = NodeHelper.create({
     this.startScanCalendars()
   },
 
-  startScanCalendars: function() {
-    for(i = 0; i < this.calendars.length; i++) {
+  startScanCalendars: function () {
+    for (i = 0; i < this.calendars.length; i++) {
       this.scanCalendar(
         this.calendars[i],
-        (calendar, icalData=null, error=null)=>{
+        (calendar, icalData = null, error = null) => {
           this.parser(calendar, icalData, error)
         }
       )
     }
   },
 
-  scanCalendar: function(calendar, cb) {
+  scanCalendar: function (calendar, cb) {
     console.log(`[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`)
 
     var opts = null
     var nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/)[1])
     opts = {
-      "headers" : {
+      "headers": {
         "User-Agent":
           "Mozilla/5.0 (Node.js "
           + nodeVersion + ") MagicMirror/"
@@ -63,7 +63,7 @@ module.exports = NodeHelper.create({
     }
 
     if (calendar.auth && Object.keys(calendar.auth).length > 0) {
-      if(calendar.auth.method === "bearer"){
+      if (calendar.auth.method === "bearer") {
         opts.auth = {
           bearer: calendar.auth.pass
         }
@@ -72,9 +72,9 @@ module.exports = NodeHelper.create({
           user: calendar.auth.user,
           pass: calendar.auth.pass
         }
-        if(calendar.auth.method === "digest"){
+        if (calendar.auth.method === "digest") {
           opts.auth.sendImmediately = 0
-        }else{
+        } else {
           opts.auth.sendImmediately = 1
         }
       }
@@ -82,19 +82,19 @@ module.exports = NodeHelper.create({
 
     var url = calendar.url
     url = url.replace("webcal://", "http://")
-    request(url, opts, (e, r, data)=>{
+    request(url, opts, (e, r, data) => {
       if (e) {
         cb(calendar, null, e)
       } else {
         cb(calendar, data, e)
       }
-      setTimeout(()=>{
+      setTimeout(() => {
         this.scanCalendar(calendar, cb)
       }, calendar.scanInterval)
     })
   },
 
-  parser: function(calendar, iCalData=null, error=null) {
+  parser: function (calendar, iCalData = null, error = null) {
     if (error) {
       console.log(`[CALEXT2] calendar:${calendar.name} >> ${error.message}`)
       return
@@ -105,7 +105,7 @@ module.exports = NodeHelper.create({
     }
     var icalExpander
     try {
-      icalExpander = new IcalExpander({ics:iCalData, maxIterations: calendar.maxIterations})
+      icalExpander = new IcalExpander({ ics: iCalData, maxIterations: calendar.maxIterations })
     } catch (e) {
       console.log(`[CALEXT2] calendar:${calendar.name} >> ${e.message}`)
       return
@@ -128,12 +128,15 @@ module.exports = NodeHelper.create({
       var item = wholeEvents[i]
 
       var ri = (item.hasOwnProperty("item")) ? item.item : item
+
       var ev = {}
       ev.calendarId = calendar.uid
       ev.location = ri.location
       ev.description = ri.description
       ev.title = ri.summary
       ev.isRecurring = ri.isRecurring()
+      ev.isCancelled = (item.hasOwnProperty("component") ? item.component.getFirstPropertyValue("status") != null 
+          ? item.component.getFirstPropertyValue("status").toUpperCase() == "CANCELLED" : false : false);
       if (Array.isArray(calendar.replaceTitle) && calendar.replaceTitle.length > 0) {
         for (let j = 0; j < calendar.replaceTitle.length; j++) {
           var rt = calendar.replaceTitle[j]
@@ -205,7 +208,7 @@ module.exports = NodeHelper.create({
     this.mergeEvents(eventPool, calendar.uid)
   },
 
-  mergeEvents: function(eventPool, calendarId) {
+  mergeEvents: function (eventPool, calendarId) {
     this.calendarEvents[calendarId] = eventPool
     var events = []
     for (i in Object.keys(this.calendarEvents)) {
@@ -216,7 +219,7 @@ module.exports = NodeHelper.create({
     }
 
     // only run sorting and deduplication is the user actually wants it
-    if(Array.isArray(this.config.deduplicateEventsOn) && this.config.deduplicateEventsOn.length > 0){
+    if (Array.isArray(this.config.deduplicateEventsOn) && this.config.deduplicateEventsOn.length > 0) {
 
       // copied from https://stackoverflow.com/a/34853778
       var spaceship = (val1, val2) => {
@@ -233,14 +236,14 @@ module.exports = NodeHelper.create({
         }
       }
 
-      var compare_them = (a,b) => {
+      var compare_them = (a, b) => {
         for (let property of this.config.deduplicateEventsOn) {
           var comparison_result = spaceship(
             a[property], b[property]
           )
           // if the comparison has found an order change
           // immediately return to not waste more cycles
-          if( comparison_result !== null && comparison_result !== 0 ){
+          if (comparison_result !== null && comparison_result !== 0) {
             return comparison_result
           }
         }
@@ -252,19 +255,19 @@ module.exports = NodeHelper.create({
       events.sort(compare_them)
 
       // now do the actual deduplication
-      events = events.filter((event,eventIndex) => {
-        if( eventIndex === 0 ){
+      events = events.filter((event, eventIndex) => {
+        if (eventIndex === 0) {
           return true
         }
         // use the comparison again, but now events where the immediate
         // predecessor is identical will be removed
-        var old_event = events[eventIndex-1]
-        if( compare_them(old_event, event) === 0 ){
+        var old_event = events[eventIndex - 1]
+        if (compare_them(old_event, event) === 0) {
           // as most typically the duplicate event comes from another calendar merge the two calendarNames
-          if( ! old_event.hasOwnProperty('calendarNames') ){
+          if (!old_event.hasOwnProperty('calendarNames')) {
             old_event.calendarNames = new Set([old_event.calendarName]);
           }
-          old_event.calendarNames.add( event.calendarName );
+          old_event.calendarNames.add(event.calendarName);
           old_event.calendarName = [...old_event.calendarNames].sort().join('|');
           // now we can exclude this event
           return false
