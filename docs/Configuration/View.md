@@ -39,7 +39,7 @@ These fields could be used in all views. (But some fields might work differently
 |position |String | "bottom_bar" | "top_left" | Where to display this view.
 |positionOrder |Integer |2 | -1 | view order in position region. `-1`: last of region, `0`: first of region, Any positive integer like `2`: `n`th in region
 |calendars |Array of calendar names | ["My Football calendar", "US Holidays"] | [] | Which calendar events will be shown in this view. For all calendars, just set to `[]`
-|title |String | "SCHEDULE" | "" | It will be used as module header title.
+|title |String or callback | "SCHEDULE" | "" | It will be used as module header title.
 |locale |String | "de-DE" | default locale | You can apply specific locale to only this view instead default locale.
 |fromNow |Integer | -1 | 0 | When this view calendar will be start. <br> By example; in `view:monthly`, `-1` will be last month, `0` will be this month, `1` will be next month.<br/><br/>In view of `upcoming`, `current`, this value will be ignored.
 |slotCount |Integer |4 | 3 | How many periodic calendar slot will be shown. <br> By example; in `view:monthly`, `3` will show 3 `monthly` view slot. <br><br/>`mode:daily`, `fromNow:-1`, `slotCount:3` will be show *3 daily calendar slots from yesterday to tomorrow* 
@@ -59,3 +59,14 @@ These fields could be used in all views. (But some fields might work differently
 |filter|Function | (e)=>{} | (e)=>{...} | See [Filtering and Sorting](../Filtering-and-Sorting.md)
 |sort|Function | (a,b)=>{} | (a,b)=>{...} | See [Filtering and Sorting](../Filtering-and-Sorting.md)
 |transform|Function| (e)=>{} | (e)=>{...} | See [Filtering and Sorting](../Filtering-and-Sorting.md)
+
+#### title callback
+If you can set `title` as a callback function, the result of function will be used as module title.
+```js
+title: (mObj) => {
+  return mObj.format("[My Weekly:] Wo")
+},
+```
+This example will return "My Weekly: 49th" or similar.
+
+callback function get `moment Object` of first slot start time for arguments. So you can handle it in callback function.
