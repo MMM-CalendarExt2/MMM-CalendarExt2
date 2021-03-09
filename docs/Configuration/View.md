@@ -51,6 +51,7 @@ These fields could be used in all views. (But some fields might work differently
 |slotSubTitleFormat | String Or Object | "" | - | subtitle format of slot. See `slotTitleFormat` also.
 |filterPassedEvent |Boolean | true | false | If event is passed, filter it.
 |maxItems |Integer | 30 | 100 | How many items will be targeted for this view.
+|skipItems |Integer | 30 | - | How many items should be skipt (e.g. cause they allready displays in another column).
 |dateFormat|Object | {...} | {...} | See [Event Time](../Event-Time.md).
 |timeFormat|Object | {...} | {...} | See [Event Time](../Event-Time.md).
 |dateTimeFormat|Object | {...} | {...} | See [Event Time](../Event-Time.md).
