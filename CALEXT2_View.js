@@ -35,9 +35,9 @@ class View {
   }
 
   assignEvents(events) {
-	if (this.config.skipItems === undefined) {
-		this.config.skipItems = 0
-	}
+    if (this.config.skipItems === undefined) {
+      this.config.skipItems = 0
+    }
 	
     this.events = this.filterEvents(this.transformEvents(events)).slice(this.config.skipItems, this.config.maxItems + this.config.skipItems)
   }
