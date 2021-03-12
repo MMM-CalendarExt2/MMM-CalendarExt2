@@ -218,7 +218,7 @@ module.exports = NodeHelper.create({
     }
 
     // only run sorting and deduplication is the user actually wants it
-    if(Array.isArray(this.config.deduplicateEventsOn) && this.config.deduplicateEventsOn.length > 0) {
+    if(Array.isArray(this.config.deduplicateEventsOn) && this.config.deduplicateEventsOn.length > 0){
 
       // copied from https://stackoverflow.com/a/34853778
       var spaceship = (val1, val2) => {
@@ -235,7 +235,7 @@ module.exports = NodeHelper.create({
         }
       }
 
-      var compare_them = (a, b) => {
+      var compare_them = (a,b) => {
         for (let property of this.config.deduplicateEventsOn) {
           var comparison_result = spaceship(
             a[property], b[property]
