@@ -13,6 +13,7 @@ If you set these view positions as `fullscreen_below` or `fullscreen_above`, the
 |showWeekends |Boolean |false |true |Show Saturday and Sunday.
 |slotMaxHeight |String |"150px" |"240px" |height of calendar cell. `hideOverflow` is set to `true` by force in this view.
 |weeksFormat |String |"[week] wo" |"wo" |Weeks mark of calendar.
+|monthFormat |String | "[Month:] MM" | "MMMM" |The title of month in current view. (CSS selector:`.monthViewTitle`)
 
 # View:month
 |field |value type |value example |default value |memo |

@@ -80,8 +80,8 @@ payload: (payload, sender) => {
 ```
 
 **Available executable functions**
-- `nextScene()`
-- `previousScene()`
+- `sceneNext()`
+- `scenePrevious()`
 - `changeSceneById(seq)`
 - `chageSceneByName(name)`
 - `eventQuery({filter:fn(event), callback:fn(events)})`

@@ -14,7 +14,7 @@ You can define how to show the event time. `timeFormat`, `dateFormat` and `dateT
   - e.g) `dateFormat:"ddd MM/DD",` will be displayed as `Mon 12/17` in `en-US` locale.
 - **dateTimeFormat**
   - This format will be used for all other event.
-  - e.g) `dateFormat:"HH:mm M/D",` will be displayed as `01:23 1/3`.
+  - e.g) `dateTimeFormat:"HH:mm M/D",` will be displayed as `01:23 1/3`.
 
 - Or You can use more complex calendar-style formatter object to define more humanized time.
   - e.g) for `dateTimeFormat`, below format will be displayed as `Yesterday 12:34` or `Last Sat 02:00`.

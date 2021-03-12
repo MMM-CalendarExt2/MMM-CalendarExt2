@@ -12,6 +12,7 @@ isFullday:false
 isMoment:false
 isOneday:true
 isPassed:false
+isRecurring:false
 location:""
 startDate:"1546631100"
 startDateJ:"2019-01-04T19:45:00.000Z"
