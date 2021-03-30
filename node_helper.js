@@ -210,7 +210,7 @@ module.exports = NodeHelper.create({
   mergeEvents: function(eventPool, calendarId) {
     this.calendarEvents[calendarId] = eventPool
     var events = []
-    for (i in Object.keys(this.calendarEvents)) {
+    for (i of Object.keys(this.calendarEvents)) {
       if (this.calendarEvents.hasOwnProperty(i)) {
         var cal = this.calendarEvents[i]
         events = events.concat(cal)
