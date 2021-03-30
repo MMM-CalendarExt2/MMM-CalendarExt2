@@ -63,7 +63,7 @@ With this configuration, event title `"Totten Hotspurs - FC. Arsenal"` will be c
 
 ```js
 replaceTitle:[
-  ["/([A-Z])([a-z]+ ?)/g", "$1"]
+  [/([A-Z])([a-z]+ ?)/g, "$1"]
 ],
 ```
 
