@@ -23,6 +23,7 @@
   "dependencies": {
     "ical-expander": "^2.0.0",
     "moment": "^2.22.2",
-    "moment-timezone": "^0.5.23"
+    "moment-timezone": "^0.5.23",
+    "valid-url": "^1.0.9"
   }
 }
