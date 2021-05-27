@@ -104,6 +104,7 @@ class Event {
     eventDom.dataset.duration = event.duration
     eventDom.dataset.title = event.title
     eventDom.dataset.location = event.location
+    eventDom.dataset.busystatus = event.ms_busystatus
 
     var mainDom = document.createElement("div")
     mainDom.classList.add("eventMain")
