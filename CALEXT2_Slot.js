@@ -6,6 +6,7 @@ class Slot {
     this.locale = view.config.locale
     this.useEventTimeRelative = view.config.useEventTimeRelative
     this.hideOverflow = view.config.hideOverflow
+    this.hideFooter = view.config.hideFooter
     this.maxHeight = view.config.slotMaxHeight
     this.relativeFormat = view.config.relativeFormat
     this.timeFormat = view.config.timeFormat
@@ -13,6 +14,10 @@ class Slot {
     this.dateTimeFormat = view.config.dateTimeFormat
     this.events = []
     this.init(view)
+
+    if (this.hideFooter) {
+        this.dom.classList.add("hideFooter");
+    }
   }
 
   init(view) {
