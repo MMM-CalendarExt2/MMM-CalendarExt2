@@ -273,7 +273,12 @@ class WeekSlot extends Slot {
       }
     }
 
-    if (timelineDom.scrollHeight > timelineDom.clientHeight) {
+    if (this.maxHeight == "auto") {
+      var slots = this.contentDom.querySelectorAll(".cellSlot .slotContent");
+      for (let l = 0; l < slots.length; l++) {
+        slots[l].style = "height: " + timelineDom.scrollHeight + "px";
+      }
+    } else if (timelineDom.scrollHeight > timelineDom.clientHeight) {
       var tlDom = timelineDom.querySelectorAll(".timelineSleeve")
       var tlRect = tlDom[0].getBoundingClientRect()
       var shown = Math.floor(timelineDom.clientHeight / tlRect.height)
