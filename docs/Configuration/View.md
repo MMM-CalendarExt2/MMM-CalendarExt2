@@ -48,6 +48,7 @@ These fields could be used in all views. (But some fields might work differently
 |slotMaxHeight |String | "200px" | "150px" | Set your slot height to display events. It is affected when you set `hideOverflow`. If you want the height of the calendar to be adjusted automatically to the height needed (e.g. in week view), set this value to "auto".
 |slotTitle | String | "My Upcoming Schedule" | - | Set slot title with static text. This is prior than `slotTitleFormat`. If you want to display dynamic slot title by date, leave this to null or empty(`""`). <br/>**RECOMMENDED** only to `view:current` and `view:upcoming`.
 |slotTitleFormat | String Or Object | "MM/DD" | - | Set slot title by date. formatter of `.format()` of `moment.js` or object of `.calendar()` of `moment.js`   
+|slotSpaceRight | Integer | 3 | 0 | How much space should be left on the right side of entries in week or month view
 |slotSubTitle | String | "" | - | subtitle of slot. See `slotTitle` also.
 |slotSubTitleFormat | String Or Object | "" | - | subtitle format of slot. See `slotTitleFormat` also.
 |filterPassedEvent |Boolean | true | false | If event is passed, filter it.

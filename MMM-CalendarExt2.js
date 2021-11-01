@@ -129,6 +129,7 @@ Module.register("MMM-CalendarExt2", {
       fromNow: 0,
       slotCount: 3,
       slotMaxHeight: "150px",
+      slotSpaceRight: 3,
       hideOverflow: true,
       hideFooter: false,
       slotTitleFormat: "",

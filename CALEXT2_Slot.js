@@ -7,6 +7,7 @@ class Slot {
     this.useEventTimeRelative = view.config.useEventTimeRelative
     this.hideOverflow = view.config.hideOverflow
     this.hideFooter = view.config.hideFooter
+    this.slotSpaceRight = view.config.slotSpaceRight
     this.maxHeight = view.config.slotMaxHeight
     this.relativeFormat = view.config.relativeFormat
     this.timeFormat = view.config.timeFormat
@@ -252,7 +253,8 @@ class WeekSlot extends Slot {
         var left = positions[pos].left - parentPosition.left
         var width = positions[endPos].left - positions[pos].left + positions[endPos].width
         eventDom.style.left = left + "px"
-        eventDom.style.width = width - 15 + "px"
+        eventDom.style.width = (width - this.slotSpaceRight) + "px"
+        eventDom.style.boxSizing = "border-box";
 
         for (let k = 0; k < timelines.length; k++) {
           var tl = timelines[k]
