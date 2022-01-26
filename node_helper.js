@@ -82,7 +82,7 @@ module.exports = NodeHelper.create({
 
     var url = calendar.url
     url = url.replace("webcal://", "http://")
-    const response = await fetch(url)
+    const response = await fetch(url, opts)
     const data = await response.text()
     //console.log(data);
 
