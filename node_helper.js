@@ -1,7 +1,7 @@
 const fs = require("fs")
 const path = require("path")
 const validUrl = require("valid-url")
-const request = require("request")
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const moment = require("moment-timezone")
 const ICAL = require("ical.js")
 const IcalExpander = require('ical-expander')
@@ -46,7 +46,7 @@ module.exports = NodeHelper.create({
     }
   },
 
-  scanCalendar: function(calendar, cb) {
+  scanCalendar: async function(calendar, cb) {
     console.log(`[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`)
 
     var opts = null
@@ -82,16 +82,22 @@ module.exports = NodeHelper.create({
 
     var url = calendar.url
     url = url.replace("webcal://", "http://")
-    request(url, opts, (e, r, data)=>{
-      if (e) {
-        cb(calendar, null, e)
-      } else {
-        cb(calendar, data, e)
-      }
+    const response = await fetch(url, opts)
+    const data = await response.text()
+    //console.log(data);
+
+    try {
+      cb(calendar, data, null)
       setTimeout(()=>{
         this.scanCalendar(calendar, cb)
       }, calendar.scanInterval)
-    })
+    } catch (error) {
+      cb(calendar, data, error)
+      console.error(error)
+    
+      const errorBody = await error.response.text()
+      console.error(`Error body: ${errorBody}`)
+    }
   },
 
   parser: function(calendar, iCalData=null, error=null) {

@@ -8,7 +8,7 @@ Whole new build-up for MMM-CalendarExt
 
 ```
 cd ~/MagicMirror/modules
-git clone --depth=1 https://github.com/eouia/MMM-CalendarExt2
+git clone --depth=1 https://github.com/MMM-CalendarExt2/MMM-CalendarExt2
 cd MMM-CalendarExt2
 npm install
 ```
@@ -20,13 +20,8 @@ Finally if you like a shortcut browse through [the examples of other peoples con
 
 Note: If you want to start developing and miss the entire history run `git fetch --unshallow`.
 
-## New Updates
-**[1.0.9] 2020-02-14**
-- Added: `positionOrder` of `view`. now you can change the order of that view in region(position) against other modules.
-
-
-
 ## Major feature
+
 - Multiple views at same time in a scene
 - Scenes could be rotated by time or notification or other trigger (e.g: Scene per `PAGE`)
 - `MMM-CalendarExtTimeline`, `MMM-TelegramBot` supported.
@@ -49,6 +44,15 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 - [MMM-CalendarExtPlan](https://github.com/eouia/MMM-CalendarExtPlan)
 
 ## Updates
+
+**[1.1.0] 2022-02-11**
+- Vertical Autosizing, Hidden Footer and Space right of items in week/month view #128
+- Replace deprecated package `request` by `node-fetch` #135
+- Fixed `git clone` problem with Windows #137
+
+**[1.0.9] 2020-02-14**
+- Added: `positionOrder` of `view`. now you can change the order of that view in region(position) against other modules.
+
 **[1.0.8] 2020-02-13**
 - Added: `isRecurring` property to `event` object. now you can check this event is recurred or not. You can use this in `filter/sort/transform` callbacks. and CSS class `recurred` will be added to that event.
 

@@ -1,6 +1,6 @@
 {
   "name": "MMM-CalendarExt2",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Alternative calendar module of MagicMirror.",
   "main": "MMM-CalendarExt2.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eouia/MMM-CalendarExt2.git"
+    "url": "git+https://github.com/MMM-CalendarExt2/MMM-CalendarExt2.git"
   },
   "keywords": [
     "MagicMirror",
@@ -17,14 +17,14 @@
   "author": "eouia <eouia0819@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/eouia/MMM-CalendarExt2/issues"
+    "url": "https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues"
   },
-  "homepage": "https://github.com/eouia/MMM-CalendarExt2#readme",
+  "homepage": "https://github.com/MMM-CalendarExt2/MMM-CalendarExt2#readme",
   "dependencies": {
-    "ical-expander": "^2.0.0",
-    "moment": "^2.22.2",
-    "moment-timezone": "^0.5.23",
-    "request": "^2.88.2",
+    "ical-expander": "^3.1.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.34",
+    "node-fetch": "^3.2.0",
     "valid-url": "^1.0.9"
   }
 }
