@@ -6,6 +6,8 @@ class Slot {
     this.locale = view.config.locale
     this.useEventTimeRelative = view.config.useEventTimeRelative
     this.hideOverflow = view.config.hideOverflow
+    this.hideFooter = view.config.hideFooter
+    this.slotSpaceRight = view.config.slotSpaceRight
     this.maxHeight = view.config.slotMaxHeight
     this.relativeFormat = view.config.relativeFormat
     this.timeFormat = view.config.timeFormat
@@ -13,6 +15,10 @@ class Slot {
     this.dateTimeFormat = view.config.dateTimeFormat
     this.events = []
     this.init(view)
+
+    if (this.hideFooter) {
+        this.dom.classList.add("hideFooter");
+    }
   }
 
   init(view) {
@@ -247,7 +253,8 @@ class WeekSlot extends Slot {
         var left = positions[pos].left - parentPosition.left
         var width = positions[endPos].left - positions[pos].left + positions[endPos].width
         eventDom.style.left = left + "px"
-        eventDom.style.width = width - 15 + "px"
+        eventDom.style.width = (width - this.slotSpaceRight) + "px"
+        eventDom.style.boxSizing = "border-box";
 
         for (let k = 0; k < timelines.length; k++) {
           var tl = timelines[k]
@@ -273,7 +280,12 @@ class WeekSlot extends Slot {
       }
     }
 
-    if (timelineDom.scrollHeight > timelineDom.clientHeight) {
+    if (this.maxHeight == "auto") {
+      var slots = this.contentDom.querySelectorAll(".cellSlot .slotContent");
+      for (let l = 0; l < slots.length; l++) {
+        slots[l].style = "height: " + timelineDom.scrollHeight + "px";
+      }
+    } else if (timelineDom.scrollHeight > timelineDom.clientHeight) {
       var tlDom = timelineDom.querySelectorAll(".timelineSleeve")
       var tlRect = tlDom[0].getBoundingClientRect()
       var shown = Math.floor(timelineDom.clientHeight / tlRect.height)

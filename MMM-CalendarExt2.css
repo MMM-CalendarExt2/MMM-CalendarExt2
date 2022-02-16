@@ -132,6 +132,11 @@
   padding-right:5px;
 }
 
+.CX2 .slot.hideFooter .slotFooter,
+.CX2 .slot.hideFooter .weeksmark {
+    display: none;
+}
+
 .CX2 .today .slotHeader { /* today slot */
   background-color:rgba(255,255,255,0.8);
   color:#000;
