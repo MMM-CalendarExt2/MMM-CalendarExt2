@@ -77,7 +77,7 @@ replaceTitle:[
   background-color:#333;
 }
 ```
-- **auth** : If your calendar needs additional info, use it.
+- **auth** : If your calendar needs additional authenication, use it here. It currently supports `bearer`, `digest` and `basic`. Make sure to use the exact spelling or else it won't work. Nextcloud for example uses basic auth in most cases.
 ```
 auth: {
   method: "bearer",
@@ -88,6 +88,14 @@ or
 
 auth: {
   method: "digest",
+  user: "yourusername",
+  pass: "yourpasword"
+}
+
+or
+
+auth: {
+  method: "basic",
   user: "yourusername",
   pass: "yourpasword"
 }
