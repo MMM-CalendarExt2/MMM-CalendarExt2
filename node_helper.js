@@ -64,6 +64,10 @@ module.exports = NodeHelper.create({
     }
 
     if (calendar.auth && Object.keys(calendar.auth).length > 0) {
+      if(calendar.auth.password != undefined){ // Just catch people who use password instead of pass
+        calendar.auth.pass = calendar.auth.password;
+      }
+
       if(calendar.auth.method === "bearer"){
         opts.auth = {
           bearer: calendar.auth.pass
