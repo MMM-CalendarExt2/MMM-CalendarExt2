@@ -5,6 +5,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 const moment = require("moment-timezone")
 const ICAL = require("ical.js")
 const IcalExpander = require('ical-expander')
+const base64 = require('base-64');
 
 var NodeHelper = require('node_helper')
 
@@ -67,6 +68,8 @@ module.exports = NodeHelper.create({
         opts.auth = {
           bearer: calendar.auth.pass
         }
+      } else if(calendar.auth.method == "basic") {
+        opts.headers = {'Authorization': 'Basic ' + base64.encode(calendar.auth.user + ":" + calendar.auth.pass)};
       } else {
         opts.auth = {
           user: calendar.auth.user,
