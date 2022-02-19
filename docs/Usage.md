@@ -9,7 +9,7 @@ You can command to change scene via `MMM-TelegramBot`
 ## With `notification`
 Other MM module can order to change scene with notification.
 
-### Pre-defined notifications
+### Predefined notifications
 **CALEXT2_SCENE_NEXT**
 - `.sendNotification("CALEXT2_SCENE_NEXT", null)`
 
@@ -57,7 +57,7 @@ By this configuration, `PAGE_CHANGED` notification could activate `changeSceneBy
   - callback function: Or you can describe callback function which would return function name.
 ```js
 exec: "FUNCTION NAME",
- 
+
 or
 
 exec: (payload, sender) => {
@@ -69,7 +69,7 @@ exec: (payload, sender) => {
   - null : When there is no need to use payload.
   - callback function: Or you can describe callback function which would manipulate and convert payload.
 ```js
-payload: null, 
+payload: null,
 
 or
 

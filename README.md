@@ -6,7 +6,7 @@ Whole new build-up for MMM-CalendarExt
 
 ## Install & Configuration
 
-```
+```sh
 cd ~/MagicMirror/modules
 git clone --depth=1 https://github.com/MMM-CalendarExt2/MMM-CalendarExt2
 cd MMM-CalendarExt2
@@ -58,7 +58,7 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 
 **[1.0.7] 2020-01-31**
 - MODIFIED: Default value of `maxItems` to `1000` from `100` to avoid frequently asking issue of `events of nowadays are not shown`
-- MODIFIED: Automatically fixing of unofficial URI fofm `webcal://` url to `http://`.
+- MODIFIED: Automatically fixing of unofficial URI from `webcal://` URL to `http://`.
 
 **[1.0.6]**
 - ADDED: `title` of view can have callback function as a value. Now you can make view title contextually
