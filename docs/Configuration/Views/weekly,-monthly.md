@@ -5,15 +5,15 @@ You can use all of common fields of [View](../View.md) in these views also.
 |field |value type |value example |default value |memo |
 |---|---|---|---|---|
 |type |String |"row" |"column" | You can arrange event slots by row or column. This field will be ignored in other views. In `bar` or `fullscreen` region, `"row"` could look nicer.
-|slotSubTitleFormat |String |"" |"gggg" |pre-defined extra information of slots of this weekly view.
-|slotTitleFormat |String Or Object |"" |"[Week: ]wo" |pre-defined slot title.
+|slotSubTitleFormat |String |"" |"gggg" |predefined extra information of slots of this weekly view.
+|slotTitleFormat |String Or Object |"" |"[Week: ]wo" |predefined slot title.
 
 # View:monthly
 |field |value type |value example |default value |memo |
 |---|---|---|---|---|
 |type |String |"row" |"column" | You can arrange event slots by row or column. This field will be ignored in other views. In `bar` or `fullscreen` region, `"row"` could look nicer.
-|slotSubTitleFormat |String |"" |"YYYY" |pre-defined extra information of slots of this monthly view.
-|slotTitleFormat |String Or Object |"" |"MMMM" |pre-defined slot title.
+|slotSubTitleFormat |String |"" |"YYYY" |predefined extra information of slots of this monthly view.
+|slotTitleFormat |String Or Object |"" |"MMMM" |predefined slot title.
 
 ## Example:
 - Basic Sample

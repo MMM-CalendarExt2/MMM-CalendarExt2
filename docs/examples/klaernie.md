@@ -123,7 +123,7 @@ Mirror, as he knows pretty well that he needs to go to school.
 },
 ```
 
-## css/custom.css
+## `css/custom.css`
 
 As our Mirror display only has a resolution of 1280x800 I decided to reduce the
 margins on the entire mirror and remove the `+1` space marking omitted events

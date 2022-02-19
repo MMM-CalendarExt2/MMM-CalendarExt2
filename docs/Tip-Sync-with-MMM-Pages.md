@@ -96,10 +96,10 @@ I've set 3 pages (page:0, page:1, page:2). Each has some other modules like `clo
 },
 
 ```
-I made 3 views and put them into 3 scenes. 
+I made 3 views and put them into 3 scenes.
 Then, see `notifications` section. When `PAGE_INCREMENT` is coming, **`sceneNext`** command is executed. easy.
 The results are above pictures.
-And, this is already explained in wiki of github.
+And, this is already explained in wiki of GitHub.
 
 
 **One More Thing**
