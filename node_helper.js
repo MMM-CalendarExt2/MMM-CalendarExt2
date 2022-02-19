@@ -1,9 +1,10 @@
-const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
-const moment = require("moment-timezone");
-const ICAL = require("ical.js");
-const IcalExpander = require("ical-expander");
-
+const fs = require("fs")
+const path = require("path")
+const validUrl = require("valid-url")
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const moment = require("moment-timezone")
+const ICAL = require("ical.js")
+const IcalExpander = require('ical-expander')
 const NodeHelper = require("node_helper");
 
 module.exports = NodeHelper.create({
