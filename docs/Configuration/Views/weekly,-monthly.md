@@ -1,3 +1,4 @@
+<!-- markdownlint-disable-file MD041 -->
 You can use all of common fields of [View](../View.md) in these views also.
 
 # View:weekly
@@ -15,7 +16,7 @@ You can use all of common fields of [View](../View.md) in these views also.
 |slotSubTitleFormat |String |"" |"YYYY" |predefined extra information of slots of this monthly view.
 |slotTitleFormat |String Or Object |"" |"MMMM" |predefined slot title.
 
-## Example:
+## Examples
 - Basic Sample
 ```js
 {

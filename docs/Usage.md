@@ -1,3 +1,4 @@
+# Integrating with other modules
 ## With `MMM-TelegramBot`
 You can command to change scene via `MMM-TelegramBot`
 - `/scene` : change to first scene of `scenes` list.

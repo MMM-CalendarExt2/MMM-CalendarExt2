@@ -5,7 +5,7 @@
 - Another Scenes Example : `Last Month`, `This Month`, `Next Month`, ...
 
 
-Here is an example of `scenes` fields 
+Here is an example of `scenes` fields
 ```javascript
 scenes: [ // `scenes` could have several scenes as elements of array
   {
