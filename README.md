@@ -90,5 +90,5 @@ title: (mObj) => { // moment object for first slot of view.
 
 
 ## MEMO
-### Bug with MMM-Carousel.
+### Bug with MMM-Carousel
 - When you are using it with `MMM-Carousel`, `MMM-CalendarExt2` should be in main page or all pages.

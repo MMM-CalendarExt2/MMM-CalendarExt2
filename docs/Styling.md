@@ -66,7 +66,7 @@ A event has these DOMs as its component.
 - eventMain
   - eventIcon
   - eventTitle
-  - eventTime 
+  - eventTime
 - eventSub
   - eventDescription
   - eventLocation
@@ -78,7 +78,7 @@ Each slot could have parts of these as its class by condition. You can overwrite
 - CALENDARCLASSNAME : defined in your configuration
 
 
-### event dataSet 
+### event dataSet
 Each event could have these values as dataset.
 - data-calendar-name
 - data-calendar-seq

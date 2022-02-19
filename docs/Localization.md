@@ -33,7 +33,7 @@ views: [
 ],
 ```
 
-## change date and dateTime Format to relative humanized.
+## change date and dateTime Format to relative humanized
 ```js
 views: [
   ...
@@ -52,7 +52,7 @@ views: [
   },
 ],
 ```
-## change relativeFormat.
+## change relativeFormat
 ```js
 views: [
   ...

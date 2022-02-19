@@ -1,3 +1,4 @@
+<!-- markdownlint-disable-file MD041 -->
 You can use all of common fields of [View](../View.md) in these views also.
 
 # View:current
@@ -15,7 +16,7 @@ You can use all of common fields of [View](../View.md) in these views also.
 |maxDays |Integer |7 |30 |...until this.
 |useEventTimeRelative |Boolean |false |true |Personally, I like relative format in current & upcoming view. You can modify it.
 
-## Example:
+## Examples
 - Basic Sample
 ```js
 {

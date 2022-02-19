@@ -1,5 +1,6 @@
+# the `Event` object
 Each event has this structure.
-```
+```javascript
 calendarId:1
 calendarName:"Tottenham"
 className:"mySoccerClass"
@@ -19,15 +20,15 @@ startDate:"1546631100"
 startDateJ:"2019-01-04T19:45:00.000Z"
 title:"Team T.B.A. - Tottenham Hotspur"
 uid:"1:1546631100:1546638300:op54vk5s1r0ivl8i165ampip88@google.com"
-ms_busystatus:"BUSY" // Only for calendar from MS Outlook. Available : "BUSY", "FREE", "TENTATIVE", "OOF" 
+ms_busystatus:"BUSY" // Only for calendar from MS Outlook. Available : "BUSY", "FREE", "TENTATIVE", "OOF"
 ```
 You can use these properties for filtering, sorting, or external usage by notification.
 
 Additionally, in `sort` callback function of each view configuration, you can use this also.
-```
+```javascript
 calendarSeq: 1
 ```
-`calendarSeq` is the order of calendar in your view configuration. 
+`calendarSeq` is the order of calendar in your view configuration.
 By example;
 ```js
 { //example view

@@ -1,3 +1,4 @@
+<!-- markdownlint-disable-file MD041 -->
 You can use all of common fields of [View](../View.md) in these views also.
 
 `view:week` and `view:month` could be too wide and tall for small screen. Use it carefully.
@@ -26,7 +27,7 @@ If you set these view positions as `fullscreen_below` or `fullscreen_above`, the
 |weeksFormat |String |"[week] wo" |"wo" |Weeks mark of calendar.
 - In `view:month`, `slotCount` will be ignored.
 
-## Example:
+## Examples
 - Basic Sample
 ```js
 {

@@ -1,4 +1,4 @@
-## Filtering
+# Filtering
 You can filter the events in `calendar` and `view`.
 There could be many cases to use filter, I make it as callback function. Sorry for all non-developers. But it's not so difficult.
 The basic concept is here.
@@ -21,7 +21,7 @@ filter: (event) => {
 ```
 This code says **If this event is fullday event, use it. But if not so, drop it from event list**. When you need only `fullday` events, this could be useful.
 
-## Sorting
+# Sorting
 You can also use sorting in `view`. (`calendar` doesn't support sorting, because to display sorted events depends on each view.)
 Concept is similar.
 ```js
@@ -52,7 +52,7 @@ sort: (a, b) => {
 This means **Sort by calendar Sequence first. when sequence of two events are same, compare startDate and earlier is prior**.
 
 
-## Transforming
+# Transforming
 You can also use transforming in `view`. (`calendar` doesn't support transforming, because to display transformed events depends on each view.)
 
 Concept;

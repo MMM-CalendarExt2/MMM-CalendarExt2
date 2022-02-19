@@ -1,11 +1,11 @@
-# Other configurations.
+# Other configurations
 
 |field |value type |value example |default value |memo |
 |---|---|---|---|---|
 |locale |String |"de-DE" |Your system locale |Set your locale for this module.
-|rotateInterval |Number (ms) |1000*60 |0 |If set, `Scene` will be rotated per this time. If set as `0`, auto-rotation among the scenes will be disabled.
-|updateInterval |Number (ms) |1000* 60 *10 |1000*60 |If not auto-rotated, this interval will be used for updating content.
-|firstDrawingDelay |Number (ms) |1000*10 |1000 |Sometimes, calendar parsing could be somewhat late. You can set delay for first drawing to wait calendar parsing
+|rotateInterval |Number (ms) |`1000*60` |`0` |If set, `Scene` will be rotated per this time. If set as `0`, auto-rotation among the scenes will be disabled.
+|updateInterval |Number (ms) |`1000* 60 *10` |`1000*60` |If not auto-rotated, this interval will be used for updating content.
+|firstDrawingDelay |Number (ms) |`1000*10` |`1000` |Sometimes, calendar parsing could be somewhat late. You can set delay for first drawing to wait calendar parsing
 |deduplicateEventsOn | Array | `["startDate","endDate","duration","title","location"]` | `[]` | define which attributes must be equal in order to remove duplicate events
 
 # Event Deduplication
