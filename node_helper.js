@@ -1,17 +1,8 @@
-const fs = require("fs")
-const path = require("path")
-const validUrl = require("valid-url")
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-const moment = require("moment-timezone")
-const ICAL = require("ical.js")
-const IcalExpander = require('ical-expander')
-
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const moment = require("moment-timezone");
 const ICAL = require("ical.js");
 const IcalExpander = require("ical-expander");
-const base64 = require("base-64");
 
 const NodeHelper = require("node_helper");
 
