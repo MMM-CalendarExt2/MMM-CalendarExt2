@@ -3,9 +3,6 @@
   "version": "1.1.0",
   "description": "Alternative calendar module of MagicMirror.",
   "main": "MMM-CalendarExt2.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MMM-CalendarExt2/MMM-CalendarExt2.git"
@@ -21,10 +18,28 @@
   },
   "homepage": "https://github.com/MMM-CalendarExt2/MMM-CalendarExt2#readme",
   "dependencies": {
+    "base-64": "^1.0.0",
     "ical-expander": "^3.1.0",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.34",
     "node-fetch": "^3.2.0",
     "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1",
+    "stylelint": "^14.3.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-prettier": "^2.0.0"
+  },
+  "scripts": {
+    "lint": "eslint . && stylelint **/*.css",
+    "lint:fix": "eslint --fix . && stylelint --fix **/*.css",
+    "test": "npm run lint"
   }
 }

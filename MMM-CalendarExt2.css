@@ -285,7 +285,6 @@
 
 .CX2 .eventTime * {
   display:none;
-  padding-left: 5px;
 }
 
 .CX2 .eventTime .end::before {
