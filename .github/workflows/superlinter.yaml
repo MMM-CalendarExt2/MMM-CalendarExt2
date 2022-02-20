@@ -17,6 +17,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: install modules
+        run: |
+          npm ci
+
+
       # Runs the Super-Linter action
       - name: Run Super-Linter
         uses: github/super-linter/slim@v4.8.5
