@@ -1,14 +1,9 @@
 /* since this file runs under nodejs directly it uses console.log to notify users - hence disable the no-console check */
 /* eslint no-console: "off" */
 
-const fs = require("fs");
-const path = require("path");
-const validUrl = require("valid-url");
-
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const moment = require("moment-timezone");
-const ICAL = require("ical.js");
 const IcalExpander = require("ical-expander");
 
 const NodeHelper = require("node_helper");
