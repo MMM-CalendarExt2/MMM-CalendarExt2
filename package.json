@@ -37,8 +37,10 @@
     "stylelint-prettier": "^2.0.0"
   },
   "scripts": {
-    "lint": "eslint -c .github/linters/.eslintrc.js . && stylelint --config .github/linters/.stylelintrc.json **/*.css",
-    "lint:fix": "eslint -c .github/linters/.eslintrc.js --fix . && stylelint --config .github/linters/.stylelintrc.json --fix **/*.css",
+    "lint": "npm run eslint && npm run stylelint",
+    "lint:fix": "npm run eslint:fix && npm run stylelint:fix",
+    "eslint": "bash -c 'eslint -c .github/linters/.eslintrc.js ${@:-.}' -- ",
+    "eslint:fix": "bash -c 'eslint -c .github/linters/.eslintrc.js --fix ${@:-.}' -- ",
     "stylelint": "stylelint --config .github/linters/.stylelintrc.json **/*.css",
     "stylelint:fix": "stylelint --config .github/linters/.stylelintrc.json --fix **/*.css",
     "test": "npm run lint"
