@@ -12,6 +12,9 @@ module.exports = {
   },
   plugins: ["prettier"],
   root: true,
+  globals: {
+    "moment": "readonly"
+  },
   rules: {
     "default-case": "off",
     "global-require": "off",
