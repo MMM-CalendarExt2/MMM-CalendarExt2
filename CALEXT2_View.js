@@ -1,6 +1,5 @@
-/* global moment */
-
-// eslint-disable-next-line no-unused-vars, no-undef
+/* global Slot ViewCurrent ViewUpcoming ViewMonth ViewDaily ViewWeekly ViewMonthly ViewWeek */
+// eslint-disable-next-line no-unused-vars
 class View {
   constructor(config, events) {
     this.config = config;
@@ -88,7 +87,7 @@ class View {
     const calendarFilter =
       Array.isArray(calendars) && calendars.length > 0
         ? (e) => calendars.indexOf(e.calendarName) >= 0
-        : (e) => true;
+        : () => true;
     let filtered = events.filter(calendarFilter);
     if (this.config.filterPassedEvent) {
       const now = moment().format("X");

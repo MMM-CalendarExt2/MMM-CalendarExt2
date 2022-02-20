@@ -3,7 +3,7 @@
 
 const fetch = (...args) =>
   // eslint-disable-next-line no-shadow
-  import ("node-fetch").then(({ default: fetch }) => fetch(...args));
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const moment = require("moment-timezone");
 const IcalExpander = require("ical-expander");
 
@@ -72,7 +72,7 @@ module.exports = NodeHelper.create({
         };
       } else if (calendar.auth.method === "basic") {
         const buff = Buffer.from(`${calendar.auth.user}:${calendar.auth.pass}`);
-        opts.headers.Authorization = "Basic " + buff.toString("base64");
+        opts.headers.Authorization = `Basic ${buff.toString("base64")}`;
       } else {
         opts.auth = {
           user: calendar.auth.user,
@@ -167,8 +167,8 @@ module.exports = NodeHelper.create({
         }
       }
 
-      var startDate;
-      var endDate;
+      let startDate;
+      let endDate;
       if (calendar.forceLocalTZ) {
         const ts = item.startDate.toJSON();
         ts.month -= 1;

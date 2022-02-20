@@ -1,4 +1,5 @@
-// eslint-disable-next-line no-unused-vars, no-undef
+/* global Slot */
+// eslint-disable-next-line no-unused-vars
 class CellSlot extends Slot {
   constructor(view, period, daySeq = 0, weekSeq = 0) {
     super(view, period, daySeq);
