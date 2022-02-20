@@ -1,3 +1,4 @@
+<!-- markdownlint-disable-file MD025 -->
 # Other configurations
 
 |field |value type |value example |default value |memo |
@@ -43,7 +44,7 @@ Imagine the following:
 
 
 ## Example of whole configuration for real usage
-```
+```javascript
 {
   module: 'MMM-CalendarExt2',
   config: {

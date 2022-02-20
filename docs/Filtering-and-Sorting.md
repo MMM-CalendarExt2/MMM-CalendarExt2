@@ -1,3 +1,4 @@
+<!-- markdownlint-disable-file MD025 -->
 # Filtering
 You can filter the events in `calendar` and `view`.
 There could be many cases to use filter, I make it as callback function. Sorry for all non-developers. But it's not so difficult.
