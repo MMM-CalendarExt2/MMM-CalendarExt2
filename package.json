@@ -39,6 +39,8 @@
   "scripts": {
     "lint": "eslint . && stylelint **/*.css",
     "lint:fix": "eslint --fix . && stylelint --fix **/*.css",
+    "stylelint": "stylelint **/*.css",
+    "stylelint:fix": "stylelint --fix **/*.css",
     "test": "npm run lint"
   }
 }
