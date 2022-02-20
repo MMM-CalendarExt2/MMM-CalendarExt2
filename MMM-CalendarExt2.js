@@ -107,6 +107,7 @@ Module.register("MMM-CalendarExt2", {
       icon: "",
       className: "",
       auth: {},
+      // eslint-disable-next-line no-unused-vars
       filter: (event) => true // you can make a filter to include/exclude specific events per calendar
     },
     scene: {
@@ -122,6 +123,7 @@ Module.register("MMM-CalendarExt2", {
       positionOrder: -1,
       title: "", // ???
       calendars: [],
+      // eslint-disable-next-line no-unused-vars
       filter: (event) => true,
       sort: (a, b) => a.startDate - b.startDate,
       transform: (event) => event,
