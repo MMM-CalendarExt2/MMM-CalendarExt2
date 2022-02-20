@@ -223,7 +223,17 @@ Module.register("MMM-CalendarExt2", {
       "CALEXT2_Event.js",
       "CALEXT2_Slot.js",
       "CALEXT2_CellSlot.js",
-      "CALEXT2_WeekSlot.js"
+      "CALEXT2_WeekSlot.js",
+      "CALEXT2_ViewAgenda.js",
+      "CALEXT2_ViewCell.js",
+      "CALEXT2_ViewCurrent.js",
+      "CALEXT2_ViewPeriod.js",
+      "CALEXT2_ViewDaily.js",
+      "CALEXT2_ViewMonth.js",
+      "CALEXT2_ViewMonthly.js",
+      "CALEXT2_ViewUpcoming.js",
+      "CALEXT2_ViewWeek.js",
+      "CALEXT2_ViewWeekly.js"
     ];
     if (this.config.iconify) r.push(this.config.iconify);
     return r;
