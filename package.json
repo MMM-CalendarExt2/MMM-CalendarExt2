@@ -1,6 +1,6 @@
 {
-  "name": "MMM-CalendarExt2",
-  "version": "1.1.0",
+  "name": "mmm-calendarext2",
+  "version": "1.2.0",
   "description": "Alternative calendar module of MagicMirror.",
   "main": "MMM-CalendarExt2.js",
   "repository": {
@@ -25,14 +25,14 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "eslint": "^8.8.0",
+    "eslint": "^8.9.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.5.1",
-    "stylelint": "^14.3.0",
+    "stylelint": "^14.5.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-prettier": "^2.0.0"
