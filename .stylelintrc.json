@@ -4,6 +4,8 @@
   "root": true,
   "rules": {
     "prettier/prettier": true,
-    "rule-empty-line-before": null
+    "rule-empty-line-before": null,
+    "selector-class-pattern": "^(MMM-CalendarExt2|CX2|fake_module|module-content|[a-z][a-zA-Z0-9]+(_\\d+)?)$",
+    "keyframes-name-pattern": "^(MMM-CalendarExt2|CX2|fake_module|module-content|[a-z][a-zA-Z0-9]+(_\\d+)?)$"
   }
 }
