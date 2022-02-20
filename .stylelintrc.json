@@ -1,9 +1,9 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
-	"plugins": ["stylelint-prettier"],
-	"root": true,
+  "plugins": ["stylelint-prettier"],
+  "root": true,
   "rules": {
     "prettier/prettier": true,
     "rule-empty-line-before": null
-	}
+  }
 }
