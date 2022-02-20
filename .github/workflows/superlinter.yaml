@@ -29,4 +29,5 @@ jobs:
           # the klaernie example k8s deployment has duplicated segments on purpose (same filter for two seperate calendars, in two config instances).
           # JSCPD detects these, but they are unavoidable
           VALIDATE_JSCPD: false
+          LINTER_RULES_PATH: /
           CSS_FILE_NAME: .stylelintrc.json
