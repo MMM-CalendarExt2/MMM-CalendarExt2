@@ -43,6 +43,8 @@
     "eslint:fix": "bash -c 'eslint -c .github/linters/.eslintrc.js --fix ${@:-.}' -- ",
     "stylelint": "stylelint --config .github/linters/.stylelintrc.json **/*.css",
     "stylelint:fix": "stylelint --config .github/linters/.stylelintrc.json --fix **/*.css",
+    "prettier": "bash -c 'prettier -c ${@:-.}' -- ",
+    "prettier:fix": "bash -c 'prettier -w ${@:-.}' -- ",
     "test": "npm run lint"
   }
 }
