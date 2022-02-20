@@ -1,5 +1,7 @@
 # MMM-CalendarExt2
 
+[![GitHub Super-Linter](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
 Whole new build-up for MMM-CalendarExt
 
 ## Screenshot
