@@ -18,6 +18,7 @@ module.exports = {
     "prefer-destructuring": "off",
     "prettier/prettier": "error",
     "import/no-dynamic-require": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   }
 };
