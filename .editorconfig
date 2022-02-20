@@ -12,4 +12,4 @@ insert_final_newline = true
 # Minified JavaScript files shouldn't be changed
 [**.min.js]
 indent_style = ignore
-insert_final_newline = ignore
+insert_final_newline = false
