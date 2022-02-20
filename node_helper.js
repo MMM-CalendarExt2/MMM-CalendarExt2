@@ -149,12 +149,12 @@ module.exports = NodeHelper.create({
       ev.description = ri.description;
       ev.title = ri.summary;
       ev.isRecurring = ri.isRecurring();
-      ev.isCancelled = item.hasOwnProperty("component") ?
-        item.component.getFirstPropertyValue("status") != null ?
-        item.component.getFirstPropertyValue("status").toUpperCase() ===
-        "CANCELLED" :
-        false :
-        false;
+      ev.isCancelled = item.hasOwnProperty("component")
+        ? item.component.getFirstPropertyValue("status") != null
+        ? item.component.getFirstPropertyValue("status").toUpperCase() ===
+          "CANCELLED"
+        : false
+        : false;
       if (
         Array.isArray(calendar.replaceTitle) &&
         calendar.replaceTitle.length > 0
@@ -209,9 +209,9 @@ module.exports = NodeHelper.create({
         ri.component.getFirstPropertyValue("x-microsoft-cdo-busystatus") ||
         "BUSY";
 
-      ev.uid = ri.uid ?
-        `${calendar.uid}:${ev.startDate}:${ev.endDate}:${ri.uid}` :
-        `${calendar.uid}:${ev.startDate}:${ev.endDate}:${ev.title}`;
+      ev.uid = ri.uid
+        ? `${calendar.uid}:${ev.startDate}:${ev.endDate}:${ri.uid}`
+        : `${calendar.uid}:${ev.startDate}:${ev.endDate}:${ev.title}`;
       ev.calendarName = calendar.name;
       if (calendar.filter) {
         const f = JSON.parse(calendar.filter).filter;
