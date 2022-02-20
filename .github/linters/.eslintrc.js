@@ -13,7 +13,7 @@ module.exports = {
   plugins: ["prettier"],
   root: true,
   globals: {
-    "moment": "readonly"
+    moment: "readonly"
   },
   rules: {
     "default-case": "off",
@@ -22,7 +22,7 @@ module.exports = {
     "prettier/prettier": "error",
     "import/no-dynamic-require": "off",
     "import/no-unresolved": "off",
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
     "no-prototype-builtins": "off"
   }
 };

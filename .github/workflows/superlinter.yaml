@@ -21,7 +21,6 @@ jobs:
         run: |
           npm ci
 
-
       # Runs the Super-Linter action
       - name: Run Super-Linter
         uses: github/super-linter/slim@v4
