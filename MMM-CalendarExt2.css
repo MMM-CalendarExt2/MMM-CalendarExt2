@@ -84,10 +84,6 @@
   background-image: linear-gradient(rgb(0 0 0 / 100%), rgb(0 0 0 / 0%));
 }
 
-.CX2 .weekSlot > .slotContent {
-  background-image: none;
-}
-
 .CX2 .slot.eventCount_0 {
   /* slot which has no event */
 
@@ -99,7 +95,7 @@
   /* type: row view */
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: wrap;
   justify-content: space-around;
 }
 
@@ -198,6 +194,7 @@
 }
 
 .CX2 .weekSlot > .slotContent {
+  background-image: none;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -357,15 +354,6 @@
   position: absolute;
 }
 
-.CX2 .weekSlot .eventMain {
-  height: var(--font-size);
-  padding: 2px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: left;
-}
-
 .CX2 .weekSlot .eventIcon {
   min-width: var(--font-size);
   min-height: var(--font-size);
@@ -382,6 +370,12 @@
 }
 
 .CX2 .weekSlot .eventMain {
+  height: var(--font-size);
+  padding: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
   display: flex;
   flex-direction: row;
 }
