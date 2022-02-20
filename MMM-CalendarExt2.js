@@ -20,6 +20,7 @@ Module.register("MMM-CalendarExt2", {
         payload: null
       },
       CALEXT2_SCENE_CHANGE: {
+        // eslint-disable-next-line no-unused-vars
         exec: (payload, sender) => {
           if (payload.type && payload.type === "id") {
             return "changeSceneById";
@@ -29,10 +30,12 @@ Module.register("MMM-CalendarExt2", {
           }
           return null;
         },
+        // eslint-disable-next-line no-unused-vars
         payload: (payload, sender) => (payload.key ? payload.key : null)
       },
       CALEXT2_EVENT_QUERY: {
         exec: "eventQuery",
+        // eslint-disable-next-line no-unused-vars
         payload: (payload, sender) => payload
       }
     },
