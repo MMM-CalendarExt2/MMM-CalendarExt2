@@ -1,4 +1,4 @@
-class CellSlot extends Slot {
+class CellSlot extends Slot { // eslint-disable-line no-unused-vars, no-undef
   constructor(view, period, daySeq = 0, weekSeq = 0) {
     super(view, period, daySeq);
     this.start = period.start;

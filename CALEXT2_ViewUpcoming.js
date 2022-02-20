@@ -1,4 +1,4 @@
-class ViewUpcoming extends ViewAgenda {
+class ViewUpcoming extends ViewAgenda { // eslint-disable-line no-unused-vars, no-undef
   constructor(config, events) {
     super(config, events);
   }

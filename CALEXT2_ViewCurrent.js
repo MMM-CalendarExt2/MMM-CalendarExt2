@@ -1,4 +1,4 @@
-class ViewCurrent extends ViewAgenda {
+class ViewCurrent extends ViewAgenda { // eslint-disable-line no-unused-vars, no-undef
   constructor(config, events) {
     super(config, events);
   }

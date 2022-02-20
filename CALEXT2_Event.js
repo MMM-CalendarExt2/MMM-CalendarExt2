@@ -1,6 +1,6 @@
 /* global moment */
 
-class Event {
+class Event { // eslint-disable-line no-unused-vars, no-undef
   constructor(data, slot) {
     this.data = data;
     this.locale = slot.locale;

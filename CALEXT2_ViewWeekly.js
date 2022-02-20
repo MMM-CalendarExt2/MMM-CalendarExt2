@@ -1,4 +1,4 @@
-class ViewWeekly extends ViewPeriod {
+class ViewWeekly extends ViewPeriod { // eslint-disable-line no-unused-vars, no-undef
   constructor(config, events) {
     super(config, events);
     this.slotUnit = "week";

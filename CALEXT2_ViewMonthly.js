@@ -1,4 +1,4 @@
-class ViewMonthly extends ViewPeriod {
+class ViewMonthly extends ViewPeriod { // eslint-disable-line no-unused-vars, no-undef
   constructor(config, events) {
     super(config, events);
     this.slotUnit = "month";

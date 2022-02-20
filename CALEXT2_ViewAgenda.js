@@ -1,4 +1,4 @@
-class ViewAgenda extends View {
+class ViewAgenda extends View { // eslint-disable-line no-unused-vars, no-undef
   constructor(config, events) {
     super(config, events);
     this.slotUnit = "day";

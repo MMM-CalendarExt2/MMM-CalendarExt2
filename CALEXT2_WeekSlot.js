@@ -1,4 +1,4 @@
-class WeekSlot extends Slot {
+class WeekSlot extends Slot { // eslint-disable-line no-unused-vars, no-undef
   constructor(view, period, seq = 0) {
     super(view, period, seq);
     this.useEventTimeRelative = false;

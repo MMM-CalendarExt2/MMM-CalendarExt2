@@ -1,4 +1,4 @@
-class ViewDaily extends ViewPeriod {
+class ViewDaily extends ViewPeriod { // eslint-disable-line no-unused-vars, no-undef
   constructor(config, events) {
     super(config, events);
     this.slotUnit = "day";

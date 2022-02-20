@@ -1,6 +1,6 @@
 /* global moment */
 
-class View {
+class View { // eslint-disable-line no-unused-vars, no-undef
   constructor(config, events) {
     this.config = config;
     this.locale = config.locale;

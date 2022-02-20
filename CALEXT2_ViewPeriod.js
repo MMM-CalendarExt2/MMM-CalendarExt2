@@ -1,4 +1,4 @@
-class ViewPeriod extends View {
+class ViewPeriod extends View { // eslint-disable-line no-unused-vars, no-undef
   constructor(config, events) {
     super(config, events);
   }
