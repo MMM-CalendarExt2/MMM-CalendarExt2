@@ -1,4 +1,5 @@
-class ViewMonthly extends ViewPeriod { // eslint-disable-line no-unused-vars, no-undef
+// eslint-disable-next-line no-unused-vars, no-undef
+class ViewMonthly extends ViewPeriod {
   constructor(config, events) {
     super(config, events);
     this.slotUnit = "month";
@@ -19,4 +20,3 @@ class ViewMonthly extends ViewPeriod { // eslint-disable-line no-unused-vars, no
     slotDom.classList.add(`month_${day.format("M")}`);
   }
 }
-

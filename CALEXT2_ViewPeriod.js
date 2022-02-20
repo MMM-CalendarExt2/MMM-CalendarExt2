@@ -1,4 +1,5 @@
-class ViewPeriod extends View { // eslint-disable-line no-unused-vars, no-undef
+// eslint-disable-next-line no-unused-vars, no-undef
+class ViewPeriod extends View {
   constructor(config, events) {
     super(config, events);
   }
@@ -17,4 +18,3 @@ class ViewPeriod extends View { // eslint-disable-line no-unused-vars, no-undef
     if (this.config.type == "row") slotDom.style.width = `${100 / count - 3}%`;
   }
 }
-

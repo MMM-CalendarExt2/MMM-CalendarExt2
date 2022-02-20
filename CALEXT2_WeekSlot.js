@@ -1,4 +1,5 @@
-class WeekSlot extends Slot { // eslint-disable-line no-unused-vars, no-undef
+// eslint-disable-next-line no-unused-vars, no-undef
+class WeekSlot extends Slot {
   constructor(view, period, seq = 0) {
     super(view, period, seq);
     this.useEventTimeRelative = false;
@@ -187,4 +188,3 @@ class WeekSlot extends Slot { // eslint-disable-line no-unused-vars, no-undef
     // return event.draw(this, this.contentDom)
   }
 }
-

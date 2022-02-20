@@ -1,4 +1,5 @@
-class ViewMonth extends ViewCell { // eslint-disable-line no-unused-vars, no-undef
+// eslint-disable-next-line no-unused-vars, no-undef
+class ViewMonth extends ViewCell {
   constructor(config, events) {
     super(config, events);
   }
@@ -35,4 +36,3 @@ class ViewMonth extends ViewCell { // eslint-disable-line no-unused-vars, no-und
     }
   }
 }
-

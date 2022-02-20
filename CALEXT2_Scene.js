@@ -1,4 +1,5 @@
-class Scene { // eslint-disable-line no-unused-vars, no-undef
+// eslint-disable-next-line no-unused-vars, no-undef
+class Scene {
   constructor(uid, cfgs) {
     const scene = cfgs.scenes[uid];
     const sceneLength = cfgs.scenes.length;

@@ -1,4 +1,5 @@
-class ViewCurrent extends ViewAgenda { // eslint-disable-line no-unused-vars, no-undef
+// eslint-disable-next-line no-unused-vars, no-undef
+class ViewCurrent extends ViewAgenda {
   constructor(config, events) {
     super(config, events);
   }
@@ -19,4 +20,3 @@ class ViewCurrent extends ViewAgenda { // eslint-disable-line no-unused-vars, no
     return filtered;
   }
 }
-

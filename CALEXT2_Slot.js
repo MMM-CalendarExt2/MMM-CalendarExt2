@@ -1,4 +1,5 @@
-class Slot { // eslint-disable-line no-unused-vars, no-undef
+// eslint-disable-next-line no-unused-vars, no-undef
+class Slot {
   constructor(view, period, seq = 0) {
     this.start = period.start;
     this.end = period.end;

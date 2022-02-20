@@ -1,4 +1,5 @@
-class ViewDaily extends ViewPeriod { // eslint-disable-line no-unused-vars, no-undef
+// eslint-disable-next-line no-unused-vars, no-undef
+class ViewDaily extends ViewPeriod {
   constructor(config, events) {
     super(config, events);
     this.slotUnit = "day";
@@ -27,4 +28,3 @@ class ViewDaily extends ViewPeriod { // eslint-disable-line no-unused-vars, no-u
     slotDom.classList.add(`dayofyear_${day.format("DDD")}`);
   }
 }
-

@@ -1,4 +1,5 @@
-class ViewCell extends View { // eslint-disable-line no-unused-vars, no-undef
+// eslint-disable-next-line no-unused-vars, no-undef
+class ViewCell extends View {
   constructor(config, events) {
     super(config, events);
     this.slotUnit = "week";
