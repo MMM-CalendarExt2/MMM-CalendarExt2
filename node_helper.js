@@ -60,7 +60,7 @@ module.exports = NodeHelper.create({
     };
 
     if (calendar.auth && Object.keys(calendar.auth).length > 0) {
-      if (calendar.auth.password != undefined) {
+      if (calendar.auth.password !== undefined) {
         // Just catch people who use password instead of pass
         calendar.auth.pass = calendar.auth.password;
       }
@@ -68,10 +68,10 @@ module.exports = NodeHelper.create({
       if (calendar.auth.method === "bearer") {
         opts.auth = {
           bearer: calendar.auth.pass
-        }
-      } else if(calendar.auth.method == "basic") {
-        const buff = new Buffer(calendar.auth.user + ":" + calendar.auth.pass);
-        opts.headers = {'Authorization': 'Basic ' + buff.toString('base64')};
+        };
+      } else if (calendar.auth.method === "basic") {
+        const buff = Buffer.from(`${calendar.auth.user}:${calendar.auth.pass}`);
+        opts.headers.Authorization = "Basic " + buff.toString("base64");
       } else {
         opts.auth = {
           user: calendar.auth.user,
@@ -138,7 +138,7 @@ module.exports = NodeHelper.create({
 
     const wholeEvents = [].concat(events.events, events.occurrences);
     const eventPool = [];
-    for (i in wholeEvents) {
+    for (const i in wholeEvents) {
       const item = wholeEvents[i];
 
       const ri = item.hasOwnProperty("item") ? item.item : item;
@@ -150,7 +150,7 @@ module.exports = NodeHelper.create({
       ev.isRecurring = ri.isRecurring();
       ev.isCancelled = item.hasOwnProperty("component")
         ? item.component.getFirstPropertyValue("status") != null
-          ? item.component.getFirstPropertyValue("status").toUpperCase() ==
+          ? item.component.getFirstPropertyValue("status").toUpperCase() ===
             "CANCELLED"
           : false
         : false;
@@ -184,24 +184,22 @@ module.exports = NodeHelper.create({
       ev.startDateJ = startDate.toJSON();
       ev.endDateJ = endDate.toJSON();
       ev.duration = ri.duration.toSeconds();
-      ev.isMoment = ev.duration == 0;
+      ev.isMoment = ev.duration === 0;
       ev.isPassed = !!endDate.isBefore(moment());
       if (ev.duration <= 86400) {
-        if (startDate.format("YYMMDD") == endDate.format("YYMMDD")) {
+        if (startDate.format("YYMMDD") === endDate.format("YYMMDD")) {
           ev.isOneday = true;
-        } else if (endDate.format("HHmmss") == "000000") {
+        } else if (endDate.format("HHmmss") === "000000") {
           ev.isOneday = true;
         }
       }
       ev.className = calendar.className;
       ev.icon = calendar.icon;
       const isFullday = !!(
-        startDate.format("HHmmss") == "000000" &&
-        endDate.format("HHmmss") == "000000"
+        startDate.format("HHmmss") === "000000" &&
+        endDate.format("HHmmss") === "000000"
       );
       ev.isFullday = isFullday;
-      if (isFullday) {
-      }
 
       // import the Microsoft property X-MICROSOFT-CDO-BUSYSTATUS, fall back to "BUSY" in case none was found
       // possible values are 'FREE'|'TENTATIVE'|'BUSY'|'OOF' acording to
@@ -216,7 +214,8 @@ module.exports = NodeHelper.create({
       ev.calendarName = calendar.name;
       if (calendar.filter) {
         const f = JSON.parse(calendar.filter).filter;
-        const filter = Function(`return ${f.toString()}`);
+        // the calender.filter could be a string, so we have to upcycle it to a function (at least that's what klaernie thinks this does)
+        const filter = Function(`return ${f.toString()}`); // eslint-disable-line no-new-func
         const r = filter(ev);
         if (r(ev)) {
           eventPool.push(ev);
@@ -237,7 +236,7 @@ module.exports = NodeHelper.create({
   mergeEvents(eventPool, calendarId) {
     this.calendarEvents[calendarId] = eventPool;
     let events = [];
-    for (i of Object.keys(this.calendarEvents)) {
+    for (const i of Object.keys(this.calendarEvents)) {
       if (this.calendarEvents.hasOwnProperty(i)) {
         const cal = this.calendarEvents[i];
         events = events.concat(cal);
