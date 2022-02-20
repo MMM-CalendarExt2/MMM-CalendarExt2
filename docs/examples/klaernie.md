@@ -144,51 +144,50 @@ side, a style found in some mobile calendar apps' schedule view.
 
 ```css
 body {
-    margin: 10px;
-    height: calc(100% - 20px);
-    width: calc(100% - 30px);
+  margin: 10px;
+  height: calc(100% - 20px);
+  width: calc(100% - 30px);
 }
 .CX2 .agenda .eventSub {
-    display:none;
+  display: none;
 }
 .CX2 .daily .fullday .eventTime {
-    display:none;
+  display: none;
 }
-.CX2 .slot .event{
-    background: inherit;
+.CX2 .slot .event {
+  background: inherit;
 }
-.CX2 .slot .slotHeader{
-    background-color: inherit;
-    text-transform: uppercase;
-    font-size: 15px;
-    font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
-    font-weight: 400;
-    border-bottom: 1px solid #666;
-    line-height: 15px;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    color: #999;
+.CX2 .slot .slotHeader {
+  background-color: inherit;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  border-bottom: 1px solid #666;
+  line-height: 15px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  color: #999;
 }
 .CX2 .today .slotHeader * {
-    color: inherit;
+  color: inherit;
 }
 .CX2 .event.fullday {
-    color: inherit;
+  color: inherit;
 }
 .CX2 .slot .slotFooter {
-    display: none;
+  display: none;
 }
 .CX2 .event[data-calendar-name="Andre"],
 .CX2 .event[data-calendar-name="Andre Work"] {
-    border-left: #ce4138 solid;
+  border-left: #ce4138 solid;
 }
 .CX2 .event[data-calendar-name="Anja"],
 .CX2 .event[data-calendar-name="Anja Work"] {
-    border-left: #c632ff solid;
+  border-left: #c632ff solid;
 }
 .CX2 .event[data-calendar-name="Tobi"],
 .CX2 .event[data-calendar-name="Tobi Shared"] {
-    border-left: #d2cf2a solid;
+  border-left: #d2cf2a solid;
 }
 ```
-

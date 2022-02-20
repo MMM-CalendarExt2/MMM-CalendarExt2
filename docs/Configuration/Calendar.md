@@ -1,6 +1,7 @@
 # Calendar
 
 ## Example
+
 ```javascript
 calendars : [
   {
@@ -21,10 +22,13 @@ calendars : [
   },
 ],
 ```
+
 `calendars:[]` could have at least ONE (and more) calendar to get events. Each calendar should have `url`. If you want to use local `.ics` file, put into MM directory and can contact it with `"https://localhost:8080/YOUR.ics"`.
 
 ## Default values of calendar
+
 Below fields are predefined values. Unless overriding it, this will be used by default.
+
 ```javascript
 {
   url: "",
@@ -42,6 +46,7 @@ Below fields are predefined values. Unless overriding it, this will be used by d
   filter: (event)=>{return true}
 }
 ```
+
 - **`url`** : **REQUIRED** URL of `.ics`
 - **`name`** : **OPTIONAL BUT RECOMMENDED** name of this calendar. This value will be used in `view` to pick up specific calendar.
 - **`maxItems`** : how much events should be parsed.
@@ -51,12 +56,14 @@ Below fields are predefined values. Unless overriding it, this will be used by d
 - **`forceLocalTZ`** : Some iCal has wrong time zone information. When the iCal has that kind of problem, this option could be a simple fix.
 - **`replaceTitle`** : Array of [`pattern`, `replace`].
   - e.g)
+
 ```js
 replaceTitle:[
   ["Tottenham Hotspurs", "SPURS"],
   [" - ", " vs "]
 ],
 ```
+
 With this configuration, event title `"Totten Hotspurs - FC. Arsenal"` will be changed to `"SPURS vs FC. Arsenal"`.
 
 `pattern` could be the regular expression and `replace` could be the replacement used instead of `pattern` in the title. In below example, event title `"Thanks God Its Friday"` will be replaced as `"TGIF"`
@@ -71,13 +78,16 @@ replaceTitle:[
   - For example: [`mdi-access-point`](https://iconify.design/icon-sets/mdi/access-point.html) will show as icon of event of this calendar
 - **`className`** : You can assign your custom CSS class to events of this calendar.
   - You can add these codes into your `css/custom.css` to beautify when you set `className:"myClass"`.
+
 ```css
 .CX2 .event.myClass {
-  color:#FF0;
-  background-color:#333;
+  color: #ff0;
+  background-color: #333;
 }
 ```
+
 - **`auth`** : If your calendar needs additional authenication, use it here. It currently supports `bearer`, `digest` and `basic`. Make sure to use the exact spelling or else it won't work. Nextcloud for example uses basic auth in most cases.
+
 ```javascript
 auth: {
   method: "bearer",
@@ -100,11 +110,14 @@ auth: {
   pass: "yourpasword"
 }
 ```
+
 - **`filter`** : You can filter events with this callback function.
   - By Example, below code makes only to include events which title is "WORK".
+
 ```js
 filter: (event) => {
-  if (event.title == "WORK") return true
-}
+  if (event.title == "WORK") return true;
+};
 ```
+
 Available Event properties, See [Event Object](../Event-Object.md).
