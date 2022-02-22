@@ -94,8 +94,7 @@
 .CX2 .view.row {
   /* type: row view */
   display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
+  flex-flow: row wrap;
   justify-content: space-around;
 }
 
