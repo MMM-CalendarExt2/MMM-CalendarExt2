@@ -1,4 +1,5 @@
-// eslint-disable-next-line no-unused-vars, no-undef
+/* global CellSlot Slot */
+// eslint-disable-next-line no-unused-vars
 class WeekSlot extends Slot {
   constructor(view, period, seq = 0) {
     super(view, period, seq);
@@ -79,7 +80,7 @@ class WeekSlot extends Slot {
       const stX = event.startDate < dayStart ? dayStart : event.startDate;
       const etX = event.endDate > dayEnd ? dayEnd : event.endDate;
       let ob = 0;
-      for (i = 0; i < dayPeriods.length; i++) {
+      for (let i = 0; i < dayPeriods.length; i++) {
         if (stX <= dayPeriods[i].endX && etX > dayPeriods[i].startX) {
           ob += 2 ** i;
         }
@@ -88,7 +89,7 @@ class WeekSlot extends Slot {
     };
 
     const assignEventToDay = (event, dayPeriods) => {
-      for (i = 0; i < dayPeriods.length; i++) {
+      for (let i = 0; i < dayPeriods.length; i++) {
         const day = dayPeriods[i];
         const es = moment.unix(event.startDate).locale(this.locale);
         const ee = moment.unix(event.endDate).locale(this.locale);
@@ -99,7 +100,7 @@ class WeekSlot extends Slot {
         }
       }
     };
-    var dayPeriods = this.getDayPeriods();
+
     const timelineDom = this.timelineDom;
     const timelines = [];
     for (let j = 0; j < this.events.length; j++) {
@@ -126,6 +127,7 @@ class WeekSlot extends Slot {
 
         const eventDom = this.makeCellEvent(event);
 
+        // eslint-disable-next-line no-unused-vars
         const isFullday = !!event.isFullday;
 
         const pos = occuStr.search("1");
@@ -165,7 +167,7 @@ class WeekSlot extends Slot {
       }
     }
 
-    if (this.maxHeight == "auto") {
+    if (this.maxHeight === "auto") {
       const slots = this.contentDom.querySelectorAll(".cellSlot .slotContent");
       for (let l = 0; l < slots.length; l++) {
         slots[l].style = `height: ${timelineDom.scrollHeight}px`;

@@ -1,4 +1,5 @@
-// eslint-disable-next-line no-unused-vars, no-undef
+/* global View WeekSlot */
+// eslint-disable-next-line no-unused-vars
 class ViewCell extends View {
   constructor(config, events) {
     super(config, events);
@@ -32,7 +33,6 @@ class ViewCell extends View {
       };
     };
     const periods = [];
-    const now = moment().locale(this.locale);
     const targetDay = this.getStartDay();
     const count = this.getSlotCount();
     for (let i = 0; i < count; i++) {
@@ -84,11 +84,11 @@ class ViewCell extends View {
     }
     const day = moment(slot.start).locale(this.locale);
     const now = moment().locale(this.locale);
-    if (now.format("YYYY") == day.format("YYYY"))
+    if (now.format("YYYY") === day.format("YYYY"))
       slotDom.classList.add("thisyear");
-    if (now.format("M") == day.format("M")) slotDom.classList.add("thismonth");
-    if (now.format("w") == day.format("w")) slotDom.classList.add("thisweek");
-    if (now.format("YYYYMMDD") == day.format("YYYYMMDD"))
+    if (now.format("M") === day.format("M")) slotDom.classList.add("thismonth");
+    if (now.format("w") === day.format("w")) slotDom.classList.add("thisweek");
+    if (now.format("YYYYMMDD") === day.format("YYYYMMDD"))
       slotDom.classList.add("today");
     if (now.format("YYYYMMDD") > day.format("YYYYMMDD"))
       slotDom.classList.add("passedday");
@@ -116,7 +116,6 @@ class ViewCell extends View {
   makeSlotHeader(slot) {
     super.makeSlotHeader(slot);
     const header = slot.headerDom;
-    const start = slot.start;
     const altTitle = header.querySelector(".slotAltTitle");
     if (this.config.slotAltTitle) {
       altTitle.innerHTML = this.config.slotTitle;

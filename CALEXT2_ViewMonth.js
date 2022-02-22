@@ -1,4 +1,5 @@
-// eslint-disable-next-line no-unused-vars, no-undef
+/* global ViewCell */
+// eslint-disable-next-line no-unused-vars
 class ViewMonth extends ViewCell {
   constructor(config, events) {
     super(config, events);

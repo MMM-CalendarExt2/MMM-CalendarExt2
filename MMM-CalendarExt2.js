@@ -1,4 +1,4 @@
-/* global Module */
+/* global Module Scene */
 
 Module.register("MMM-CalendarExt2", {
   predefined: {
@@ -21,10 +21,10 @@ Module.register("MMM-CalendarExt2", {
       },
       CALEXT2_SCENE_CHANGE: {
         exec: (payload, sender) => {
-          if (payload.type && payload.type == "id") {
+          if (payload.type && payload.type === "id") {
             return "changeSceneById";
           }
-          if (payload.type && payload.type == "name") {
+          if (payload.type && payload.type === "name") {
             return "changeSceneByName";
           }
           return null;
@@ -189,7 +189,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   getCommands(register) {
-    if (register.constructor.name == "TelegramBotCommandRegister") {
+    if (register.constructor.name === "TelegramBotCommandRegister") {
       register.add({
         command: "scene",
         description:
@@ -308,7 +308,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   initBasicObjects(arrs, type, predefinedMode = null) {
-    for (i = 0; i < arrs.length; i++) {
+    for (let i = 0; i < arrs.length; i++) {
       arrs[i].name = arrs[i].hasOwnProperty("name") ? arrs[i].name : i;
       arrs[i].uid = i;
       let option = {};
@@ -323,9 +323,9 @@ Module.register("MMM-CalendarExt2", {
           ...arrs[i]
         };
       }
-      if (!arrs[i].locale && type == "view")
+      if (!arrs[i].locale && type === "view")
         arrs[i].locale = this.config.locale;
-      if (arrs[i].filter && type == "calendar") {
+      if (arrs[i].filter && type === "calendar") {
         arrs[i].filter = JSON.stringify({ filter: arrs[i].filter.toString() });
       }
       if (typeof arrs[i].scanInterval === "string") {
@@ -350,7 +350,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   notificationReceived(noti, payload, sender) {
-    if (noti == "DOM_OBJECTS_CREATED") {
+    if (noti === "DOM_OBJECTS_CREATED") {
       this.sendSocketNotification("START", this.config);
       return;
     }
@@ -361,7 +361,7 @@ Module.register("MMM-CalendarExt2", {
           typeof command.exec === "function"
             ? command.exec(payload, sender)
             : command.exec;
-        var payload =
+        payload =
           typeof command.payload === "function"
             ? command.payload(payload, sender)
             : command.payload;
@@ -406,9 +406,9 @@ Module.register("MMM-CalendarExt2", {
     let reply;
     let changed = null;
     const args = handler.args ? handler.args : null;
-    if (args == "n") {
+    if (args === "n") {
       changed = this.sceneNext();
-    } else if (args == "p") {
+    } else if (args === "p") {
       changed = this.scenePrevious();
     } else if (Number(args) !== "NaN") {
       changed = this.changeSceneById(args);
@@ -443,7 +443,7 @@ Module.register("MMM-CalendarExt2", {
 
   changeSceneByName(key) {
     for (let i = 0; i < this.config.scenes.length; i++) {
-      if (this.config.scenes[i].name == key) {
+      if (this.config.scenes[i].name === key) {
         this.work(i);
         return true;
       }

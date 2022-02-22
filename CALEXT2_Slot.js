@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars, no-undef
+// eslint-disable-next-line no-unused-vars
 class Slot {
   constructor(view, period, seq = 0) {
     this.start = period.start;
@@ -65,7 +65,7 @@ class Slot {
   }
 
   assignEvents(events) {
-    for (i = 0; i < events.length; i++) {
+    for (let i = 0; i < events.length; i++) {
       const event = { ...events[i] };
       const eS = moment.unix(event.startDate).locale(this.locale);
       const eE = moment.unix(event.endDate).locale(this.locale);
