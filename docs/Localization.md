@@ -1,6 +1,7 @@
 # Localization
 
 ## default locale
+
 ```js
 config: {
   locale: "de-DE",
@@ -9,6 +10,7 @@ config: {
 ```
 
 ## change locale in specific view
+
 ```js
 views: [
   ...
@@ -21,6 +23,7 @@ views: [
 ```
 
 ## change date and dateTime Format
+
 ```js
 views: [
   ...
@@ -33,7 +36,8 @@ views: [
 ],
 ```
 
-## change date and dateTime Format to relative humanized.
+## change date and dateTime Format to relative humanized
+
 ```js
 views: [
   ...
@@ -52,7 +56,9 @@ views: [
   },
 ],
 ```
-## change relativeFormat.
+
+## change relativeFormat
+
 ```js
 views: [
   ...

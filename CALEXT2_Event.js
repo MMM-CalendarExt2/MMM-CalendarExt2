@@ -1,5 +1,4 @@
-/* global moment */
-
+// eslint-disable-next-line no-unused-vars
 class Event {
   constructor(data, slot) {
     this.data = data;
@@ -26,6 +25,7 @@ class Event {
   }
 
   draw(slot, targetDom) {
+    // eslint-disable-next-line no-unused-vars
     const useEventTimeRelative = slot.useEventTimeRelative;
     const hideOverflow = slot.hideOverflow;
     const eventDom = this.dom;

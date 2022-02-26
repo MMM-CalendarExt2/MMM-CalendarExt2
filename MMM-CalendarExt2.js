@@ -1,4 +1,4 @@
-/* global Module */
+/* global Module Scene */
 
 Module.register("MMM-CalendarExt2", {
   predefined: {
@@ -20,19 +20,22 @@ Module.register("MMM-CalendarExt2", {
         payload: null
       },
       CALEXT2_SCENE_CHANGE: {
+        // eslint-disable-next-line no-unused-vars
         exec: (payload, sender) => {
-          if (payload.type && payload.type == "id") {
+          if (payload.type && payload.type === "id") {
             return "changeSceneById";
           }
-          if (payload.type && payload.type == "name") {
+          if (payload.type && payload.type === "name") {
             return "changeSceneByName";
           }
           return null;
         },
+        // eslint-disable-next-line no-unused-vars
         payload: (payload, sender) => (payload.key ? payload.key : null)
       },
       CALEXT2_EVENT_QUERY: {
         exec: "eventQuery",
+        // eslint-disable-next-line no-unused-vars
         payload: (payload, sender) => payload
       }
     },
@@ -104,6 +107,7 @@ Module.register("MMM-CalendarExt2", {
       icon: "",
       className: "",
       auth: {},
+      // eslint-disable-next-line no-unused-vars
       filter: (event) => true // you can make a filter to include/exclude specific events per calendar
     },
     scene: {
@@ -119,6 +123,7 @@ Module.register("MMM-CalendarExt2", {
       positionOrder: -1,
       title: "", // ???
       calendars: [],
+      // eslint-disable-next-line no-unused-vars
       filter: (event) => true,
       sort: (a, b) => a.startDate - b.startDate,
       transform: (event) => event,
@@ -189,7 +194,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   getCommands(register) {
-    if (register.constructor.name == "TelegramBotCommandRegister") {
+    if (register.constructor.name === "TelegramBotCommandRegister") {
       register.add({
         command: "scene",
         description:
@@ -221,7 +226,19 @@ Module.register("MMM-CalendarExt2", {
       "CALEXT2_Scene.js",
       "CALEXT2_View.js",
       "CALEXT2_Event.js",
-      "CALEXT2_Slot.js"
+      "CALEXT2_Slot.js",
+      "CALEXT2_CellSlot.js",
+      "CALEXT2_WeekSlot.js",
+      "CALEXT2_ViewAgenda.js",
+      "CALEXT2_ViewCell.js",
+      "CALEXT2_ViewCurrent.js",
+      "CALEXT2_ViewPeriod.js",
+      "CALEXT2_ViewDaily.js",
+      "CALEXT2_ViewMonth.js",
+      "CALEXT2_ViewMonthly.js",
+      "CALEXT2_ViewUpcoming.js",
+      "CALEXT2_ViewWeek.js",
+      "CALEXT2_ViewWeekly.js"
     ];
     if (this.config.iconify) r.push(this.config.iconify);
     return r;
@@ -296,7 +313,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   initBasicObjects(arrs, type, predefinedMode = null) {
-    for (i = 0; i < arrs.length; i++) {
+    for (let i = 0; i < arrs.length; i++) {
       arrs[i].name = arrs[i].hasOwnProperty("name") ? arrs[i].name : i;
       arrs[i].uid = i;
       let option = {};
@@ -311,9 +328,9 @@ Module.register("MMM-CalendarExt2", {
           ...arrs[i]
         };
       }
-      if (!arrs[i].locale && type == "view")
+      if (!arrs[i].locale && type === "view")
         arrs[i].locale = this.config.locale;
-      if (arrs[i].filter && type == "calendar") {
+      if (arrs[i].filter && type === "calendar") {
         arrs[i].filter = JSON.stringify({ filter: arrs[i].filter.toString() });
       }
       if (typeof arrs[i].scanInterval === "string") {
@@ -338,7 +355,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   notificationReceived(noti, payload, sender) {
-    if (noti == "DOM_OBJECTS_CREATED") {
+    if (noti === "DOM_OBJECTS_CREATED") {
       this.sendSocketNotification("START", this.config);
       return;
     }
@@ -349,7 +366,7 @@ Module.register("MMM-CalendarExt2", {
           typeof command.exec === "function"
             ? command.exec(payload, sender)
             : command.exec;
-        var payload =
+        payload =
           typeof command.payload === "function"
             ? command.payload(payload, sender)
             : command.payload;
@@ -394,9 +411,9 @@ Module.register("MMM-CalendarExt2", {
     let reply;
     let changed = null;
     const args = handler.args ? handler.args : null;
-    if (args == "n") {
+    if (args === "n") {
       changed = this.sceneNext();
-    } else if (args == "p") {
+    } else if (args === "p") {
       changed = this.scenePrevious();
     } else if (Number(args) !== "NaN") {
       changed = this.changeSceneById(args);
@@ -431,7 +448,7 @@ Module.register("MMM-CalendarExt2", {
 
   changeSceneByName(key) {
     for (let i = 0; i < this.config.scenes.length; i++) {
-      if (this.config.scenes[i].name == key) {
+      if (this.config.scenes[i].name === key) {
         this.work(i);
         return true;
       }

@@ -1,12 +1,17 @@
+<!-- markdownlint-disable-file MD041 -->
+
 You can use all of common fields of [View](../View.md) in this view also.
 
 # View:daily
-|field |value type |value example |default value |memo |
-|---|---|---|---|---|
-|type |String |"row" |"column" | You can arrange event slots by row or column. This field will be ignored in other views. In `bar` or `fullscreen` region, `"row"` could look nicer.
-|slotSubTitleFormat |String |"" |"MMMM Do" |pre-defined extra information of slots of this daily view.
-|slotTitleFormat |String Or Object |"" | {...} |pre-defined slot title.
+
+| field              | value type       | value example | default value | memo                                                                                                                                                |
+| ------------------ | ---------------- | ------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type               | String           | "row"         | "column"      | You can arrange event slots by row or column. This field will be ignored in other views. In `bar` or `fullscreen` region, `"row"` could look nicer. |
+| slotSubTitleFormat | String           | ""            | "MMMM Do"     | predefined extra information of slots of this daily view.                                                                                           |
+| slotTitleFormat    | String Or Object | ""            | {...}         | predefined slot title.                                                                                                                              |
+
 - You can use calendar-type humanized format for slot Title in this daily view. (In other views, this will be meaningless). Default values are below;
+
 ```js
 slotTitleFormat: {
   sameDay: '[Today]',
@@ -18,8 +23,10 @@ slotTitleFormat: {
 },
 ```
 
-## Example:
+## Examples
+
 - Basic Sample
+
 ```js
 {
   name: "VIEW1",
@@ -28,8 +35,11 @@ slotTitleFormat: {
   position: "top_left",
 },
 ```
+
 ![view1](view1.png)
+
 - modification Sample.
+
 ```js
 {
   name: "VIEW1",
@@ -42,4 +52,5 @@ slotTitleFormat: {
   useEventTimeRelative: true,
 },
 ```
+
 ![view2](view2.png)

@@ -1,6 +1,8 @@
 # defaultSet
+
 You might have so many views, calendars, scenes. It could be annoyingly tiresome to describe all the values of each section.
 You can set your default values for each views, calendars and scenes.
+
 ```js
 defaultSet: {
   view:{},
@@ -10,6 +12,7 @@ defaultSet: {
 ```
 
 By Example,
+
 ```js
 defaultSet: {
   view: {
@@ -18,7 +21,9 @@ defaultSet: {
   }
 },
 ```
+
 will be same with
+
 ```js
 views: [
   {

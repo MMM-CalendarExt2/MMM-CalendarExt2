@@ -1,0 +1,12 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "plugins": ["stylelint-prettier"],
+  "root": true,
+  "rules": {
+    "no-descending-specificity": null,
+    "prettier/prettier": true,
+    "rule-empty-line-before": null,
+    "selector-class-pattern": "^(MMM-CalendarExt2|CX2|fake_module|module-content|[a-z][a-zA-Z0-9]+(_\\d+)?)$",
+    "keyframes-name-pattern": "^(MMM-CalendarExt2|CX2|fake_module|module-content|[a-z][a-zA-Z0-9]+(_\\d+)?)$"
+  }
+}

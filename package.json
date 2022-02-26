@@ -1,6 +1,6 @@
 {
-  "name": "MMM-CalendarExt2",
-  "version": "1.1.0",
+  "name": "mmm-calendarext2",
+  "version": "1.2.0",
   "description": "Alternative calendar module of MagicMirror.",
   "main": "MMM-CalendarExt2.js",
   "repository": {
@@ -25,20 +25,27 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "eslint": "^8.8.0",
+    "eslint": "^8.9.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.5.1",
-    "stylelint": "^14.3.0",
+    "stylelint": "^14.5.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-prettier": "^2.0.0"
   },
   "scripts": {
-    "lint": "eslint . && stylelint **/*.css",
-    "lint:fix": "eslint --fix . && stylelint --fix **/*.css",
+    "lint": "npm run eslint && npm run stylelint",
+    "lint:fix": "npm run eslint:fix && npm run stylelint:fix",
+    "eslint": "bash -c 'eslint -c .github/linters/.eslintrc.js ${@:-.}' -- ",
+    "eslint:fix": "bash -c 'eslint -c .github/linters/.eslintrc.js --fix ${@:-.}' -- ",
+    "stylelint": "stylelint --config .github/linters/.stylelintrc.json **/*.css",
+    "stylelint:fix": "stylelint --config .github/linters/.stylelintrc.json --fix **/*.css",
+    "prettier": "bash -c 'prettier -c ${@:-.}' -- ",
+    "prettier:fix": "bash -c 'prettier -w ${@:-.}' -- ",
     "test": "npm run lint"
   }
 }

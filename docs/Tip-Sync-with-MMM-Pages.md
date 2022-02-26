@@ -1,20 +1,22 @@
-Many people are asking me How to use this module with [MMM-Pages](https://github.com/edward-shen/MMM-pages).
+# Synchronizing page changes with MMM-Pages
 
+Many people are asking me How to use this module with [MMM-Pages](https://github.com/edward-shen/MMM-pages).
 
 Like this;
 
 PAGE1
-![](https://raw.githubusercontent.com/eouia/MMM-CalendarExt2/master/doc/Page_1.png)
+![example page 1](https://raw.githubusercontent.com/MMM-CalendarExt2/MMM-CalendarExt2/main/docs/Page_1.png)
 
 PAGE2
-![](https://raw.githubusercontent.com/eouia/MMM-CalendarExt2/master/doc/Page_2.png)
+![example page 2](https://raw.githubusercontent.com/MMM-CalendarExt2/MMM-CalendarExt2/main/docs/Page_2.png)
 
 PAGE3
-![](https://raw.githubusercontent.com/eouia/MMM-CalendarExt2/master/doc/Page_3.png)
+![example page 3](https://raw.githubusercontent.com/MMM-CalendarExt2/MMM-CalendarExt2/main/docs/Page_3.png)
 
 Let's configure.
 
 **`MMM-Pages`**
+
 ```js
 {
   module: 'MMM-pages',
@@ -29,9 +31,11 @@ Let's configure.
   }
 },
 ```
-I've set 3 pages (page:0, page:1, page:2). Each has some other modules like `clock`. Now I'll show a different view of MMM-CalendarExt2 in each page. 
+
+I've set 3 pages (page:0, page:1, page:2). Each has some other modules like `clock`. Now I'll show a different view of MMM-CalendarExt2 in each page.
 
 **`MMM-CalendarExt2`**
+
 ```js
 {
   module: 'MMM-CalendarExt2',
@@ -96,24 +100,24 @@ I've set 3 pages (page:0, page:1, page:2). Each has some other modules like `clo
 },
 
 ```
-I made 3 views and put them into 3 scenes. 
+
+I made 3 views and put them into 3 scenes.
 Then, see `notifications` section. When `PAGE_INCREMENT` is coming, **`sceneNext`** command is executed. easy.
 The results are above pictures.
-And, this is already explained in wiki of github.
-
+And, this is already explained in wiki of GitHub.
 
 **One More Thing**
 
 _Hey, I want page 3 empty. How to remove view or scene in that page?_
 
 I wrote `className:fakeScene,` in 3rd scene config. Let's add this into your `css/custom.css`
+
 ```css
 .CX2.fakeScene {
-  display:none;
+  display: none;
 }
 ```
 
 Now, the 3rd scene will be displayed like this.
 
-![](https://raw.githubusercontent.com/eouia/MMM-CalendarExt2/master/doc/Page_4.png)
-
+![a page that has no calendar shown](https://raw.githubusercontent.com/eouia/MMM-CalendarExt2/master/doc/Page_4.png)

@@ -1,2 +1,6 @@
 node_modules/
 
+# ignore vim swapfiles
+**/*.swp
+**/*.swo
+
