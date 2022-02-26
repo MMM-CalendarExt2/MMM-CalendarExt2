@@ -24,10 +24,10 @@ class CellSlot extends Slot {
   init(view) {
     this.makeDom();
     this.makeSlotHeader(view);
-    this.adjustSlotHeight(view, this.contentDom);
+    CellSlot.adjustSlotHeight(view, this.contentDom);
   }
 
-  adjustSlotHeight(view, dom) {
+  static adjustSlotHeight(view, dom) {
     view.adjustSlotHeight(dom);
   }
 
