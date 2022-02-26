@@ -22,6 +22,7 @@
     "prettier/prettier": "error",
     "import/no-dynamic-require": "off",
     "import/no-unresolved": "off",
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["targetDom"] }],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-prototype-builtins": "off"
   }
