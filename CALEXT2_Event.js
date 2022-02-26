@@ -49,9 +49,10 @@ class Event {
     return 0;
   }
 
-  drawSleeve(slot, sleeve) {
-    // to implement
-  }
+  /* TODO: To implement */
+  /* drawSleeve(slot, sleeve) {
+    ...
+  } */
 
   makeEventDom() {
     const locale = this.locale;
