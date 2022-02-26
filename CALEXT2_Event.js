@@ -54,7 +54,6 @@ class Event {
   }
 
   makeEventDom() {
-    const event = this.data;
     const locale = this.locale;
     const now = moment().locale(locale);
 
@@ -68,6 +67,7 @@ class Event {
       return isMulti;
     };
 
+    const event = this.data;
     const eventDom = document.createElement("div");
     eventDom.classList.add("event");
 
