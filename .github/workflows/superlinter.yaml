@@ -31,6 +31,7 @@ jobs:
           CSS_FILE_NAME: .stylelintrc.json
           JAVASCRIPT_DEFAULT_STYLE: prettier
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
+          JSCPD_CONFIG_FILE: .jscpd.json
           YAML_CONFIG_FILE: .yamllint.yaml
           # Exclude symlinks because JSCPD has a problem with them
           # (You could add nore using |. Like this: .*(docs/index.md|filex.js|.filey.yaml).*)
