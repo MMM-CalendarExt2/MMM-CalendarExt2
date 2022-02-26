@@ -25,8 +25,6 @@ class Event {
   }
 
   draw(slot, targetDom) {
-    // eslint-disable-next-line no-unused-vars
-    const useEventTimeRelative = slot.useEventTimeRelative;
     const hideOverflow = slot.hideOverflow;
     const eventDom = this.dom;
     eventDom.style.opacity = 0;
