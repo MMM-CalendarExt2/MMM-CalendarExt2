@@ -27,7 +27,9 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js
+          LINTER_RULES_PATH: /s
+          CSS_FILE_NAME: .stylelintrc.json
+          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
           YAML_CONFIG_FILE: .yamllint.yaml
           # the standard config conflicts heavily with the upstream config.js
           # hence I opted to disable it

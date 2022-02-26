@@ -40,10 +40,10 @@
   "scripts": {
     "lint": "npm run eslint && npm run stylelint",
     "lint:fix": "npm run eslint:fix && npm run stylelint:fix",
-    "eslint": "bash -c 'eslint -c .github/linters/.eslintrc.js ${@:-.}' -- ",
-    "eslint:fix": "bash -c 'eslint -c .github/linters/.eslintrc.js --fix ${@:-.}' -- ",
-    "stylelint": "stylelint --config .github/linters/.stylelintrc.json **/*.css",
-    "stylelint:fix": "stylelint --config .github/linters/.stylelintrc.json --fix **/*.css",
+    "eslint": "bash -c 'eslint -c .eslintrc.json ${@:-.}' -- ",
+    "eslint:fix": "bash -c 'eslint -c .eslintrc.json --fix ${@:-.}' -- ",
+    "stylelint": "stylelint --config .stylelintrc.json **/*.css",
+    "stylelint:fix": "stylelint --config .stylelintrc.json --fix **/*.css",
     "prettier": "bash -c 'prettier -c ${@:-.}' -- ",
     "prettier:fix": "bash -c 'prettier -w ${@:-.}' -- ",
     "test": "npm run lint"
