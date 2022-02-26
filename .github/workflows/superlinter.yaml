@@ -33,3 +33,5 @@ jobs:
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
           JSCPD_CONFIG_FILE: .jscpd.json
           YAML_CONFIG_FILE: .yamllint.yaml
+          # Exclude symlinks (because JSCPD has a problem with them)
+          FILTER_REGEX_EXCLUDE: .*(docs/index.md).*
