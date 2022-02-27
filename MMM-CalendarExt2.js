@@ -407,7 +407,7 @@ Module.register("MMM-CalendarExt2", {
     }
   },
 
-  CMD_changeScene(command = null, handler = null) {
+  CMD_changeScene(handler = null) {
     let reply;
     let changed = null;
     const args = handler.args ? handler.args : null;
