@@ -73,11 +73,11 @@ class View {
         }
         this.moduleDom.remove();
         this.containerDom = null;
-        for (const property in this) {
+        this.forEach((property) => {
           if (this.hasOwnProperty(property)) {
             this[property] = null;
           }
-        }
+        });
       }
     }, 500);
   }
