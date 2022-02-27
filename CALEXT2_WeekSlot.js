@@ -136,19 +136,19 @@ class WeekSlot extends Slot {
             continue;
           } else {
             const tlDoms = timelineDom.querySelectorAll(".timelineSleeve");
-            var tlDom = tlDoms[k];
+            const tlDomA = tlDoms[k];
             timelines[k] = timelines[k] | occu;
-            tlDom.appendChild(eventDom);
+            tlDomA.appendChild(eventDom);
             inserted = true;
             break;
           }
         }
         if (!inserted) {
           timelines.push(occu);
-          var tlDom = document.createElement("div");
-          tlDom.classList.add("timelineSleeve");
-          tlDom.appendChild(eventDom);
-          timelineDom.appendChild(tlDom);
+          const tlDomB = document.createElement("div");
+          tlDomB.classList.add("timelineSleeve");
+          tlDomB.appendChild(eventDom);
+          timelineDom.appendChild(tlDomB);
         }
         timelineDom.dataset.occupy = timelines;
       }
@@ -160,11 +160,11 @@ class WeekSlot extends Slot {
         slots[l].style = `height: ${timelineDom.scrollHeight}px`;
       }
     } else if (timelineDom.scrollHeight > timelineDom.clientHeight) {
-      var tlDom = timelineDom.querySelectorAll(".timelineSleeve");
-      const tlRect = tlDom[0].getBoundingClientRect();
+      const tlDomC = timelineDom.querySelectorAll(".timelineSleeve");
+      const tlRect = tlDomC[0].getBoundingClientRect();
       const shown = Math.floor(timelineDom.clientHeight / tlRect.height);
-      for (let l = shown; l < tlDom.length; l++) {
-        tlDom[l].style.display = "none";
+      for (let l = shown; l < tlDomC.length; l++) {
+        tlDomC[l].style.display = "none";
       }
       const td = this.contentDom.querySelectorAll(".cellSlot .slotFooter");
       for (let l = 0; l < dayPeriods.length; l++) {
