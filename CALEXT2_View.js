@@ -107,7 +107,7 @@ class View {
     return filtered;
   }
 
-  getRegionDom(position) {
+  static getRegionDom(position) {
     let className = position.replace("_", " ");
     className = `region ${className}`;
     const nodes = document.getElementsByClassName(className);
@@ -119,7 +119,7 @@ class View {
   }
 
   drawDom() {
-    const container = this.getRegionDom(this.config.position);
+    const container = View.getRegionDom(this.config.position);
     const children = container.children;
     const order = this.config.positionOrder;
     if (order == -1) {
