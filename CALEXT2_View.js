@@ -274,7 +274,6 @@ class View {
       };
     };
     const periods = [];
-    const now = moment().locale(this.locale);
     const targetDay = this.getStartDay();
     const count = this.getSlotCount();
     for (let i = 0; i < count; i++) {
