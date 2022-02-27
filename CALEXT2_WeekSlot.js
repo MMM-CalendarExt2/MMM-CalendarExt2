@@ -107,7 +107,7 @@ class WeekSlot extends Slot {
             moment.unix(event.startDate).isBefore(dp.end) &&
             moment.unix(event.endDate).isAfter(dp.start)
           ) {
-            dayPeriods[k].eventCount++;
+            dayPeriods[k].eventCount += 1;
           }
         }
         // var eventDom = this.createEventDom(event, slot.startX, occuStr, dayPeriods.length)
