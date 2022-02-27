@@ -122,7 +122,7 @@ class View {
     const container = View.getRegionDom(this.config.position);
     const children = container.children;
     const order = this.config.positionOrder;
-    if (order == -1) {
+    if (order === -1) {
       container.appendChild(this.moduleDom);
     } else if (order >= 0 && order < children.length) {
       container.insertBefore(this.moduleDom, children[order]);
@@ -130,7 +130,7 @@ class View {
       container.appendChild(this.moduleDom);
     }
 
-    if (container.style.display == "none") {
+    if (container.style.display === "none") {
       container.style.display = "block";
     }
     this.containerDom = container;
