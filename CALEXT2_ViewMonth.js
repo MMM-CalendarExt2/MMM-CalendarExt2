@@ -1,10 +1,6 @@
 /* global ViewCell */
 // eslint-disable-next-line no-unused-vars
 class ViewMonth extends ViewCell {
-  constructor(config, events) {
-    super(config, events);
-  }
-
   getSlotCount() {
     const startDay = this.getStartDay();
     const endDay = this.getEndWeek();
