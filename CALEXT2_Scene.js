@@ -11,7 +11,7 @@ class Scene {
     this.nextUid = uid === sceneLength - 1 ? 0 : uid + 1;
     this.previousUid = uid === 0 ? sceneLength - 1 : uid - 1;
     this.viewNames =
-      !scene.views || scene.views.length == 0
+      !scene.views || scene.views.length === 0
         ? cfgs.views.map((v) => v.name)
         : scene.views;
     this.views = [];
