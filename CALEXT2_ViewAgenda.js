@@ -11,6 +11,7 @@ class ViewAgenda extends View {
     slotDom.classList.add("agenda", "period");
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getSlotCount() {
     return 1;
   }

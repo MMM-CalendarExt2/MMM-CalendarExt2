@@ -283,11 +283,13 @@ class View {
     return periods;
   }
 
-  viewDomType(viewDom) {
+  // eslint-disable-next-line class-methods-use-this
+  viewDomType() {
     // do nothing;
   }
 
-  adjustSlotWidth(slotDom, count) {
+  // eslint-disable-next-line class-methods-use-this
+  adjustSlotWidth() {
     // do nothing;
   }
 
