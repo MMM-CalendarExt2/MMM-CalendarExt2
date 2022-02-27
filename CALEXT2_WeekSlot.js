@@ -132,12 +132,12 @@ class WeekSlot extends Slot {
 
         for (let k = 0; k < timelines.length; k++) {
           const tl = timelines[k];
-          if ((tl & occu) > 0) {
+          if ((tl && occu) > 0) {
             continue;
           } else {
             const tlDoms = timelineDom.querySelectorAll(".timelineSleeve");
             const tlDomA = tlDoms[k];
-            timelines[k] = timelines[k] | occu;
+            timelines[k] = timelines[k] || occu;
             tlDomA.appendChild(eventDom);
             inserted = true;
             break;
