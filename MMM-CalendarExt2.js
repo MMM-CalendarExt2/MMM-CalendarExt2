@@ -405,6 +405,7 @@ Module.register("MMM-CalendarExt2", {
         this.work(uid);
       }, this.config.updateInterval);
     }
+    return true;
   },
 
   CMD_changeScene(handler = null) {
