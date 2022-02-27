@@ -72,7 +72,6 @@ class WeekSlot extends Slot {
     this.timelineDom.style.top = `${fch.height}px`;
     this.timelineDom.style.height = `${fcc.height}px`;
     const parentPosition = this.timelineDom.getBoundingClientRect();
-    var dayPeriods = this.getDayPeriods();
 
     const getOccupyBin = (event, dayPeriods) => {
       const dayEnd = dayPeriods[dayPeriods.length - 1].endX;
@@ -101,6 +100,7 @@ class WeekSlot extends Slot {
       }
     };
 
+    const dayPeriods = this.getDayPeriods();
     const timelineDom = this.timelineDom;
     const timelines = [];
     for (let j = 0; j < this.events.length; j++) {
