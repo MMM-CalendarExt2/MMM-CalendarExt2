@@ -274,6 +274,7 @@ module.exports = NodeHelper.create({
           if (comparisonResult !== null && comparisonResult !== 0) {
             return comparisonResult;
           }
+          return false;
         });
 
         // if the order hasn't been changed, these two events must be identical
