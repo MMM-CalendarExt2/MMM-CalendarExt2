@@ -1,4 +1,4 @@
-/* global Slot ViewCurrent ViewUpcoming ViewMonth ViewDaily ViewWeekly ViewMonthly ViewWeek */
+/* global Log Slot ViewCurrent ViewUpcoming ViewMonth ViewDaily ViewWeekly ViewMonthly ViewWeek */
 // eslint-disable-next-line no-unused-vars
 class View {
   constructor(config, events) {
@@ -112,7 +112,7 @@ class View {
     className = `region ${className}`;
     const nodes = document.getElementsByClassName(className);
     if (nodes.length !== 1) {
-      console.error("[CALEXT2] Invalid position : ", position);
+      Log.error("[CALEXT2] Invalid position : ", position);
       return null;
     }
     return nodes[0].querySelector(".container");
