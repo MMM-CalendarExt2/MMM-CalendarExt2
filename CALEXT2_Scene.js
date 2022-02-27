@@ -20,9 +20,9 @@ class Scene {
   draw(events) {
     this.clearViews();
     this.viewNames.forEach((viewName) => {
-      const viewConfig = this.config.views.find((config) => {
-        if (config.name === viewName) return true;
-      });
+      const viewConfig = this.config.views.find(
+        (config) => config.name === viewName
+      );
       viewConfig.sceneClassName = this.className;
       const view = View.makeByName(viewConfig, events);
       if (view) {
