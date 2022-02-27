@@ -87,19 +87,6 @@ class WeekSlot extends Slot {
       return ob;
     };
 
-    const assignEventToDay = (event, dayPeriods) => {
-      for (let i = 0; i < dayPeriods.length; i++) {
-        const day = dayPeriods[i];
-        const es = moment.unix(event.startDate).locale(this.locale);
-        const ee = moment.unix(event.endDate).locale(this.locale);
-        const ds = day.start.locale(this.locale);
-        const de = day.end.locale(this.locale);
-        if (!(es.isAfter(de) || ee.isBefore(ds))) {
-          dayPeriods[i].eventCount++;
-        }
-      }
-    };
-
     const dayPeriods = this.getDayPeriods();
     const timelineDom = this.timelineDom;
     const timelines = [];
