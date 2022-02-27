@@ -139,9 +139,8 @@ module.exports = NodeHelper.create({
 
     const wholeEvents = [].concat(events.events, events.occurrences);
     const eventPool = [];
-    for (const i in wholeEvents) {
-      const item = wholeEvents[i];
 
+    wholeEvents.forEach((item) => {
       const ri = item.hasOwnProperty("item") ? item.item : item;
       const ev = {};
       ev.calendarId = calendar.uid;
@@ -226,7 +225,7 @@ module.exports = NodeHelper.create({
       } else {
         eventPool.push(ev);
       }
-    }
+    });
     eventPool.slice(calendar.maxItems);
     console.log(
       `[CALEXT2] calendar:${calendar.name} >> Scanned: ${wholeEvents.length}, Selected: ${eventPool.length}`
