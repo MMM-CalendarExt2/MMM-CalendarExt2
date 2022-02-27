@@ -236,12 +236,12 @@ module.exports = NodeHelper.create({
   mergeEvents(eventPool, calendarId) {
     this.calendarEvents[calendarId] = eventPool;
     let events = [];
-    for (const i of Object.keys(this.calendarEvents)) {
+    Object.keys(this.calendarEvents).forEach((i) => {
       if (this.calendarEvents.hasOwnProperty(i)) {
         const cal = this.calendarEvents[i];
         events = events.concat(cal);
       }
-    }
+    });
 
     // only run sorting and deduplication is the user actually wants it
     if (
