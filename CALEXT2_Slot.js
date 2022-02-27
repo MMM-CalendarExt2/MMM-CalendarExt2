@@ -30,11 +30,11 @@ class Slot {
 
   destroy() {
     this.dom.remove();
-    for (const property in this) {
+    this.forEach((property) => {
       if (this.hasOwnProperty(property)) {
         this[property] = null;
       }
-    }
+    });
   }
 
   static factory(view, slotPeriods, events) {
