@@ -76,7 +76,7 @@ class Slot {
           event.startHere = true;
         if (eE.isBetween(this.start, this.end, null, "(])"))
           event.endHere = true;
-        if (eE.format("HHmmss") == "000000")
+        if (eE.format("HHmmss") === "000000")
           event.endDate = moment(eE).add(-1, "second").endOf("day").format("X");
         this.events.push(event);
       }
