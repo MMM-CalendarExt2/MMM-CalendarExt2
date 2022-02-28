@@ -90,9 +90,11 @@ class WeekSlot extends Slot {
     const dayPeriods = this.getDayPeriods();
     const timelineDom = this.timelineDom;
     const timelines = [];
+    let tlDom;
     for (let j = 0; j < this.events.length; j++) {
       const event = this.events[j];
       const occu = getOccupyBin(event, dayPeriods);
+
       if (occu > 0) {
         let inserted = false;
         const occuStr = (2 ** dayPeriods.length + occu)
@@ -134,19 +136,19 @@ class WeekSlot extends Slot {
           const tl = timelines[k];
           if ((tl && occu) < 0) {
             const tlDoms = timelineDom.querySelectorAll(".timelineSleeve");
-            const tlDomA = tlDoms[k];
+            tlDom = tlDoms[k];
             timelines[k] = timelines[k] || occu;
-            tlDomA.appendChild(eventDom);
+            tlDom.appendChild(eventDom);
             inserted = true;
             break;
           }
         }
         if (!inserted) {
           timelines.push(occu);
-          const tlDomB = document.createElement("div");
-          tlDomB.classList.add("timelineSleeve");
-          tlDomB.appendChild(eventDom);
-          timelineDom.appendChild(tlDomB);
+          tlDom = document.createElement("div");
+          tlDom.classList.add("timelineSleeve");
+          tlDom.appendChild(eventDom);
+          timelineDom.appendChild(tlDom);
         }
         timelineDom.dataset.occupy = timelines;
       }
@@ -158,11 +160,11 @@ class WeekSlot extends Slot {
         slots[l].style = `height: ${timelineDom.scrollHeight}px`;
       }
     } else if (timelineDom.scrollHeight > timelineDom.clientHeight) {
-      const tlDomC = timelineDom.querySelectorAll(".timelineSleeve");
-      const tlRect = tlDomC[0].getBoundingClientRect();
+      tlDom = timelineDom.querySelectorAll(".timelineSleeve");
+      const tlRect = tlDom[0].getBoundingClientRect();
       const shown = Math.floor(timelineDom.clientHeight / tlRect.height);
-      for (let l = shown; l < tlDomC.length; l++) {
-        tlDomC[l].style.display = "none";
+      for (let l = shown; l < tlDom.length; l++) {
+        tlDom[l].style.display = "none";
       }
       const td = this.contentDom.querySelectorAll(".cellSlot .slotFooter");
       for (let l = 0; l < dayPeriods.length; l++) {
