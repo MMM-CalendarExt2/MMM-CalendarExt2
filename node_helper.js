@@ -267,6 +267,7 @@ module.exports = NodeHelper.create({
       };
 
       const compareThem = (a, b) => {
+        // eslint-disable-next-line no-unreachable-loop, no-restricted-syntax
         for (const property of this.config.deduplicateEventsOn) {
           const comparisonResult = spaceship(a[property], b[property]);
           // if the comparison has found an order change
