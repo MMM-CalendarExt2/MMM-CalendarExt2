@@ -38,8 +38,8 @@
     "stylelint-prettier": "^2.0.0"
   },
   "engines": {
-		"node": ">=12"
-	},
+    "node": ">=12"
+  },
   "scripts": {
     "lint": "npm run eslint && npm run stylelint",
     "lint:fix": "npm run eslint:fix && npm run stylelint:fix",
