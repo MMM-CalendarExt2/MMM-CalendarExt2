@@ -148,12 +148,11 @@ module.exports = NodeHelper.create({
       ev.description = ri.description;
       ev.title = ri.summary;
       ev.isRecurring = ri.isRecurring();
-      ev.isCancelled = item.hasOwnProperty("component")
-        ? item.component.getFirstPropertyValue("status") != null
-          ? item.component.getFirstPropertyValue("status").toUpperCase() ===
-            "CANCELLED"
-          : false
-        : false;
+      ev.isCancelled =
+        item.hasOwnProperty("component") &&
+        item.component.getFirstPropertyValue("status") != null &&
+        item.component.getFirstPropertyValue("status").toUpperCase() ===
+          "CANCELLED";
       if (
         Array.isArray(calendar.replaceTitle) &&
         calendar.replaceTitle.length > 0
