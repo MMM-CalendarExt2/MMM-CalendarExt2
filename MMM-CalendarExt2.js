@@ -1,3 +1,4 @@
+/* eslint-disable no-eval */
 /* global Module Scene */
 
 Module.register("MMM-CalendarExt2", {
