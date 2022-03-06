@@ -1,9 +1,5 @@
 // eslint-disable-next-line no-unused-vars, no-undef
 class ViewPeriod extends View {
-  constructor(config, events) {
-    super(config, events);
-  }
-
   makeSlotDomClass(slot) {
     const slotDom = slot.dom;
     super.makeSlotDomClass(slot);

@@ -5,7 +5,7 @@ class ViewMonthly extends ViewPeriod {
     this.slotUnit = "month";
   }
 
-  makeSlotDomClass(slot, seq = null) {
+  makeSlotDomClass(slot) {
     const slotDom = slot.dom;
     super.makeSlotDomClass(slot);
     slotDom.classList.add("monthly");

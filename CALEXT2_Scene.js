@@ -11,7 +11,7 @@ class Scene {
     this.nextUid = uid === sceneLength - 1 ? 0 : uid + 1;
     this.previousUid = uid === 0 ? sceneLength - 1 : uid - 1;
     this.viewNames =
-      !scene.views || scene.views.length == 0
+      !scene.views || scene.views.length === 0
         ? cfgs.views.map((v) => v.name)
         : scene.views;
     this.views = [];
@@ -20,9 +20,9 @@ class Scene {
   draw(events) {
     this.clearViews();
     this.viewNames.forEach((viewName) => {
-      const viewConfig = this.config.views.find((config) => {
-        if (config.name === viewName) return true;
-      });
+      const viewConfig = this.config.views.find(
+        (config) => config.name === viewName
+      );
       viewConfig.sceneClassName = this.className;
       const view = View.makeByName(viewConfig, events);
       if (view) {

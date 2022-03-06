@@ -1,7 +1,7 @@
 name: Super-Linter
 
 # Run this workflow every time a new commit pushed to your repository
-on: push
+on: [push, pull_request]
 
 jobs:
   # Set the job key. The key is displayed as the job name
@@ -27,11 +27,12 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js
+          LINTER_RULES_PATH: /
+          CSS_FILE_NAME: .stylelintrc.json
+          JAVASCRIPT_DEFAULT_STYLE: prettier
+          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
+          JSCPD_CONFIG_FILE: .jscpd.json
           YAML_CONFIG_FILE: .yamllint.yaml
-          # the standard config conflicts heavily with the upstream config.js
-          # hence I opted to disable it
-          VALIDATE_JAVASCRIPT_STANDARD: false
-          # the klaernie example k8s deployment has duplicated segments on purpose (same filter for two seperate calendars, in two config instances).
-          # JSCPD detects these, but they are unavoidable
-          VALIDATE_JSCPD: false
+          # Exclude symlinks because JSCPD has a problem with them
+          # (You could add nore using |. Like this: .*(docs/index.md|filex.js|.filey.yaml).*)
+          FILTER_REGEX_EXCLUDE: .*(docs/index.md).*

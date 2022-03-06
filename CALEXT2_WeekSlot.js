@@ -72,7 +72,6 @@ class WeekSlot extends Slot {
     this.timelineDom.style.top = `${fch.height}px`;
     this.timelineDom.style.height = `${fcc.height}px`;
     const parentPosition = this.timelineDom.getBoundingClientRect();
-    var dayPeriods = this.getDayPeriods();
 
     const getOccupyBin = (event, dayPeriods) => {
       const dayEnd = dayPeriods[dayPeriods.length - 1].endX;
@@ -88,24 +87,14 @@ class WeekSlot extends Slot {
       return ob;
     };
 
-    const assignEventToDay = (event, dayPeriods) => {
-      for (let i = 0; i < dayPeriods.length; i++) {
-        const day = dayPeriods[i];
-        const es = moment.unix(event.startDate).locale(this.locale);
-        const ee = moment.unix(event.endDate).locale(this.locale);
-        const ds = day.start.locale(this.locale);
-        const de = day.end.locale(this.locale);
-        if (!(es.isAfter(de) || ee.isBefore(ds))) {
-          dayPeriods[i].eventCount++;
-        }
-      }
-    };
-
+    const dayPeriods = this.getDayPeriods();
     const timelineDom = this.timelineDom;
     const timelines = [];
+    let tlDom;
     for (let j = 0; j < this.events.length; j++) {
       const event = this.events[j];
       const occu = getOccupyBin(event, dayPeriods);
+
       if (occu > 0) {
         let inserted = false;
         const occuStr = (2 ** dayPeriods.length + occu)
@@ -120,7 +109,7 @@ class WeekSlot extends Slot {
             moment.unix(event.startDate).isBefore(dp.end) &&
             moment.unix(event.endDate).isAfter(dp.start)
           ) {
-            dayPeriods[k].eventCount++;
+            dayPeriods[k].eventCount += 1;
           }
         }
         // var eventDom = this.createEventDom(event, slot.startX, occuStr, dayPeriods.length)
@@ -145,12 +134,10 @@ class WeekSlot extends Slot {
 
         for (let k = 0; k < timelines.length; k++) {
           const tl = timelines[k];
-          if ((tl & occu) > 0) {
-            continue;
-          } else {
+          if (tl && occu) {
             const tlDoms = timelineDom.querySelectorAll(".timelineSleeve");
-            var tlDom = tlDoms[k];
-            timelines[k] = timelines[k] | occu;
+            tlDom = tlDoms[k];
+            timelines[k] = timelines[k] || occu;
             tlDom.appendChild(eventDom);
             inserted = true;
             break;
@@ -158,7 +145,7 @@ class WeekSlot extends Slot {
         }
         if (!inserted) {
           timelines.push(occu);
-          var tlDom = document.createElement("div");
+          tlDom = document.createElement("div");
           tlDom.classList.add("timelineSleeve");
           tlDom.appendChild(eventDom);
           timelineDom.appendChild(tlDom);
@@ -173,7 +160,7 @@ class WeekSlot extends Slot {
         slots[l].style = `height: ${timelineDom.scrollHeight}px`;
       }
     } else if (timelineDom.scrollHeight > timelineDom.clientHeight) {
-      var tlDom = timelineDom.querySelectorAll(".timelineSleeve");
+      tlDom = timelineDom.querySelectorAll(".timelineSleeve");
       const tlRect = tlDom[0].getBoundingClientRect();
       const shown = Math.floor(timelineDom.clientHeight / tlRect.height);
       for (let l = shown; l < tlDom.length; l++) {

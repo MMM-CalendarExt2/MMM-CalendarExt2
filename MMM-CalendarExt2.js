@@ -1,3 +1,4 @@
+/* eslint-disable no-eval */
 /* global Module Scene */
 
 Module.register("MMM-CalendarExt2", {
@@ -366,12 +367,12 @@ Module.register("MMM-CalendarExt2", {
           typeof command.exec === "function"
             ? command.exec(payload, sender)
             : command.exec;
-        payload =
+        const payloadFunction =
           typeof command.payload === "function"
             ? command.payload(payload, sender)
             : command.payload;
         if (this.executable.indexOf(exec) >= 0) {
-          const ret = this[exec](payload);
+          const ret = this[exec](payloadFunction);
           this.sendNotification(`${noti}_RESULT`, ret);
         } else {
           this.sendNotification(`${noti}_RESULT`, null);
@@ -405,9 +406,10 @@ Module.register("MMM-CalendarExt2", {
         this.work(uid);
       }, this.config.updateInterval);
     }
+    return true;
   },
 
-  CMD_changeScene(command = null, handler = null) {
+  CMD_changeScene(handler = null) {
     let reply;
     let changed = null;
     const args = handler.args ? handler.args : null;

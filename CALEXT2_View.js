@@ -1,4 +1,4 @@
-/* global Slot ViewCurrent ViewUpcoming ViewMonth ViewDaily ViewWeekly ViewMonthly ViewWeek */
+/* global Log Slot ViewCurrent ViewUpcoming ViewMonth ViewDaily ViewWeekly ViewMonthly ViewWeek */
 // eslint-disable-next-line no-unused-vars
 class View {
   constructor(config, events) {
@@ -73,11 +73,11 @@ class View {
         }
         this.moduleDom.remove();
         this.containerDom = null;
-        for (const property in this) {
+        this.forEach((property) => {
           if (this.hasOwnProperty(property)) {
             this[property] = null;
           }
-        }
+        });
       }
     }, 500);
   }
@@ -107,22 +107,22 @@ class View {
     return filtered;
   }
 
-  getRegionDom(position) {
+  static getRegionDom(position) {
     let className = position.replace("_", " ");
     className = `region ${className}`;
     const nodes = document.getElementsByClassName(className);
     if (nodes.length !== 1) {
-      console.error("[CALEXT2] Invalid position : ", position);
+      Log.error("[CALEXT2] Invalid position : ", position);
       return null;
     }
     return nodes[0].querySelector(".container");
   }
 
   drawDom() {
-    const container = this.getRegionDom(this.config.position);
+    const container = View.getRegionDom(this.config.position);
     const children = container.children;
     const order = this.config.positionOrder;
-    if (order == -1) {
+    if (order === -1) {
       container.appendChild(this.moduleDom);
     } else if (order >= 0 && order < children.length) {
       container.insertBefore(this.moduleDom, children[order]);
@@ -130,7 +130,7 @@ class View {
       container.appendChild(this.moduleDom);
     }
 
-    if (container.style.display == "none") {
+    if (container.style.display === "none") {
       container.style.display = "block";
     }
     this.containerDom = container;
@@ -274,7 +274,6 @@ class View {
       };
     };
     const periods = [];
-    const now = moment().locale(this.locale);
     const targetDay = this.getStartDay();
     const count = this.getSlotCount();
     for (let i = 0; i < count; i++) {
@@ -284,11 +283,13 @@ class View {
     return periods;
   }
 
-  viewDomType(viewDom) {
+  // eslint-disable-next-line class-methods-use-this
+  viewDomType() {
     // do nothing;
   }
 
-  adjustSlotWidth(slotDom, count) {
+  // eslint-disable-next-line class-methods-use-this
+  adjustSlotWidth() {
     // do nothing;
   }
 

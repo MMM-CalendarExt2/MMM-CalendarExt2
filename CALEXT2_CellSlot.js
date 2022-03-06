@@ -11,23 +11,13 @@ class CellSlot extends Slot {
     this.makeSlotDomClass(view, daySeq, weekSeq);
   }
 
-  static factory(view, slotPeriods, weekSeq = 0, events) {
-    const slots = [];
-    for (let i = 0; i < slotPeriods.length; i++) {
-      const slot = new CellSlot(view, slotPeriods[i], i, weekSeq);
-      // slot.assign(events)
-      slots.push(slot);
-    }
-    return slots;
-  }
-
   init(view) {
     this.makeDom();
     this.makeSlotHeader(view);
-    this.adjustSlotHeight(view, this.contentDom);
+    CellSlot.adjustSlotHeight(view, this.contentDom);
   }
 
-  adjustSlotHeight(view, dom) {
+  static adjustSlotHeight(view, dom) {
     view.adjustSlotHeight(dom);
   }
 

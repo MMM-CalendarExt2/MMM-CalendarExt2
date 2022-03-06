@@ -50,9 +50,13 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 - [MMM-CalendarExtMinimonth](https://github.com/eouia/MMM-CalendarExtMinimonth)
 - [MMM-CalendarExtPlan](https://github.com/eouia/MMM-CalendarExtPlan)
 
-## Updates
+## Changelog
 
-### [1.2.0] unreleased
+### [1.3.0] unreleased
+
+- MODIFIED: Reduction of linter issues #158
+
+### [1.2.0] 2022-02-24
 
 - ADDED: Basic auth support. #138
 - MODIFIED: Introduction of Super-Linter and with it a large number of code adjustments (which should have no functional impact). #147

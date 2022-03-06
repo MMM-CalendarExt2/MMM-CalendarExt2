@@ -139,9 +139,8 @@ module.exports = NodeHelper.create({
 
     const wholeEvents = [].concat(events.events, events.occurrences);
     const eventPool = [];
-    for (const i in wholeEvents) {
-      const item = wholeEvents[i];
 
+    wholeEvents.forEach((item) => {
       const ri = item.hasOwnProperty("item") ? item.item : item;
       const ev = {};
       ev.calendarId = calendar.uid;
@@ -149,12 +148,11 @@ module.exports = NodeHelper.create({
       ev.description = ri.description;
       ev.title = ri.summary;
       ev.isRecurring = ri.isRecurring();
-      ev.isCancelled = item.hasOwnProperty("component")
-        ? item.component.getFirstPropertyValue("status") != null
-          ? item.component.getFirstPropertyValue("status").toUpperCase() ===
-            "CANCELLED"
-          : false
-        : false;
+      ev.isCancelled =
+        item.hasOwnProperty("component") &&
+        item.component.getFirstPropertyValue("status") != null &&
+        item.component.getFirstPropertyValue("status").toUpperCase() ===
+          "CANCELLED";
       if (
         Array.isArray(calendar.replaceTitle) &&
         calendar.replaceTitle.length > 0
@@ -226,7 +224,7 @@ module.exports = NodeHelper.create({
       } else {
         eventPool.push(ev);
       }
-    }
+    });
     eventPool.slice(calendar.maxItems);
     console.log(
       `[CALEXT2] calendar:${calendar.name} >> Scanned: ${wholeEvents.length}, Selected: ${eventPool.length}`
@@ -237,12 +235,12 @@ module.exports = NodeHelper.create({
   mergeEvents(eventPool, calendarId) {
     this.calendarEvents[calendarId] = eventPool;
     let events = [];
-    for (const i of Object.keys(this.calendarEvents)) {
+    Object.keys(this.calendarEvents).forEach((i) => {
       if (this.calendarEvents.hasOwnProperty(i)) {
         const cal = this.calendarEvents[i];
         events = events.concat(cal);
       }
-    }
+    });
 
     // only run sorting and deduplication is the user actually wants it
     if (
@@ -268,6 +266,7 @@ module.exports = NodeHelper.create({
       };
 
       const compareThem = (a, b) => {
+        // eslint-disable-next-line no-unreachable-loop, no-restricted-syntax
         for (const property of this.config.deduplicateEventsOn) {
           const comparisonResult = spaceship(a[property], b[property]);
           // if the comparison has found an order change
@@ -275,7 +274,9 @@ module.exports = NodeHelper.create({
           if (comparisonResult !== null && comparisonResult !== 0) {
             return comparisonResult;
           }
+          return false;
         }
+
         // if the order hasn't been changed, these two events must be identical
         return 0;
       };

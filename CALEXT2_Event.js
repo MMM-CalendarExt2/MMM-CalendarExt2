@@ -17,16 +17,14 @@ class Event {
 
   destroy() {
     this.dom.remove();
-    for (const property in this) {
+    this.forEach((property) => {
       if (this.hasOwnProperty(property)) {
         this[property] = null;
       }
-    }
+    });
   }
 
   draw(slot, targetDom) {
-    // eslint-disable-next-line no-unused-vars
-    const useEventTimeRelative = slot.useEventTimeRelative;
     const hideOverflow = slot.hideOverflow;
     const eventDom = this.dom;
     eventDom.style.opacity = 0;
@@ -49,12 +47,12 @@ class Event {
     return 0;
   }
 
-  drawSleeve(slot, sleeve) {
-    // to implement
-  }
+  /* TODO: To implement */
+  /* drawSleeve(slot, sleeve) {
+    ...
+  } */
 
   makeEventDom() {
-    const event = this.data;
     const locale = this.locale;
     const now = moment().locale(locale);
 
@@ -68,6 +66,7 @@ class Event {
       return isMulti;
     };
 
+    const event = this.data;
     const eventDom = document.createElement("div");
     eventDom.classList.add("event");
 
