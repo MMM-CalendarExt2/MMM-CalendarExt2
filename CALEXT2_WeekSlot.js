@@ -134,10 +134,12 @@ class WeekSlot extends Slot {
 
         for (let k = 0; k < timelines.length; k++) {
           const tl = timelines[k];
-          if (tl && occu) {
+          // eslint-disable-next-line no-bitwise
+          if ((tl & occu) < 1) {
             const tlDoms = timelineDom.querySelectorAll(".timelineSleeve");
             tlDom = tlDoms[k];
-            timelines[k] = timelines[k] || occu;
+            // eslint-disable-next-line no-bitwise, operator-assignment
+            timelines[k] = timelines[k] | occu;
             tlDom.appendChild(eventDom);
             inserted = true;
             break;
