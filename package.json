@@ -1,6 +1,6 @@
 {
   "name": "mmm-calendarext2",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Alternative calendar module of MagicMirror.",
   "main": "MMM-CalendarExt2.js",
   "repository": {
