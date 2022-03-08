@@ -1,9 +1,7 @@
-/* since this file runs under nodejs directly it uses console.log to notify users - hence disable the no-console check */
-/* eslint no-console: "off" */
-
 const fetch = (...args) =>
   // eslint-disable-next-line no-shadow
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const Log = require("logger");
 const moment = require("moment-timezone");
 const IcalExpander = require("ical-expander");
 
@@ -47,7 +45,7 @@ module.exports = NodeHelper.create({
   },
 
   async scanCalendar(calendar, cb) {
-    console.log(
+    Log.log(
       `[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`
     );
 
@@ -90,7 +88,7 @@ module.exports = NodeHelper.create({
     url = url.replace("webcal://", "http://");
     const response = await fetch(url, opts);
     const data = await response.text();
-    // console.log(data);
+    // Log.log(data);
 
     try {
       cb(calendar, data, null);
@@ -99,20 +97,20 @@ module.exports = NodeHelper.create({
       }, calendar.scanInterval);
     } catch (error) {
       cb(calendar, data, error);
-      console.error(error);
+      Log.error(error);
 
       const errorBody = await error.response.text();
-      console.error(`Error body: ${errorBody}`);
+      Log.error(`Error body: ${errorBody}`);
     }
   },
 
   parser(calendar, iCalData = null, error = null) {
     if (error) {
-      console.log(`[CALEXT2] calendar:${calendar.name} >> ${error.message}`);
+      Log.log(`[CALEXT2] calendar:${calendar.name} >> ${error.message}`);
       return;
     }
     if (!iCalData) {
-      console.log(`[CALEXT2] calendar:${calendar.name} >> No data to fetch`);
+      Log.log(`[CALEXT2] calendar:${calendar.name} >> No data to fetch`);
       return;
     }
     let icalExpander;
@@ -122,7 +120,7 @@ module.exports = NodeHelper.create({
         maxIterations: calendar.maxIterations
       });
     } catch (e) {
-      console.log(`[CALEXT2] calendar:${calendar.name} >> ${e.message}`);
+      Log.log(`[CALEXT2] calendar:${calendar.name} >> ${e.message}`);
       return;
     }
 
@@ -133,7 +131,7 @@ module.exports = NodeHelper.create({
         moment().add(calendar.afterDays, "days").endOf("day").toDate()
       );
     } catch (e) {
-      console.log(`[CALEXT2] calendar:${calendar.name} >> ${e.message}`);
+      Log.log(`[CALEXT2] calendar:${calendar.name} >> ${e.message}`);
       return;
     }
 
@@ -226,7 +224,7 @@ module.exports = NodeHelper.create({
       }
     });
     eventPool.slice(calendar.maxItems);
-    console.log(
+    Log.log(
       `[CALEXT2] calendar:${calendar.name} >> Scanned: ${wholeEvents.length}, Selected: ${eventPool.length}`
     );
     this.mergeEvents(eventPool, calendar.uid);
