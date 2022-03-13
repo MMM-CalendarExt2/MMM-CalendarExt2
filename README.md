@@ -52,7 +52,7 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 
 ## Changelog
 
-### [1.3.0] unreleased
+### [1.3.0] 2022-03-07
 
 - MODIFIED: Reduction of linter issues #158
 
