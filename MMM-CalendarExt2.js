@@ -239,7 +239,8 @@ Module.register("MMM-CalendarExt2", {
       "CALEXT2_ViewMonthly.js",
       "CALEXT2_ViewUpcoming.js",
       "CALEXT2_ViewWeek.js",
-      "CALEXT2_ViewWeekly.js"
+      "CALEXT2_ViewWeekly.js",
+      "CALEXT2_Legend.js"
     ];
     if (this.config.iconify) r.push(this.config.iconify);
     return r;
