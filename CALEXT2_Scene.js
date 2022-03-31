@@ -14,6 +14,10 @@ class Scene {
       !scene.views || scene.views.length === 0
         ? cfgs.views.map((v) => v.name)
         : scene.views;
+    this.calendarNames =
+      !scene.calendars || scene.calendars.length === 0
+        ? cfgs.calendars.map((v) => v.name)
+        : scene.calendars;
     this.views = [];
   }
 
@@ -24,6 +28,9 @@ class Scene {
         (config) => config.name === viewName
       );
       viewConfig.sceneClassName = this.className;
+      viewConfig.calendarLegends = this.calendarNames.map((calendarName) =>
+        this.config.calendars.find((config) => config.name === calendarName)
+      );
       const view = View.makeByName(viewConfig, events);
       if (view) {
         this.views.push(view);
