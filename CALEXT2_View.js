@@ -31,6 +31,8 @@ class View {
         return new ViewMonthly(config, events);
       case "week":
         return new ViewWeek(config, events);
+      case "legend":
+        return new ViewLegend(config, events);
       default:
         return new ViewWeek(config, events);
     }
