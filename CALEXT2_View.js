@@ -1,4 +1,4 @@
-/* global Log Slot ViewCurrent ViewUpcoming ViewMonth ViewDaily ViewWeekly ViewMonthly ViewWeek */
+/* global Log Slot ViewCurrent ViewUpcoming ViewMonth ViewDaily ViewWeekly ViewMonthly ViewWeek ViewLegend */
 // eslint-disable-next-line no-unused-vars
 class View {
   constructor(config, events) {
