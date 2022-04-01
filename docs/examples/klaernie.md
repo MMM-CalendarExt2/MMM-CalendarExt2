@@ -33,28 +33,39 @@ Mirror, as he knows pretty well that he needs to go to school.
 {
     module: 'MMM-CalendarExt2',
     config: {
-        rotateInterval: 90*1000,
+        rotateInterval: 60*1000,
+        deduplicateEventsOn: [
+          "startDate", "endDate", "title",
+        ],
         scenes:[
             {
                 name: "DEFAULT",
-                views: ["upcoming","Overview Private"],
+                views: ["current","upcoming","Overview Private"],
             },
             {
                 name: "WorkMode",
-                views: ["upcoming","Overview Work"],
+                views: ["current","upcoming","Overview Work"],
             },
         ],
         views:[
             {
+                    name: "current",
+                    mode: "current",
+                    position: "top_left",
+                    maxDays: 1,
+                    locale: "en",
+                    hideOverflow: false,
+                    filterPassedEvent: true,
+            },
+            {
                 name: "upcoming",
                 mode: "upcoming",
-                position: "top_center",
-                maxItems: 5,
+                position: "top_left",
                 maxDays: 1,
                 locale: "en",
                 hideOverflow: false,
                 filterPassedEvent: true,
-                calendars: ["Anja","Anja Work","Andre","Andre Work","Tobi","Tobi Shared"],
+                useEventTimeRelative: false,
             },
             {
                 name: "Overview Private",
@@ -62,11 +73,27 @@ Mirror, as he knows pretty well that he needs to go to school.
                 mode: "daily",
                 type: "row",
                 position: "bottom_bar",
-                slotCount: 5,
+                slotCount: 7,
                 locale: "en",
                 hideOverflow: false,
                 filterPassedEvent: true,
-                calendars: ["Anja","Andre","Tobi","Tobi Shared"],
+                calendars: [
+                  "Andre",
+                  "Anja",
+                  "Tobi Shared",
+                  "Tobi",
+                  "Andre|Anja",
+                  "Andre|Anja|Tobi Shared",
+                  "Andre|Anja|Tobi Shared|Tobi",
+                  "Andre|Anja|Tobi",
+                  "Andre|Tobi Shared",
+                  "Andre|Tobi Shared|Tobi",
+                  "Andre|Tobi",
+                  "Anja|Tobi Shared",
+                  "Anja|Tobi Shared|Tobi",
+                  "Anja|Tobi",
+                  "Tobi|Tobi Shared",
+                ],
             },
             {
                 name: "Overview Work",
@@ -74,39 +101,72 @@ Mirror, as he knows pretty well that he needs to go to school.
                 mode: "daily",
                 type: "row",
                 position: "bottom_bar",
-                slotCount: 5,
+                slotCount: 7,
                 locale: "en",
                 hideOverflow: false,
                 filterPassedEvent: true,
-                calendars: ["Anja Work","Andre Work"],
+                calendars: ["Anja Work","Andre Work","Andre Work|Anja Work","Tobi Lernsax"],
             },
         ],
         calendars: [
             {
                 name: "Anja",
-                url: "http://localhost:8080/modules/calendars/AnjaPrivate.ics",
+                url: "http://calserv/AnjaPrivate.ics",
             },
             {
                 name: "Anja Work",
-                url: "http://localhost:8080/modules/calendars/O365_Anja.ics",
+                url: "http://calserv/O365_Anja.ics",
                 filter: (event) => {
-                    if (event.ms_busystatus == "TENTATIVE") {
-                        return false
-                    }
-                    return true
+                  if (event.ms_busystatus == "TENTATIVE") {
+                    return false
+                  }
+                  if (event.title == "Blocker") {
+                    return false
+                  }
+                  if (event.title == "Need to be home") {
+                    return false
+                  }
+                  if (event.title == "Vacation") {
+                    return false
+                  }
+                  if (event.title == "OoO") {
+                    return false
+                  }
+                  if (event.title.startsWith("Canceled:")) {
+                    return false
+                  }
+                  return true
                 },
             },
             {
                 name: "Andre",
-                url: "http://localhost:8080/modules/calendars/AndrePrivate.ics",
+                url: "http://calserv/AndrePrivate.ics",
             },
             {
                 name: "Andre Work",
-                url: "http://localhost:8080/modules/calendars/O365_Andre.ics",
+                url: "http://calserv/O365_Andre.ics",
+                filter: (event) => {
+                  if (event.title == "Blocker") {
+                    return false
+                  }
+                  if (event.title == "Need to be home") {
+                    return false
+                  }
+                  if (event.title == "Vacation") {
+                    return false
+                  }
+                  if (event.title == "OoO") {
+                    return false
+                  }
+                  if (event.title.startsWith("Canceled:")) {
+                    return false
+                  }
+                  return true
+                },
             },
             {
                 name: "Tobi",
-                url: "http://localhost:8080/modules/calendars/TobiPrivate.ics",
+                url: "http://calserv/TobiPrivate.ics",
                 filter: (event) => {
                     if (event.title == "Schule") {
                         return false
@@ -116,7 +176,11 @@ Mirror, as he knows pretty well that he needs to go to school.
             },
             {
                 name: "Tobi Shared",
-                url: "http://localhost:8080/modules/calendars/TobiShared.ics",
+                url: "http://calserv/TobiShared.ics",
+            },
+            {
+                name: "Tobi Lernsax",
+                url: "http://calserv/Lernsax.ics",
             },
         ],
     },
@@ -147,17 +211,47 @@ body {
   margin: 10px;
   height: calc(100% - 20px);
   width: calc(100% - 30px);
-}
-.CX2 .agenda .eventSub {
-  display: none;
-}
-.CX2 .daily .fullday .eventTime {
-  display: none;
-}
-.CX2 .slot .event {
   background: inherit;
 }
-.CX2 .slot .slotHeader {
+
+    .region.top.right,
+    .region.top.left,
+    .region.top.center {
+            min-width: 700px;
+    }
+
+    .region.top.left .CX2 {
+            --column-max-width: 700px;
+    }
+
+    .region.top.left .CX2 .period .eventTitle {
+    }
+
+    .CX2 .period .eventTitle {
+            float: left;
+            max-width: var(--column-max-width);
+    }
+
+    .CX2 .period .eventTime {
+            float: right;
+    }
+
+    .CX2 .current .eventCount_0 {
+            display: none;
+    }
+    .CX2 .agenda .eventSub {
+            display:none;
+    }
+    .CX2 .daily .fullday .eventTime {
+            display:none;
+    }
+    .CX2 .slot > .slotContent {
+            background: none;
+    }
+    .CX2 .slot .event{
+            background: none;
+    }
+    .CX2 .slot .slotHeader{
   background-color: inherit;
   text-transform: uppercase;
   font-size: 15px;
@@ -178,16 +272,39 @@ body {
 .CX2 .slot .slotFooter {
   display: none;
 }
+.CX2 .event {
+        border-left: #000000 solid;
+}
 .CX2 .event[data-calendar-name="Andre"],
 .CX2 .event[data-calendar-name="Andre Work"] {
-  border-left: #ce4138 solid;
+        /*color: #ce4138;*/
+        border-left: #ce4138 solid;
 }
 .CX2 .event[data-calendar-name="Anja"],
 .CX2 .event[data-calendar-name="Anja Work"] {
-  border-left: #c632ff solid;
+        /*color: #c632ff;*/
+        border-left: #2cb825 solid;
 }
 .CX2 .event[data-calendar-name="Tobi"],
+.CX2 .event[data-calendar-name="Tobi Lernsax"],
 .CX2 .event[data-calendar-name="Tobi Shared"] {
-  border-left: #d2cf2a solid;
+        /*color: #d2cf2a;*/
+        border-left: #d2cf2a solid;
+}
+
+.CX2 .event[data-busystatus="BUSY"] .eventTitle {
+        /* color: #c632ff; */
+}
+
+.CX2 .event[data-busystatus="OOF"] .eventTitle {
+        color: #400c54;
+}
+
+.CX2 .event[data-busystatus="FREE"] .eventTitle {
+        /* color: #444444; */
+}
+
+.CX2 .event[data-busystatus="TENTATIVE"] .eventTitle {
+        color: #444444;
 }
 ```
