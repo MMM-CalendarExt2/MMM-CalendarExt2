@@ -7,12 +7,10 @@ class ViewLegend extends View {
   }
 
   drawLegend() {
-    this.moduleDom.classList.remove("MMM-CalendarExt2");
-    this.moduleDom.classList.add("MMM-CalendarExt2-Legend");
     for (let i = 0; i < this.config.calendarLegends.length; i++) {
       const calendar = this.config.calendarLegends[i];
       const tlDom = document.createElement("div");
-      tlDom.classList.add("legend-slot");
+      tlDom.classList.add("legend-slot", "event");
       tlDom.dataset.calendarName = calendar.name;
       if (calendar.className) {
         tlDom.classList.add(calendar.className);
@@ -30,5 +28,12 @@ class ViewLegend extends View {
 
       this.contentDom.append(tlDom);
     }
+    this.makeModuleTitle();
+  }
+
+  makeModuleTitle() {
+    if (!this.config.title) return;
+    const headerTitle = this.moduleDom.getElementsByClassName("module-header");
+    headerTitle[0].innerHTML = this.config.title;
   }
 }
