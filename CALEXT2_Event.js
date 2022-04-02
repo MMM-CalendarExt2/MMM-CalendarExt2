@@ -17,11 +17,12 @@ class Event {
 
   destroy() {
     this.dom.remove();
-    this.forEach((property) => {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const property in this) {
       if (this.hasOwnProperty(property)) {
         this[property] = null;
       }
-    });
+    }
   }
 
   draw(slot, targetDom) {
