@@ -445,9 +445,10 @@
   display: inline;
 }
 
-.CX2 .legend-slot {
-  padding: 0 20px 0 20px;
-  margin: 10px 10px;
+/** CSS for legend view **/
+.CX2 .event.legendSlot {
+  padding: 0 20px;
+  margin: 10px;
   text-align: center;
   border-radius: 12px;
   background-color: rgb(64 64 64 / 60%);
