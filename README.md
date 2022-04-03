@@ -22,9 +22,16 @@ npm install
 Afterwards read how to configure everything in [the configuration documentation](docs/Configuration.md).
 If you like adjust [to your language](docs/Localization.md) or [adapt the styling](docs/Styling.md).
 
-Finally if you like a shortcut browse through [the examples of other peoples config](docs/examples).
+Finally, if you like a shortcut browse through [the examples of other peoples config](docs/examples).
 
 Note: If you want to start developing and miss the entire history run `git fetch --unshallow`.
+
+## Documentation Quick Links
+- [Scene Configuration](docs/Configuration/Scene.md)
+- [Calendar Configuration](docs/Configuration/Calendar.md)
+- [View Options](docs/Configuration/View.md) : Read subsection of this also. Very important.
+- [defaultSet Options](docs/Configuration/defaultSet.md)
+- [Other Config Options](docs/Configuration/Others.md)
 
 ## Major feature
 
