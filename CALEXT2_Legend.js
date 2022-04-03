@@ -10,7 +10,7 @@ class ViewLegend extends View {
     for (let i = 0; i < this.config.calendarLegends.length; i++) {
       const calendar = this.config.calendarLegends[i];
       const tlDom = document.createElement("div");
-      tlDom.classList.add("legend-slot", "event");
+      tlDom.classList.add("legendSlot", "event");
       tlDom.dataset.calendarName = calendar.name;
       if (calendar.className) {
         tlDom.classList.add(calendar.className);
