@@ -176,9 +176,12 @@ class Event {
       timeDom.innerHTML = this.relativeFormat[status]
         .replace("%ENDFROMNOW%", this.mEnd.fromNow())
         .replace("%STARTFROMNOW%", this.mStart.fromNow())
-        .replace("%STARTDATE%", this.mStart.format(this.dateFormat))
-        .replace("%ENDDATE%", this.mEnd.format(this.dateFormat))
         .replace("%DURATION%", dur.humanize());
+      if (typeof this.dateFormat === "string") {
+        timeDom.innerHTML
+          .replace("%STARTDATE%", this.mStart.format(this.dateFormat))
+          .replace("%ENDDATE%", this.mEnd.format(this.dateFormat));
+      }
       time.appendChild(timeDom);
     } else {
       let sd;
