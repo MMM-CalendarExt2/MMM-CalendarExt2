@@ -17,11 +17,12 @@ class Event {
 
   destroy() {
     this.dom.remove();
-    this.forEach((property) => {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const property in this) {
       if (this.hasOwnProperty(property)) {
         this[property] = null;
       }
-    });
+    }
   }
 
   draw(slot, targetDom) {
@@ -176,6 +177,11 @@ class Event {
         .replace("%ENDFROMNOW%", this.mEnd.fromNow())
         .replace("%STARTFROMNOW%", this.mStart.fromNow())
         .replace("%DURATION%", dur.humanize());
+      if (typeof this.dateFormat === "string") {
+        timeDom.innerHTML
+          .replace("%STARTDATE%", this.mStart.format(this.dateFormat))
+          .replace("%ENDDATE%", this.mEnd.format(this.dateFormat));
+      }
       time.appendChild(timeDom);
     } else {
       let sd;

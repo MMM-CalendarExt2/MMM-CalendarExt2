@@ -272,18 +272,22 @@ Module.register("MMM-CalendarExt2", {
   },
 
   suspend() {
-    this.showing = false;
-    if (this.currentScene) {
-      this.currentScene.clearViews();
+    if (this.showing) {
+      this.showing = false;
+      if (this.currentScene) {
+        this.currentScene.clearViews();
+      }
     }
   },
 
   resume() {
-    this.showing = true;
-    if (this.currentScene) {
-      this.work(this.currentSceneUid);
-    } else {
-      this.work();
+    if (!this.showing) {
+      this.showing = true;
+      if (this.currentScene) {
+        this.work(this.currentSceneUid);
+      } else {
+        this.work();
+      }
     }
   },
 
