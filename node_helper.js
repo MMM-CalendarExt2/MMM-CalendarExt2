@@ -45,6 +45,8 @@ module.exports = NodeHelper.create({
   },
 
   async scanCalendar(calendar, cb) {
+    let response;
+    let data;
     Log.log(
       `[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`
     );
@@ -86,9 +88,15 @@ module.exports = NodeHelper.create({
 
     let url = calendar.url;
     url = url.replace("webcal://", "http://");
-    const response = await fetch(url, opts);
-    const data = await response.text();
-    // Log.log(data);
+    try {
+      response = await fetch(url, opts);
+      data = await response.text();
+    } catch (error) {
+      // Probably a connection issue
+      Log.log(
+        `[CALEXT2] calendar:${calendar.name}: failed to fetch. Will try again. ${error}`
+      );
+    }
 
     try {
       cb(calendar, data, null);
