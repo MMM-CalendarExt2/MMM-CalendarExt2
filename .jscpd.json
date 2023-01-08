@@ -1,5 +1,3 @@
 {
-  "ignore": [
-    "docs/Configuration/Views/week,-month.md"
-  ]
+  "ignore": ["docs/Configuration/Views/week,-month.md"]
 }

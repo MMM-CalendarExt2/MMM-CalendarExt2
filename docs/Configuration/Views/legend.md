@@ -12,6 +12,7 @@ calendar. The legend is a quick reference to see what colors or icons match to
 the calendar.
 
 ### Configuration Reference
+
 ```js
 {
   name: "Legend",
@@ -25,7 +26,9 @@ the calendar.
 ## Example
 
 ### Legend
+
 ![legend](legend.jpg)
 
 ### Legend with Calendar
+
 ![Full Legend Calendar Example](legend-full-example.png)
