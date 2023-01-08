@@ -27,6 +27,7 @@ Finally, if you like a shortcut browse through [the examples of other peoples co
 Note: If you want to start developing and miss the entire history run `git fetch --unshallow`.
 
 ## Documentation Quick Links
+
 - [Scene Configuration](docs/Configuration/Scene.md)
 - [Calendar Configuration](docs/Configuration/Calendar.md)
 - [View Options](docs/Configuration/View.md) : Read subsection of this also. Very important.

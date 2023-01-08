@@ -22,7 +22,21 @@
     "prettier/prettier": "error",
     "import/no-dynamic-require": "off",
     "import/no-unresolved": "off",
-    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["arrs", "calendar", "dom", "e", "payload", "slotDom", "targetDom"] }],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "arrs",
+          "calendar",
+          "dom",
+          "e",
+          "payload",
+          "slotDom",
+          "targetDom"
+        ]
+      }
+    ],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-prototype-builtins": "off"
   }

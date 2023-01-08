@@ -214,44 +214,44 @@ body {
   background: inherit;
 }
 
-    .region.top.right,
-    .region.top.left,
-    .region.top.center {
-            min-width: 700px;
-    }
+.region.top.right,
+.region.top.left,
+.region.top.center {
+  min-width: 700px;
+}
 
-    .region.top.left .CX2 {
-            --column-max-width: 700px;
-    }
+.region.top.left .CX2 {
+  --column-max-width: 700px;
+}
 
-    .region.top.left .CX2 .period .eventTitle {
-    }
+.region.top.left .CX2 .period .eventTitle {
+}
 
-    .CX2 .period .eventTitle {
-            float: left;
-            max-width: var(--column-max-width);
-    }
+.CX2 .period .eventTitle {
+  float: left;
+  max-width: var(--column-max-width);
+}
 
-    .CX2 .period .eventTime {
-            float: right;
-    }
+.CX2 .period .eventTime {
+  float: right;
+}
 
-    .CX2 .current .eventCount_0 {
-            display: none;
-    }
-    .CX2 .agenda .eventSub {
-            display:none;
-    }
-    .CX2 .daily .fullday .eventTime {
-            display:none;
-    }
-    .CX2 .slot > .slotContent {
-            background: none;
-    }
-    .CX2 .slot .event{
-            background: none;
-    }
-    .CX2 .slot .slotHeader{
+.CX2 .current .eventCount_0 {
+  display: none;
+}
+.CX2 .agenda .eventSub {
+  display: none;
+}
+.CX2 .daily .fullday .eventTime {
+  display: none;
+}
+.CX2 .slot > .slotContent {
+  background: none;
+}
+.CX2 .slot .event {
+  background: none;
+}
+.CX2 .slot .slotHeader {
   background-color: inherit;
   text-transform: uppercase;
   font-size: 15px;
@@ -273,38 +273,38 @@ body {
   display: none;
 }
 .CX2 .event {
-        border-left: #000000 solid;
+  border-left: #000000 solid;
 }
 .CX2 .event[data-calendar-name="Andre"],
 .CX2 .event[data-calendar-name="Andre Work"] {
-        /*color: #ce4138;*/
-        border-left: #ce4138 solid;
+  /*color: #ce4138;*/
+  border-left: #ce4138 solid;
 }
 .CX2 .event[data-calendar-name="Anja"],
 .CX2 .event[data-calendar-name="Anja Work"] {
-        /*color: #c632ff;*/
-        border-left: #2cb825 solid;
+  /*color: #c632ff;*/
+  border-left: #2cb825 solid;
 }
 .CX2 .event[data-calendar-name="Tobi"],
 .CX2 .event[data-calendar-name="Tobi Lernsax"],
 .CX2 .event[data-calendar-name="Tobi Shared"] {
-        /*color: #d2cf2a;*/
-        border-left: #d2cf2a solid;
+  /*color: #d2cf2a;*/
+  border-left: #d2cf2a solid;
 }
 
 .CX2 .event[data-busystatus="BUSY"] .eventTitle {
-        /* color: #c632ff; */
+  /* color: #c632ff; */
 }
 
 .CX2 .event[data-busystatus="OOF"] .eventTitle {
-        color: #400c54;
+  color: #400c54;
 }
 
 .CX2 .event[data-busystatus="FREE"] .eventTitle {
-        /* color: #444444; */
+  /* color: #444444; */
 }
 
 .CX2 .event[data-busystatus="TENTATIVE"] .eventTitle {
-        color: #444444;
+  color: #444444;
 }
 ```
