@@ -25,16 +25,15 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "eslint": "^8.32.0",
+    "eslint": "^8.34.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.3",
-    "stylelint": "^14.16.1",
-    "stylelint-config-prettier": "^9.0.4",
-    "stylelint-config-standard": "^29.0.0",
+    "prettier": "^2.8.4",
+    "stylelint": "^15.1.0",
+    "stylelint-config-standard": "^30.0.1",
     "stylelint-prettier": "^2.0.0"
   },
   "engines": {
