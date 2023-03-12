@@ -48,6 +48,6 @@
     "stylelint:fix": "stylelint --config .stylelintrc.json --fix **/*.css",
     "prettier": "bash -c 'prettier -c ${@:-.}' -- ",
     "prettier:fix": "bash -c 'prettier -w ${@:-.}' -- ",
-    "test": "npm run lint"
+    "test": "npm run lint && npm run prettier"
   }
 }
