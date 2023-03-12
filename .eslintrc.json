@@ -19,9 +19,7 @@
   },
   "rules": {
     "default-case": "off",
-    "global-require": "off",
     "prefer-destructuring": "off",
-    "import/no-dynamic-require": "off",
     "import/no-unresolved": "off",
     "no-param-reassign": [
       "error",
