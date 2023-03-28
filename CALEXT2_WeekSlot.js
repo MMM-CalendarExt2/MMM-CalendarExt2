@@ -88,7 +88,7 @@ class WeekSlot extends Slot {
     };
 
     const dayPeriods = this.getDayPeriods();
-    const timelineDom = this.timelineDom;
+    const { timelineDom } = this;
     const timelines = [];
     let tlDom;
     for (let j = 0; j < this.events.length; j++) {

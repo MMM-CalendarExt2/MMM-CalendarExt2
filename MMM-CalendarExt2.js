@@ -442,7 +442,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   sceneNext() {
-    const nextUid = this.currentScene.nextUid;
+    const { nextUid } = this.currentScene;
     this.work(nextUid);
     return true;
   },

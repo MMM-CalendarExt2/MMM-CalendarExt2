@@ -18,7 +18,7 @@ class ViewCell extends View {
   }
 
   getSlotPeriods() {
-    const showWeekends = this.config.showWeekends;
+    const { showWeekends } = this.config;
     const getSlotPeriod = (tDay, seq) => {
       const mtd = moment(tDay).locale(this.locale).add(seq, "week");
       const start = showWeekends
@@ -43,7 +43,7 @@ class ViewCell extends View {
   }
 
   getSubSlotPeriods(start) {
-    const showWeekends = this.config.showWeekends;
+    const { showWeekends } = this.config;
     const days = showWeekends ? 7 : 5;
     const periods = [];
     const t = start;

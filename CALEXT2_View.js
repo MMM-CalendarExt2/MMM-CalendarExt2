@@ -86,7 +86,7 @@ class View {
   }
 
   filterEvents(events) {
-    const calendars = this.calendars;
+    const { calendars } = this;
     const calendarFilter =
       Array.isArray(calendars) && calendars.length > 0
         ? (e) => calendars.indexOf(e.calendarName) >= 0
@@ -123,7 +123,7 @@ class View {
 
   drawDom() {
     const container = View.getRegionDom(this.config.position);
-    const children = container.children;
+    const { children } = container;
     const order = this.config.positionOrder;
     if (order === -1) {
       container.appendChild(this.moduleDom);
@@ -305,7 +305,7 @@ class View {
   }
 
   getStartDay() {
-    const fromNow = this.config.fromNow;
+    const { fromNow } = this.config;
     const now = moment().locale(this.locale);
     return now.add(fromNow, this.slotUnit).startOf("day");
   }

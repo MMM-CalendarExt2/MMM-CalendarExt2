@@ -19,7 +19,6 @@
   },
   "rules": {
     "default-case": "off",
-    "prefer-destructuring": "off",
     "import/no-unresolved": "off",
     "no-param-reassign": [
       "error",
