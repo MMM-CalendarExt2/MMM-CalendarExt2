@@ -3,6 +3,7 @@
   "plugins": ["stylelint-prettier"],
   "root": true,
   "rules": {
+    "declaration-block-no-redundant-longhand-properties": null,
     "no-descending-specificity": null,
     "prettier/prettier": true,
     "rule-empty-line-before": null,
