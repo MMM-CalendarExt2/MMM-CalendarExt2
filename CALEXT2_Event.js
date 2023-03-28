@@ -26,7 +26,7 @@ class Event {
   }
 
   draw(slot, targetDom) {
-    const hideOverflow = slot.hideOverflow;
+    const { hideOverflow } = slot;
     const eventDom = this.dom;
     eventDom.style.opacity = 0;
     targetDom.appendChild(eventDom);
@@ -54,7 +54,7 @@ class Event {
   } */
 
   makeEventDom() {
-    const locale = this.locale;
+    const { locale } = this;
     const now = moment().locale(locale);
 
     const isEventMultiSlots = (event, mESX, mEEX, mSSX, mSEX) => {
@@ -149,7 +149,7 @@ class Event {
   }
 
   createEventTime() {
-    const locale = this.locale;
+    const { locale } = this;
     const event = this.data;
     const makeEventTime = (innerHTML, classNameString) => {
       const div = document.createElement("div");
