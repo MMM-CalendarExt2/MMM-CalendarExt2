@@ -193,7 +193,7 @@ As our Mirror display only has a resolution of 1280x800 I decided to reduce the
 margins on the entire mirror and remove the `+1` space marking omitted events
 (no events are ever omitted, see `hideOverflow: false` in `config.js`).
 
-The styling for MMM-CalendarExt2 is largely based on the default MagicMirror
+The styling for MMM-CalendarExt2 is largely based on the default MagicMirror²
 look.
 I also removed the background colors on all events (which means I also need to
 use the text color from outside in fullday events, as they would be
