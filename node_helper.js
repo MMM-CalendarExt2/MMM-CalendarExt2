@@ -1,6 +1,3 @@
-const fetch = (...args) =>
-  // eslint-disable-next-line no-shadow
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const Log = require("logger");
 const moment = require("moment-timezone");
 const IcalExpander = require("ical-expander");

@@ -60,6 +60,10 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 
 ## Changelog
 
+### [1.4.0] 2023-10-10
+
+- MODIFIED: Replace external package `node-fetch` by internal `fetch` - With this change, node version 18 or newer is required.
+
 ### [1.3.0] 2022-03-07
 
 - MODIFIED: Reduction of linter issues #158
