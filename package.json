@@ -24,14 +24,14 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-json": "^3.1.0",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "prettier": "^3.0.3",
-    "stylelint": "^15.10.3",
+    "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^4.0.2"
   },
