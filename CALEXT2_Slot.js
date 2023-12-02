@@ -55,9 +55,8 @@ class Slot {
       hiddenCount += this.drawEvent(event);
     }
     if (hiddenCount > 0) {
-      this.footerDom.querySelector(
-        ".hiddenCount"
-      ).innerHTML = `+ ${hiddenCount}`;
+      this.footerDom.querySelector(".hiddenCount").innerHTML =
+        `+ ${hiddenCount}`;
     }
   }
 
