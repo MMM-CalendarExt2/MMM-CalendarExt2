@@ -52,7 +52,7 @@ module.exports = NodeHelper.create({
     const nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/)[1]);
     opts = {
       headers: {
-        "User-Agent": `Mozilla/5.0 (Node.js ${nodeVersion}) MagicMirror/${global.version} (https://github.com/MichMich/MagicMirror/)`
+        "User-Agent": `Mozilla/5.0 (Node.js ${nodeVersion}) MagicMirror/${global.version} (https://github.com/MagicMirrorOrg/MagicMirror/)`
       },
       gzip: true
     };

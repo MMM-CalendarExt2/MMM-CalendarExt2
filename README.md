@@ -2,7 +2,7 @@
 
 [![GitHub Super-Linter](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/workflows/Super-Linter/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
-MMM-CalendarExt2 is a module for [MagicMirror²](https://github.com/MichMich/MagicMirror) to display extended calendars and event views.
+MMM-CalendarExt2 is a module for [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) to display extended calendars and event views.
 
 It is based on [MMM-CalendarExt](https://github.com/eouia/MMM-CalendarExt), which is no longer being developed.
 
@@ -59,6 +59,13 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 - [MMM-CalendarExtPlan](https://github.com/eouia/MMM-CalendarExtPlan)
 
 ## Changelog
+
+### [1.4.1] 2024-01-01 - Maintenance update
+
+- Update dependencies
+- Update ESLint env
+- Replace eslint-plugin-json by eslint-plugin-jsonc
+- Update URLs to MagicMirror project
 
 ### [1.4.0] 2023-10-10
 
