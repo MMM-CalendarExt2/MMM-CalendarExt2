@@ -1,12 +1,12 @@
 {
   "env": {
     "browser": true,
-    "es2022": true,
+    "es2023": true,
     "node": true
   },
   "extends": [
     "airbnb-base",
-    "plugin:json/recommended",
+    "plugin:jsonc/recommended-with-json",
     "plugin:prettier/recommended"
   ],
   "parserOptions": {
