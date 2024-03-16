@@ -4,6 +4,7 @@ on:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
+permissions: read-all
 jobs:
   run-lint:
     runs-on: ubuntu-latest
