@@ -41,12 +41,12 @@
   "scripts": {
     "lint": "npm run eslint && npm run stylelint",
     "lint:fix": "npm run eslint:fix && npm run stylelint:fix",
-    "eslint": "bash -c 'eslint -c .eslintrc.json ${@:-.}' -- ",
-    "eslint:fix": "bash -c 'eslint -c .eslintrc.json --fix ${@:-.}' -- ",
-    "stylelint": "stylelint --config .stylelintrc.json **/*.css",
-    "stylelint:fix": "stylelint --config .stylelintrc.json --fix **/*.css",
-    "prettier": "bash -c 'prettier -c ${@:-.}' -- ",
-    "prettier:fix": "bash -c 'prettier -w ${@:-.}' -- ",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
+    "stylelint": "stylelint **/*.css",
+    "stylelint:fix": "stylelint **/*.css --fix",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write",
     "test": "npm run lint && npm run prettier"
   }
 }
