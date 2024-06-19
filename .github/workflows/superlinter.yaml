@@ -48,4 +48,4 @@ jobs:
           YAML_CONFIG_FILE: .yamllint.yaml
           # Exclude symlinks because JSCPD has a problem with them
           # (You could add nore using |. Like this: .*(docs/index.md|filex.js|.filey.yaml).*)
-          FILTER_REGEX_EXCLUDE: .*(docs/index.md).*
+          FILTER_REGEX_EXCLUDE: .*(docs/index.md|node_modules/).*
