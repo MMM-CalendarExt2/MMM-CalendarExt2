@@ -56,7 +56,7 @@ Each view could have parts of these classes by condition. You can overwrite CSS 
 
 ## slot components
 
-A view has one or more slots. slot is divided area by time(day or week or month) where events are located. Each slot has these HTML dom as it's component.
+A view has one or more slots. slot is divided area by time(day or week or month) where events are located. Each slot has these HTML DOM as it's component.
 
 - `.slotHeader` : slot tile is displayed here.
 - `.slotContent` : events are located here.
