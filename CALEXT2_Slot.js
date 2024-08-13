@@ -30,7 +30,7 @@ class Slot {
 
   destroy() {
     this.dom.remove();
-    // eslint-disable-next-line no-restricted-syntax
+
     for (const property in this) {
       if (this.hasOwnProperty(property)) {
         this[property] = null;

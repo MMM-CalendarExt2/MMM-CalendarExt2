@@ -1,5 +1,5 @@
 /* global View */
-// eslint-disable-next-line no-unused-vars, no-undef
+// eslint-disable-next-line no-unused-vars
 class ViewLegend extends View {
   draw() {
     this.drawDom();

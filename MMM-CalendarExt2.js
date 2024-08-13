@@ -202,6 +202,7 @@ Module.register("MMM-CalendarExt2", {
           "Show specific scene. You can use `n`, `p`, number and scene name after `/scene`",
         callback: "CMD_changeScene"
       });
+
       /*
       register.add({
         command: 'whennext',

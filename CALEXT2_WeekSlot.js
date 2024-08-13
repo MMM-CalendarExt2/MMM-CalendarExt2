@@ -117,7 +117,7 @@ class WeekSlot extends Slot {
         const eventDom = this.makeCellEvent(event);
 
         // eslint-disable-next-line no-unused-vars
-        const isFullday = !!event.isFullday;
+        const isFullday = Boolean(event.isFullday);
 
         const pos = occuStr.search("1");
         const dayDuration = occuStr.split("1").length - 1;
