@@ -11,6 +11,7 @@ module.exports = NodeHelper.create({
     this.calendarEvents = {};
   },
 
+  // eslint-disable-next-line no-empty-function
   stop() {},
 
   socketNotificationReceived(noti, payload) {
@@ -48,9 +49,8 @@ module.exports = NodeHelper.create({
       `[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`
     );
 
-    let opts = null;
-    const nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/)[1]);
-    opts = {
+    const nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/u)[1]);
+    const opts = {
       headers: {
         "User-Agent": `Mozilla/5.0 (Node.js ${nodeVersion}) MagicMirror/${global.version} (https://github.com/MagicMirrorOrg/MagicMirror/)`
       },
@@ -153,16 +153,16 @@ module.exports = NodeHelper.create({
       ev.isRecurring = ri.isRecurring();
       ev.isCancelled =
         item.hasOwnProperty("component") &&
+        // eslint-disable-next-line no-eq-null, eqeqeq
         item.component.getFirstPropertyValue("status") != null &&
-        item.component.getFirstPropertyValue("status").toUpperCase() ===
-          "CANCELLED";
+        item.component.getFirstPropertyValue("status").toUpperCase() === "CANCELLED";
       if (
         Array.isArray(calendar.replaceTitle) &&
         calendar.replaceTitle.length > 0
       ) {
         for (let j = 0; j < calendar.replaceTitle.length; j++) {
           const rt = calendar.replaceTitle[j];
-          const re = rt[0] instanceof RegExp ? rt[0] : new RegExp(rt[0], "g");
+          const re = rt[0] instanceof RegExp ? rt[0] : new RegExp(rt[0], "gu");
           const rto = rt[1] ? rt[1] : "";
           ev.title = ev.title.replace(re, rto);
         }
@@ -187,7 +187,7 @@ module.exports = NodeHelper.create({
       ev.endDateJ = endDate.toJSON();
       ev.duration = ri.duration.toSeconds();
       ev.isMoment = ev.duration === 0;
-      ev.isPassed = !!endDate.isBefore(moment());
+      ev.isPassed = Boolean(endDate.isBefore(moment()));
       if (ev.duration <= 86400) {
         if (startDate.format("YYMMDD") === endDate.format("YYMMDD")) {
           ev.isOneday = true;
@@ -197,7 +197,7 @@ module.exports = NodeHelper.create({
       }
       ev.className = calendar.className;
       ev.icon = calendar.icon;
-      const isFullday = !!(
+      const isFullday = Boolean(
         startDate.format("HHmmss") === "000000" &&
         endDate.format("HHmmss") === "000000"
       );
@@ -269,7 +269,7 @@ module.exports = NodeHelper.create({
       };
 
       const compareThem = (a, b) => {
-        // eslint-disable-next-line no-unreachable-loop, no-restricted-syntax
+
         for (const property of this.config.deduplicateEventsOn) {
           const comparisonResult = spaceship(a[property], b[property]);
           // if the comparison has found an order change

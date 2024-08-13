@@ -17,7 +17,7 @@ class Event {
 
   destroy() {
     this.dom.remove();
-    // eslint-disable-next-line no-restricted-syntax
+
     for (const property in this) {
       if (this.hasOwnProperty(property)) {
         this[property] = null;
@@ -48,10 +48,14 @@ class Event {
     return 0;
   }
 
-  /* TODO: To implement */
-  /* drawSleeve(slot, sleeve) {
-    ...
-  } */
+  /*
+   * TODO: To implement
+
+      DrawSleeve(slot, sleeve) {
+      ...
+      }
+
+   */
 
   makeEventDom() {
     const { locale } = this;
@@ -71,8 +75,8 @@ class Event {
     const eventDom = document.createElement("div");
     eventDom.classList.add("event");
 
-    const isPassed = !!moment.unix(event.endDate).isBefore(now);
-    const isFullday = !!event.isFullday;
+    const isPassed = Boolean(moment.unix(event.endDate).isBefore(now));
+    const isFullday = Boolean(event.isFullday);
     const isMultiSlots = isEventMultiSlots(
       event,
       this.mStart,
@@ -80,11 +84,11 @@ class Event {
       this.sStart,
       this.sEnd
     );
-    const isTargetDay = !!(
+    const isTargetDay = Boolean(
       this.mStart.isBefore(moment(now).endOf("day")) ||
       this.mEnd.isAfter(moment(now).startOf("day"))
     );
-    const isNow = !!now.isBetween(this.mStart, this.mEnd, null, "[)");
+    const isNow = Boolean(now.isBetween(this.mStart, this.mEnd, null, "[)"));
     if (isFullday) {
       eventDom.classList.add("fullday");
     } else {
