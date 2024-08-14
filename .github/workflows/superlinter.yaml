@@ -6,7 +6,8 @@ on:
     branches:
       - main
   pull_request:
-permissions: { }
+permissions:
+  statuses: write
 jobs:
   # Set the job key. The key is displayed as the job name
   # when a job name is not provided
