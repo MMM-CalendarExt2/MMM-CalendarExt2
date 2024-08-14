@@ -46,6 +46,8 @@ jobs:
           JSCPD_CONFIG_FILE: .jscpd.json
           YAML_CONFIG_FILE: .yamllint.yaml
 
+          VALIDATE_CSS: false
+          VALIDATE_JSON: false
           VALIDATE_JAVASCRIPT_ES: false
           VALIDATE_JAVASCRIPT_PRETTIER: false
           VALIDATE_JAVASCRIPT_STANDARD: false
