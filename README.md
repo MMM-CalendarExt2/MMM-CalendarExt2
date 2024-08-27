@@ -60,6 +60,13 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 
 ## Changelog
 
+### [1.4.2] 2024-08-27 - Maintenance update
+
+- Upgrade ESLint to v9
+- Switch to ESLint flat config
+- Update dependencies
+- Disable validating JavaScript, CSS and JSON by super-linter
+
 ### [1.4.1] 2024-01-01 - Maintenance update
 
 - Update dependencies
