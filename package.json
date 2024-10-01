@@ -29,7 +29,7 @@
     "eslint": "^9.9.1",
     "eslint-plugin-jsonc": "^2.16.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^15.9.0",
+    "globals": "^15.10.0",
     "prettier": "^3.3.3",
     "stylelint": "^16.8.2",
     "stylelint-config-standard": "^36.0.1",
