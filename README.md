@@ -10,7 +10,9 @@ It is based on [MMM-CalendarExt](https://github.com/eouia/MMM-CalendarExt), whic
 
 ![screenshot](screenshot.png)
 
-## Install & Configuration
+## Installation
+
+Just clone the module into your modules directory and install the dependencies:
 
 ```sh
 cd ~/MagicMirror/modules
@@ -19,12 +21,14 @@ cd MMM-CalendarExt2
 npm install
 ```
 
-Afterwards read how to configure everything in [the configuration documentation](docs/Configuration.md).
+Note: If you want to start developing and miss the entire history run `git fetch --unshallow`.
+
+## Configuration
+
+After installation read how to configure everything in [the configuration documentation](docs/Configuration.md).
 If you like adjust [to your language](docs/Localization.md) or [adapt the styling](docs/Styling.md).
 
 Finally, if you like a shortcut browse through [the examples of other peoples config](docs/examples).
-
-Note: If you want to start developing and miss the entire history run `git fetch --unshallow`.
 
 ## Documentation Quick Links
 
@@ -57,6 +61,16 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 - [MMM-CalendarExtTimeline](https://github.com/eouia/MMM-CalendarExtTimeline)
 - [MMM-CalendarExtMinimonth](https://github.com/eouia/MMM-CalendarExtMinimonth)
 - [MMM-CalendarExtPlan](https://github.com/eouia/MMM-CalendarExtPlan)
+
+## Update
+
+Just enter the MMM-PublicTransportHafas directory, pull the update and install the dependencies:
+
+```bash
+cd ~/MagicMirror/modules/MMM-CalendarExt2
+git pull
+npm install
+```
 
 ## Changelog
 
