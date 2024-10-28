@@ -16,15 +16,15 @@ Other MM module can order to change scene with notification.
 
 ### Predefined notifications
 
-**CALEXT2_SCENE_NEXT**
+#### CALEXT2_SCENE_NEXT
 
 - `.sendNotification("CALEXT2_SCENE_NEXT", null)`
 
-**CALEXT2_SCENE_PREVIOUS**
+#### CALEXT2_SCENE_PREVIOUS
 
 - `.sendNotification("CALEXT2_SCENE_PREVIOUS", null)`
 
-**CALEXT2_SCENE_CHANGE**
+#### CALEXT2_SCENE_CHANGE
 
 - `.sendNotification("CALEXT2_SCENE_CHANGE", {type:"id", key:0})`
 - `.sendNotification("CALEXT2_SCENE_CHANGE", {type:"name", key:"DEFAULT"})`
@@ -101,7 +101,7 @@ payload: (payload, sender) => {
 },
 ```
 
-**Available executable functions**
+## Available executable functions
 
 - `sceneNext()`
 - `scenePrevious()`

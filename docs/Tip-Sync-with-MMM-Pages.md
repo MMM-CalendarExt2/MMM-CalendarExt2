@@ -106,7 +106,7 @@ Then, see `notifications` section. When `PAGE_INCREMENT` is coming, **`sceneNext
 The results are above pictures.
 And, this is already explained in wiki of GitHub.
 
-**One More Thing**
+## One More Thing
 
 _Hey, I want page 3 empty. How to remove view or scene in that page?_
 
