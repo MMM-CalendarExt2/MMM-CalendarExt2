@@ -1,25 +1,46 @@
+import eslintPluginImport from "eslint-plugin-import";
 import eslintPluginJs from "@eslint/js";
 import eslintPluginJsonc from "eslint-plugin-jsonc";
 import eslintPluginStylistic from "@stylistic/eslint-plugin";
 import globals from "globals";
 
 const config = [
-  ...eslintPluginJsonc.configs["flat/recommended-with-json"],
+  eslintPluginImport.flatConfigs.recommended,
+  eslintPluginJs.configs.all,
+  ...eslintPluginJsonc.configs["flat/recommended-with-jsonc"],
   {
-    files: ["**/*.js", "**/*.mjs"],
-    languageOptions: {
-      globals: {
+    "ignores": ["package-lock.json"]
+  },
+  {
+    "files": ["**/*.js"],
+    "languageOptions": {
+      "globals": {
         ...globals.browser,
         ...globals.node,
-        moment: "readonly"
-      }
+        "moment": "readonly"
+      },
+      "sourceType": "commonjs"
     },
-    plugins: {
+    "plugins": {
       ...eslintPluginStylistic.configs["all-flat"].plugins
     },
-    rules: {
-      ...eslintPluginJs.configs.all.rules,
+    "rules": {
       ...eslintPluginStylistic.configs["all-flat"].rules,
+      "@stylistic/array-element-newline": "off",
+      "@stylistic/dot-location": ["error", "property"],
+      "@stylistic/function-call-argument-newline": "off",
+      "@stylistic/function-paren-newline": "off",
+      "@stylistic/implicit-arrow-linebreak": "off",
+      "@stylistic/indent": ["error", 2],
+      "@stylistic/multiline-comment-style": "off",
+      "@stylistic/multiline-ternary": "off",
+      "@stylistic/newline-per-chained-call": "off",
+      "@stylistic/no-extra-parens": "off",
+      "@stylistic/nonblock-statement-body-position": "off",
+      "@stylistic/object-curly-spacing": ["error", "always"],
+      "@stylistic/padded-blocks": "off",
+      "@stylistic/quote-props": ["error", "consistent"],
+      "@stylistic/space-before-function-paren": ["error", "never"],
       "camelcase": "off",
       "capitalized-comments": "off",
       "curly": "off",
@@ -39,8 +60,7 @@ const config = [
       "no-param-reassign": [
         "error",
         {
-          props: true,
-          ignorePropertyModificationsFor: [
+          "ignorePropertyModificationsFor": [
             "arrs",
             "calendar",
             "dom",
@@ -48,10 +68,11 @@ const config = [
             "payload",
             "slotDom",
             "targetDom"
-          ]
+          ],
+          "props": true
         }
       ],
-      "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
+      "no-plusplus": ["error", {"allowForLoopAfterthoughts": true}],
       "no-prototype-builtins": "off",
       "no-ternary": "off",
       "no-undefined": "warn",
@@ -61,21 +82,31 @@ const config = [
       "prefer-named-capture-group": "off",
       "sort-keys": "off",
       "sort-vars": "off",
+      "strict": "off"
+    }
+  },
+  {
+    "files": ["**/*.mjs"],
+    "languageOptions": {
+      "ecmaVersion": "latest",
+      "globals": {
+        ...globals.node
+      },
+      "sourceType": "module"
+    },
+    "plugins": {
+      ...eslintPluginStylistic.configs["all-flat"].plugins
+    },
+    "rules": {
+      ...eslintPluginStylistic.configs["all-flat"].rules,
       "@stylistic/array-element-newline": "off",
-      "@stylistic/dot-location": ["error", "property"],
-      "@stylistic/function-call-argument-newline": "off",
-      "@stylistic/function-paren-newline": "off",
-      "@stylistic/implicit-arrow-linebreak": "off",
       "@stylistic/indent": ["error", 2],
-      "@stylistic/multiline-ternary": "off",
-      "@stylistic/multiline-comment-style": "off",
-      "@stylistic/newline-per-chained-call": "off",
-      "@stylistic/no-extra-parens": "off",
-      "@stylistic/nonblock-statement-body-position": "off",
-      "@stylistic/object-curly-spacing": ["error", "always"],
-      "@stylistic/quote-props": ["error", "consistent"],
-      "@stylistic/padded-blocks": "off",
-      "@stylistic/space-before-function-paren": ["error", "never"]
+      "@stylistic/padded-blocks": ["error", "never"],
+      "func-style": "off",
+      "max-lines-per-function": ["error", 100],
+      "no-magic-numbers": "off",
+      "one-var": "off",
+      "prefer-destructuring": "off"
     }
   }
 ];
