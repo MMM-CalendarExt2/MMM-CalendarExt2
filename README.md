@@ -60,6 +60,14 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 
 ## Changelog
 
+### [1.4.3] 2024-10-28 - Maintenance update
+
+- Add linting for markdown
+- Update dependencies
+- Add `eslint-plugin-import`
+- Remove unused `eslint-plugin-prettier`
+- Switch to flat config for prettier and stylelint
+
 ### [1.4.2] 2024-08-27 - Maintenance update
 
 - Upgrade ESLint to v9
