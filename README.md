@@ -76,7 +76,7 @@ npm install
 
 ### [1.4.3] 2024-10-28 - Maintenance update
 
-- Add linting for markdown
+- Add linting for Markdown
 - Update dependencies
 - Add `eslint-plugin-import`
 - Remove unused `eslint-plugin-prettier`
