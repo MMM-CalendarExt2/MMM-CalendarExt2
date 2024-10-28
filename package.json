@@ -30,6 +30,7 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsonc": "^2.16.0",
     "globals": "^15.11.0",
+    "markdownlint-cli2": "^0.14.0",
     "prettier": "^3.3.3",
     "stylelint": "^16.10.0",
     "stylelint-config-standard": "^36.0.1",
@@ -39,14 +40,16 @@
     "node": ">=18"
   },
   "scripts": {
-    "lint": "npm run eslint && npm run stylelint",
-    "lint:fix": "npm run eslint:fix && npm run stylelint:fix",
+    "lint": "npm run eslint && npm run stylelint && npm run markdownlint",
+    "lint:fix": "npm run eslint:fix && npm run stylelint:fix && npm run markdownlint:fix",
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
-    "stylelint": "stylelint **/*.css",
-    "stylelint:fix": "stylelint **/*.css --fix",
+    "markdownlint": "markdownlint-cli2 **/*.md",
+    "markdownlint:fix": "markdownlint-cli2 **/*.md --fix",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
+    "stylelint": "stylelint **/*.css",
+    "stylelint:fix": "stylelint **/*.css --fix",
     "test": "npm run lint && npm run prettier"
   }
 }
