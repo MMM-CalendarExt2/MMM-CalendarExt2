@@ -144,7 +144,7 @@ module.exports = NodeHelper.create({
     const eventPool = [];
 
     wholeEvents.forEach((item) => {
-      const ri = item.hasOwnProperty("item") ? item.item : item;
+      const ri = Object.hasOwn(item, "item") ? item.item : item;
       const ev = {};
       ev.calendarId = calendar.uid;
       ev.location = ri.location;
@@ -152,7 +152,7 @@ module.exports = NodeHelper.create({
       ev.title = ri.summary;
       ev.isRecurring = ri.isRecurring();
       ev.isCancelled =
-        item.hasOwnProperty("component") &&
+        Object.hasOwn(item, "component") &&
         // eslint-disable-next-line no-eq-null, eqeqeq
         item.component.getFirstPropertyValue("status") != null &&
         item.component.getFirstPropertyValue("status").toUpperCase() === "CANCELLED";
@@ -239,7 +239,7 @@ module.exports = NodeHelper.create({
     this.calendarEvents[calendarId] = eventPool;
     let events = [];
     Object.keys(this.calendarEvents).forEach((i) => {
-      if (this.calendarEvents.hasOwnProperty(i)) {
+      if (Object.hasOwn(this.calendarEvents, i)) {
         const cal = this.calendarEvents[i];
         events = events.concat(cal);
       }
@@ -296,7 +296,7 @@ module.exports = NodeHelper.create({
         const oldEvent = events[eventIndex - 1];
         if (compareThem(oldEvent, event) === 0) {
           // as most typically the duplicate event comes from another calendar merge the two calendarNames
-          if (!oldEvent.hasOwnProperty("calendarNames")) {
+          if (!Object.hasOwn(oldEvent, "calendarNames")) {
             oldEvent.calendarNames = new Set([oldEvent.calendarName]);
           }
           oldEvent.calendarNames.add(event.calendarName);

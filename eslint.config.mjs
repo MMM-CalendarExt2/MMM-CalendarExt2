@@ -73,7 +73,6 @@ const config = [
         }
       ],
       "no-plusplus": ["error", {"allowForLoopAfterthoughts": true}],
-      "no-prototype-builtins": "off",
       "no-ternary": "off",
       "no-undefined": "warn",
       "no-useless-assignment": "warn",

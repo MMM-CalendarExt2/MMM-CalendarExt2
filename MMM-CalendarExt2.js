@@ -321,13 +321,13 @@ Module.register("MMM-CalendarExt2", {
 
   initBasicObjects(arrs, type, predefinedMode = null) {
     for (let i = 0; i < arrs.length; i++) {
-      arrs[i].name = arrs[i].hasOwnProperty("name") ? arrs[i].name : i;
+      arrs[i].name = Object.hasOwn(arrs[i], "name") ? arrs[i].name : i;
       arrs[i].uid = i;
       let option = {};
       if (predefinedMode) {
         option = predefinedMode[arrs[i].mode];
       }
-      if (arrs[i].hasOwnProperty("name")) {
+      if (Object.hasOwn(arrs[i], "name")) {
         arrs[i] = {
           ...this.predefined[type],
           ...option,

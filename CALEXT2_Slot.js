@@ -32,7 +32,7 @@ class Slot {
     this.dom.remove();
 
     for (const property in this) {
-      if (this.hasOwnProperty(property)) {
+      if (Object.hasOwn(this, property)) {
         this[property] = null;
       }
     }
