@@ -1,6 +1,6 @@
 # MMM-CalendarExt2
 
-[![GitHub Super-Linter](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/workflows/Super-Linter/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![Super-Linter](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/actions/workflows/superlinter.yaml/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 MMM-CalendarExt2 is a module for [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) to display extended calendars and event views.
 
