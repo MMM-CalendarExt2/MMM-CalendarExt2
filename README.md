@@ -80,6 +80,21 @@ Check the [CHANGELOG](CHANGELOG.md) file for changes.
 
 This module is licensed under the MIT License. Check the [LICENSE](LICENSE.md) file for details.
 
+## Contributing
+
+If you find any problems, bugs or have questions, please [open a GitHub issue](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues) in this repository.
+
+Pull requests are of course also very welcome 🙂
+
+### Developer commands
+
+- `npm run lint` - Run linting checks.
+- `npm run lint:fix` - Fix linting issues.
+- `npm run prettier` - Run formatter checks.
+- `npm run prettier:fix` - Fix formatter issues.
+- `npm run test` - Run linting and formatter checks.
+- `npm run release` - Bump version for release.
+
 ## MEMO
 
 ### Bug with MMM-Carousel
