@@ -39,7 +39,7 @@ class View {
   }
 
   assignEvents(events) {
-    if (this.config.skipItems === undefined) {
+    if (!this.config.skipItems) {
       this.config.skipItems = 0;
     }
 

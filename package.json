@@ -1,6 +1,6 @@
 {
   "name": "mmm-calendarext2",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Alternative calendar module of MagicMirror².",
   "main": "MMM-CalendarExt2.js",
   "repository": {
@@ -24,14 +24,14 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "@eslint/js": "^9.14.0",
-    "@stylistic/eslint-plugin": "^2.10.1",
-    "eslint": "^9.14.0",
+    "@eslint/js": "^9.15.0",
+    "@stylistic/eslint-plugin": "^2.11.0",
+    "eslint": "^9.15.0",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jsonc": "^2.16.0",
-    "globals": "^15.11.0",
-    "markdownlint-cli2": "^0.14.0",
-    "prettier": "^3.3.3",
+    "eslint-plugin-jsonc": "^2.18.2",
+    "globals": "^15.12.0",
+    "markdownlint-cli2": "^0.15.0",
+    "prettier": "^3.4.1",
     "stylelint": "^16.10.0",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-prettier": "^5.0.2"
@@ -48,6 +48,7 @@
     "markdownlint:fix": "markdownlint-cli2 **/*.md --fix",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
+    "release": "npx bumpp --no-push",
     "stylelint": "stylelint **/*.css",
     "stylelint:fix": "stylelint **/*.css --fix",
     "test": "npm run lint && npm run prettier"

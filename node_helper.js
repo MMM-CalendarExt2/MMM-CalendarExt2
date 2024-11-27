@@ -42,14 +42,14 @@ module.exports = NodeHelper.create({
     }
   },
 
-  async scanCalendar(calendar, cb) {
+  async scanCalendar(calendar) {
     let response;
     let data;
     Log.log(
       `[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`
     );
 
-    const nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/u)[1]);
+    const nodeVersion = process.versions.node;
     const opts = {
       headers: {
         "User-Agent": `Mozilla/5.0 (Node.js ${nodeVersion}) MagicMirror/${global.version} (https://github.com/MagicMirrorOrg/MagicMirror/)`
@@ -58,7 +58,7 @@ module.exports = NodeHelper.create({
     };
 
     if (calendar.auth && Object.keys(calendar.auth).length > 0) {
-      if (calendar.auth.password !== undefined) {
+      if (calendar.auth.password) {
         // Just catch people who use password instead of pass
         calendar.auth.pass = calendar.auth.password;
       }
@@ -96,16 +96,16 @@ module.exports = NodeHelper.create({
     }
 
     try {
-      cb(calendar, data, null);
+      this.parser(calendar, data, null);
       setTimeout(() => {
-        this.scanCalendar(calendar, cb);
+        this.scanCalendar(calendar);
       }, calendar.scanInterval);
     } catch (error) {
-      cb(calendar, data, error);
-      Log.error(error);
+      this.parser(calendar, data, error);
+      Log.error(`[CALEXT2] Error: ${error}`);
 
       const errorBody = await error.response.text();
-      Log.error(`Error body: ${errorBody}`);
+      Log.error(`[CALEXT2] Error body: ${errorBody}`);
     }
   },
 
