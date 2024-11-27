@@ -48,6 +48,7 @@
     "markdownlint:fix": "markdownlint-cli2 **/*.md --fix",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
+    "release": "npx bumpp --no-push",
     "stylelint": "stylelint **/*.css",
     "stylelint:fix": "stylelint **/*.css --fix",
     "test": "npm run lint && npm run prettier"
