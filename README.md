@@ -163,6 +163,10 @@ title: (mObj) => { // moment object for first slot of view.
 
 - `view:transform()` is added, now you can modify event value as your wish.
 
+## License
+
+This module is licensed under the MIT License. Check the [LICENSE](LICENSE.md) file for details.
+
 ## MEMO
 
 ### Bug with MMM-Carousel
