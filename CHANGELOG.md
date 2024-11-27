@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ## [1.4.4] 2024-11-27 - Maintenance update
 
 - Remove useless assignment and unnecessary use of `undefined`
+- Simplify nodeVersion
 - Update dependencies
 - Update URL in `.editorconfig`
 - Move Changelog from README.md to CHANGELOG.md

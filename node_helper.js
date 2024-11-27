@@ -49,7 +49,7 @@ module.exports = NodeHelper.create({
       `[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`
     );
 
-    const nodeVersion = Number(process.version.match(/^v(\d+\.\d+)/u)[1]);
+    const nodeVersion = process.versions.node;
     const opts = {
       headers: {
         "User-Agent": `Mozilla/5.0 (Node.js ${nodeVersion}) MagicMirror/${global.version} (https://github.com/MagicMirrorOrg/MagicMirror/)`
