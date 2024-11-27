@@ -5,11 +5,12 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [1.4.4] 2024-11-27 - Maintenance update
 
-- Update dependencies
-- Move Changelog from README.md to CHANGELOG.md
-- Fix Update instructions in README.md
-- Add link to LICENSE file in README.md
 - Remove useless assignment and unnecessary use of `undefined`
+- Update dependencies
+- Update URL in `.editorconfig`
+- Move Changelog from README.md to CHANGELOG.md
+- Add link to LICENSE file in README.md
+- Fix Update instructions in README.md
 
 ## [1.4.3] 2024-10-28 - Maintenance update
 
