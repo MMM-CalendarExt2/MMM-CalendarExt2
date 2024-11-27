@@ -102,10 +102,10 @@ module.exports = NodeHelper.create({
       }, calendar.scanInterval);
     } catch (error) {
       cb(calendar, data, error);
-      Log.error(error);
+      Log.error(`[CALEXT2] Error: ${error}`);
 
       const errorBody = await error.response.text();
-      Log.error(`Error body: ${errorBody}`);
+      Log.error(`[CALEXT2] Error body: ${errorBody}`);
     }
   },
 

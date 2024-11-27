@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 - Remove useless assignment and unnecessary use of `undefined`
 - Simplify nodeVersion
+- Optimize logging
 - Update dependencies
 - Update URL in `.editorconfig`
 - Move Changelog from README.md to CHANGELOG.md
