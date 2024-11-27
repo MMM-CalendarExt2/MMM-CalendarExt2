@@ -3,8 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
-## [1.4.4] 2024-11-27 - Maintenance update
+## [1.4.4] 2024-11-27
 
+- Get rid of callback function `cb`
 - Remove useless assignment and unnecessary use of `undefined`
 - Simplify nodeVersion
 - Optimize logging

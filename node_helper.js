@@ -42,7 +42,7 @@ module.exports = NodeHelper.create({
     }
   },
 
-  async scanCalendar(calendar, cb) {
+  async scanCalendar(calendar) {
     let response;
     let data;
     Log.log(
@@ -96,12 +96,12 @@ module.exports = NodeHelper.create({
     }
 
     try {
-      cb(calendar, data, null);
+      this.parser(calendar, data, null);
       setTimeout(() => {
-        this.scanCalendar(calendar, cb);
+        this.scanCalendar(calendar);
       }, calendar.scanInterval);
     } catch (error) {
-      cb(calendar, data, error);
+      this.parser(calendar, data, error);
       Log.error(`[CALEXT2] Error: ${error}`);
 
       const errorBody = await error.response.text();
