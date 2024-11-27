@@ -193,7 +193,7 @@ class Event {
       let st;
       let et;
       let sdt;
-      let edt = null;
+      let edt;
       if (typeof this.dateFormat === "object") {
         sd = this.mStart.calendar(null, this.dateFormat);
         ed = this.mEnd.calendar(null, this.dateFormat);
