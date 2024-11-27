@@ -64,7 +64,7 @@ But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
 
 ## Update
 
-Just enter the MMM-PublicTransportHafas directory, pull the update and install the dependencies:
+Just enter the MMM-CalendarExt2 directory, pull the update and install the dependencies:
 
 ```bash
 cd ~/MagicMirror/modules/MMM-CalendarExt2
