@@ -74,7 +74,6 @@ const config = [
       ],
       "no-plusplus": ["error", {"allowForLoopAfterthoughts": true}],
       "no-ternary": "off",
-      "no-undefined": "warn",
       "one-var": "off",
       "prefer-destructuring": "off",
       "prefer-named-capture-group": "off",
