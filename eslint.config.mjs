@@ -56,7 +56,6 @@ const config = [
       "multiline-comment-style": "off",
       "no-inline-comments": "off",
       "no-magic-numbers": "off",
-      "no-negated-condition": "off",
       "no-param-reassign": [
         "error",
         {

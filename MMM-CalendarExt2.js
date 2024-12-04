@@ -388,7 +388,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   work(sceneUid = null) {
-    const uid = sceneUid !== null ? sceneUid : this.currentSceneUid;
+    const uid = sceneUid || this.currentSceneUid;
     this.currentSceneUid = uid;
     if (!this.showing) {
       return false;
