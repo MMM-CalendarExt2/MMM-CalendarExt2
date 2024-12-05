@@ -1,27 +1,27 @@
 // eslint-disable-next-line no-unused-vars, no-undef
 class ViewAgenda extends View {
-  constructor(config, events) {
+  constructor (config, events) {
     super(config, events);
     this.slotUnit = "day";
   }
 
-  makeSlotDomClass(slot) {
+  makeSlotDomClass (slot) {
     const slotDom = slot.dom;
     super.makeSlotDomClass(slot);
     slotDom.classList.add("agenda", "period");
   }
 
   // eslint-disable-next-line class-methods-use-this
-  getSlotCount() {
+  getSlotCount () {
     return 1;
   }
 
-  getStartDay() {
+  getStartDay () {
     const now = moment().locale(this.locale);
     return now;
   }
 
-  getSlotPeriods() {
+  getSlotPeriods () {
     return [
       {
         start: moment().locale(this.locale),
@@ -30,7 +30,7 @@ class ViewAgenda extends View {
     ];
   }
 
-  makeSlotHeader(slot) {
+  makeSlotHeader (slot) {
     const header = slot.headerDom;
     const title = header.querySelector(".slotTitle");
     title.innerHTML = this.config.slotTitle;

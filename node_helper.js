@@ -5,16 +5,16 @@ const IcalExpander = require("ical-expander");
 const NodeHelper = require("node_helper");
 
 module.exports = NodeHelper.create({
-  start() {
+  start () {
     this.config = {};
     this.calendars = {};
     this.calendarEvents = {};
   },
 
   // eslint-disable-next-line no-empty-function
-  stop() {},
+  stop () {},
 
-  socketNotificationReceived(noti, payload) {
+  socketNotificationReceived (noti, payload) {
     switch (noti) {
       case "START":
         this.work(payload);
@@ -22,7 +22,7 @@ module.exports = NodeHelper.create({
     }
   },
 
-  work(config) {
+  work (config) {
     this.config = config;
     this.calendars = this.config.calendars;
     if (this.config.locale) {
@@ -31,7 +31,7 @@ module.exports = NodeHelper.create({
     this.startScanCalendars();
   },
 
-  startScanCalendars() {
+  startScanCalendars () {
     for (let i = 0; i < this.calendars.length; i++) {
       this.scanCalendar(
         this.calendars[i],
@@ -42,7 +42,7 @@ module.exports = NodeHelper.create({
     }
   },
 
-  async scanCalendar(calendar) {
+  async scanCalendar (calendar) {
     let response;
     let data;
     Log.log(
@@ -109,7 +109,7 @@ module.exports = NodeHelper.create({
     }
   },
 
-  parser(calendar, iCalData = null, error = null) {
+  parser (calendar, iCalData = null, error = null) {
     if (error) {
       Log.log(`[CALEXT2] calendar:${calendar.name} >> ${error.message}`);
       return;
@@ -235,7 +235,7 @@ module.exports = NodeHelper.create({
     this.mergeEvents(eventPool, calendar.uid);
   },
 
-  mergeEvents(eventPool, calendarId) {
+  mergeEvents (eventPool, calendarId) {
     this.calendarEvents[calendarId] = eventPool;
     let events = [];
     Object.keys(this.calendarEvents).forEach((i) => {

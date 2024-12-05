@@ -40,7 +40,6 @@ const config = [
       "@stylistic/object-curly-spacing": ["error", "always"],
       "@stylistic/padded-blocks": "off",
       "@stylistic/quote-props": ["error", "consistent"],
-      "@stylistic/space-before-function-paren": ["error", "never"],
       "camelcase": "off",
       "capitalized-comments": "off",
       "curly": "off",

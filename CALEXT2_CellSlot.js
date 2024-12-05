@@ -1,7 +1,7 @@
 /* global Slot */
 // eslint-disable-next-line no-unused-vars
 class CellSlot extends Slot {
-  constructor(view, period, daySeq = 0, weekSeq = 0) {
+  constructor (view, period, daySeq = 0, weekSeq = 0) {
     super(view, period, daySeq);
     this.start = period.start;
     this.end = period.end;
@@ -11,21 +11,21 @@ class CellSlot extends Slot {
     this.makeSlotDomClass(view, daySeq, weekSeq);
   }
 
-  init(view) {
+  init (view) {
     this.makeDom();
     this.makeSlotHeader(view);
     CellSlot.adjustSlotHeight(view, this.contentDom);
   }
 
-  static adjustSlotHeight(view, dom) {
+  static adjustSlotHeight (view, dom) {
     view.adjustSlotHeight(dom);
   }
 
-  makeSlotHeader(view) {
+  makeSlotHeader (view) {
     view.makeSlotHeader(this);
   }
 
-  makeSlotDomClass(view, daySeq, weekSeq) {
+  makeSlotDomClass (view, daySeq, weekSeq) {
     view.makeCellDomClass(this, daySeq, weekSeq);
     this.dom.classList.add("cellSlot");
   }

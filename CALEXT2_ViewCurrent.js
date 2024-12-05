@@ -1,12 +1,12 @@
 // eslint-disable-next-line no-unused-vars, no-undef
 class ViewCurrent extends ViewAgenda {
-  makeSlotDomClass(slot) {
+  makeSlotDomClass (slot) {
     const slotDom = slot.dom;
     super.makeSlotDomClass(slot);
     slotDom.classList.add("current");
   }
 
-  filterEvents(events) {
+  filterEvents (events) {
     let filtered = super.filterEvents(events);
     const now = moment();
     filtered = filtered.filter((e) =>

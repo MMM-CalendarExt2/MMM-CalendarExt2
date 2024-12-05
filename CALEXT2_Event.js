@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 class Event {
-  constructor(data, slot) {
+  constructor (data, slot) {
     this.data = data;
     this.locale = slot.locale;
     this.mStart = moment.unix(data.startDate).locale(this.locale);
@@ -15,7 +15,7 @@ class Event {
     this.dom = this.makeEventDom();
   }
 
-  destroy() {
+  destroy () {
     this.dom.remove();
 
     for (const property in this) {
@@ -25,7 +25,7 @@ class Event {
     }
   }
 
-  draw(slot, targetDom) {
+  draw (slot, targetDom) {
     const { hideOverflow } = slot;
     const eventDom = this.dom;
     eventDom.style.opacity = 0;
@@ -57,7 +57,7 @@ class Event {
 
    */
 
-  makeEventDom() {
+  makeEventDom () {
     const { locale } = this;
     const now = moment().locale(locale);
 
@@ -152,7 +152,7 @@ class Event {
     return eventDom;
   }
 
-  createEventTime() {
+  createEventTime () {
     const { locale } = this;
     const event = this.data;
     const makeEventTime = (innerHTML, classNameString) => {

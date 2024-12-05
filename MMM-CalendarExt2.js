@@ -194,7 +194,7 @@ Module.register("MMM-CalendarExt2", {
     firstDrawingDelay: 1000 // wait for other calendar parsing.
   },
 
-  getCommands(register) {
+  getCommands (register) {
     if (register.constructor.name === "TelegramBotCommandRegister") {
       register.add({
         command: "scene",
@@ -222,7 +222,7 @@ Module.register("MMM-CalendarExt2", {
     }
   },
 
-  getScripts() {
+  getScripts () {
     const r = [
       "moment.js",
       "CALEXT2_Scene.js",
@@ -247,11 +247,11 @@ Module.register("MMM-CalendarExt2", {
     return r;
   },
 
-  getStyles() {
+  getStyles () {
     return ["MMM-CalendarExt2.css"];
   },
 
-  start() {
+  start () {
     this.rotateTimer = null;
     this.updateTimer = null;
     this.currentSceneUid = 0;
@@ -272,7 +272,7 @@ Module.register("MMM-CalendarExt2", {
     this.first = true;
   },
 
-  suspend() {
+  suspend () {
     if (this.showing) {
       this.showing = false;
       if (this.currentScene) {
@@ -281,7 +281,7 @@ Module.register("MMM-CalendarExt2", {
     }
   },
 
-  resume() {
+  resume () {
     if (!this.showing) {
       this.showing = true;
       if (this.currentScene) {
@@ -292,7 +292,7 @@ Module.register("MMM-CalendarExt2", {
     }
   },
 
-  initConfig() {
+  initConfig () {
     this.config.defaultSet = {
       ...this.predefined.defaultSet,
       ...this.config.defaultSet
@@ -319,7 +319,7 @@ Module.register("MMM-CalendarExt2", {
     this.initBasicObjects(this.config.scenes, "scene");
   },
 
-  initBasicObjects(arrs, type, predefinedMode = null) {
+  initBasicObjects (arrs, type, predefinedMode = null) {
     for (let i = 0; i < arrs.length; i++) {
       arrs[i].name = Object.hasOwn(arrs[i], "name") ? arrs[i].name : i;
       arrs[i].uid = i;
@@ -346,7 +346,7 @@ Module.register("MMM-CalendarExt2", {
     }
   },
 
-  socketNotificationReceived(noti, payload) {
+  socketNotificationReceived (noti, payload) {
     switch (noti) {
       case "EVENTS_REFRESHED":
         this.events = payload;
@@ -361,7 +361,7 @@ Module.register("MMM-CalendarExt2", {
     }
   },
 
-  notificationReceived(noti, payload, sender) {
+  notificationReceived (noti, payload, sender) {
     if (noti === "DOM_OBJECTS_CREATED") {
       this.sendSocketNotification("START", this.config);
       return;
@@ -387,7 +387,7 @@ Module.register("MMM-CalendarExt2", {
     }
   },
 
-  work(sceneUid = null) {
+  work (sceneUid = null) {
     const uid = sceneUid || this.currentSceneUid;
     this.currentSceneUid = uid;
     if (!this.showing) {
@@ -415,7 +415,7 @@ Module.register("MMM-CalendarExt2", {
     return true;
   },
 
-  CMD_changeScene(handler = null) {
+  CMD_changeScene (handler = null) {
     let reply;
     let changed = null;
     const args = handler.args ? handler.args : null;
@@ -442,19 +442,19 @@ Module.register("MMM-CalendarExt2", {
     }
   },
 
-  sceneNext() {
+  sceneNext () {
     const { nextUid } = this.currentScene;
     this.work(nextUid);
     return true;
   },
 
-  scenePrevious() {
+  scenePrevious () {
     const prevUid = this.currentScene.previousUid;
     this.work(prevUid);
     return true;
   },
 
-  changeSceneByName(key) {
+  changeSceneByName (key) {
     for (let i = 0; i < this.config.scenes.length; i++) {
       if (this.config.scenes[i].name === key) {
         this.work(i);
@@ -464,7 +464,7 @@ Module.register("MMM-CalendarExt2", {
     return false;
   },
 
-  changeSceneById(key) {
+  changeSceneById (key) {
     if (key >= 0 && this.config.scenes.length > key) {
       this.work(key);
       return true;
@@ -472,7 +472,7 @@ Module.register("MMM-CalendarExt2", {
     return false;
   },
 
-  eventQuery(payload) {
+  eventQuery (payload) {
     let events = this.events.map((e) => ({ ...e }));
     if (typeof payload.filter === "function") {
       events = events.filter(payload.filter);
@@ -484,12 +484,12 @@ Module.register("MMM-CalendarExt2", {
     return events;
   },
 
-  showCalendar() {
+  showCalendar () {
     this.resume();
     return true;
   },
 
-  hideCalendar() {
+  hideCalendar () {
     this.suspend();
     return true;
   }

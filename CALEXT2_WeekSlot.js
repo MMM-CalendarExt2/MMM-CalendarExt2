@@ -1,7 +1,7 @@
 /* global CellSlot Slot */
 // eslint-disable-next-line no-unused-vars
 class WeekSlot extends Slot {
-  constructor(view, period, seq = 0) {
+  constructor (view, period, seq = 0) {
     super(view, period, seq);
     this.useEventTimeRelative = false;
     this.dom.appendChild(view.makeWeeksMark(period.start));
@@ -16,7 +16,7 @@ class WeekSlot extends Slot {
     }
   }
 
-  static factory(view, slotPeriods, events) {
+  static factory (view, slotPeriods, events) {
     const slots = [];
     for (let i = 0; i < slotPeriods.length; i++) {
       const slot = new WeekSlot(view, slotPeriods[i], i);
@@ -26,7 +26,7 @@ class WeekSlot extends Slot {
     return slots;
   }
 
-  makeDom() {
+  makeDom () {
     super.makeDom();
     const timeline = document.createElement("div");
     timeline.classList.add("timeline");
@@ -34,7 +34,7 @@ class WeekSlot extends Slot {
     this.timelineDom = timeline;
   }
 
-  getDayPeriods() {
+  getDayPeriods () {
     const periods = [];
     for (let i = 0; i < this.cellSlots.length; i++) {
       const c = this.cellSlots[i];
@@ -51,12 +51,12 @@ class WeekSlot extends Slot {
     return periods;
   }
 
-  makeCellEvent(data) {
+  makeCellEvent (data) {
     const event = new Event(data, this);
     return event.dom;
   }
 
-  drawEvents() {
+  drawEvents () {
     const fcs = this.contentDom.querySelectorAll(".cellSlot");
     const positions = [...fcs].map((dom) => {
       const t = dom.getBoundingClientRect();

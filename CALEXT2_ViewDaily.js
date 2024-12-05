@@ -1,12 +1,12 @@
 /* global ViewPeriod */
 // eslint-disable-next-line no-unused-vars
 class ViewDaily extends ViewPeriod {
-  constructor(config, events) {
+  constructor (config, events) {
     super(config, events);
     this.slotUnit = "day";
   }
 
-  makeSlotDomClass(slot) {
+  makeSlotDomClass (slot) {
     const slotDom = slot.dom;
     super.makeSlotDomClass(slot);
     slotDom.classList.add("daily");
