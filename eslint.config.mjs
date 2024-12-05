@@ -26,7 +26,6 @@ const config = [
     },
     "rules": {
       ...eslintPluginStylistic.configs["all-flat"].rules,
-      "@stylistic/array-element-newline": "off",
       "@stylistic/dot-location": ["error", "property"],
       "@stylistic/function-call-argument-newline": "off",
       "@stylistic/function-paren-newline": "off",
@@ -43,15 +42,12 @@ const config = [
       "capitalized-comments": "off",
       "curly": "off",
       "default-case": "off",
-      "id-length": "off",
-      "import/no-unresolved": "off",
+      "id-length": ["warn", {"exceptions": ["a", "b", "c", "e", "f", "i", "j", "k", "l", "p", "r", "t", "v"]}],
       "init-declarations": "off",
-      "line-comment-position": "off",
-      "max-lines": ["warn", 700],
-      "max-lines-per-function": ["warn", 200],
+      "max-lines": ["warn", 550],
+      "max-lines-per-function": ["warn", 150],
       "max-params": ["warn", 5],
-      "max-statements": "off",
-      "multiline-comment-style": "off",
+      "max-statements": ["warn", 65],
       "no-inline-comments": "off",
       "no-magic-numbers": "off",
       "no-param-reassign": [
@@ -73,9 +69,7 @@ const config = [
       "no-ternary": "off",
       "one-var": "off",
       "prefer-destructuring": "off",
-      "prefer-named-capture-group": "off",
       "sort-keys": "off",
-      "sort-vars": "off",
       "strict": "off"
     }
   },
@@ -95,12 +89,7 @@ const config = [
       ...eslintPluginStylistic.configs["all-flat"].rules,
       "@stylistic/array-element-newline": "off",
       "@stylistic/indent": ["error", 2],
-      "@stylistic/padded-blocks": ["error", "never"],
-      "func-style": "off",
-      "max-lines-per-function": ["error", 100],
-      "no-magic-numbers": "off",
-      "one-var": "off",
-      "prefer-destructuring": "off"
+      "no-magic-numbers": "off"
     }
   }
 ];
