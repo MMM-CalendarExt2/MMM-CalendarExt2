@@ -1,12 +1,12 @@
 /* global View */
 // eslint-disable-next-line no-unused-vars
 class ViewLegend extends View {
-  draw() {
+  draw () {
     this.drawDom();
     this.drawLegend();
   }
 
-  drawLegend() {
+  drawLegend () {
     for (let i = 0; i < this.config.calendarLegends.length; i++) {
       const calendar = this.config.calendarLegends[i];
       const tlDom = document.createElement("div");
@@ -31,7 +31,7 @@ class ViewLegend extends View {
     this.makeModuleTitle();
   }
 
-  makeModuleTitle() {
+  makeModuleTitle () {
     if (!this.config.title) return;
     const headerTitle = this.moduleDom.getElementsByClassName("module-header");
     headerTitle[0].innerHTML = this.config.title;

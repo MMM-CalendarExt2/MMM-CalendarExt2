@@ -1,7 +1,7 @@
 /* global View */
 // eslint-disable-next-line no-unused-vars
 class Scene {
-  constructor(uid, cfgs) {
+  constructor (uid, cfgs) {
     const scene = cfgs.scenes[uid];
     const sceneLength = cfgs.scenes.length;
     this.config = cfgs;
@@ -21,7 +21,7 @@ class Scene {
     this.views = [];
   }
 
-  draw(events) {
+  draw (events) {
     this.clearViews();
     this.viewNames.forEach((viewName) => {
       const viewConfig = this.config.views.find(
@@ -41,7 +41,7 @@ class Scene {
     });
   }
 
-  clearViews() {
+  clearViews () {
     for (let i = 0; i < this.views.length; i++) {
       const view = this.views[i];
       view.destroy();

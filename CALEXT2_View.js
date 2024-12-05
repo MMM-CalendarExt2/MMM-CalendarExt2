@@ -1,7 +1,7 @@
 /* global Log Slot ViewCurrent ViewUpcoming ViewMonth ViewDaily ViewWeekly ViewMonthly ViewWeek ViewLegend */
 // eslint-disable-next-line no-unused-vars
 class View {
-  constructor(config, events) {
+  constructor (config, events) {
     this.config = config;
     this.locale = config.locale;
     this.slotUnit = null;
@@ -15,7 +15,7 @@ class View {
     this.calendars = this.assignEvents([].concat(events));
   }
 
-  static makeByName(config, events) {
+  static makeByName (config, events) {
     switch (config.mode) {
       case "current":
         return new ViewCurrent(config, events);
@@ -38,7 +38,7 @@ class View {
     }
   }
 
-  assignEvents(events) {
+  assignEvents (events) {
     if (!this.config.skipItems) {
       this.config.skipItems = 0;
     }
@@ -49,10 +49,10 @@ class View {
     );
   }
 
-  transformEvents(events) {
+  transformEvents (events) {
     if (typeof this.config.transform === "function") {
       return events.map((e) => {
-        const event = { ...e };
+        const event = {...e};
         return this.config.transform(event);
       });
     }
@@ -60,13 +60,13 @@ class View {
     return [].concat(events);
   }
 
-  draw() {
+  draw () {
     this.drawDom();
     this.makeSlots(this.events);
     this.drawEvents();
   }
 
-  destroy() {
+  destroy () {
     this.hide();
     setTimeout(() => {
       if (this.slots) {
@@ -85,8 +85,8 @@ class View {
     }, 500);
   }
 
-  filterEvents(events) {
-    const { calendars } = this;
+  filterEvents (events) {
+    const {calendars} = this;
     const calendarFilter =
       Array.isArray(calendars) && calendars.length > 0
         ? (e) => calendars.indexOf(e.calendarName) >= 0
@@ -110,7 +110,7 @@ class View {
     return filtered;
   }
 
-  static getRegionDom(position) {
+  static getRegionDom (position) {
     let className = position.replace("_", " ");
     className = `region ${className}`;
     const nodes = document.getElementsByClassName(className);
@@ -121,9 +121,9 @@ class View {
     return nodes[0].querySelector(".container");
   }
 
-  drawDom() {
+  drawDom () {
     const container = View.getRegionDom(this.config.position);
-    const { children } = container;
+    const {children} = container;
     const order = this.config.positionOrder;
     if (order === -1) {
       container.appendChild(this.moduleDom);
@@ -140,7 +140,7 @@ class View {
     this.show();
   }
 
-  createDom() {
+  createDom () {
     const module = document.createElement("div");
     module.classList.add("module", "fake_module", "MMM-CalendarExt2", "CX2");
     if (this.config.sceneClassName)
@@ -164,7 +164,7 @@ class View {
     this.moduleDom = module;
   }
 
-  hide() {
+  hide () {
     if (this.moduleDom) {
       if (this.moduleDom.classList.contains("shown")) {
         this.moduleDom.classList.remove("shown");
@@ -176,7 +176,7 @@ class View {
     }
   }
 
-  show() {
+  show () {
     if (this.moduleDom) {
       if (this.moduleDom.classList.contains("hidden")) {
         this.moduleDom.classList.remove("hidden");
@@ -185,7 +185,7 @@ class View {
     }
   }
 
-  makeSlots() {
+  makeSlots () {
     this.contentDom.innerHTML = "";
     this.slotPeriods = this.getSlotPeriods();
     this.slots = Slot.factory(this, this.slotPeriods, this.events);
@@ -197,10 +197,10 @@ class View {
     this.makeModuleTitle();
   }
 
-  makeModuleTitle() {
+  makeModuleTitle () {
     if (!this.config.title) return;
     const headerTitle = this.moduleDom.getElementsByClassName("module-header");
-    const slotStart = { ...this.slots[0].start };
+    const slotStart = {...this.slots[0].start};
     let title;
     if (typeof this.config.title === "function") {
       title = this.config.title(moment(slotStart));
@@ -211,11 +211,11 @@ class View {
     headerTitle[0].innerHTML = title;
   }
 
-  appendSlot(slot) {
+  appendSlot (slot) {
     this.contentDom.appendChild(slot.dom);
   }
 
-  drawSlots(targetDom) {
+  drawSlots (targetDom) {
 
     /* to deprecate */
     targetDom.innerHTML = "";
@@ -227,7 +227,7 @@ class View {
     }
   }
 
-  makeSlotHeader(slot) {
+  makeSlotHeader (slot) {
     const header = slot.headerDom;
     const title = header.querySelector(".slotTitle");
     const subTitle = header.querySelector(".slotSubTitle");
@@ -261,13 +261,13 @@ class View {
     }
   }
 
-  makeSlotDomClass(slot) {
+  makeSlotDomClass (slot) {
     const slotDom = slot.dom;
     slotDom.classList.add(this.config.mode);
     if (slot.seq >= 0) slotDom.classList.add(`seq_${slot.seq}`);
   }
 
-  getSlotPeriods() {
+  getSlotPeriods () {
     const getSlotPeriod = (tDay, seq) => {
       const mtd = moment(tDay).locale(this.locale).add(seq, this.slotUnit);
       const start = moment(mtd).startOf(this.slotUnit);
@@ -288,30 +288,30 @@ class View {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  viewDomType() {
+  viewDomType () {
     // do nothing;
   }
 
   // eslint-disable-next-line class-methods-use-this
-  adjustSlotWidth() {
+  adjustSlotWidth () {
     // do nothing;
   }
 
-  adjustSlotHeight(dom) {
+  adjustSlotHeight (dom) {
     dom.style.maxHeight = this.config.slotMaxHeight;
   }
 
-  getSlotCount() {
+  getSlotCount () {
     return this.config.slotCount;
   }
 
-  getStartDay() {
-    const { fromNow } = this.config;
+  getStartDay () {
+    const {fromNow} = this.config;
     const now = moment().locale(this.locale);
     return now.add(fromNow, this.slotUnit).startOf("day");
   }
 
-  drawEvents() {
+  drawEvents () {
     for (let i = 0; i < this.slots.length; i++) {
       const slot = this.slots[i];
       slot.drawEvents();

@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-unused-vars, no-undef
 class ViewWeekly extends ViewPeriod {
-  constructor(config, events) {
+  constructor (config, events) {
     super(config, events);
     this.slotUnit = "week";
   }
 
-  makeSlotDomClass(slot) {
+  makeSlotDomClass (slot) {
     const slotDom = slot.dom;
     super.makeSlotDomClass(slot);
     slotDom.classList.add("weekly");
@@ -23,7 +23,7 @@ class ViewWeekly extends ViewPeriod {
     slotDom.classList.add(`week_${day.format("w")}`);
   }
 
-  makeSlotHeader(slot) {
+  makeSlotHeader (slot) {
     const header = slot.headerDom;
     const title = header.querySelector(".slotTitle");
     const subTitle = header.querySelector(".slotSubTitle");

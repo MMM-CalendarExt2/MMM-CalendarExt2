@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 class Event {
-  constructor(data, slot) {
+  constructor (data, slot) {
     this.data = data;
     this.locale = slot.locale;
     this.mStart = moment.unix(data.startDate).locale(this.locale);
@@ -15,7 +15,7 @@ class Event {
     this.dom = this.makeEventDom();
   }
 
-  destroy() {
+  destroy () {
     this.dom.remove();
 
     for (const property in this) {
@@ -25,8 +25,8 @@ class Event {
     }
   }
 
-  draw(slot, targetDom) {
-    const { hideOverflow } = slot;
+  draw (slot, targetDom) {
+    const {hideOverflow} = slot;
     const eventDom = this.dom;
     eventDom.style.opacity = 0;
     targetDom.appendChild(eventDom);
@@ -57,8 +57,8 @@ class Event {
 
    */
 
-  makeEventDom() {
-    const { locale } = this;
+  makeEventDom () {
+    const {locale} = this;
     const now = moment().locale(locale);
 
     const isEventMultiSlots = (event, mESX, mEEX, mSSX, mSEX) => {
@@ -152,8 +152,8 @@ class Event {
     return eventDom;
   }
 
-  createEventTime() {
-    const { locale } = this;
+  createEventTime () {
+    const {locale} = this;
     const event = this.data;
     const makeEventTime = (innerHTML, classNameString) => {
       const div = document.createElement("div");

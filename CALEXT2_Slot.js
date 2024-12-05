@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 class Slot {
-  constructor(view, period, seq = 0) {
+  constructor (view, period, seq = 0) {
     this.start = period.start;
     this.end = period.end;
     this.seq = seq;
@@ -22,13 +22,13 @@ class Slot {
     }
   }
 
-  init(view) {
+  init (view) {
     this.makeDom();
     this.makeSlotHeader(view);
     this.makeSlotDomClass(view, this.seq);
   }
 
-  destroy() {
+  destroy () {
     this.dom.remove();
 
     for (const property in this) {
@@ -38,7 +38,7 @@ class Slot {
     }
   }
 
-  static factory(view, slotPeriods, events) {
+  static factory (view, slotPeriods, events) {
     const slots = [];
     for (let i = 0; i < slotPeriods.length; i++) {
       const slot = new Slot(view, slotPeriods[i], i);
@@ -48,7 +48,7 @@ class Slot {
     return slots;
   }
 
-  drawEvents() {
+  drawEvents () {
     let hiddenCount = 0;
     for (let i = 0; i < this.events.length; i++) {
       const event = new Event(this.events[i], this);
@@ -60,13 +60,13 @@ class Slot {
     }
   }
 
-  drawEvent(event) {
+  drawEvent (event) {
     return event.draw(this, this.contentDom);
   }
 
-  assignEvents(events) {
+  assignEvents (events) {
     for (let i = 0; i < events.length; i++) {
-      const event = { ...events[i] };
+      const event = {...events[i]};
       const eS = moment.unix(event.startDate).locale(this.locale);
       const eE = moment.unix(event.endDate).locale(this.locale);
       if (eE.isSameOrBefore(this.start) || eS.isSameOrAfter(this.end)) {
@@ -84,15 +84,15 @@ class Slot {
     this.dom.classList.add(`eventCount_${this.events.length}`);
   }
 
-  makeSlotHeader(view) {
+  makeSlotHeader (view) {
     view.makeSlotHeader(this);
   }
 
-  makeSlotDomClass(view, seq) {
+  makeSlotDomClass (view, seq) {
     view.makeSlotDomClass(this, seq);
   }
 
-  makeDom() {
+  makeDom () {
     const dom = document.createElement("div");
     dom.classList.add("slot");
 

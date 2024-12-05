@@ -1,12 +1,12 @@
 /* global View WeekSlot */
 // eslint-disable-next-line no-unused-vars
 class ViewCell extends View {
-  constructor(config, events) {
+  constructor (config, events) {
     super(config, events);
     this.slotUnit = "week";
   }
 
-  makeSlots() {
+  makeSlots () {
     this.contentDom.innerHTML = "";
     this.slotPeriods = this.getSlotPeriods();
     this.slots = WeekSlot.factory(this, this.slotPeriods, this.events);
@@ -17,8 +17,8 @@ class ViewCell extends View {
     this.makeModuleTitle();
   }
 
-  getSlotPeriods() {
-    const { showWeekends } = this.config;
+  getSlotPeriods () {
+    const {showWeekends} = this.config;
     const getSlotPeriod = (tDay, seq) => {
       const mtd = moment(tDay).locale(this.locale).add(seq, "week");
       const start = showWeekends
@@ -42,8 +42,8 @@ class ViewCell extends View {
     return periods;
   }
 
-  getSubSlotPeriods(start) {
-    const { showWeekends } = this.config;
+  getSubSlotPeriods (start) {
+    const {showWeekends} = this.config;
     const days = showWeekends ? 7 : 5;
     const periods = [];
     const t = start;
@@ -61,23 +61,23 @@ class ViewCell extends View {
     return periods;
   }
 
-  makeSlotDomClass(slot) {
+  makeSlotDomClass (slot) {
     const slotDom = slot.dom;
     super.makeSlotDomClass(slot);
     slotDom.classList.add("weekSlot");
   }
 
   // eslint-disable-next-line class-methods-use-this
-  viewDomType(viewDom) {
+  viewDomType (viewDom) {
     viewDom.classList.add("column");
   }
 
-  adjustSlotHeight(slotDom) {
+  adjustSlotHeight (slotDom) {
     slotDom.style.maxHeight = this.config.slotMaxHeight;
     slotDom.style.height = this.config.slotMaxHeight;
   }
 
-  makeCellDomClass(slot, daySeq, weekSeq) {
+  makeCellDomClass (slot, daySeq, weekSeq) {
     const slotDom = slot.dom;
     if (daySeq >= 0) slotDom.classList.add(`cellSeq_${daySeq}`);
     if (weekSeq === 0 && daySeq === 0) {
@@ -101,7 +101,7 @@ class ViewCell extends View {
     slotDom.classList.add(`dayofyear_${day.format("DDD")}`);
   }
 
-  makeWeeksMark(start) {
+  makeWeeksMark (start) {
     const weeks = document.createElement("div");
     weeks.classList.add("weeksmark");
     weeks.innerHTML = moment(start)
@@ -111,11 +111,11 @@ class ViewCell extends View {
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  adjustSlotWidth(slotDom, count) {
+  adjustSlotWidth (slotDom, count) {
     // if (this.config.type == "row") slotDom.style.width = ((100 / count) - 0.25) + "%"
   }
 
-  makeSlotHeader(slot) {
+  makeSlotHeader (slot) {
     super.makeSlotHeader(slot);
     const header = slot.headerDom;
     const altTitle = header.querySelector(".slotAltTitle");
