@@ -338,7 +338,7 @@ Module.register("MMM-CalendarExt2", {
       if (!arrs[i].locale && type === "view")
         arrs[i].locale = this.config.locale;
       if (arrs[i].filter && type === "calendar") {
-        arrs[i].filter = JSON.stringify({ filter: arrs[i].filter.toString() });
+        arrs[i].filter = JSON.stringify({filter: arrs[i].filter.toString()});
       }
       if (typeof arrs[i].scanInterval === "string") {
         arrs[i].scanInterval = eval(arrs[i].scanInterval);
@@ -443,7 +443,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   sceneNext () {
-    const { nextUid } = this.currentScene;
+    const {nextUid} = this.currentScene;
     this.work(nextUid);
     return true;
   },
@@ -473,7 +473,7 @@ Module.register("MMM-CalendarExt2", {
   },
 
   eventQuery (payload) {
-    let events = this.events.map((e) => ({ ...e }));
+    let events = this.events.map((e) => ({...e}));
     if (typeof payload.filter === "function") {
       events = events.filter(payload.filter);
     }

@@ -9,13 +9,13 @@ class ViewMonth extends ViewCell {
   }
 
   getStartDay () {
-    const { fromNow } = this.config;
+    const {fromNow} = this.config;
     const now = moment().locale(this.locale);
     return now.add(fromNow, "month").startOf("month").startOf("week");
   }
 
   getEndWeek () {
-    const { fromNow } = this.config;
+    const {fromNow} = this.config;
     const now = moment().locale(this.locale);
     return now.add(fromNow, "month").endOf("month").startOf("week");
   }
@@ -23,7 +23,7 @@ class ViewMonth extends ViewCell {
   makeSlots () {
     super.makeSlots();
     if (this.config.monthFormat) {
-      const { fromNow } = this.config;
+      const {fromNow} = this.config;
       const now = moment().locale(this.locale);
       now.add(fromNow, "month").startOf("month");
       const mt = document.createElement("div");

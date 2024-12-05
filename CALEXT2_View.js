@@ -52,7 +52,7 @@ class View {
   transformEvents (events) {
     if (typeof this.config.transform === "function") {
       return events.map((e) => {
-        const event = { ...e };
+        const event = {...e};
         return this.config.transform(event);
       });
     }
@@ -86,7 +86,7 @@ class View {
   }
 
   filterEvents (events) {
-    const { calendars } = this;
+    const {calendars} = this;
     const calendarFilter =
       Array.isArray(calendars) && calendars.length > 0
         ? (e) => calendars.indexOf(e.calendarName) >= 0
@@ -123,7 +123,7 @@ class View {
 
   drawDom () {
     const container = View.getRegionDom(this.config.position);
-    const { children } = container;
+    const {children} = container;
     const order = this.config.positionOrder;
     if (order === -1) {
       container.appendChild(this.moduleDom);
@@ -200,7 +200,7 @@ class View {
   makeModuleTitle () {
     if (!this.config.title) return;
     const headerTitle = this.moduleDom.getElementsByClassName("module-header");
-    const slotStart = { ...this.slots[0].start };
+    const slotStart = {...this.slots[0].start};
     let title;
     if (typeof this.config.title === "function") {
       title = this.config.title(moment(slotStart));
@@ -306,7 +306,7 @@ class View {
   }
 
   getStartDay () {
-    const { fromNow } = this.config;
+    const {fromNow} = this.config;
     const now = moment().locale(this.locale);
     return now.add(fromNow, this.slotUnit).startOf("day");
   }

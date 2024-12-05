@@ -37,7 +37,6 @@ const config = [
       "@stylistic/newline-per-chained-call": "off",
       "@stylistic/no-extra-parens": "off",
       "@stylistic/nonblock-statement-body-position": "off",
-      "@stylistic/object-curly-spacing": ["error", "always"],
       "@stylistic/padded-blocks": "off",
       "@stylistic/quote-props": ["error", "consistent"],
       "camelcase": "off",

@@ -66,7 +66,7 @@ class Slot {
 
   assignEvents (events) {
     for (let i = 0; i < events.length; i++) {
-      const event = { ...events[i] };
+      const event = {...events[i]};
       const eS = moment.unix(event.startDate).locale(this.locale);
       const eE = moment.unix(event.endDate).locale(this.locale);
       if (eE.isSameOrBefore(this.start) || eS.isSameOrAfter(this.end)) {
