@@ -3,7 +3,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
-## [1.4.5] 2024-12-06
+## [1.4.6] 2025-02-02 - Maintenance update
+
+- Remove unused dependency `valid-url`
+- Update dependencies
+
+## [1.4.5] 2024-12-06 - Maintenance update
 
 - Optimize ESLint rules
   - remove unused
