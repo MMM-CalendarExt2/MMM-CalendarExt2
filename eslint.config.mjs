@@ -1,4 +1,4 @@
-import eslintPluginImport from "eslint-plugin-import";
+import eslintPluginImport from "eslint-plugin-import-x";
 import eslintPluginJs from "@eslint/js";
 import eslintPluginJsonc from "eslint-plugin-jsonc";
 import eslintPluginStylistic from "@stylistic/eslint-plugin";
