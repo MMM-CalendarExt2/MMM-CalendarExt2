@@ -21,9 +21,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: "npm"
-      - name: Install dependencies and run tests
-        run: |
-          npm install
-          npm run lint
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Check formatting
+        run: npm run prettier
+      - name: Check linting
+        run: npm run lint
       - run: echo "🍏 This job's status is ${{ job.status }}."
