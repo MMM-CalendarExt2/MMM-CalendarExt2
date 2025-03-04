@@ -116,3 +116,11 @@ title: (mObj) => { // moment object for first slot of view.
 ## [1.0.1]
 
 - `view:transform()` is added, now you can modify event value as your wish.
+
+[1.4.6]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.5...v1.4.6
+[1.4.5]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.4...v1.4.5
+[1.4.4]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.3...v1.4.4
+[1.4.3]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.2...v1.4.3
+[1.4.2]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.1...v1.4.2
+[1.4.1]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.3.0...v1.4.0
