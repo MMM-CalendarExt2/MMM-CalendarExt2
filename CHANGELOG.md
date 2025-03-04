@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.7] 2025-03-04 - Maintenance update
+
+- Update CodeQL workflow
+- Switch to superlinter 7
+- Add formatting check step to CI
+- Replace eslint-plugin-import by eslint-plugin-import
+- Update devDependencies
+- Simplify ESLint calls
+- Remove unused release script
+- Sort pakckage.json the npm standard way
+
 ## [1.4.6] 2025-02-02 - Maintenance update
 
 - Remove unused dependency `valid-url`
@@ -116,3 +127,12 @@ title: (mObj) => { // moment object for first slot of view.
 ## [1.0.1]
 
 - `view:transform()` is added, now you can modify event value as your wish.
+
+[1.4.7]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.6...v1.4.7
+[1.4.6]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.5...v1.4.6
+[1.4.5]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.4...v1.4.5
+[1.4.4]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.3...v1.4.4
+[1.4.3]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.2...v1.4.3
+[1.4.2]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.1...v1.4.2
+[1.4.1]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.3.0...v1.4.0

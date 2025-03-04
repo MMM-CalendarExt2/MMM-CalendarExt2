@@ -1,55 +1,54 @@
 {
   "name": "mmm-calendarext2",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "Alternative calendar module of MagicMirror².",
-  "main": "MMM-CalendarExt2.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MMM-CalendarExt2/MMM-CalendarExt2.git"
-  },
   "keywords": [
     "MagicMirror",
     "calendar"
   ],
-  "author": "eouia <eouia0819@gmail.com>",
-  "license": "MIT",
+  "homepage": "https://github.com/MMM-CalendarExt2/MMM-CalendarExt2#readme",
   "bugs": {
     "url": "https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues"
   },
-  "homepage": "https://github.com/MMM-CalendarExt2/MMM-CalendarExt2#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MMM-CalendarExt2/MMM-CalendarExt2.git"
+  },
+  "license": "MIT",
+  "author": "eouia <eouia0819@gmail.com>",
+  "main": "MMM-CalendarExt2.js",
+  "scripts": {
+    "eslint": "eslint",
+    "eslint:fix": "eslint --fix",
+    "lint": "npm run eslint && npm run stylelint && npm run markdownlint",
+    "lint:fix": "npm run eslint:fix && npm run stylelint:fix && npm run markdownlint:fix",
+    "markdownlint": "markdownlint-cli2 **/*.md",
+    "markdownlint:fix": "markdownlint-cli2 **/*.md --fix",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write",
+    "stylelint": "stylelint **/*.css",
+    "stylelint:fix": "stylelint **/*.css --fix",
+    "test": "npm run lint && npm run prettier"
+  },
   "dependencies": {
     "ical-expander": "^3.1.0",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.47"
   },
   "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "@stylistic/eslint-plugin": "^3.0.1",
-    "eslint": "^9.19.0",
-    "eslint-plugin-import": "^2.31.0",
+    "@eslint/js": "^9.21.0",
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "eslint": "^9.21.0",
+    "eslint-plugin-import-x": "^4.6.1",
     "eslint-plugin-jsonc": "^2.19.1",
-    "globals": "^15.14.0",
+    "globals": "^16.0.0",
     "markdownlint-cli2": "^0.17.2",
-    "prettier": "^3.4.2",
-    "stylelint": "^16.14.1",
+    "prettier": "^3.5.3",
+    "stylelint": "^16.15.0",
     "stylelint-config-standard": "^37.0.0",
     "stylelint-prettier": "^5.0.3"
   },
   "engines": {
     "node": ">=18"
-  },
-  "scripts": {
-    "lint": "npm run eslint && npm run stylelint && npm run markdownlint",
-    "lint:fix": "npm run eslint:fix && npm run stylelint:fix && npm run markdownlint:fix",
-    "eslint": "eslint .",
-    "eslint:fix": "eslint . --fix",
-    "markdownlint": "markdownlint-cli2 **/*.md",
-    "markdownlint:fix": "markdownlint-cli2 **/*.md --fix",
-    "prettier": "prettier . --check",
-    "prettier:fix": "prettier . --write",
-    "release": "npx bumpp --no-push",
-    "stylelint": "stylelint **/*.css",
-    "stylelint:fix": "stylelint **/*.css --fix",
-    "test": "npm run lint && npm run prettier"
   }
 }
