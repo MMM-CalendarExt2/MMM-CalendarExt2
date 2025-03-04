@@ -93,7 +93,6 @@ Pull requests are of course also very welcome 🙂
 - `npm run prettier` - Run formatter checks.
 - `npm run prettier:fix` - Fix formatter issues.
 - `npm run test` - Run linting and formatter checks.
-- `npm run release` - Bump version for release.
 
 ## MEMO
 
