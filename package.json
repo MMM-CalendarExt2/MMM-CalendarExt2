@@ -18,8 +18,8 @@
   "author": "eouia <eouia0819@gmail.com>",
   "main": "MMM-CalendarExt2.js",
   "scripts": {
-    "eslint": "eslint .",
-    "eslint:fix": "eslint . --fix",
+    "eslint": "eslint",
+    "eslint:fix": "eslint --fix",
     "lint": "npm run eslint && npm run stylelint && npm run markdownlint",
     "lint:fix": "npm run eslint:fix && npm run stylelint:fix && npm run markdownlint:fix",
     "markdownlint": "markdownlint-cli2 **/*.md",
