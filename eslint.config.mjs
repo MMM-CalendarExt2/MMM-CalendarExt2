@@ -82,7 +82,8 @@ const config = [
     "rules": {
       "@stylistic/array-element-newline": "off",
       "@stylistic/indent": ["error", 2],
-      "no-magic-numbers": "off"
+      "no-magic-numbers": "off",
+      "one-var": "off"
     }
   }
 ];
