@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 - Update devDependencies
 - Optimize stylelint configuration
-- Rewording some parts of the README
+- Rewording some parts of the README.md
 
 ## [1.4.7] 2025-03-04 - Maintenance update
 
