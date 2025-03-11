@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.8] 2025-03-11 - Maintenance update
+
+- Update devDependencies
+- Optimize stylelint configuration
+- Rewording some parts of the README
+
 ## [1.4.7] 2025-03-04 - Maintenance update
 
 - Update CodeQL workflow
