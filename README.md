@@ -21,14 +21,14 @@ cd MMM-CalendarExt2
 npm install
 ```
 
-Note: If you want to start developing and miss the entire history run `git fetch --unshallow`.
+> **Tip:** If you want to start developing and need the entire history, run `git fetch --unshallow`.
 
 ## Configuration
 
 After installation read how to configure everything in [the configuration documentation](docs/Configuration.md).
 If you like adjust [to your language](docs/Localization.md) or [adapt the styling](docs/Styling.md).
 
-Finally, if you like a shortcut browse through [the examples of other peoples config](docs/examples).
+Finally, if you like a shortcut, browse through [the examples of other people's configurations](docs/examples).
 
 ## Documentation Quick Links
 
@@ -49,7 +49,7 @@ Finally, if you like a shortcut browse through [the examples of other peoples co
 
 ## What's different with `MMM-CalendarExt`
 
-But if you have no dissatisfaction with `MMM-CalendarExt`, leave it.
+If you are satisfied with `MMM-CalendarExt`, you can continue using it.
 
 - New parser. New look.
 - `profile` is deprecated. `scene` is more than that.
