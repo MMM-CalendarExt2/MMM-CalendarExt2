@@ -1,13 +1,13 @@
-import eslintPluginImport from "eslint-plugin-import-x";
 import eslintPluginJs from "@eslint/js";
 import eslintPluginJsonc from "eslint-plugin-jsonc";
 import eslintPluginStylistic from "@stylistic/eslint-plugin";
 import globals from "globals";
+import {flatConfigs as importConfigs} from "eslint-plugin-import-x";
 
 const config = [
-  eslintPluginImport.flatConfigs.recommended,
   eslintPluginJs.configs.all,
   eslintPluginStylistic.configs.all,
+  importConfigs.recommended,
   ...eslintPluginJsonc.configs["flat/recommended-with-jsonc"],
   {
     "ignores": ["package-lock.json"]
