@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.10](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.9...v1.4.10) 2025-04-04 - Maintenance update
+
+- fix: Handle null sceneUid correctly in work method. This will fix #383. It was caused by refactoring the code in 1.4.5 - commit 3c19d7c6091a127641e8ad87b27cedd470997e75.
+- chore: Update devDependencies
+- chore: update Dependabot configuration to include GitHub Actions ecosystem
+
 ## [1.4.9](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.8...v1.4.9) 2025-04-03 - Maintenance update
 
 - Update dependencies
