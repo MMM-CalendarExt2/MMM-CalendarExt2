@@ -21,8 +21,6 @@ cd MMM-CalendarExt2
 npm ci --omit=dev
 ```
 
-> **Tip:** If you want to start developing and need the entire history, run `git fetch --unshallow`.
-
 ## Configuration
 
 After installation read how to configure everything in [the configuration documentation](docs/Configuration.md).
@@ -88,11 +86,13 @@ Pull requests are of course also very welcome 🙂
 
 ### Developer commands
 
-- `npm run lint` - Run linting checks.
-- `npm run lint:fix` - Fix linting issues.
-- `npm run prettier` - Run formatter checks.
-- `npm run prettier:fix` - Fix formatter issues.
-- `npm run test` - Run linting and formatter checks.
+- `git fetch --unshallow` - If you ran `git clone --depth=1 ...` before, but you want to start development, you will need to run this command to get the full history.
+- `npm install` - Install all dependencies.
+- `node --run lint` - Run linting checks.
+- `node --run lint:fix` - Fix linting issues.
+- `node --run prettier` - Run formatter checks.
+- `node --run prettier:fix` - Fix formatter issues.
+- `node --run test` - Run linting and formatter checks.
 
 ## MEMO
 
