@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.11](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.10...v1.4.11) 2025-04-30 - Maintenance update
+
+- chore: add Code of Conduct
+- chore: sharpen ESLint rules for consistency and error handling
+- chore: switch from 'npm run' to 'node --run'
+- chore: update devDependencies
+- docs: update developer commands in README
+- docs: update installation instructions to use `npm ci --omit=dev` to avoid installing `devDependencies`
+- refactor: remove unused deprecated drawSlots method
+
 ## [1.4.10](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.9...v1.4.10) 2025-04-04 - Maintenance update
 
 - fix: Handle null sceneUid correctly in work method. This will fix #383. It was caused by refactoring the code in 1.4.5 - commit 3c19d7c6091a127641e8ad87b27cedd470997e75.
