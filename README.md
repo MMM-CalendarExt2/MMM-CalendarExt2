@@ -18,7 +18,7 @@ Just clone the module into your modules directory and install the dependencies:
 cd ~/MagicMirror/modules
 git clone --depth=1 https://github.com/MMM-CalendarExt2/MMM-CalendarExt2
 cd MMM-CalendarExt2
-npm install
+npm ci --omit=dev
 ```
 
 > **Tip:** If you want to start developing and need the entire history, run `git fetch --unshallow`.
@@ -69,7 +69,7 @@ Just enter the MMM-CalendarExt2 directory, pull the update and install the depen
 ```bash
 cd ~/MagicMirror/modules/MMM-CalendarExt2
 git pull
-npm install
+npm ci --omit=dev
 ```
 
 ## Changelog
