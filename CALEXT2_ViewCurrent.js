@@ -10,8 +10,7 @@ class ViewCurrent extends ViewAgenda {
     let filtered = super.filterEvents(events);
     const now = moment();
     filtered = filtered.filter((e) =>
-      now.isBetween(moment.unix(e.startDate), moment.unix(e.endDate))
-    );
+      now.isBetween(moment.unix(e.startDate), moment.unix(e.endDate)));
     return filtered;
   }
 }

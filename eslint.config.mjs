@@ -24,18 +24,18 @@ const config = [
     },
     "rules": {
       "@stylistic/dot-location": ["error", "property"],
-      "@stylistic/function-call-argument-newline": "off",
-      "@stylistic/function-paren-newline": "off",
+      "@stylistic/function-call-argument-newline": ["error", "consistent"],
+      "@stylistic/function-paren-newline": ["error", "consistent"],
       "@stylistic/implicit-arrow-linebreak": "off",
       "@stylistic/indent": ["error", 2],
       "@stylistic/multiline-comment-style": "off",
       "@stylistic/multiline-ternary": "off",
       "@stylistic/newline-per-chained-call": "off",
-      "@stylistic/no-extra-parens": "off",
+      "@stylistic/no-extra-parens": ["error", "functions"],
       "@stylistic/nonblock-statement-body-position": "off",
-      "@stylistic/padded-blocks": "off",
+      "@stylistic/padded-blocks": ["error", "never"],
       "@stylistic/quote-props": ["error", "consistent"],
-      "camelcase": "off",
+      "camelcase": ["error", {"allow": ["CMD_changeScene", "ms_busystatus"]}],
       "capitalized-comments": "off",
       "curly": "off",
       "default-case": "off",
@@ -80,7 +80,7 @@ const config = [
       "sourceType": "module"
     },
     "rules": {
-      "@stylistic/array-element-newline": "off",
+      "@stylistic/array-element-newline": ["error", "consistent"],
       "@stylistic/indent": ["error", 2],
       "no-magic-numbers": "off",
       "one-var": "off"

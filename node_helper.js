@@ -269,7 +269,6 @@ module.exports = NodeHelper.create({
       };
 
       const compareThem = (a, b) => {
-
         for (const property of this.config.deduplicateEventsOn) {
           const comparisonResult = spaceship(a[property], b[property]);
           // if the comparison has found an order change

@@ -30,8 +30,7 @@ class Scene {
 
       viewConfig.sceneClassName = this.className;
       viewConfig.calendarLegends = viewConfig.calendars.map((calendarName) =>
-        this.calendarNames.find((config) => config.name === calendarName)
-      );
+        this.calendarNames.find((config) => config.name === calendarName));
 
       const view = View.makeByName(viewConfig, events);
       if (view) {

@@ -10,8 +10,7 @@ class ViewUpcoming extends ViewAgenda {
     const until = moment().add(this.config.maxDays, "day").endOf("day");
     let filtered = super.filterEvents(events);
     filtered = filtered.filter((e) =>
-      moment.unix(e.startDate).isBetween(moment(), until)
-    );
+      moment.unix(e.startDate).isBetween(moment(), until));
     return filtered;
   }
 }
