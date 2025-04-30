@@ -215,18 +215,6 @@ class View {
     this.contentDom.appendChild(slot.dom);
   }
 
-  drawSlots (targetDom) {
-
-    /* to deprecate */
-    targetDom.innerHTML = "";
-    const slotPeriods = this.getSlotPeriods();
-    const slots = Slot.factory(slotPeriods);
-    for (let i = 0; i < slots.length; i++) {
-      const slot = slots[i];
-      slot.draw(this, i);
-    }
-  }
-
   makeSlotHeader (slot) {
     const header = slot.headerDom;
     const title = header.querySelector(".slotTitle");
