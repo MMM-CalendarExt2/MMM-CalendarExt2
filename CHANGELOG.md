@@ -9,7 +9,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - chore: sharpen ESLint rules for consistency and error handling
 - chore: switch from 'npm run' to 'node --run'
 - chore: update devDependencies
-- docs: update developer commands in README
+- docs: update developer commands in `README`
 - docs: update installation instructions to use `npm ci --omit=dev` to avoid installing `devDependencies`
 - refactor: remove unused deprecated drawSlots method
 
@@ -23,13 +23,13 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 - Update dependencies
 - refactor: update ESLint configuration to use new import plugin structure
-- chore: add missing links and dates to releases in CHANGELOG.md
+- chore: add missing links and dates to releases in `CHANGELOG`
 
 ## [1.4.8](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.7...v1.4.8) 2025-03-11 - Maintenance update
 
 - Update devDependencies
 - Optimize stylelint configuration
-- Rewording some parts of the README.md
+- Rewording some parts of the `README`
 
 ## [1.4.7](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.6...v1.4.7) 2025-03-04 - Maintenance update
 
@@ -63,9 +63,9 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - Optimize logging
 - Update dependencies
 - Update URL in `.editorconfig`
-- Move Changelog from README.md to CHANGELOG.md
-- Add link to LICENSE file in README.md
-- Fix Update instructions in README.md
+- Move Changelog from `README` to `CHANGELOG`
+- Add link to LICENSE file in `README`
+- Fix Update instructions in `README`
 
 ## [1.4.3](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.2...v1.4.3) 2024-10-28 - Maintenance update
 
