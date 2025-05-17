@@ -8,7 +8,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - chore: add `husky` and `lint-staged` for pre-commit hooks
 - chore: review linter setup
 - chore: update devDependencies
-- docs: format README and CHANGELOG entries for consistency
+- docs: format `README` and `CHANGELOG` entries for consistency
 
 ## [1.4.11](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.10...v1.4.11) 2025-04-30 - Maintenance update
 
