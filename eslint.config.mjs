@@ -1,27 +1,23 @@
-import eslintPluginJs from "@eslint/js";
-import eslintPluginJsonc from "eslint-plugin-jsonc";
-import eslintPluginStylistic from "@stylistic/eslint-plugin";
+import {defineConfig} from "eslint/config";
 import globals from "globals";
-import {flatConfigs as importConfigs} from "eslint-plugin-import-x";
+import {flatConfigs as importX} from "eslint-plugin-import-x";
+import js from "@eslint/js";
+import json from "@eslint/json";
+import stylistic from "@stylistic/eslint-plugin";
 
-const config = [
-  eslintPluginJs.configs.all,
-  eslintPluginStylistic.configs.all,
-  importConfigs.recommended,
-  ...eslintPluginJsonc.configs["flat/recommended-with-jsonc"],
-  {
-    "ignores": ["package-lock.json"]
-  },
+export default defineConfig([
   {
     "files": ["**/*.js"],
     "languageOptions": {
+      "ecmaVersion": "latest",
       "globals": {
         ...globals.browser,
         ...globals.node,
         "moment": "readonly"
-      },
-      "sourceType": "commonjs"
+      }
     },
+    "plugins": {js, stylistic},
+    "extends": [importX.recommended, "js/all", "stylistic/all"],
     "rules": {
       "@stylistic/dot-location": ["error", "property"],
       "@stylistic/function-call-argument-newline": ["error", "consistent"],
@@ -79,13 +75,17 @@ const config = [
       },
       "sourceType": "module"
     },
+    "plugins": {js, stylistic},
+    "extends": [importX.recommended, "js/all", "stylistic/all"],
     "rules": {
       "@stylistic/array-element-newline": ["error", "consistent"],
       "@stylistic/indent": ["error", 2],
+      "@stylistic/object-property-newline": ["error", {"allowAllPropertiesOnSameLine": true}],
+      "import-x/no-unresolved": ["error", {"ignore": ["eslint/config"]}],
       "no-magic-numbers": "off",
-      "one-var": "off"
+      "one-var": "off",
+      "sort-keys": "off"
     }
-  }
-];
-
-export default config;
+  },
+  {"files": ["**/*.json"], "ignores": ["package-lock.json"], "plugins": {json}, "extends": ["json/recommended"], "language": "json/json"}
+]);
