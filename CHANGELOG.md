@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.12](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.11...v1.4.12) 2025-05-17 - Maintenance update
+
+- chore: add `husky` and `lint-staged` for pre-commit hooks
+- chore: review linter setup
+- chore: update devDependencies
+- docs: format README and CHANGELOG entries for consistency
+
 ## [1.4.11](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.10...v1.4.11) 2025-04-30 - Maintenance update
 
 - chore: add Code of Conduct
