@@ -1,6 +1,3 @@
 {
-  "ignore": [
-    "docs/Configuration/Views/week,-month.md",
-    "**/node_modules/**"
-  ]
+  "ignore": ["docs/Configuration/Views/week,-month.md", "**/node_modules/**"]
 }

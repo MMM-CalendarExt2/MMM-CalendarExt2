@@ -22,6 +22,7 @@
     "eslint:fix": "eslint --fix",
     "lint": "node --run eslint && node --run stylelint && node --run markdownlint",
     "lint:fix": "node --run eslint:fix && node --run stylelint:fix && node --run markdownlint:fix",
+    "prepare": "[ -f node_modules/.bin/husky ] && husky || echo husky is not installed.",
     "markdownlint": "markdownlint-cli2 **/*.md",
     "markdownlint:fix": "markdownlint-cli2 **/*.md --fix",
     "prettier": "prettier . --check",
@@ -29,6 +30,20 @@
     "stylelint": "stylelint **/*.css",
     "stylelint:fix": "stylelint **/*.css --fix",
     "test": "node --run lint && node --run prettier"
+  },
+  "lint-staged": {
+    "!(*.css|*.md)": [
+      "eslint --fix",
+      "prettier --write --ignore-unknown"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.md": [
+      "markdownlint-cli2 --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "ical-expander": "^3.1.0",
@@ -42,6 +57,8 @@
     "eslint": "^9.27.0",
     "eslint-plugin-import-x": "^4.11.1",
     "globals": "^16.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
     "markdownlint-cli2": "^0.18.1",
     "prettier": "^3.5.3",
     "stylelint": "^16.19.1",
