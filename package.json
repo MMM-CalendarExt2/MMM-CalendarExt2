@@ -58,7 +58,7 @@
     "eslint-plugin-import-x": "^4.12.2",
     "globals": "^16.1.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.0.0",
+    "lint-staged": "^16.1.0",
     "markdownlint-cli2": "^0.18.1",
     "prettier": "^3.5.3",
     "stylelint": "^16.19.1",
