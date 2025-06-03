@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.14](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.13...v1.4.14) 2025-06-03
+
+- chore: add missing type field to `package.json`
+- chore: update dependencies
+- fix: correct `eventPool` slicing to properly limit items
+- refactor: simplify and format code
+
 ## [1.4.13](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.12...v1.4.13) 2025-05-18 - Maintenance update
 
 - chore: sort scripts
