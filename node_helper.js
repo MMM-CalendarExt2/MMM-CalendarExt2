@@ -141,7 +141,7 @@ module.exports = NodeHelper.create({
     }
 
     const wholeEvents = [...events.events, ...events.occurrences];
-    const eventPool = [];
+    let eventPool = [];
 
     wholeEvents.forEach((item) => {
       const ri = Object.hasOwn(item, "item") ? item.item : item;
@@ -224,7 +224,7 @@ module.exports = NodeHelper.create({
         eventPool.push(ev);
       }
     });
-    eventPool.slice(calendar.maxItems);
+    eventPool = eventPool.slice(0, calendar.maxItems);
     Log.log(
       `[CALEXT2] calendar:${calendar.name} >> Scanned: ${wholeEvents.length}, Selected: ${eventPool.length}`
     );
