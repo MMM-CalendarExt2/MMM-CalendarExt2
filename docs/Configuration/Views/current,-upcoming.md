@@ -42,10 +42,10 @@ You can use all of common fields of [View](../View.md) in these views also.
   mode: "upcoming",
   position: "top_left",
   slotTitle: "Upcoming Events",
-  maxItems:5,
-  maxDays:7,
-  slotMaxHeight:"180px",
-  hideOverflow:true,
+  maxItems: 5,
+  maxDays: 7,
+  slotMaxHeight: "180px",
+  hideOverflow: true,
 },
 ```
 

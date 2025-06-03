@@ -140,7 +140,7 @@ module.exports = NodeHelper.create({
       return;
     }
 
-    const wholeEvents = [].concat(events.events, events.occurrences);
+    const wholeEvents = [...events.events, ...events.occurrences];
     const eventPool = [];
 
     wholeEvents.forEach((item) => {
@@ -171,12 +171,8 @@ module.exports = NodeHelper.create({
       let startDate;
       let endDate;
       if (calendar.forceLocalTZ) {
-        const ts = item.startDate.toJSON();
-        ts.month -= 1;
-        const te = item.endDate.toJSON();
-        te.month -= 1;
-        startDate = moment(ts);
-        endDate = moment(te);
+        startDate = moment(item.startDate.toJSDate()).subtract(1, "months");
+        endDate = moment(item.endDate.toJSDate()).subtract(1, "months");
       } else {
         startDate = moment(item.startDate.toJSDate());
         endDate = moment(item.endDate.toJSDate());
@@ -204,7 +200,7 @@ module.exports = NodeHelper.create({
       ev.isFullday = isFullday;
 
       // import the Microsoft property X-MICROSOFT-CDO-BUSYSTATUS, fall back to "BUSY" in case none was found
-      // possible values are 'FREE'|'TENTATIVE'|'BUSY'|'OOF' acording to
+      // possible values are 'FREE'|'TENTATIVE'|'BUSY'|'OOF' according to
       // https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcical/cd68eae7-ed65-4dd3-8ea7-ad585c76c736
       ev.ms_busystatus =
         ri.component.getFirstPropertyValue("x-microsoft-cdo-busystatus") ||

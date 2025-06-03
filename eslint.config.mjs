@@ -19,6 +19,7 @@ export default defineConfig([
     "plugins": {js, stylistic},
     "extends": [importX.recommended, "js/all", "stylistic/all"],
     "rules": {
+      "@stylistic/array-element-newline": ["error", "consistent"],
       "@stylistic/dot-location": ["error", "property"],
       "@stylistic/function-call-argument-newline": ["error", "consistent"],
       "@stylistic/function-paren-newline": ["error", "consistent"],
