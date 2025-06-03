@@ -17,6 +17,7 @@
   "license": "MIT",
   "author": "eouia <eouia0819@gmail.com>",
   "main": "MMM-CalendarExt2.js",
+  "type": "commonjs",
   "scripts": {
     "eslint": "eslint",
     "eslint:fix": "eslint --fix",
