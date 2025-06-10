@@ -5,13 +5,13 @@ Many people are asking me How to use this module with [MMM-Pages](https://github
 Like this;
 
 PAGE1
-![example page 1](https://raw.githubusercontent.com/MMM-CalendarExt2/MMM-CalendarExt2/main/docs/Page_1.png)
+![example page 1](Page_1.png)
 
 PAGE2
-![example page 2](https://raw.githubusercontent.com/MMM-CalendarExt2/MMM-CalendarExt2/main/docs/Page_2.png)
+![example page 2](Page_2.png)
 
 PAGE3
-![example page 3](https://raw.githubusercontent.com/MMM-CalendarExt2/MMM-CalendarExt2/main/docs/Page_3.png)
+![example page 3](Page_3.png)
 
 Let's configure.
 
@@ -120,4 +120,4 @@ I wrote `className:fakeScene,` in 3rd scene config. Let's add this into your `cs
 
 Now, the 3rd scene will be displayed like this.
 
-![a page that has no calendar shown](https://raw.githubusercontent.com/eouia/MMM-CalendarExt2/master/doc/Page_4.png)
+![a page that has no calendar shown](Page_4.png)
