@@ -31,20 +31,26 @@ module.exports = NodeHelper.create({
     this.startScanCalendars();
   },
 
+  /**
+   * Scans all configured calendars and processes their events sequentially.
+   */
   startScanCalendars () {
-    for (let i = 0; i < this.calendars.length; i++) {
-      this.scanCalendar(
-        this.calendars[i],
-        (calendar, icalData = null, error = null) => {
-          this.parser(calendar, icalData, error);
-        }
-      );
-    }
+    // Process calendars sequentially to avoid concurrent fetches
+    (async () => {
+      for (const calendar of this.calendars) {
+        // eslint-disable-next-line no-await-in-loop
+        await this.scanCalendar(calendar);
+      }
+    })().catch((err) => {
+      Log.error(`[CALEXT2] Error in startScanCalendars: ${err}`);
+    });
   },
 
+  /**
+   * Scans a single calendar, fetches its data, and processes its events.
+   * @param {Object} calendar - The calendar configuration object.
+   */
   async scanCalendar (calendar) {
-    let response;
-    let data;
     Log.log(
       `[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`
     );
@@ -83,14 +89,15 @@ module.exports = NodeHelper.create({
       }
     }
 
+    let data;
     let {url} = calendar;
     url = url.replace("webcal://", "http://");
     try {
-      response = await fetch(url, opts);
+      const response = await fetch(url, opts);
       data = await response.text();
     } catch (error) {
       // Probably a connection issue
-      Log.log(
+      Log.error(
         `[CALEXT2] calendar:${calendar.name}: failed to fetch. Will try again. ${error}`
       );
     }
@@ -104,14 +111,16 @@ module.exports = NodeHelper.create({
       this.parser(calendar, data, error);
       Log.error(`[CALEXT2] Error: ${error}`);
 
-      const errorBody = await error.response.text();
-      Log.error(`[CALEXT2] Error body: ${errorBody}`);
+      if (error.response && typeof error.response.text === "function") {
+        const errorBody = await error.response.text();
+        Log.error(`[CALEXT2] Error body: ${errorBody}`);
+      }
     }
   },
 
   parser (calendar, iCalData = null, error = null) {
     if (error) {
-      Log.log(`[CALEXT2] calendar:${calendar.name} >> ${error.message}`);
+      Log.error(`[CALEXT2] calendar:${calendar.name} >> Error: ${error.message || error}`);
       return;
     }
     if (!iCalData) {
