@@ -136,6 +136,10 @@ class View {
     if (container.style.display === "none") {
       container.style.display = "flex";
     }
+    if (container.classList.contains("hidden")) {
+      container.classList.remove("hidden");
+    }
+
     this.containerDom = container;
     this.show();
   }
