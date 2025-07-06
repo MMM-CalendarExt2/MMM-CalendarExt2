@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.15](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.14...v1.4.15) 2025-07-06
+
+- chore: update devDependencies
+- docs: change clone command order in installation instructions
+- docs: fix image URLs in `docs/Tip-Sync-with-MMM-Pages.md`
+- docs: remove redundant blank lines in Event-Time documentation
+- docs: update URLs in `README`
+- refactor: enhance `drawEvents` method with layout readiness check (this should fix [#393](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues/393))
+
 ## [1.4.14](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.13...v1.4.14) 2025-06-03
 
 - chore: add missing type field to `package.json`
