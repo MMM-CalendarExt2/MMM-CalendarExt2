@@ -1,4 +1,4 @@
-/* global CellSlot Log Slot */
+/* global CellSlot Slot */
 // eslint-disable-next-line no-unused-vars
 class WeekSlot extends Slot {
   constructor (view, period, seq = 0) {
@@ -56,36 +56,15 @@ class WeekSlot extends Slot {
     return event.dom;
   }
 
-  // Helper to wait for DOM to be rendered and have correct sizes
-  async waitForLayout (selector, tries = 10, delay = 30) {
-    for (let attempt = 0; attempt < tries; attempt++) {
-      const el = this.contentDom.querySelector(selector);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.height > 0 && rect.width > 0) {
-          return rect;
-        }
-      }
-      // eslint-disable-next-line no-await-in-loop, no-promise-executor-return
-      await new Promise((res) => setTimeout(res, delay));
-    }
-    throw new Error("Element layout not ready");
-  }
+  drawEvents () {
+    // Get the first cellSlot content/header for sizing
+    const firstCellContent = this.contentDom.querySelector(".cellSlot .slotContent");
+    const firstCellHeader = this.contentDom.querySelector(".cellSlot .slotHeader");
 
-  async drawEvents () {
-    let fcc, fch;
-    try {
-      fcc = await this.waitForLayout(".cellSlot .slotContent");
-      fch = await this.waitForLayout(".cellSlot .slotHeader");
-    } catch (e) {
-      Log.warn("Layout not ready for drawEvents:", e);
-      // Fallback to default values if layout is not ready
-      fcc = {height: 95};
-      fch = {height: 28};
-    }
+    // Use measured heights
+    this.timelineDom.style.height = `${firstCellContent.getBoundingClientRect().height}px`;
+    this.timelineDom.style.top = `${firstCellHeader.getBoundingClientRect().height}px`;
 
-    this.timelineDom.style.top = `${fch.height}px`;
-    this.timelineDom.style.height = `${fcc.height}px`;
     const parentPosition = this.timelineDom.getBoundingClientRect();
 
     const fcs = this.contentDom.querySelectorAll(".cellSlot");
