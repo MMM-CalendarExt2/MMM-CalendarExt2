@@ -1,4 +1,4 @@
-/* global CellSlot Slot */
+/* global CellSlot Log Slot */
 // eslint-disable-next-line no-unused-vars
 class WeekSlot extends Slot {
   constructor (view, period, seq = 0) {
@@ -56,22 +56,40 @@ class WeekSlot extends Slot {
     return event.dom;
   }
 
-  drawEvents () {
-    const fcs = this.contentDom.querySelectorAll(".cellSlot");
-    const positions = [...fcs].map((dom) => {
-      const t = dom.getBoundingClientRect();
-      return t;
-    });
+  // Helper to wait for DOM to be rendered and have correct sizes
+  async waitForLayout (selector, tries = 10, delay = 30) {
+    for (let attempt = 0; attempt < tries; attempt++) {
+      const el = this.contentDom.querySelector(selector);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.height > 0 && rect.width > 0) {
+          return rect;
+        }
+      }
+      // eslint-disable-next-line no-await-in-loop, no-promise-executor-return
+      await new Promise((res) => setTimeout(res, delay));
+    }
+    throw new Error("Element layout not ready");
+  }
 
-    const fcc = this.contentDom
-      .querySelector(".cellSlot .slotContent")
-      .getBoundingClientRect();
-    const fch = this.contentDom
-      .querySelector(".cellSlot .slotHeader")
-      .getBoundingClientRect();
+  async drawEvents () {
+    let fcc, fch;
+    try {
+      fcc = await this.waitForLayout(".cellSlot .slotContent");
+      fch = await this.waitForLayout(".cellSlot .slotHeader");
+    } catch (e) {
+      Log.warn("Layout not ready for drawEvents:", e);
+      // Fallback to default values if layout is not ready
+      fcc = {height: 95};
+      fch = {height: 28};
+    }
+
     this.timelineDom.style.top = `${fch.height}px`;
     this.timelineDom.style.height = `${fcc.height}px`;
     const parentPosition = this.timelineDom.getBoundingClientRect();
+
+    const fcs = this.contentDom.querySelectorAll(".cellSlot");
+    const positions = [...fcs].map((dom) => dom.getBoundingClientRect());
 
     const getOccupyBin = (event, dayPeriods) => {
       const dayEnd = dayPeriods[dayPeriods.length - 1].endX;
@@ -112,13 +130,8 @@ class WeekSlot extends Slot {
             dayPeriods[k].eventCount += 1;
           }
         }
-        // var eventDom = this.createEventDom(event, slot.startX, occuStr, dayPeriods.length)
 
         const eventDom = this.makeCellEvent(event);
-
-        // eslint-disable-next-line no-unused-vars
-        const isFullday = Boolean(event.isFullday);
-
         const pos = occuStr.search("1");
         const dayDuration = occuStr.split("1").length - 1;
         const endPos = pos + dayDuration - 1;
@@ -176,6 +189,5 @@ class WeekSlot extends Slot {
         }
       }
     }
-    // return event.draw(this, this.contentDom)
   }
 }

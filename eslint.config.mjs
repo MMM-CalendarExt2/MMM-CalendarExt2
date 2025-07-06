@@ -41,7 +41,7 @@ export default defineConfig([
       "max-lines": ["warn", 550],
       "max-lines-per-function": ["warn", 150],
       "max-params": ["warn", 5],
-      "max-statements": ["warn", 65],
+      "max-statements": ["warn", 70],
       "no-inline-comments": "off",
       "no-magic-numbers": "off",
       "no-param-reassign": [

@@ -134,7 +134,7 @@ class View {
     }
 
     if (container.style.display === "none") {
-      container.style.display = "block";
+      container.style.display = "flex";
     }
     this.containerDom = container;
     this.show();
