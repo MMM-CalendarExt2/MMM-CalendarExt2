@@ -9,7 +9,6 @@ You can define how to show the event time. `timeFormat`, `dateFormat` and `dateT
 > For all available formatters, read [the momentjs formatting documentation](https://momentjs.com/docs/#/displaying/format/)
 
 - **timeFormat**
-
   - This format will be used for oneday event which doesn't need date information by default.
   - e.g) `timeFormat:"HH:mm",` will be displayed as `13:05`. Or `timeFormat:"h:mm A",` will be displayed as `1:05 PM`.
 
@@ -17,7 +16,6 @@ You can define how to show the event time. `timeFormat`, `dateFormat` and `dateT
   - This format will be used for fullday event which doesn't need time information by default.
   - e.g) `dateFormat:"ddd MM/DD",` will be displayed as `Mon 12/17` in `en-US` locale.
 - **dateTimeFormat**
-
   - This format will be used for all other event.
   - e.g) `dateTimeFormat:"HH:mm M/D",` will be displayed as `01:23 1/3`.
 
