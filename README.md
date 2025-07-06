@@ -16,7 +16,7 @@ Just clone the module into your modules directory and install the dependencies:
 
 ```sh
 cd ~/MagicMirror/modules
-git clone --depth=1 https://github.com/MMM-CalendarExt2/MMM-CalendarExt2
+git clone https://github.com/MMM-CalendarExt2/MMM-CalendarExt2 --depth=1
 cd MMM-CalendarExt2
 npm ci --omit=dev
 ```
