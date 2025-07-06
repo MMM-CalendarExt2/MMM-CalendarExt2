@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.16](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.15...v1.4.16) 2025-07-06
+
+- fix: ensure container visibility by removing hidden class (this should finally fix [#393](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues/393))
+- refactor: improve calendar scanning methods
+- refactor: simplify drawEvents method by removing layout wait logic
+
 ## [1.4.15](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.14...v1.4.15) 2025-07-06
 
 - chore: update devDependencies
