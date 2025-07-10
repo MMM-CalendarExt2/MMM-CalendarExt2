@@ -38,10 +38,10 @@ You can get events by calling this notification for other modules job.
 Usage example:
 
 ```js
-var filterFn = (event) => {
+let filterFn = (event) => {
   if (event.startDate > Date.now()) return true;
 };
-var callbackFn = (events) => {
+let callbackFn = (events) => {
   this.doMyJob(events);
 };
 this.sendNotification("CALEXT2_EVENT_QUERY", {
