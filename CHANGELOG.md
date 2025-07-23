@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.17](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.16...v1.4.17) 2025-07-23
+
+- chore: update devDependencies
+- refactor: remove empty stop method from NodeHelper
+- refactor: replace unmaintained 'ical-expander' with 'ical.js'
+  This should fix the issue with recurring events not being displayed correctly (#363).
+- refactor: simplify payload handling by removing unused sender parameter
+
 ## [1.4.16](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.15...v1.4.16) 2025-07-06
 
 - fix: ensure container visibility by removing hidden class (this should finally fix [#393](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues/393))
