@@ -1,6 +1,6 @@
 const Log = require("logger");
 const moment = require("moment-timezone");
-const IcalExpander = require("ical-expander");
+const ICAL = require("ical.js");
 
 const NodeHelper = require("node_helper");
 
@@ -118,6 +118,101 @@ module.exports = NodeHelper.create({
     }
   },
 
+  /**
+   * Parse iCal data and expand recurring events using ical.js
+   * @param {string} iCalData - The iCal data string
+   * @param {Date} startDate - Start date for event range
+   * @param {Date} endDate - End date for event range
+   * @param {number} maxIterations - Maximum iterations for recurring events
+   * @returns {Object} Object containing events and occurrences arrays
+   */
+  parseAndExpandEvents (iCalData, startDate, endDate, maxIterations = 1000) {
+    let jcalData;
+    try {
+      jcalData = ICAL.parse(iCalData);
+    } catch (error) {
+      throw new Error(`Failed to parse iCal data: ${error.message}`);
+    }
+
+    const comp = new ICAL.Component(jcalData);
+    const vevents = comp.getAllSubcomponents("vevent");
+
+    const events = [];
+    const occurrences = [];
+
+    for (const vevent of vevents) {
+      const event = new ICAL.Event(vevent);
+
+      if (event.isRecurring()) {
+        // Handle recurring events
+        const iterator = event.iterator();
+        let count = 0;
+        let occurrence;
+
+        while ((occurrence = iterator.next()) && count < maxIterations) {
+          const occurrenceStartDate = occurrence.toJSDate();
+          const occurrenceEndDate = new Date(occurrenceStartDate.getTime() + event.duration.toSeconds() * 1000);
+
+          // Check if this occurrence falls within our date range
+          if (occurrenceEndDate >= startDate && occurrenceStartDate <= endDate) {
+            occurrences.push({
+              startDate: {
+                toJSDate: () => occurrenceStartDate
+              },
+              endDate: {
+                toJSDate: () => occurrenceEndDate
+              },
+              item: {
+                summary: event.summary,
+                location: event.location,
+                description: event.description,
+                uid: event.uid,
+                isRecurring: () => true,
+                duration: event.duration
+              },
+              component: vevent
+            });
+          }
+
+          count += 1;
+
+          // Stop if we've gone past our end date
+          if (occurrenceStartDate > endDate) {
+            break;
+          }
+        }
+      } else {
+        // Handle single events
+        const eventStartDate = event.startDate.toJSDate();
+        const eventEndDate = event.endDate.toJSDate();
+
+        // Check if this event falls within our date range
+        if (eventEndDate >= startDate && eventStartDate <= endDate) {
+          events.push({
+            startDate: {
+              toJSDate: () => eventStartDate
+            },
+            endDate: {
+              toJSDate: () => eventEndDate
+            },
+            summary: event.summary,
+            location: event.location,
+            description: event.description,
+            uid: event.uid,
+            isRecurring: () => false,
+            duration: event.duration,
+            component: vevent
+          });
+        }
+      }
+    }
+
+    return {
+      events,
+      occurrences
+    };
+  },
+
   parser (calendar, iCalData = null, error = null) {
     if (error) {
       Log.error(`[CALEXT2] calendar:${calendar.name} >> Error: ${error.message || error}`);
@@ -127,22 +222,17 @@ module.exports = NodeHelper.create({
       Log.log(`[CALEXT2] calendar:${calendar.name} >> No data to fetch`);
       return;
     }
-    let icalExpander;
-    try {
-      icalExpander = new IcalExpander({
-        ics: iCalData,
-        maxIterations: calendar.maxIterations
-      });
-    } catch (e) {
-      Log.log(`[CALEXT2] calendar:${calendar.name} >> ${e.message}`);
-      return;
-    }
 
     let events;
     try {
-      events = icalExpander.between(
-        moment().subtract(calendar.beforeDays, "days").startOf("day").toDate(),
-        moment().add(calendar.afterDays, "days").endOf("day").toDate()
+      const startDate = moment().subtract(calendar.beforeDays, "days").startOf("day").toDate();
+      const endDate = moment().add(calendar.afterDays, "days").endOf("day").toDate();
+
+      events = this.parseAndExpandEvents(
+        iCalData,
+        startDate,
+        endDate,
+        calendar.maxIterations
       );
     } catch (e) {
       Log.log(`[CALEXT2] calendar:${calendar.name} >> ${e.message}`);
