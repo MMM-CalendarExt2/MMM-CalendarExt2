@@ -11,9 +11,6 @@ module.exports = NodeHelper.create({
     this.calendarEvents = {};
   },
 
-  // eslint-disable-next-line no-empty-function
-  stop () {},
-
   socketNotificationReceived (noti, payload) {
     switch (noti) {
       case "START":
