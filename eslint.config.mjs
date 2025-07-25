@@ -34,6 +34,7 @@ export default defineConfig([
       "@stylistic/quote-props": ["error", "consistent"],
       "camelcase": ["error", {"allow": ["CMD_changeScene", "ms_busystatus"]}],
       "capitalized-comments": "off",
+      "complexity": ["warn", 25],
       "curly": "off",
       "default-case": "off",
       "id-length": ["warn", {"exceptions": ["a", "b", "c", "e", "f", "i", "j", "k", "l", "p", "r", "t", "v"]}],

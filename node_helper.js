@@ -165,7 +165,8 @@ module.exports = NodeHelper.create({
                 description: event.description,
                 uid: event.uid,
                 isRecurring: () => true,
-                duration: event.duration
+                duration: event.duration,
+                component: vevent
               },
               component: vevent
             });
@@ -249,6 +250,8 @@ module.exports = NodeHelper.create({
       ev.isRecurring = ri.isRecurring();
       ev.isCancelled =
         Object.hasOwn(item, "component") &&
+        item.component &&
+        typeof item.component.getFirstPropertyValue === "function" &&
         // eslint-disable-next-line no-eq-null, eqeqeq
         item.component.getFirstPropertyValue("status") != null &&
         item.component.getFirstPropertyValue("status").toUpperCase() === "CANCELLED";
@@ -298,9 +301,12 @@ module.exports = NodeHelper.create({
       // import the Microsoft property X-MICROSOFT-CDO-BUSYSTATUS, fall back to "BUSY" in case none was found
       // possible values are 'FREE'|'TENTATIVE'|'BUSY'|'OOF' according to
       // https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcical/cd68eae7-ed65-4dd3-8ea7-ad585c76c736
-      ev.ms_busystatus =
-        ri.component.getFirstPropertyValue("x-microsoft-cdo-busystatus") ||
-        "BUSY";
+      ev.ms_busystatus = "BUSY";
+      if (ri.component && typeof ri.component.getFirstPropertyValue === "function") {
+        ev.ms_busystatus =
+          ri.component.getFirstPropertyValue("x-microsoft-cdo-busystatus") ||
+          "BUSY";
+      }
 
       ev.uid = ri.uid
         ? `${calendar.uid}:${ev.startDate}:${ev.endDate}:${ri.uid}`
