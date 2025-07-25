@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.18](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.17...v1.4.18) 2025-07-25
+
+- docs: change `var` to `let`
+- fix: prevent undefined property access errors in ical.js event parsing (this should fix #401)
+
 ## [1.4.17](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.16...v1.4.17) 2025-07-23
 
 - chore: update devDependencies
