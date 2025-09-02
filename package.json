@@ -62,7 +62,7 @@
     "lint-staged": "^16.1.2",
     "markdownlint-cli2": "^0.18.1",
     "prettier": "^3.6.2",
-    "stylelint": "^16.23.0",
+    "stylelint": "^16.23.1",
     "stylelint-config-standard": "^39.0.0",
     "stylelint-prettier": "^5.0.3"
   },
