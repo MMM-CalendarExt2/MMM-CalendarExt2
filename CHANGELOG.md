@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.20](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.19...v1.4.20) 2025-09-08
+
+- chore: update actions/checkout to version 5 in workflows
+- chore: update dependencies
+- refactor: improve error handling for iCal data parsing
+
 ## [1.4.19](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.18...v1.4.19) 2025-08-02
 
 - chore: update devDependencies
