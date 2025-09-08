@@ -128,7 +128,9 @@ module.exports = NodeHelper.create({
     try {
       jcalData = ICAL.parse(iCalData);
     } catch (error) {
-      throw new Error(`Failed to parse iCal data: ${error.message}`);
+      throw new Error("Failed to parse iCal data", {
+        cause: error
+      });
     }
 
     const comp = new ICAL.Component(jcalData);
