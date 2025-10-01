@@ -54,7 +54,7 @@
   "devDependencies": {
     "@eslint/js": "^9.35.0",
     "@eslint/json": "^0.13.2",
-    "@stylistic/eslint-plugin": "^5.3.1",
+    "@stylistic/eslint-plugin": "^5.4.0",
     "eslint": "^9.35.0",
     "eslint-plugin-import-x": "^4.16.1",
     "globals": "^16.3.0",
