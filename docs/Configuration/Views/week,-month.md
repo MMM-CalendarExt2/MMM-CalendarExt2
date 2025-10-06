@@ -8,26 +8,26 @@ If you set these view positions as `fullscreen_below` or `fullscreen_above`, the
 
 # View:week
 
-| field              | value type | value example | default value | memo                                                                                                                       |
-| ------------------ | ---------- | ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| slotTitleFormat    | String     | "M/D"         | "D"           | date of calendar cell                                                                                                      |
-| slotSubTitleFormat | String     | "dddd"        | "ddd"         | weekday of calendar cell                                                                                                   |
-| slotAltTitleFormat | String     | "MMM D        | "M/D"         | Only for view:week and view:month. <br>Alternative slot title when it is needed.(e.g: month changed, start of calendar...) |
-| showWeekends       | Boolean    | false         | true          | Show Saturday and Sunday.                                                                                                  |
-| slotMaxHeight      | String     | "150px"       | "240px"       | height of calendar cell. `hideOverflow` is set to `true` by force in this view.                                            |
-| weeksFormat        | String     | "[week] wo"   | "wo"          | Weeks mark of calendar.                                                                                                    |
-| monthFormat        | String     | "[Month:] MM" | "MMMM"        | The title of month in current view. (CSS selector:`.monthViewTitle`)                                                       |
+| field              | value type | value example | default value | memo                                                                                                                                                                                                                             |
+| ------------------ | ---------- | ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| slotTitleFormat    | String     | "M/D"         | "D"           | date of calendar cell                                                                                                                                                                                                            |
+| slotSubTitleFormat | String     | "dddd"        | "ddd"         | weekday of calendar cell                                                                                                                                                                                                         |
+| slotAltTitleFormat | String     | "MMM D"       | "M/D"         | Only for view:week and view:month. <br>Displayed instead of `slotTitle` on special cells (first cell, first day of month, etc.). <br>Set it to the same value as `slotTitleFormat` if you want consistent formatting everywhere. |
+| showWeekends       | Boolean    | false         | true          | Show Saturday and Sunday.                                                                                                                                                                                                        |
+| slotMaxHeight      | String     | "150px"       | "240px"       | height of calendar cell. `hideOverflow` is set to `true` by force in this view.                                                                                                                                                  |
+| weeksFormat        | String     | "[week] wo"   | "wo"          | Weeks mark of calendar.                                                                                                                                                                                                          |
+| monthFormat        | String     | "[Month:] MM" | "MMMM"        | The title of month in current view. (CSS selector:`.monthViewTitle`)                                                                                                                                                             |
 
 # View:month
 
-| field              | value type | value example | default value | memo                                                                                                                       |
-| ------------------ | ---------- | ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| slotTitleFormat    | String     | "M/D"         | "D"           | date of calendar cell                                                                                                      |
-| slotSubTitleFormat | String     | "dddd"        | "ddd"         | weekday of calendar cell                                                                                                   |
-| slotAltTitleFormat | String     | "MMM D        | "M/D"         | Only for view:week and view:month. <br>Alternative slot title when it is needed.(e.g: month changed, start of calendar...) |
-| showWeekends       | Boolean    | false         | true          | Show Saturday and Sunday.                                                                                                  |
-| slotMaxHeight      | String     | "120px"       | "150px"       | height of calendar cell. `hideOverflow` is set to `true` by force in this view.                                            |
-| weeksFormat        | String     | "[week] wo"   | "wo"          | Weeks mark of calendar.                                                                                                    |
+| field              | value type | value example | default value | memo                                                                                                                                                                                                                             |
+| ------------------ | ---------- | ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| slotTitleFormat    | String     | "M/D"         | "D"           | date of calendar cell                                                                                                                                                                                                            |
+| slotSubTitleFormat | String     | "dddd"        | "ddd"         | weekday of calendar cell                                                                                                                                                                                                         |
+| slotAltTitleFormat | String     | "MMM D"       | "M/D"         | Only for view:week and view:month. <br>Displayed instead of `slotTitle` on special cells (first cell, first day of month, etc.). <br>Set it to the same value as `slotTitleFormat` if you want consistent formatting everywhere. |
+| showWeekends       | Boolean    | false         | true          | Show Saturday and Sunday.                                                                                                                                                                                                        |
+| slotMaxHeight      | String     | "120px"       | "150px"       | height of calendar cell. `hideOverflow` is set to `true` by force in this view.                                                                                                                                                  |
+| weeksFormat        | String     | "[week] wo"   | "wo"          | Weeks mark of calendar.                                                                                                                                                                                                          |
 
 - In `view:month`, `slotCount` will be ignored.
 
