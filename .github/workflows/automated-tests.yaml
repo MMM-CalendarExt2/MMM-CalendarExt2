@@ -13,13 +13,26 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Print context
+        run: |
+          echo "🎉 The job was automatically triggered by a ${GITHUB_EVENT_NAME} event."
+          echo "🐧 This job is now running on a ${RUNNER_OS} server hosted by GitHub!"
+          echo "🔎 The name of your branch is ${GITHUB_REF} and your repository is ${GITHUB_REPOSITORY}."
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          RUNNER_OS: ${{ runner.os }}
+          GITHUB_REF: ${{ github.ref }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
       - name: Check out repository code
         uses: actions/checkout@v5
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+        with:
+          persist-credentials: false
+      - name: Confirm checkout
+        run: |
+          echo "💡 The ${GITHUB_REPOSITORY} repository has been cloned to the runner."
+          echo "🖥️ The workflow is now ready to test your code on the runner."
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
       - name: Use Node.js
         uses: actions/setup-node@v5
         with:
@@ -31,4 +44,7 @@ jobs:
         run: node --run prettier
       - name: Check linting
         run: node --run lint
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Print job status
+        run: echo "🍏 This job's status is ${JOB_STATUS}."
+        env:
+          JOB_STATUS: ${{ job.status }}
