@@ -9,14 +9,15 @@ dayjs.extend(timezone);
 dayjs.extend(isBetween);
 
 const NodeHelper = require("node_helper");
-const {parseAndExpandEvents} = require("./ical-utils");
+const {parseAndExpandEvents} = require("./lib/ical-utils");
+const CalendarFetcher = require("./lib/calendar-fetcher");
 
 module.exports = NodeHelper.create({
   start () {
     this.config = {};
     this.calendars = {};
     this.calendarEvents = {};
-    this.calendarSuspend = {};
+    this.calendarFetchers = {};
   },
 
   socketNotificationReceived (noti, payload) {
@@ -37,192 +38,65 @@ module.exports = NodeHelper.create({
   },
 
   /**
-   * Scans all configured calendars and processes their events sequentially.
+   * Starts all configured calendar fetchers.
    */
   startScanCalendars () {
-    // Process calendars sequentially to avoid concurrent fetches
-    (async () => {
-      for (const calendar of this.calendars) {
-        // eslint-disable-next-line no-await-in-loop
-        await this.scanCalendar(calendar);
-      }
-    })().catch((err) => {
-      Log.error(`[CALEXT2] Error in startScanCalendars: ${err}`);
-    });
+    for (const calendar of this.calendars) {
+      this.scanCalendar(calendar);
+    }
   },
 
   /**
    * Scans a single calendar, fetches its data, and processes its events.
    * @param {Object} calendar - The calendar configuration object.
    */
-  async scanCalendar (calendar) {
+  scanCalendar (calendar) {
     Log.log(
       `[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`
     );
 
-    // Check if calendar is suspended due to previous errors
     const key = calendar.uid || calendar.url || calendar.name;
-    const suspend = this.calendarSuspend[key];
-    if (suspend && suspend.until > Date.now()) {
-      const delay = Math.max(suspend.until - Date.now(), calendar.scanInterval);
-      const minutes = Math.ceil(delay / 60000);
-      Log.warn(
-        `[CALEXT2] calendar:${calendar.name} >> Suspended due to ${suspend.reason}. Next attempt in ~${minutes} minute(s).`
-      );
-      setTimeout(() => this.scanCalendar(calendar), delay);
-      return;
-    }
 
-    const nodeVersion = process.versions.node;
-    const opts = {
-      headers: {
-        "User-Agent": `Mozilla/5.0 (Node.js ${nodeVersion}) MagicMirror/${global.version} (https://github.com/MagicMirrorOrg/MagicMirror/)`
-      },
-      gzip: true
-    };
+    // Create fetcher if it doesn't exist
+    if (!this.calendarFetchers[key]) {
+      let {url} = calendar;
+      url = url.replace("webcal://", "http://");
 
-    if (calendar.auth && Object.keys(calendar.auth).length > 0) {
-      if (calendar.auth.password) {
-        // Just catch people who use password instead of pass
-        calendar.auth.pass = calendar.auth.password;
-      }
-
-      if (calendar.auth.method === "bearer") {
-        opts.auth = {
-          bearer: calendar.auth.pass
-        };
-      } else if (calendar.auth.method === "basic") {
-        const buff = Buffer.from(`${calendar.auth.user}:${calendar.auth.pass}`);
-        opts.headers.Authorization = `Basic ${buff.toString("base64")}`;
-      } else {
-        opts.auth = {
+      // Prepare auth object
+      let auth = null;
+      if (calendar.auth && Object.keys(calendar.auth).length > 0) {
+        if (calendar.auth.password) {
+          calendar.auth.pass = calendar.auth.password;
+        }
+        auth = {
+          method: calendar.auth.method || "basic",
           user: calendar.auth.user,
           pass: calendar.auth.pass
         };
-        if (calendar.auth.method === "digest") {
-          opts.auth.sendImmediately = 0;
-        } else {
-          opts.auth.sendImmediately = 1;
-        }
       }
-    }
 
-    let data;
-    let parserError = null;
-    let nextDelay = calendar.scanInterval;
-    let {url} = calendar;
-    url = url.replace("webcal://", "http://");
-    try {
-      const response = await fetch(url, opts);
-
-      if (response.ok) {
-        data = await response.text();
-        delete this.calendarSuspend[key];
-      } else {
-        const httpError = this.handleHttpError(calendar, response, key);
-        parserError = httpError.error;
-        nextDelay = httpError.delay;
-      }
-    } catch (error) {
-      Log.error(
-        `[CALEXT2] calendar:${calendar.name}: failed to fetch. Will try again. ${error}`
-      );
-      parserError = error;
-    }
-
-    try {
-      this.parser(calendar, data, parserError);
-    } catch (error) {
-      Log.error(`[CALEXT2] Error: ${error}`);
-
-      if (error.response && typeof error.response.text === "function") {
-        const errorBody = await error.response.text();
-        Log.error(`[CALEXT2] Error body: ${errorBody}`);
-      }
-    }
-
-    setTimeout(() => this.scanCalendar(calendar), nextDelay);
-  },
-
-  /**
-   * Handles HTTP error responses from calendar fetch requests.
-   * Implements cooldown strategies based on error type to prevent overwhelming servers
-   * or getting locked out due to authentication issues.
-   *
-   * @param {Object} calendar - The calendar configuration object
-   * @param {Response} response - The HTTP response object with non-OK status
-   * @param {string} key - Unique identifier for the calendar (uid, url, or name)
-   * @returns {Object} Object with error and delay properties
-   * @returns {Error} return.error - Error object describing the failure
-   * @returns {number} return.delay - Milliseconds to wait before next fetch attempt
-   *
-   * Error handling strategy:
-   * - 401/403: Authentication errors - pause for 1 hour (configurable via authFailureCooldown)
-   * - 429: Rate limiting - respect Retry-After header or pause for 15 minutes (configurable via rateLimitCooldown)
-   * - 4xx: Other client errors - pause for 1 hour (configurable via clientErrorCooldown)
-   * - 5xx: Server errors - retry on normal schedule
-   * - Other: Unexpected status - retry on normal schedule
-   */
-  handleHttpError (calendar, response, key) {
-    const status = response.status;
-    const statusText = response.statusText || "unknown";
-    let cooldown;
-    let error;
-
-    if (status === 401 || status === 403) {
-      cooldown = calendar.authFailureCooldown || this.config.authFailureCooldown || 3600000;
-      this.calendarSuspend[key] = {
-        until: Date.now() + cooldown,
-        reason: `authentication error (${status})`
+      // Prepare options
+      const nodeVersion = process.versions.node;
+      const options = {
+        userAgent: `Mozilla/5.0 (Node.js ${nodeVersion}) MagicMirror/${global.version} (https://github.com/MagicMirrorOrg/MagicMirror/)`,
+        authFailureCooldown: calendar.authFailureCooldown || this.config.authFailureCooldown,
+        rateLimitCooldown: calendar.rateLimitCooldown || this.config.rateLimitCooldown,
+        clientErrorCooldown: calendar.clientErrorCooldown || this.config.clientErrorCooldown,
+        onSuccess: (data) => this.parser(calendar, data, null),
+        onError: (error) => this.parser(calendar, null, error)
       };
-      error = new Error(`Authentication failed (${status} ${statusText})`);
-      Log.error(
-        `[CALEXT2] calendar:${calendar.name} >> Authentication failed (${status} ${statusText}). Pausing requests for ${Math.round(cooldown / 60000)} minute(s).`
+
+      // Create fetcher instance
+      this.calendarFetchers[key] = new CalendarFetcher(
+        url,
+        calendar.scanInterval,
+        auth,
+        options
       );
-    } else if (status === 429) {
-      cooldown = calendar.rateLimitCooldown || this.config.rateLimitCooldown || 900000;
-      const retryAfter = response.headers.get("retry-after");
-      if (retryAfter) {
-        const seconds = Number(retryAfter);
-        const retryDate = Date.parse(retryAfter);
-        if (!Number.isNaN(seconds)) {
-          cooldown = seconds * 1000;
-        } else if (!Number.isNaN(retryDate)) {
-          cooldown = Math.max(0, retryDate - Date.now());
-        }
-      }
-      this.calendarSuspend[key] = {
-        until: Date.now() + cooldown,
-        reason: "rate limiting"
-      };
-      error = new Error(`Rate limit reached (${status})`);
-      Log.warn(
-        `[CALEXT2] calendar:${calendar.name} >> Rate limited (${status}). Retrying in ${Math.round(cooldown / 60000)} minute(s).`
-      );
-    } else if (status >= 400 && status < 500) {
-      cooldown = calendar.clientErrorCooldown || this.config.clientErrorCooldown || 3600000;
-      this.calendarSuspend[key] = {
-        until: Date.now() + cooldown,
-        reason: `client error (${status})`
-      };
-      error = new Error(`Client error (${status} ${statusText})`);
-      Log.error(
-        `[CALEXT2] calendar:${calendar.name} >> Client error (${status} ${statusText}). Pausing requests for ${Math.round(cooldown / 60000)} minute(s).`
-      );
-    } else if (status >= 500) {
-      error = new Error(`Server error (${status} ${statusText})`);
-      Log.error(
-        `[CALEXT2] calendar:${calendar.name} >> Server error (${status} ${statusText}). Will retry after ${Math.round(calendar.scanInterval / 60000) || 1} minute(s).`
-      );
-    } else {
-      error = new Error(`Unexpected response status ${status}`);
-      Log.error(`[CALEXT2] calendar:${calendar.name} >> Unexpected response status ${status}.`);
     }
 
-    return {
-      error,
-      delay: cooldown ? Math.max(cooldown, calendar.scanInterval) : calendar.scanInterval
-    };
+    // Start fetching
+    this.calendarFetchers[key].start();
   },
 
   parser (calendar, iCalData = null, error = null) {
