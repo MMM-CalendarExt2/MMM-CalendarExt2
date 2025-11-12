@@ -1,3 +1,4 @@
+/* global dayjs */
 /* global View WeekSlot */
 // eslint-disable-next-line no-unused-vars
 class ViewCell extends View {
@@ -20,13 +21,15 @@ class ViewCell extends View {
   getSlotPeriods () {
     const {showWeekends} = this.config;
     const getSlotPeriod = (tDay, seq) => {
-      const mtd = moment(tDay).locale(this.locale).add(seq, "week");
+      let mtd = dayjs(tDay);
+      if (this.locale) mtd = mtd.locale(this.locale);
+      mtd = mtd.add(seq, "week");
       const start = showWeekends
-        ? moment(mtd).startOf("week")
-        : moment(mtd).startOf("week").day(1).startOf("day");
+        ? dayjs(mtd).startOf("week")
+        : dayjs(mtd).startOf("week").day(1).startOf("day");
       const end = showWeekends
-        ? moment(mtd).endOf("week")
-        : moment(mtd).startOf("week").day(5).endOf("day");
+        ? dayjs(mtd).endOf("week")
+        : dayjs(mtd).startOf("week").day(5).endOf("day");
       return {
         start,
         end
@@ -47,16 +50,18 @@ class ViewCell extends View {
     const days = showWeekends ? 7 : 5;
     const periods = [];
     const t = start;
-    const startDay = showWeekends
-      ? moment(t).locale(this.locale).startOf("week")
-      : moment(t).locale(this.locale).startOf("week").day(1).startOf("day");
+    let startDay = dayjs(t);
+    if (this.locale) startDay = startDay.locale(this.locale);
+    startDay = showWeekends
+      ? startDay.startOf("week")
+      : startDay.startOf("week").day(1).startOf("day");
     for (let i = 0; i < days; i++) {
       const p = {
-        start: moment(startDay).startOf("day"),
-        end: moment(startDay).endOf("day")
+        start: dayjs(startDay).startOf("day"),
+        end: dayjs(startDay).endOf("day")
       };
       periods.push(p);
-      startDay.add(1, "day");
+      startDay = startDay.add(1, "day");
     }
     return periods;
   }
@@ -83,8 +88,8 @@ class ViewCell extends View {
     if (weekSeq === 0 && daySeq === 0) {
       slotDom.classList.add("firstCell");
     }
-    const day = moment(slot.start).locale(this.locale);
-    const now = moment().locale(this.locale);
+    const day = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+    const now = this.locale ? dayjs().locale(this.locale) : dayjs();
     if (now.format("YYYY") === day.format("YYYY"))
       slotDom.classList.add("thisyear");
     if (now.format("M") === day.format("M")) slotDom.classList.add("thismonth");
@@ -104,9 +109,8 @@ class ViewCell extends View {
   makeWeeksMark (start) {
     const weeks = document.createElement("div");
     weeks.classList.add("weeksmark");
-    weeks.innerHTML = moment(start)
-      .locale(this.locale)
-      .format(this.config.weeksFormat);
+    const startDay = this.locale ? dayjs(start).locale(this.locale) : dayjs(start);
+    weeks.innerHTML = startDay.format(this.config.weeksFormat);
     return weeks;
   }
 
@@ -122,9 +126,8 @@ class ViewCell extends View {
     if (this.config.slotAltTitle) {
       altTitle.innerHTML = this.config.slotTitle;
     } else if (this.config.slotAltTitleFormat) {
-      altTitle.innerHTML = moment(slot.start)
-        .locale(this.locale)
-        .format(this.config.slotAltTitleFormat);
+      const startDay = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+      altTitle.innerHTML = startDay.format(this.config.slotAltTitleFormat);
     }
   }
 }

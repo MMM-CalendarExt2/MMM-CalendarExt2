@@ -12,8 +12,7 @@ export default defineConfig([
       "ecmaVersion": "latest",
       "globals": {
         ...globals.browser,
-        ...globals.node,
-        "moment": "readonly"
+        ...globals.node
       }
     },
     "plugins": {js, stylistic},

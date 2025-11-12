@@ -1,5 +1,5 @@
 /* eslint-disable no-eval */
-/* global Module Scene */
+/* global Module Scene config */
 
 Module.register("MMM-CalendarExt2", {
   predefined: {
@@ -220,8 +220,30 @@ Module.register("MMM-CalendarExt2", {
   },
 
   getScripts () {
-    const r = [
-      "moment.js",
+    const scripts = [
+      this.file("node_modules/dayjs/dayjs.min.js"),
+      this.file("node_modules/dayjs/plugin/utc.js"),
+      this.file("node_modules/dayjs/plugin/timezone.js"),
+      this.file("node_modules/dayjs/plugin/isBetween.js"),
+      this.file("node_modules/dayjs/plugin/isSameOrBefore.js"),
+      this.file("node_modules/dayjs/plugin/isSameOrAfter.js"),
+      this.file("node_modules/dayjs/plugin/relativeTime.js"),
+      this.file("node_modules/dayjs/plugin/calendar.js"),
+      this.file("node_modules/dayjs/plugin/duration.js"),
+      this.file("node_modules/dayjs/plugin/localeData.js"),
+      this.file("node_modules/dayjs/plugin/weekOfYear.js"),
+      this.file("node_modules/dayjs/plugin/weekYear.js"),
+      this.file("node_modules/dayjs/plugin/advancedFormat.js")
+    ];
+
+    // Load locale file for non-English languages
+    if (config.language && config.language.toLowerCase() !== "en") {
+      const locale = config.language.toLowerCase();
+      scripts.push(this.file(`node_modules/dayjs/locale/${locale}.js`));
+    }
+
+    scripts.push(
+      "dayjs-init.js",
       "CALEXT2_Scene.js",
       "CALEXT2_View.js",
       "CALEXT2_Event.js",
@@ -239,9 +261,13 @@ Module.register("MMM-CalendarExt2", {
       "CALEXT2_ViewWeek.js",
       "CALEXT2_ViewWeekly.js",
       "CALEXT2_Legend.js"
-    ];
-    if (this.config.iconify) r.push(this.config.iconify);
-    return r;
+    );
+
+    if (this.config.iconify) {
+      scripts.push(this.config.iconify);
+    }
+
+    return scripts;
   },
 
   getStyles () {

@@ -1,3 +1,4 @@
+/* global dayjs */
 /* global ViewPeriod */
 // eslint-disable-next-line no-unused-vars
 class ViewDaily extends ViewPeriod {
@@ -11,8 +12,8 @@ class ViewDaily extends ViewPeriod {
     super.makeSlotDomClass(slot);
     slotDom.classList.add("daily");
 
-    const day = moment(slot.start).locale(this.locale);
-    const now = moment().locale(this.locale);
+    const day = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+    const now = this.locale ? dayjs().locale(this.locale) : dayjs();
     if (now.format("YYYY") === day.format("YYYY"))
       slotDom.classList.add("thisyear");
     if (now.format("M") === day.format("M")) slotDom.classList.add("thismonth");

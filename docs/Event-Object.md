@@ -12,7 +12,7 @@ endDate: "1546638300";
 endDateJ: "2019-01-04T21:45:00.000Z";
 icon: "noto-soccer-ball";
 isFullday: false;
-isMoment: false;
+isMoment: false; // true if event has zero duration
 isOneday: true;
 isPassed: false;
 isRecurring: false;

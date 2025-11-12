@@ -1,12 +1,13 @@
+/* global dayjs */
 // eslint-disable-next-line no-unused-vars
 class Event {
   constructor (data, slot) {
     this.data = data;
     this.locale = slot.locale;
-    this.mStart = moment.unix(data.startDate).locale(this.locale);
-    this.mEnd = moment.unix(data.endDate).locale(this.locale);
-    this.sStart = moment(slot.start).locale(this.locale);
-    this.sEnd = moment(slot.end).locale(this.locale);
+    this.mStart = this.locale ? dayjs.unix(data.startDate).locale(this.locale) : dayjs.unix(data.startDate);
+    this.mEnd = this.locale ? dayjs.unix(data.endDate).locale(this.locale) : dayjs.unix(data.endDate);
+    this.sStart = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+    this.sEnd = this.locale ? dayjs(slot.end).locale(this.locale) : dayjs(slot.end);
     this.useEventTimeRelative = slot.useEventTimeRelative;
     this.relativeFormat = slot.relativeFormat;
     this.timeFormat = slot.timeFormat;
@@ -59,7 +60,7 @@ class Event {
 
   makeEventDom () {
     const {locale} = this;
-    const now = moment().locale(locale);
+    const now = locale ? dayjs().locale(locale) : dayjs();
 
     const isEventMultiSlots = (event, mESX, mEEX, mSSX, mSEX) => {
       let isMulti = false;
@@ -75,7 +76,7 @@ class Event {
     const eventDom = document.createElement("div");
     eventDom.classList.add("event");
 
-    const isPassed = Boolean(moment.unix(event.endDate).isBefore(now));
+    const isPassed = Boolean(dayjs.unix(event.endDate).isBefore(now));
     const isFullday = Boolean(event.isFullday);
     const isMultiSlots = isEventMultiSlots(
       event,
@@ -85,8 +86,8 @@ class Event {
       this.sEnd
     );
     const isTargetDay = Boolean(
-      this.mStart.isBefore(moment(now).endOf("day")) ||
-      this.mEnd.isAfter(moment(now).startOf("day"))
+      this.mStart.isBefore(dayjs(now).endOf("day")) ||
+      this.mEnd.isAfter(dayjs(now).startOf("day"))
     );
     const isNow = Boolean(now.isBetween(this.mStart, this.mEnd, null, "[)"));
     if (isFullday) {
@@ -115,8 +116,8 @@ class Event {
 
     eventDom.dataset.calendarName = event.calendarName;
     eventDom.dataset.calendarSeq = event.calendarSeq;
-    eventDom.dataset.startDate = event.startDate;
-    eventDom.dataset.endDate = event.endDate;
+    eventDom.dataset.startDate = String(event.startDate);
+    eventDom.dataset.endDate = String(event.endDate);
     eventDom.dataset.duration = event.duration;
     eventDom.dataset.title = event.title;
     eventDom.dataset.location = event.location;
@@ -165,11 +166,14 @@ class Event {
       return div;
     };
 
-    const dur = moment.duration(event.duration, "seconds").locale(locale);
+    const dur = dayjs.duration(event.duration, "seconds");
     const time = document.createElement("div");
     time.classList.add("eventTime");
 
-    const now = moment().locale(locale);
+    const now = locale ? dayjs().locale(locale) : dayjs();
+
+    const durationLabel = dur.humanize();
+
     if (this.useEventTimeRelative) {
       let status = "current";
       if (this.mEnd.isBefore(now)) status = "passed";
@@ -180,7 +184,7 @@ class Event {
       timeDom.innerHTML = this.relativeFormat[status]
         .replace("%ENDFROMNOW%", this.mEnd.fromNow())
         .replace("%STARTFROMNOW%", this.mStart.fromNow())
-        .replace("%DURATION%", dur.humanize());
+        .replace("%DURATION%", durationLabel);
       if (typeof this.dateFormat === "string") {
         timeDom.innerHTML
           .replace("%STARTDATE%", this.mStart.format(this.dateFormat))

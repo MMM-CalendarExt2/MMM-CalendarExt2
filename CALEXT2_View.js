@@ -1,4 +1,5 @@
 /* global Log Slot ViewCurrent ViewUpcoming ViewMonth ViewDaily ViewWeekly ViewMonthly ViewWeek ViewLegend */
+/* global dayjs */
 // eslint-disable-next-line no-unused-vars
 class View {
   constructor (config, events) {
@@ -93,7 +94,7 @@ class View {
         : () => true;
     let filtered = events.filter(calendarFilter);
     if (this.config.filterPassedEvent) {
-      const now = moment().format("X");
+      const now = dayjs().unix();
       filtered = filtered.filter((e) => e.endDate > now);
     }
     if (typeof this.config.filter === "function") {
@@ -204,10 +205,13 @@ class View {
   makeModuleTitle () {
     if (!this.config.title) return;
     const headerTitle = this.moduleDom.getElementsByClassName("module-header");
-    const slotStart = {...this.slots[0].start};
+    const firstSlotStart = this.slots[0].start;
+    const slotStart = this.locale
+      ? dayjs(firstSlotStart).locale(this.locale)
+      : dayjs(firstSlotStart);
     let title;
     if (typeof this.config.title === "function") {
-      title = this.config.title(moment(slotStart));
+      title = this.config.title(slotStart);
     } else {
       title = this.config.title;
     }
@@ -229,13 +233,11 @@ class View {
       this.config.slotTitleFormat &&
       typeof this.config.slotTitleFormat !== "object"
     ) {
-      title.innerHTML = moment(slot.start)
-        .locale(this.locale)
-        .format(this.config.slotTitleFormat);
+      const startDay = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+      title.innerHTML = startDay.format(this.config.slotTitleFormat);
     } else {
-      title.innerHTML = moment(slot.start)
-        .locale(this.locale)
-        .calendar(null, this.config.slotTitleFormat);
+      const startDay = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+      title.innerHTML = startDay.calendar(null, this.config.slotTitleFormat);
     }
     if (this.config.slotSubTitle) {
       subTitle.innerHTML = this.config.slotSubTitle;
@@ -243,13 +245,11 @@ class View {
       this.config.slotSubTitleFormat &&
       typeof this.config.slotSubTitleFormat !== "object"
     ) {
-      subTitle.innerHTML = moment(slot.start)
-        .locale(this.locale)
-        .format(this.config.slotSubTitleFormat);
+      const startDay = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+      subTitle.innerHTML = startDay.format(this.config.slotSubTitleFormat);
     } else {
-      subTitle.innerHTML = moment(slot.start)
-        .locale(this.locale)
-        .calendar(null, this.config.slotSubTitleFormat);
+      const startDay = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+      subTitle.innerHTML = startDay.calendar(null, this.config.slotSubTitleFormat);
     }
   }
 
@@ -261,9 +261,11 @@ class View {
 
   getSlotPeriods () {
     const getSlotPeriod = (tDay, seq) => {
-      const mtd = moment(tDay).locale(this.locale).add(seq, this.slotUnit);
-      const start = moment(mtd).startOf(this.slotUnit);
-      const end = moment(mtd).endOf(this.slotUnit);
+      let mtd = dayjs(tDay);
+      if (this.locale) mtd = mtd.locale(this.locale);
+      mtd = mtd.add(seq, this.slotUnit);
+      const start = dayjs(mtd).startOf(this.slotUnit);
+      const end = dayjs(mtd).endOf(this.slotUnit);
       return {
         start,
         end
@@ -299,7 +301,8 @@ class View {
 
   getStartDay () {
     const {fromNow} = this.config;
-    const now = moment().locale(this.locale);
+    let now = dayjs();
+    if (this.locale) now = now.locale(this.locale);
     return now.add(fromNow, this.slotUnit).startOf("day");
   }
 

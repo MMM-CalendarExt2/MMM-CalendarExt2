@@ -1,3 +1,4 @@
+/* global dayjs */
 /* global ViewCell */
 // eslint-disable-next-line no-unused-vars
 class ViewMonth extends ViewCell {
@@ -10,13 +11,19 @@ class ViewMonth extends ViewCell {
 
   getStartDay () {
     const {fromNow} = this.config;
-    const now = moment().locale(this.locale);
+    let now = dayjs();
+    if (this.locale) {
+      now = now.locale(this.locale);
+    }
     return now.add(fromNow, "month").startOf("month").startOf("week");
   }
 
   getEndWeek () {
     const {fromNow} = this.config;
-    const now = moment().locale(this.locale);
+    let now = dayjs();
+    if (this.locale) {
+      now = now.locale(this.locale);
+    }
     return now.add(fromNow, "month").endOf("month").startOf("week");
   }
 
@@ -24,7 +31,8 @@ class ViewMonth extends ViewCell {
     super.makeSlots();
     if (this.config.monthFormat) {
       const {fromNow} = this.config;
-      const now = moment().locale(this.locale);
+      let now = dayjs();
+      if (this.locale) now = now.locale(this.locale);
       now.add(fromNow, "month").startOf("month");
       const mt = document.createElement("div");
       mt.innerHTML = now.format(this.config.monthFormat);

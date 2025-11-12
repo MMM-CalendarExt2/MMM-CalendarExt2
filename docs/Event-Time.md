@@ -6,7 +6,7 @@
 
 You can define how to show the event time. `timeFormat`, `dateFormat` and `dateTimeFormat` would be different in different locales. So I make it re-definable.
 
-> For all available formatters, read [the momentjs formatting documentation](https://momentjs.com/docs/#/displaying/format/)
+> For all available formatters, read [the Day.js formatting documentation](https://day.js.org/docs/en/display/format)
 
 - **timeFormat**
   - This format will be used for oneday event which doesn't need date information by default.
@@ -33,7 +33,7 @@ dateTimeFormat: {
 },
 ```
 
-For more detailed calendar formatter, see [the momentjs calender-time documentation](https://momentjs.com/docs/#/displaying/calendar-time/)
+For more detailed calendar formatter, see [the Day.js calendar plugin documentation](https://day.js.org/docs/en/plugin/calendar)
 
 ## 2. relative
 

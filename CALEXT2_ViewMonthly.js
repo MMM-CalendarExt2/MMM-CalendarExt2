@@ -1,3 +1,4 @@
+/* global dayjs */
 // eslint-disable-next-line no-unused-vars, no-undef
 class ViewMonthly extends ViewPeriod {
   constructor (config, events) {
@@ -9,9 +10,9 @@ class ViewMonthly extends ViewPeriod {
     const slotDom = slot.dom;
     super.makeSlotDomClass(slot);
     slotDom.classList.add("monthly");
-    const day = moment(slot.start).locale(this.locale);
-    const dayEnd = moment(slot.end).locale(this.locale);
-    const now = moment().locale(this.locale);
+    const day = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+    const dayEnd = this.locale ? dayjs(slot.end).locale(this.locale) : dayjs(slot.end);
+    const now = this.locale ? dayjs().locale(this.locale) : dayjs();
     if (now.format("YYYY") === day.format("YYYY"))
       slotDom.classList.add("thisyear");
     if (now.format("M") === day.format("M")) slotDom.classList.add("thismonth");

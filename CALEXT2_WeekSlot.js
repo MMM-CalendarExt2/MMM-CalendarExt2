@@ -1,4 +1,5 @@
 /* global CellSlot Slot */
+/* global dayjs */
 // eslint-disable-next-line no-unused-vars
 class WeekSlot extends Slot {
   constructor (view, period, seq = 0) {
@@ -42,8 +43,8 @@ class WeekSlot extends Slot {
       periods.push({
         start: c.start,
         end: c.end,
-        startX: c.start.format("X"),
-        endX: c.end.format("X"),
+        startX: c.start.unix(),
+        endX: c.end.unix(),
         eventCount: 0,
         left: cR.left
       });
@@ -73,11 +74,19 @@ class WeekSlot extends Slot {
     const getOccupyBin = (event, dayPeriods) => {
       const dayEnd = dayPeriods[dayPeriods.length - 1].endX;
       const dayStart = dayPeriods[0].startX;
-      const stX = event.startDate < dayStart ? dayStart : event.startDate;
-      const etX = event.endDate > dayEnd ? dayEnd : event.endDate;
+      const eventStart = event.startDate;
+      const eventEnd = event.endDate;
+      const stX = eventStart < dayStart ? dayStart : eventStart;
+      const etX = eventEnd > dayEnd ? dayEnd : eventEnd;
       let ob = 0;
       for (let i = 0; i < dayPeriods.length; i++) {
-        if (stX <= dayPeriods[i].endX && etX > dayPeriods[i].startX) {
+        const periodStart = dayPeriods[i].startX;
+        const periodEnd = dayPeriods[i].endX;
+        if (
+          (stX >= periodStart && stX < periodEnd) ||
+          (etX >= periodStart && etX < periodEnd) ||
+          (stX <= periodStart && etX >= periodEnd)
+        ) {
           ob += 2 ** i;
         }
       }
@@ -103,8 +112,8 @@ class WeekSlot extends Slot {
         for (let k = 0; k < dayPeriods.length; k++) {
           const dp = dayPeriods[k];
           if (
-            moment.unix(event.startDate).isBefore(dp.end) &&
-            moment.unix(event.endDate).isAfter(dp.start)
+            dayjs.unix(event.startDate).isBefore(dp.end) &&
+            dayjs.unix(event.endDate).isAfter(dp.start)
           ) {
             dayPeriods[k].eventCount += 1;
           }

@@ -1,3 +1,4 @@
+/* global dayjs */
 // eslint-disable-next-line no-unused-vars, no-undef
 class ViewWeekly extends ViewPeriod {
   constructor (config, events) {
@@ -10,9 +11,9 @@ class ViewWeekly extends ViewPeriod {
     super.makeSlotDomClass(slot);
     slotDom.classList.add("weekly");
 
-    const day = moment(slot.start).locale(this.locale);
-    const dayEnd = moment(slot.end).locale(this.locale);
-    const now = moment().locale(this.locale);
+    const day = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+    const dayEnd = this.locale ? dayjs(slot.end).locale(this.locale) : dayjs(slot.end);
+    const now = this.locale ? dayjs().locale(this.locale) : dayjs();
     if (now.format("YYYY") === day.format("YYYY"))
       slotDom.classList.add("thisyear");
     if (now.format("M") === day.format("M")) slotDom.classList.add("thismonth");
@@ -33,13 +34,11 @@ class ViewWeekly extends ViewPeriod {
       this.config.slotTitleFormat &&
       typeof this.config.slotTitleFormat !== "object"
     ) {
-      title.innerHTML = moment(slot.start)
-        .locale(this.locale)
-        .format(this.config.slotTitleFormat);
+      const startDay = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+      title.innerHTML = startDay.format(this.config.slotTitleFormat);
     } else {
-      title.innerHTML = moment(slot.start)
-        .locale(this.locale)
-        .calendar(null, this.config.slotTitleFormat);
+      const startDay = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+      title.innerHTML = startDay.calendar(null, this.config.slotTitleFormat);
     }
     if (this.config.slotSubTitle) {
       subTitle.innerHTML = this.config.slotSubTitle;
@@ -47,13 +46,11 @@ class ViewWeekly extends ViewPeriod {
       this.config.slotSubTitleFormat &&
       typeof this.config.slotSubTitleFormat !== "object"
     ) {
-      subTitle.innerHTML = moment(slot.start)
-        .locale(this.locale)
-        .format(this.config.slotSubTitleFormat);
+      const startDay = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+      subTitle.innerHTML = startDay.format(this.config.slotSubTitleFormat);
     } else {
-      subTitle.innerHTML = moment(slot.start)
-        .locale(this.locale)
-        .calendar(null, this.config.slotSubTitleFormat);
+      const startDay = this.locale ? dayjs(slot.start).locale(this.locale) : dayjs(slot.start);
+      subTitle.innerHTML = startDay.calendar(null, this.config.slotSubTitleFormat);
     }
   }
 }

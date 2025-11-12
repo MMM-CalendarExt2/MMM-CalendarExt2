@@ -1,3 +1,4 @@
+/* global dayjs */
 // eslint-disable-next-line no-unused-vars
 class Slot {
   constructor (view, period, seq = 0) {
@@ -67,8 +68,8 @@ class Slot {
   assignEvents (events) {
     for (let i = 0; i < events.length; i++) {
       const event = {...events[i]};
-      const eS = moment.unix(event.startDate).locale(this.locale);
-      const eE = moment.unix(event.endDate).locale(this.locale);
+      const eS = this.locale ? dayjs.unix(event.startDate).locale(this.locale) : dayjs.unix(event.startDate);
+      const eE = this.locale ? dayjs.unix(event.endDate).locale(this.locale) : dayjs.unix(event.endDate);
       if (eE.isSameOrBefore(this.start) || eS.isSameOrAfter(this.end)) {
         // do nothing
       } else {
@@ -77,7 +78,7 @@ class Slot {
         if (eE.isBetween(this.start, this.end, null, "(])"))
           event.endHere = true;
         if (eE.format("HHmmss") === "000000")
-          event.endDate = moment(eE).add(-1, "second").endOf("day").format("X");
+          event.endDate = dayjs(eE).add(-1, "second").endOf("day").unix();
         this.events.push(event);
       }
     }
@@ -96,8 +97,8 @@ class Slot {
     const dom = document.createElement("div");
     dom.classList.add("slot");
 
-    if (this.start) dom.dataset.start = moment(this.start).format("X");
-    if (this.end) dom.dataset.end = moment(this.end).format("X");
+    if (this.start) dom.dataset.start = String(dayjs(this.start).unix());
+    if (this.end) dom.dataset.end = String(dayjs(this.end).unix());
 
     const header = document.createElement("div");
     header.classList.add("slotHeader");

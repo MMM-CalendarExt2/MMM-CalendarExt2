@@ -1,5 +1,13 @@
 const Log = require("logger");
-const moment = require("moment-timezone");
+const dayjs = require("dayjs");
+const utc = require("dayjs/plugin/utc");
+const timezone = require("dayjs/plugin/timezone");
+const isBetween = require("dayjs/plugin/isBetween");
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(isBetween);
+
 const ICAL = require("ical.js");
 
 const NodeHelper = require("node_helper");
@@ -23,7 +31,7 @@ module.exports = NodeHelper.create({
     this.config = config;
     this.calendars = this.config.calendars;
     if (this.config.locale) {
-      moment.locale(this.config.locale);
+      dayjs.locale(this.config.locale);
     }
     this.startScanCalendars();
   },
@@ -225,8 +233,8 @@ module.exports = NodeHelper.create({
 
     let events;
     try {
-      const startDate = moment().subtract(calendar.beforeDays, "days").startOf("day").toDate();
-      const endDate = moment().add(calendar.afterDays, "days").endOf("day").toDate();
+      const startDate = dayjs().subtract(calendar.beforeDays, "days").startOf("day").toDate();
+      const endDate = dayjs().add(calendar.afterDays, "days").endOf("day").toDate();
 
       events = this.parseAndExpandEvents(
         iCalData,
@@ -272,19 +280,19 @@ module.exports = NodeHelper.create({
       let startDate;
       let endDate;
       if (calendar.forceLocalTZ) {
-        startDate = moment(item.startDate.toJSDate()).subtract(1, "months");
-        endDate = moment(item.endDate.toJSDate()).subtract(1, "months");
+        startDate = dayjs(item.startDate.toJSDate()).subtract(1, "months");
+        endDate = dayjs(item.endDate.toJSDate()).subtract(1, "months");
       } else {
-        startDate = moment(item.startDate.toJSDate());
-        endDate = moment(item.endDate.toJSDate());
+        startDate = dayjs(item.startDate.toJSDate());
+        endDate = dayjs(item.endDate.toJSDate());
       }
-      ev.startDate = startDate.format("X");
-      ev.endDate = endDate.format("X");
+      ev.startDate = startDate.unix();
+      ev.endDate = endDate.unix();
       ev.startDateJ = startDate.toJSON();
       ev.endDateJ = endDate.toJSON();
       ev.duration = ri.duration.toSeconds();
       ev.isMoment = ev.duration === 0;
-      ev.isPassed = Boolean(endDate.isBefore(moment()));
+      ev.isPassed = Boolean(endDate.isBefore(dayjs()));
       if (ev.duration <= 86400) {
         if (startDate.format("YYMMDD") === endDate.format("YYMMDD")) {
           ev.isOneday = true;

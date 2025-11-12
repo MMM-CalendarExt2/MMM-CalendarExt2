@@ -1,3 +1,4 @@
+/* global dayjs */
 // eslint-disable-next-line no-unused-vars, no-undef
 class ViewCurrent extends ViewAgenda {
   makeSlotDomClass (slot) {
@@ -8,9 +9,9 @@ class ViewCurrent extends ViewAgenda {
 
   filterEvents (events) {
     let filtered = super.filterEvents(events);
-    const now = moment();
+    const now = dayjs();
     filtered = filtered.filter((e) =>
-      now.isBetween(moment.unix(e.startDate), moment.unix(e.endDate)));
+      now.isBetween(dayjs.unix(e.startDate), dayjs.unix(e.endDate)));
     return filtered;
   }
 }

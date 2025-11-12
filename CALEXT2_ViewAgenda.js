@@ -1,3 +1,4 @@
+/* global dayjs */
 // eslint-disable-next-line no-unused-vars, no-undef
 class ViewAgenda extends View {
   constructor (config, events) {
@@ -17,14 +18,14 @@ class ViewAgenda extends View {
   }
 
   getStartDay () {
-    const now = moment().locale(this.locale);
+    const now = this.locale ? dayjs().locale(this.locale) : dayjs();
     return now;
   }
 
   getSlotPeriods () {
     return [
       {
-        start: moment().locale(this.locale),
+        start: this.locale ? dayjs().locale(this.locale) : dayjs(),
         end: null
       }
     ];
