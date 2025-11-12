@@ -8,15 +8,15 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(isBetween);
 
-const ICAL = require("ical.js");
-
 const NodeHelper = require("node_helper");
+const {parseAndExpandEvents} = require("./ical-utils");
 
 module.exports = NodeHelper.create({
   start () {
     this.config = {};
     this.calendars = {};
     this.calendarEvents = {};
+    this.calendarSuspend = {};
   },
 
   socketNotificationReceived (noti, payload) {
@@ -60,6 +60,19 @@ module.exports = NodeHelper.create({
       `[CALEXT2] calendar:${calendar.name} >> Scanning start with interval:${calendar.scanInterval}`
     );
 
+    // Check if calendar is suspended due to previous errors
+    const key = calendar.uid || calendar.url || calendar.name;
+    const suspend = this.calendarSuspend[key];
+    if (suspend && suspend.until > Date.now()) {
+      const delay = Math.max(suspend.until - Date.now(), calendar.scanInterval);
+      const minutes = Math.ceil(delay / 60000);
+      Log.warn(
+        `[CALEXT2] calendar:${calendar.name} >> Suspended due to ${suspend.reason}. Next attempt in ~${minutes} minute(s).`
+      );
+      setTimeout(() => this.scanCalendar(calendar), delay);
+      return;
+    }
+
     const nodeVersion = process.versions.node;
     const opts = {
       headers: {
@@ -95,25 +108,31 @@ module.exports = NodeHelper.create({
     }
 
     let data;
+    let parserError = null;
+    let nextDelay = calendar.scanInterval;
     let {url} = calendar;
     url = url.replace("webcal://", "http://");
     try {
       const response = await fetch(url, opts);
-      data = await response.text();
+
+      if (response.ok) {
+        data = await response.text();
+        delete this.calendarSuspend[key];
+      } else {
+        const httpError = this.handleHttpError(calendar, response, key);
+        parserError = httpError.error;
+        nextDelay = httpError.delay;
+      }
     } catch (error) {
-      // Probably a connection issue
       Log.error(
         `[CALEXT2] calendar:${calendar.name}: failed to fetch. Will try again. ${error}`
       );
+      parserError = error;
     }
 
     try {
-      this.parser(calendar, data, null);
-      setTimeout(() => {
-        this.scanCalendar(calendar);
-      }, calendar.scanInterval);
+      this.parser(calendar, data, parserError);
     } catch (error) {
-      this.parser(calendar, data, error);
       Log.error(`[CALEXT2] Error: ${error}`);
 
       if (error.response && typeof error.response.text === "function") {
@@ -121,103 +140,88 @@ module.exports = NodeHelper.create({
         Log.error(`[CALEXT2] Error body: ${errorBody}`);
       }
     }
+
+    setTimeout(() => this.scanCalendar(calendar), nextDelay);
   },
 
   /**
-   * Parse iCal data and expand recurring events using ical.js
-   * @param {string} iCalData - The iCal data string
-   * @param {Date} startDate - Start date for event range
-   * @param {Date} endDate - End date for event range
-   * @param {number} maxIterations - Maximum iterations for recurring events
-   * @returns {Object} Object containing events and occurrences arrays
+   * Handles HTTP error responses from calendar fetch requests.
+   * Implements cooldown strategies based on error type to prevent overwhelming servers
+   * or getting locked out due to authentication issues.
+   *
+   * @param {Object} calendar - The calendar configuration object
+   * @param {Response} response - The HTTP response object with non-OK status
+   * @param {string} key - Unique identifier for the calendar (uid, url, or name)
+   * @returns {Object} Object with error and delay properties
+   * @returns {Error} return.error - Error object describing the failure
+   * @returns {number} return.delay - Milliseconds to wait before next fetch attempt
+   *
+   * Error handling strategy:
+   * - 401/403: Authentication errors - pause for 1 hour (configurable via authFailureCooldown)
+   * - 429: Rate limiting - respect Retry-After header or pause for 15 minutes (configurable via rateLimitCooldown)
+   * - 4xx: Other client errors - pause for 1 hour (configurable via clientErrorCooldown)
+   * - 5xx: Server errors - retry on normal schedule
+   * - Other: Unexpected status - retry on normal schedule
    */
-  parseAndExpandEvents (iCalData, startDate, endDate, maxIterations = 1000) {
-    let jcalData;
-    try {
-      jcalData = ICAL.parse(iCalData);
-    } catch (error) {
-      throw new Error("Failed to parse iCal data", {
-        cause: error
-      });
-    }
+  handleHttpError (calendar, response, key) {
+    const status = response.status;
+    const statusText = response.statusText || "unknown";
+    let cooldown;
+    let error;
 
-    const comp = new ICAL.Component(jcalData);
-    const vevents = comp.getAllSubcomponents("vevent");
-
-    const events = [];
-    const occurrences = [];
-
-    for (const vevent of vevents) {
-      const event = new ICAL.Event(vevent);
-
-      if (event.isRecurring()) {
-        // Handle recurring events
-        const iterator = event.iterator();
-        let count = 0;
-        let occurrence;
-
-        while ((occurrence = iterator.next()) && count < maxIterations) {
-          const occurrenceStartDate = occurrence.toJSDate();
-          const occurrenceEndDate = new Date(occurrenceStartDate.getTime() + event.duration.toSeconds() * 1000);
-
-          // Check if this occurrence falls within our date range
-          if (occurrenceEndDate >= startDate && occurrenceStartDate <= endDate) {
-            occurrences.push({
-              startDate: {
-                toJSDate: () => occurrenceStartDate
-              },
-              endDate: {
-                toJSDate: () => occurrenceEndDate
-              },
-              item: {
-                summary: event.summary,
-                location: event.location,
-                description: event.description,
-                uid: event.uid,
-                isRecurring: () => true,
-                duration: event.duration,
-                component: vevent
-              },
-              component: vevent
-            });
-          }
-
-          count += 1;
-
-          // Stop if we've gone past our end date
-          if (occurrenceStartDate > endDate) {
-            break;
-          }
-        }
-      } else {
-        // Handle single events
-        const eventStartDate = event.startDate.toJSDate();
-        const eventEndDate = event.endDate.toJSDate();
-
-        // Check if this event falls within our date range
-        if (eventEndDate >= startDate && eventStartDate <= endDate) {
-          events.push({
-            startDate: {
-              toJSDate: () => eventStartDate
-            },
-            endDate: {
-              toJSDate: () => eventEndDate
-            },
-            summary: event.summary,
-            location: event.location,
-            description: event.description,
-            uid: event.uid,
-            isRecurring: () => false,
-            duration: event.duration,
-            component: vevent
-          });
+    if (status === 401 || status === 403) {
+      cooldown = calendar.authFailureCooldown || this.config.authFailureCooldown || 3600000;
+      this.calendarSuspend[key] = {
+        until: Date.now() + cooldown,
+        reason: `authentication error (${status})`
+      };
+      error = new Error(`Authentication failed (${status} ${statusText})`);
+      Log.error(
+        `[CALEXT2] calendar:${calendar.name} >> Authentication failed (${status} ${statusText}). Pausing requests for ${Math.round(cooldown / 60000)} minute(s).`
+      );
+    } else if (status === 429) {
+      cooldown = calendar.rateLimitCooldown || this.config.rateLimitCooldown || 900000;
+      const retryAfter = response.headers.get("retry-after");
+      if (retryAfter) {
+        const seconds = Number(retryAfter);
+        const retryDate = Date.parse(retryAfter);
+        if (!Number.isNaN(seconds)) {
+          cooldown = seconds * 1000;
+        } else if (!Number.isNaN(retryDate)) {
+          cooldown = Math.max(0, retryDate - Date.now());
         }
       }
+      this.calendarSuspend[key] = {
+        until: Date.now() + cooldown,
+        reason: "rate limiting"
+      };
+      error = new Error(`Rate limit reached (${status})`);
+      Log.warn(
+        `[CALEXT2] calendar:${calendar.name} >> Rate limited (${status}). Retrying in ${Math.round(cooldown / 60000)} minute(s).`
+      );
+    } else if (status >= 400 && status < 500) {
+      cooldown = calendar.clientErrorCooldown || this.config.clientErrorCooldown || 3600000;
+      this.calendarSuspend[key] = {
+        until: Date.now() + cooldown,
+        reason: `client error (${status})`
+      };
+      error = new Error(`Client error (${status} ${statusText})`);
+      Log.error(
+        `[CALEXT2] calendar:${calendar.name} >> Client error (${status} ${statusText}). Pausing requests for ${Math.round(cooldown / 60000)} minute(s).`
+      );
+    } else if (status >= 500) {
+      error = new Error(`Server error (${status} ${statusText})`);
+      Log.error(
+        `[CALEXT2] calendar:${calendar.name} >> Server error (${status} ${statusText}). Will retry after ${Math.round(calendar.scanInterval / 60000) || 1} minute(s).`
+      );
+    } else {
+      error = new Error(`Unexpected response status ${status}`);
+      Log.error(`[CALEXT2] calendar:${calendar.name} >> Unexpected response status ${status}.`);
     }
 
     return {
-      events,
-      occurrences
+      error,
+      delay: cooldown ? Math.max(cooldown, calendar.scanInterval) : calendar.scanInterval
     };
   },
 
@@ -236,7 +240,7 @@ module.exports = NodeHelper.create({
       const startDate = dayjs().subtract(calendar.beforeDays, "days").startOf("day").toDate();
       const endDate = dayjs().add(calendar.afterDays, "days").endOf("day").toDate();
 
-      events = this.parseAndExpandEvents(
+      events = parseAndExpandEvents(
         iCalData,
         startDate,
         endDate,
