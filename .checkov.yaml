@@ -1,0 +1,12 @@
+# Checkov config: skip scanning third-party dependency folders
+# This prevents Checkov from analyzing files under node_modules and similar
+# which often include GitHub Actions/workflows belonging to dependencies.
+# See: https://www.checkov.io/ for configuration options.
+
+skip_paths:
+  - "**/node_modules/**"
+  - "**/.venv/**"
+  - "**/.cache/**"
+# Optionally you can explicitly skip checks (not recommended globally)
+# skip_checks:
+#   - CKV2_GHA_1
