@@ -79,6 +79,7 @@ These fields could be used in all views. (But some fields might work differently
 | dateTimeFormat       | Object                  | {...}                                   | {...}          | See [Event Time](../Event-Time.md).                                                                                                                                                                                                           |
 | relativeFormat       | Object                  | {...}                                   | {...}          | See [Event Time](../Event-Time.md).                                                                                                                                                                                                           |
 | useEventTimeRelative | Boolean                 | true                                    | false          | If true, relativeFormat will be used instead time/date/dateTimeFormat. See [Event Time](../Event-Time.md)                                                                                                                                     |
+| showAttendees        | Boolean                 | false                                   | true           | Show attendees/guests in event details. Set to `false` to hide attendees.                                                                                                                                                                     |
 | filter               | Function                | (e)=>{}                                 | (e)=>{...}     | See [Filtering and Sorting](../Filtering-and-Sorting.md)                                                                                                                                                                                      |
 | sort                 | Function                | (a,b)=>{}                               | (a,b)=>{...}   | See [Filtering and Sorting](../Filtering-and-Sorting.md)                                                                                                                                                                                      |
 | transform            | Function                | (e)=>{}                                 | (e)=>{...}     | See [Filtering and Sorting](../Filtering-and-Sorting.md)                                                                                                                                                                                      |
@@ -96,3 +97,25 @@ title: (mObj) => {
 This example will return "My Weekly: 49th" or similar.
 
 callback function gets `Day.js Object` of first slot start time as argument. So you can handle it in callback function.
+
+#### showAttendees
+
+When enabled (default), attendees/guests from calendar events will be displayed with their status:
+
+- ✓ (green) - Accepted
+- ✗ (red) - Declined
+- ? (yellow) - Tentative/Needs Action
+
+Email addresses are obfuscated for privacy (e.g., `user@***.com`).
+
+![showAttendees example](Views/example_showAttendees.png)
+
+To disable attendee display:
+
+```js
+{
+  name: "My View",
+  mode: "upcoming",
+  showAttendees: false
+}
+```

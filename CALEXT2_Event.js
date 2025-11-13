@@ -13,6 +13,7 @@ class Event {
     this.timeFormat = slot.timeFormat;
     this.dateFormat = slot.dateFormat;
     this.dateTimeFormat = slot.dateTimeFormat;
+    this.showAttendees = slot.showAttendees;
     this.dom = this.makeEventDom();
   }
 
@@ -149,6 +150,30 @@ class Event {
     location.classList.add("eventLocation");
     location.innerHTML = event.location;
     subDom.appendChild(location);
+
+    // Add attendees if present and enabled
+    if (this.showAttendees && event.attendees && event.attendees.length > 0) {
+      const attendees = document.createElement("div");
+      attendees.classList.add("eventAttendees");
+      const attendeeList = event.attendees.map((att) => {
+        let status = "?";
+        let statusClass = "";
+        if (att.status === "ACCEPTED") {
+          status = "✓";
+          statusClass = "attendeeAccepted";
+        } else if (att.status === "DECLINED") {
+          status = "✗";
+          statusClass = "attendeeDeclined";
+        } else if (att.status === "TENTATIVE") {
+          status = "?";
+          statusClass = "attendeeTentative";
+        }
+        return `<span class="attendee ${statusClass}" title="${att.status}">${status} ${att.name}</span>`;
+      }).join(" ");
+      attendees.innerHTML = attendeeList;
+      subDom.appendChild(attendees);
+    }
+
     eventDom.appendChild(subDom);
     return eventDom;
   }

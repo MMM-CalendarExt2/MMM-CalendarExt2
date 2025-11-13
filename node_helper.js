@@ -136,6 +136,7 @@ module.exports = NodeHelper.create({
       ev.description = ri.description;
       ev.title = ri.summary;
       ev.isRecurring = ri.isRecurring();
+      ev.attendees = ri.attendees || [];
       ev.isCancelled =
         Object.hasOwn(item, "component") &&
         item.component &&

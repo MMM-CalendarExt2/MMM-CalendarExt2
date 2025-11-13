@@ -168,7 +168,8 @@ Module.register("MMM-CalendarExt2", {
         current: "ends %ENDFROMNOW%",
         future: "starts %STARTFROMNOW% (%DURATION%)"
       },
-      useEventTimeRelative: false // If true, relativeFormat will be used instead time/date/dateTimeFormat.
+      useEventTimeRelative: false, // If true, relativeFormat will be used instead time/date/dateTimeFormat.
+      showAttendees: true // Show attendees/guests in event details. Set to false to hide.
     }
   },
 

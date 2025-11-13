@@ -15,6 +15,7 @@ class Slot {
     this.timeFormat = view.config.timeFormat;
     this.dateFormat = view.config.dateFormat;
     this.dateTimeFormat = view.config.dateTimeFormat;
+    this.showAttendees = view.config.showAttendees;
     this.events = [];
     this.init(view);
 
