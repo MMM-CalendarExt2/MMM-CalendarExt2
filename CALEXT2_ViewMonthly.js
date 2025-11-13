@@ -16,7 +16,7 @@ class ViewMonthly extends ViewPeriod {
     if (now.format("YYYY") === day.format("YYYY"))
       slotDom.classList.add("thisyear");
     if (now.format("M") === day.format("M")) slotDom.classList.add("thismonth");
-    if (now.isBetween(day, dayEnd)) slotDom.classList.add("today");
+    if (now.isBetween(day, dayEnd, null, "[]")) slotDom.classList.add("today");
     slotDom.classList.add(`year_${day.format("YYYY")}`);
     slotDom.classList.add(`month_${day.format("M")}`);
   }

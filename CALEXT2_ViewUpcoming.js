@@ -11,7 +11,7 @@ class ViewUpcoming extends ViewAgenda {
     const until = dayjs().add(this.config.maxDays, "day").endOf("day");
     let filtered = super.filterEvents(events);
     filtered = filtered.filter((e) =>
-      dayjs.unix(e.startDate).isBetween(dayjs(), until));
+      dayjs.unix(e.startDate).isBetween(dayjs(), until, null, "[)"));
     return filtered;
   }
 }

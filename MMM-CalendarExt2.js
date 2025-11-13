@@ -244,7 +244,7 @@ Module.register("MMM-CalendarExt2", {
     }
 
     scripts.push(
-      "lib/dayjs-init.js",
+      this.file("lib/dayjs-init.js"),
       "CALEXT2_Scene.js",
       "CALEXT2_View.js",
       "CALEXT2_Event.js",

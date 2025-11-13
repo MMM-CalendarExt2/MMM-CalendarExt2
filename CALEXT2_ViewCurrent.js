@@ -11,7 +11,7 @@ class ViewCurrent extends ViewAgenda {
     let filtered = super.filterEvents(events);
     const now = dayjs();
     filtered = filtered.filter((e) =>
-      now.isBetween(dayjs.unix(e.startDate), dayjs.unix(e.endDate)));
+      now.isBetween(dayjs.unix(e.startDate), dayjs.unix(e.endDate), null, "[)"));
     return filtered;
   }
 }

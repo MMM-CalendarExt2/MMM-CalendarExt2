@@ -18,7 +18,7 @@ class ViewWeekly extends ViewPeriod {
       slotDom.classList.add("thisyear");
     if (now.format("M") === day.format("M")) slotDom.classList.add("thismonth");
     if (now.format("w") === day.format("w")) slotDom.classList.add("thisweek");
-    if (now.isBetween(day, dayEnd)) slotDom.classList.add("today");
+    if (now.isBetween(day, dayEnd, null, "[]")) slotDom.classList.add("today");
     slotDom.classList.add(`year_${day.format("YYYY")}`);
     slotDom.classList.add(`month_${day.format("M")}`);
     slotDom.classList.add(`week_${day.format("w")}`);
