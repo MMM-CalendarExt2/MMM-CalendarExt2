@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.0](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.21...v2.0.0) 2025-11-13
+
+### Major Changes
+
+#### Migration from Moment.js to Day.js
+
+This release replaces Moment.js with the modern Day.js library. While Day.js is API-compatible and extensive testing has been performed, this fundamental change to the module's date handling warrants a major version bump per semantic versioning. Your existing configuration should work unchanged, but edge cases in date/time formatting may exist. Please report any unexpected behavior.
+
+### New Features & Improvements
+
+- feat: display attendees/guests in calendar events (solves [#100](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues/100))
+  - Extract and show attendees from iCal ATTENDEE properties
+  - Color-coded status badges (green/red/yellow)
+  - Email privacy obfuscation
+  - Configurable via showAttendees option (default: enabled)
+  - Screenshot:
+    ![showAttendees example](docs/Configuration/Views/example_showAttendees.png)
+- feat: add HTTP error cooldown handling (solves [#237](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues/237))
+  - Implement smart retry logic to prevent account lockouts and respect rate limits. Auth errors (401/403) and client errors (4xx) trigger 1-hour cooldowns, rate limits (429) respect Retry-After headers. Server errors (5xx) retry normally.
+
+### Chore & Maintenance
+
+- chore: update devDependencies
+- chore: update Node.js setup action to version 6
+- chore: update workflows to improve context printing and credential handling
+- docs: remove obsolete memo regarding MMM-Carousel bug
+- refactor: extract fetch logic to CalendarFetcher class
+- refactor: move helper functions to lib directory
+
 ## [1.4.21](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.20...v1.4.21) 2025-10-06
 
 - chore: update actions/setup-node to version 5 in automated tests workflow
