@@ -93,9 +93,3 @@ Pull requests are of course also very welcome 🙂
 - `node --run prettier` - Run formatter checks.
 - `node --run prettier:fix` - Fix formatter issues.
 - `node --run test` - Run linting and formatter checks.
-
-## MEMO
-
-### Bug with MMM-Carousel
-
-- When you are using it with `MMM-Carousel`, `MMM-CalendarExt2` should be in main page or all pages.
