@@ -28,6 +28,7 @@
     "prepare": "[ -f node_modules/.bin/husky ] && husky || true",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
+    "release": "commit-and-tag-version",
     "stylelint": "stylelint **/*.css",
     "stylelint:fix": "stylelint **/*.css --fix",
     "test": "node --run lint && node --run prettier"
@@ -46,6 +47,26 @@
       "prettier --write"
     ]
   },
+  "standard-version": {
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "docs",
+        "section": "Documentation"
+      },
+      {
+        "type": "chore",
+        "section": "Chores"
+      }
+    ]
+  },
   "dependencies": {
     "dayjs": "^1.11.19",
     "ical.js": "^2.2.1"
@@ -54,6 +75,7 @@
     "@eslint/js": "^9.39.2",
     "@eslint/json": "^0.14.0",
     "@stylistic/eslint-plugin": "^5.6.1",
+    "commit-and-tag-version": "^12.6.1",
     "eslint": "^9.39.2",
     "eslint-plugin-import-x": "^4.16.1",
     "globals": "^16.5.0",
