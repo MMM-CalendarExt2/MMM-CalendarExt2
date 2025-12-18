@@ -25,7 +25,7 @@
     "lint:fix": "node --run eslint:fix && node --run stylelint:fix && node --run markdownlint:fix",
     "markdownlint": "markdownlint-cli2 **/*.md",
     "markdownlint:fix": "markdownlint-cli2 **/*.md --fix",
-    "prepare": "[ -f node_modules/.bin/husky ] && husky || true",
+    "prepare": "npx simple-git-hooks",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
     "release": "commit-and-tag-version",
@@ -79,13 +79,16 @@
     "eslint": "^9.39.2",
     "eslint-plugin-import-x": "^4.16.1",
     "globals": "^16.5.0",
-    "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "markdownlint-cli2": "^0.20.0",
     "prettier": "^3.7.4",
+    "simple-git-hooks": "^2.13.1",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",
     "stylelint-prettier": "^5.0.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
   },
   "engines": {
     "node": ">=18"
