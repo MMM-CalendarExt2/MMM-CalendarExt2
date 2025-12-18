@@ -159,8 +159,10 @@ module.exports = NodeHelper.create({
       let startDate;
       let endDate;
       if (calendar.forceLocalTZ) {
-        startDate = dayjs(item.startDate.toJSDate()).subtract(1, "months");
-        endDate = dayjs(item.endDate.toJSDate()).subtract(1, "months");
+        // Interpret event times in the local timezone to mitigate bad TZ info in some iCals
+        const localTZ = dayjs.tz.guess();
+        startDate = dayjs.tz(item.startDate.toJSDate(), localTZ);
+        endDate = dayjs.tz(item.endDate.toJSDate(), localTZ);
       } else {
         startDate = dayjs(item.startDate.toJSDate());
         endDate = dayjs(item.endDate.toJSDate());

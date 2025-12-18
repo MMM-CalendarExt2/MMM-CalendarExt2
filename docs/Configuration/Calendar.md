@@ -53,7 +53,7 @@ Below fields are predefined values. Unless overriding it, this will be used by d
 - **`scanInterval`** : (milliseconds) how often calendar should be rescanned.
 - **`beforeDays`**, **afterDays** : Events between these days will be got.
 - **`maxIterations`**: If event is recurrent type, how many recurrence will be parsed.
-- **`forceLocalTZ`** : Some iCal has wrong time zone information. When the iCal has that kind of problem, this option could be a simple fix.
+- **`forceLocalTZ`** : Some iCal has incorrect time zone information. When the iCal has that kind of problem, this option could be a simple fix.
 - **`replaceTitle`** : Array of [`pattern`, `replace`].
   - e.g)
 
