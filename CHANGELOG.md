@@ -19,7 +19,7 @@ This release replaces Moment.js with the modern Day.js library. While Day.js is 
   - Email privacy obfuscation
   - Configurable via showAttendees option (default: enabled)
   - Screenshot:
-    ![showAttendees example](docs/Configuration/Views/example_showAttendees.png)
+    ![showAttendees example](docs/Configuration/Views/showAttendees.png)
 - feat: add HTTP error cooldown handling (solves [#237](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues/237))
   - Implement smart retry logic to prevent account lockouts and respect rate limits. Auth errors (401/403) and client errors (4xx) trigger 1-hour cooldowns, rate limits (429) respect Retry-After headers. Server errors (5xx) retry normally.
 

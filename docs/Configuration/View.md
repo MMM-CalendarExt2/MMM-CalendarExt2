@@ -108,7 +108,7 @@ When enabled (default), attendees/guests from calendar events will be displayed 
 
 Email addresses are obfuscated for privacy (e.g., `user@***.com`).
 
-![showAttendees example](Views/example_showAttendees.png)
+![showAttendees example](Views/showAttendees.png)
 
 To disable attendee display:
 
