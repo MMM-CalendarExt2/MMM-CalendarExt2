@@ -1,7 +1,24 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-This project adheres to [Semantic Versioning](https://semver.org/).
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [2.0.1](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v2.0.0...v2.0.1) (2025-12-18)
+
+### Bug Fixes
+
+- correct forceLocalTZ to use proper timezone handling ([85cb89f](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/85cb89f009205340c2f76929e581660d34888ea3)), closes [#97](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues/97)
+
+### Documentation
+
+- clarify timeFormat and dateTimeFormat usage for consistent formatting ([1758214](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/175821418f22a4319b00d7a80d73e731cc4b55f2))
+- rename showAttendees example image ([d252a4a](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/d252a4ad9b5776784fedee5742b6c7a93f849274))
+
+### Chores
+
+- **deps:** bump actions/checkout from 5 to 6 ([e9d6e59](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/e9d6e593c054d7efdce99443c99f6690d6b34049))
+- replace husky with simple-git-hooks for pre-commit linting ([a24b99d](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/a24b99d8540c4e8da7d8e457d2c6800fd92210f1))
+- setup commit-and-tag-version ([ef5e911](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/ef5e911c7b85a4e4add07fcd3d3a59ec24272aaf))
+- update devDependencies ([1d9b5a3](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/1d9b5a358b91a1c1cfa9d424b221625695831f40))
 
 ## [2.0.0](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v1.4.21...v2.0.0) 2025-11-13
 
