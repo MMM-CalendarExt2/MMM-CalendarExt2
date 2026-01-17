@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. See [commit
 
 ## [2.0.1](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v2.0.0...v2.0.1) (2025-12-18)
 
-### Bug Fixes
+### Bugfixes
 
 - correct forceLocalTZ to use proper timezone handling ([85cb89f](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/85cb89f009205340c2f76929e581660d34888ea3)), closes [#97](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues/97)
 
