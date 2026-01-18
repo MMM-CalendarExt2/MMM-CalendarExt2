@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.0.2](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v2.0.1...v2.0.2) (2026-01-18)
+
+### Bug Fixes
+
+- update prepare script to handle simple-git-hooks execution ([1a1f4a1](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/1a1f4a1e54f9f98fa3b67b4739611985169a9423))
+
+### Chores
+
+- add package-lock.json to .prettierignore ([471aed8](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/471aed8ab87cdd4fe799050c09e378715f5f1355))
+- add textlintrc configuration for terminology rules ([6c11659](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/6c11659a185a6c647ac8be017530353ea8782730))
+- change runner from ubuntu-latest to ubuntu-slim in workflows ([3e3f566](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/3e3f566d60260b865fd8d72383b348effdc6adff))
+- **deps-dev:** bump globals from 16.5.0 to 17.0.0 ([4e9a57a](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/4e9a57a36c57ea165d2a84f17512bce26d23a61a))
+- update devDependencies ([15ae656](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/15ae656fbcfd8b4b30d1db402ecfc59c31758574))
+- update markdownlint configuration to include no-duplicate-heading rule ([747af52](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/747af52c0dd9f059a651de9c77f33e7fe8df75cc))
+
 ## [2.0.1](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v2.0.0...v2.0.1) (2025-12-18)
 
 ### Bugfixes
