@@ -73,7 +73,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "@eslint/json": "^0.14.0",
+    "@eslint/json": "^1.0.0",
     "@stylistic/eslint-plugin": "^5.7.0",
     "commit-and-tag-version": "^12.6.1",
     "eslint": "^9.39.2",
