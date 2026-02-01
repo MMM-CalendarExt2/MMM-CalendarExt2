@@ -74,7 +74,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@eslint/json": "^0.14.0",
-    "@stylistic/eslint-plugin": "^5.7.0",
+    "@stylistic/eslint-plugin": "^5.7.1",
     "commit-and-tag-version": "^12.6.1",
     "eslint": "^9.39.2",
     "eslint-plugin-import-x": "^4.16.1",
