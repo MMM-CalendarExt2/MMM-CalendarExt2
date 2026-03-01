@@ -83,7 +83,7 @@
     "node-ical": "^0.25.4"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^10.0.1",
     "@eslint/json": "^1.0.1",
     "@stylistic/eslint-plugin": "^5.9.0",
     "commit-and-tag-version": "^12.6.1",
