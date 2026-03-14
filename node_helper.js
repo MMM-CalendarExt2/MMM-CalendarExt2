@@ -128,6 +128,16 @@ module.exports = NodeHelper.create({
     const wholeEvents = events;
     let eventPool = [];
 
+    // calendar.filter is a JSON string produced by the frontend via
+    // JSON.stringify({ filter: fn.toString() }) so the user-supplied function
+    // survives the socket serialization boundary. Reconstruct it once here –
+    // before the loop – to avoid repeating the parse+compile work per event.
+    let compiledFilter = null;
+    if (calendar.filter) {
+      const filterSource = JSON.parse(calendar.filter).filter;
+      compiledFilter = new Function(`return (${filterSource})`)(); // eslint-disable-line no-new-func
+    }
+
     wholeEvents.forEach((item) => {
       const ev = {};
       ev.calendarId = calendar.uid;
@@ -188,17 +198,7 @@ module.exports = NodeHelper.create({
         ? `${calendar.uid}:${ev.startDate}:${ev.endDate}:${item.uid}`
         : `${calendar.uid}:${ev.startDate}:${ev.endDate}:${ev.title}`;
       ev.calendarName = calendar.name;
-      if (calendar.filter) {
-        const f = JSON.parse(calendar.filter).filter;
-        // the calendar.filter could be a string, so we have to upcycle it to a function (at least that's what klaernie thinks this does)
-        const filter = Function(`return ${f.toString()}`); // eslint-disable-line no-new-func
-        const r = filter(ev);
-        if (r(ev)) {
-          eventPool.push(ev);
-        } else {
-          // do nothing
-        }
-      } else {
+      if (!compiledFilter || compiledFilter(ev)) {
         eventPool.push(ev);
       }
     });
