@@ -1,0 +1,76 @@
+name: Feature Request
+description: Suggest an idea for MMM-CalendarExt2
+labels:
+  - feature
+  - to check
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to share an idea! For general brainstorming or questions, you can also use the forum:
+        https://forum.magicmirror.builders/category/29/troubleshooting
+
+        Please help us understand the problem and your proposed solution. Clear context helps us assess and prioritize.
+  - type: checkboxes
+    attributes:
+      label: Pre-flight checks
+      options:
+        - label: I searched existing issues and discussions to avoid duplicates.
+          required: true
+        - label: This is a feature request (not a support/troubleshooting question).
+          required: true
+  - type: textarea
+    attributes:
+      label: Problem / Use case
+      description: What problem are you trying to solve? Why is it important for you?
+      placeholder: |
+        When I ... I can't ..., which makes it hard to ...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposed solution
+      description: What would you like to happen? Try to be specific.
+      placeholder: |
+        Add a config option / view mode / ... that ..., so that ...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Alternatives considered
+      description: What else did you try or consider? Why wasn't it good enough?
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: UI/UX details (if applicable)
+      description: Describe any UI changes. Wireframes or screenshots are welcome.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Config impact (if applicable)
+      description: Would this add or change config options, views, scenes, or calendar settings?
+      placeholder: |
+        New view option `foo: true` or new calendar config `bar: "value"`
+    validations:
+      required: false
+  - type: dropdown
+    attributes:
+      label: "Willing to contribute a PR?"
+      description: Select Yes if you plan to open a pull request for this feature.
+      options:
+        - "Yes"
+        - "No"
+  - type: textarea
+    attributes:
+      label: Implementation hints (optional)
+      description: Pointers to code areas or a rough plan help (files, functions, links).
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Anything else we should know? Links, screenshots, or related modules.
+    validations:
+      required: false

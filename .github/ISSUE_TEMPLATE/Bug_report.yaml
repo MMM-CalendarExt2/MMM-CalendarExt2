@@ -1,0 +1,158 @@
+name: Bug Report
+description: Think you found a bug? Let us know!
+labels:
+  - bug
+  - to check
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to help make MMM-CalendarExt2 better!
+        Please share clear steps to reproduce the issue so we can verify and fix it quickly.
+
+        Not sure it's a bug? Feel free to ask first in the community forum:
+        https://forum.magicmirror.builders/category/29/troubleshooting
+
+        Tip: How to write a great bug report:
+        https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue
+  - type: input
+    attributes:
+      label: OS
+      description: |
+        example:
+        - OS: Raspberry Pi OS (Bookworm)
+
+        How to find your OS on the Pi (or other Linux):
+        - Run: `cat /etc/os-release` and copy the value of `PRETTY_NAME`
+        - Alternatively: `lsb_release -a` (if available) or `uname -a`
+      placeholder: "Raspberry Pi OS (Bookworm)"
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Node.js Version
+      description: |
+        example:
+        - NodeJS: 24.0.0
+
+        How to check your Node.js version:
+        - Run: `node -v` and paste the exact version
+
+        Important:
+        - Only report a bug if you can reproduce it on a current, supported Node.js version (latest LTS or current stable).
+        - Please upgrade and re-test before filing issues for outdated Node.js versions.
+      placeholder: "24.x.x"
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: MagicMirror² Version
+      description: |
+        example:
+        - MM: 2.35.0
+
+        How to check your MagicMirror² version:
+        - When you run MagicMirror², the version is shown in the terminal output at startup.
+        - Or open `~/MagicMirror/package.json` and copy the `version`
+
+        Important:
+        - Please only report bugs reproducible on the current MagicMirror² release.
+        - If you're on an older version, update first and re-test before opening an issue.
+      placeholder: "2.x.x"
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: MMM-CalendarExt2 Version
+      description: |
+        example:
+        - MMM-CalendarExt2: 2.3.0
+
+        How to check:
+        - Open `modules/MMM-CalendarExt2/package.json` and copy the `version`
+      placeholder: "2.x.x"
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Minimal reproduction
+      options:
+        - label: I enabled only MMM-CalendarExt2 (other third-party modules disabled) and the issue still occurs.
+          required: true
+  - type: textarea
+    attributes:
+      label: Description
+      description: Short explanation of what you were going to do, what did you want to accomplish?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: What should actually happen?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Current behavior
+      description: What happened instead?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Possible solution
+      description: You can suggest a reason for the bug, if you know about it.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: Please provide detailed steps to reproduce the behavior
+      placeholder: |
+        1. Start MM...
+        2. Wait until everything loads
+        3. See error...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Screenshots (optional)
+      description: If helpful, paste screenshots or a short screen recording.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Server Log (terminal output)
+      description: |
+        Paste the relevant server log output from the terminal where MagicMirror² runs.
+        **Please, make sure that none of your personal information, such as IP or passwords are exposed.**
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Browser Console Log
+      description: |
+        Open the browser developer tools (F12 → Console tab) and paste any errors or warnings.
+        This is especially important for MMM-CalendarExt2 since most of its logic runs in the browser.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: config.js (MMM-CalendarExt2 section)
+      description: |
+        Paste the MMM-CalendarExt2 section from your config.js file.
+
+        Make sure that none of your personal data is present, especially check for:
+        - Calendar URLs (replace with `***` or use a placeholder)
+        - API keys, tokens, or credentials
+        - Addresses or other personal data
+      render: javascript
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional info
+      description: Everything else that you think could be useful for us.
+    validations:
+      required: false
