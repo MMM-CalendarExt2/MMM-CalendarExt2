@@ -26,7 +26,7 @@
     "lint:fix": "node --run eslint:fix && node --run stylelint:fix && node --run markdownlint:fix",
     "markdownlint": "markdownlint-cli2 **/*.md",
     "markdownlint:fix": "markdownlint-cli2 **/*.md --fix",
-    "prepare": "node -e \"try{require('simple-git-hooks').run()}catch(e){}\"",
+    "prepare": "simple-git-hooks || true",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
     "release": "commit-and-tag-version --commit-all",
