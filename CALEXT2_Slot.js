@@ -52,9 +52,21 @@ class Slot {
 
   drawEvents () {
     let hiddenCount = 0;
+    // Apply overflow constraints and read the container rect once before the
+    // loop. Each appendChild forces a layout recalculation, so measuring
+    // targetDom inside the loop would cause a redundant reflow per event.
+    // The container dimensions don't change between appends, so a single
+    // setup + read up-front is sufficient.
+    let contentRect = null;
+    if (this.hideOverflow) {
+      this.contentDom.classList.add("hideOverflow");
+      this.contentDom.style.maxHeight = this.maxHeight;
+      this.contentDom.style.height = this.maxHeight;
+      contentRect = this.contentDom.getBoundingClientRect();
+    }
     for (let i = 0; i < this.events.length; i++) {
       const event = new Event(this.events[i], this);
-      hiddenCount += this.drawEvent(event);
+      hiddenCount += this.drawEvent(event, contentRect);
     }
     if (hiddenCount > 0) {
       this.footerDom.querySelector(".hiddenCount").innerHTML =
@@ -62,8 +74,8 @@ class Slot {
     }
   }
 
-  drawEvent (event) {
-    return event.draw(this, this.contentDom);
+  drawEvent (event, contentRect) {
+    return event.draw(this, this.contentDom, contentRect);
   }
 
   assignEvents (events) {

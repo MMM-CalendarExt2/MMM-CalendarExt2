@@ -27,16 +27,11 @@ class Event {
     }
   }
 
-  draw (slot, targetDom) {
-    const {hideOverflow} = slot;
+  draw (slot, targetDom, contentRect = null) {
     const eventDom = this.dom;
     eventDom.style.opacity = 0;
     targetDom.appendChild(eventDom);
-    if (hideOverflow) {
-      targetDom.classList.add("hideOverflow");
-      targetDom.style.maxHeight = slot.maxHeight;
-      targetDom.style.height = slot.maxHeight;
-      const contentRect = targetDom.getBoundingClientRect();
+    if (contentRect) {
       const eventRect = eventDom.getBoundingClientRect();
       if (
         eventRect.bottom > contentRect.bottom ||
