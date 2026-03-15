@@ -1,5 +1,5 @@
 /* eslint-disable no-eval */
-/* global Module Scene config */
+/* global Module Scene config dayjs */
 
 Module.register("MMM-CalendarExt2", {
   predefined: {
@@ -247,7 +247,6 @@ Module.register("MMM-CalendarExt2", {
     }
 
     scripts.push(
-      this.file("lib/dayjs-init.js"),
       "CALEXT2_Scene.js",
       "CALEXT2_View.js",
       "CALEXT2_Event.js",
@@ -281,6 +280,13 @@ Module.register("MMM-CalendarExt2", {
   },
 
   start () {
+    // Re-register all dayjs plugins after all module scripts are loaded to
+    // prevent other modules from overwriting the global dayjs object.
+    for (const key of Object.keys(window)) {
+      if (key.startsWith("dayjs_plugin_")) dayjs.extend(window[key]);
+    }
+    if (config.language) dayjs.locale(config.language.toLowerCase());
+
     this.rotateTimer = null;
     this.updateTimer = null;
     this.currentSceneUid = 0;
