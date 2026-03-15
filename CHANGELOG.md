@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.3.1](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v2.3.0...v2.3.1) (2026-03-15)
+
+### Bug Fixes
+
+- update terminology rule to standardize "Bug Fixes" term ([bdca2cb](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/bdca2cb76c6a93767866cfc6e7fb63a32764ac08))
+
+### Chores
+
+- add GitHub issue templates for bug reports and feature requests ([393812d](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/393812d4d258ddcf33548abfbfd7103d43d46968))
+- fix typos in docs and source, configure textlint terminology rule ([2cb1d10](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/2cb1d1028c9c2865b51bd2c047fc1d7b6773935e))
+- remove .textlintrc.json and add .textlintignore and .textlintrc files ([3776165](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/37761655ada7c257f6ade3bf66f920b28095d775))
+- simplify ESLint config ([86fce8c](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/86fce8cc83487ba8009d770e82cdb4cccec2a5cc))
+- simplify prepare script ([7ffc693](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/7ffc6932315e337243dd60a2e13e9ba58b5f8e68))
+- update dependencies ([a25762d](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/a25762d22a337ec8683c23b113f83d405c83a1b0))
+
 ## [2.3.0](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v2.2.0...v2.3.0) (2026-02-28)
 
 ### Features
