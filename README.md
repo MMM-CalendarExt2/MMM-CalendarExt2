@@ -1,6 +1,6 @@
 # MMM-CalendarExt2
 
-[![Super-Linter](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/actions/workflows/superlinter.yaml/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![Super-Linter](https://github.com/MagicMirrorModules/MMM-CalendarExt2/actions/workflows/superlinter.yaml/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 MMM-CalendarExt2 is a module for [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) to display extended calendars and event views.
 
@@ -16,7 +16,7 @@ Just clone the module into your modules directory and install the dependencies:
 
 ```sh
 cd ~/MagicMirror/modules
-git clone https://github.com/MMM-CalendarExt2/MMM-CalendarExt2 --depth=1
+git clone https://github.com/MagicMirrorModules/MMM-CalendarExt2 --depth=1
 cd MMM-CalendarExt2
 npm ci --omit=dev
 ```
@@ -56,9 +56,9 @@ If you are satisfied with `MMM-CalendarExt`, you can continue using it.
 
 ## Plugins
 
-- [MMM-CalendarExtTimeline](https://github.com/MMM-CalendarExt2/MMM-CalendarExtTimeline)
-- [MMM-CalendarExtMinimonth](https://github.com/MMM-CalendarExt2/MMM-CalendarExtMinimonth)
-- [MMM-CalendarExtPlan](https://github.com/MMM-CalendarExt2/MMM-CalendarExtPlan)
+- [MMM-CalendarExtTimeline](https://github.com/MagicMirrorModules/MMM-CalendarExtTimeline)
+- [MMM-CalendarExtMinimonth](https://github.com/MagicMirrorModules/MMM-CalendarExtMinimonth)
+- [MMM-CalendarExtPlan](https://github.com/MagicMirrorModules/MMM-CalendarExtPlan)
 
 ## Update
 
@@ -80,7 +80,7 @@ This module is licensed under the MIT License. Check the [LICENSE](LICENSE.md) f
 
 ## Contributing
 
-If you find any problems, bugs or have questions, please [open a GitHub issue](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues) in this repository.
+If you find any problems, bugs or have questions, please [open a GitHub issue](https://github.com/MagicMirrorModules/MMM-CalendarExt2/issues) in this repository.
 
 Pull requests are of course also very welcome 🙂
 
