@@ -1,3 +1,4 @@
 *.js
 *.mjs
 package-lock.json
+CHANGELOG.md

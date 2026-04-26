@@ -6,13 +6,13 @@
     "MagicMirror",
     "calendar"
   ],
-  "homepage": "https://github.com/MMM-CalendarExt2/MMM-CalendarExt2#readme",
+  "homepage": "https://github.com/MagicMirrorModules/MMM-CalendarExt2#readme",
   "bugs": {
-    "url": "https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/issues"
+    "url": "https://github.com/MagicMirrorModules/MMM-CalendarExt2/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MMM-CalendarExt2/MMM-CalendarExt2.git"
+    "url": "git+https://github.com/MagicMirrorModules/MMM-CalendarExt2.git"
   },
   "license": "MIT",
   "author": "eouia <eouia0819@gmail.com>",
