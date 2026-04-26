@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.3.3](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v2.3.2...v2.3.3) (2026-04-26)
+
+### Chores
+
+- **deps-dev:** bump fast-xml-parser from 5.5.5 to 5.5.9 ([6b37cd2](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/6b37cd263923fafe1298c8e034dc8ad3bc02a12b))
+- update dependencies ([d1bb2f5](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/commit/d1bb2f540aefde5ca860594eb18cd462775a0c8f))
+
 ## [2.3.2](https://github.com/MMM-CalendarExt2/MMM-CalendarExt2/compare/v2.3.1...v2.3.2) (2026-03-15)
 
 ### Bug Fixes
